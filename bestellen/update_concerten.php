@@ -8,7 +8,7 @@ require_once( 'modules/bestelfuncties.php' );
 require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php' );
 use function PHP81_BC\strftime;
 
-Kint::$enabled_mode = true; // ($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
+Kint::$enabled_mode = true;
 
 session_start();
 if ( isset( $_POST[ 'zoeknaam' ] )AND $_POST[ 'zoeknaam' ] != '' )$_SESSION[ 'zoeknaam' ] = $_POST[ 'zoeknaam' ];
@@ -121,26 +121,25 @@ d( $concert );
 				<input name="wis" type="submit" id="wis" value="wis">
 			</div>
 				<?php  if (isset($concerten) AND is_array($concerten)) $aantal_concerten = count($concerten); else $aantal_concerten = 0;
-					d($aantal_concerten);
 					if ($aantal_concerten > 0) { 
-					echo <<<XXX
-					<p>$aantal_concerten resultaten. Klik een item aan:</p>
-					<div id="navcontainer">
-						<ul id="navlist">
-							<li><a href="#" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">Close &times;</a></li>
-							XXX;		
-							foreach($concerten AS $conc) {
-								$datum = strftime("%a %e %B %Y", strtotime($conc['datum'])); 
-								$c = $conc['concerttitel'];
-								$href = $_SERVER['PHP_SELF'].'?concertId='.$conc['concertId'];
-								echo <<<XXX
-								<li id="active">
-									<a href="$href">$c<br><span class='klein'>($datum)</span></a></li>
-								XXX;
-							}
-							?>
-						</ul>
-					<?php } ?>	
+						echo <<<XXX
+							<p>$aantal_concerten resultaten. Klik een item aan:</p>
+							<div id="navcontainer">
+								<ul id="navlist">
+									<li><a href="#" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">Close &times;</a></li>
+									XXX;		
+									foreach($concerten AS $conc) {
+										$datum = strftime("%a %e %B %Y", strtotime($conc['datum'])); 
+										$c = $conc['concerttitel'];
+										$href = $_SERVER['PHP_SELF'].'?concertId='.$conc['concertId'];
+										echo <<<XXX
+										<li id="active">
+											<a href="$href">$c<br><span class='klein'>($datum)</span></a></li>
+										XXX;
+									}
+								echo '</ul>';
+								}
+					?>
 				</div>
 		</form>
 	</div>
