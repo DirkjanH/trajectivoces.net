@@ -9,7 +9,7 @@ require_once( 'modules/bestelfuncties.php' );
 require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php' );
 use function PHP81_BC\strftime;
 
-Kint::$enabled_mode = false; // ($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
+Kint::$enabled_mode = true; // ($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
 
 session_start();
 if ( isset( $_POST[ 'zoeknaam' ] )AND $_POST[ 'zoeknaam' ] != '' )$_SESSION[ 'zoeknaam' ] = $_POST[ 'zoeknaam' ];
