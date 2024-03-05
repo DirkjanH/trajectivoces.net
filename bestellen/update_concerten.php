@@ -18,6 +18,7 @@ if ( isset( $_POST[ 'wis' ] )AND $_POST[ 'wis' ] == 'wis' )unset( $_SESSION[ 'zo
 d( $_REQUEST, $_SESSION );
 
 $concerten = select_query( "SELECT * FROM {$tabel_concerten} WHERE datum LIKE '%%{$_SESSION['zoeknaam']}%%' OR concerttitel LIKE '%%{$_SESSION['zoeknaam']}%%' OR plaats LIKE '%%{$_SESSION['zoeknaam']}%%' ORDER BY datum ASC" );
+d($concerten);
 
 if ( ( isset( $_POST[ "Toevoegen" ] ) ) && ( $_POST[ "Toevoegen" ] == "Toevoegen" ) ) {
 	$insertSQL = sprintf( "INSERT INTO {$tabel_concerten} (concerttitel, details, opmerking_intern, datum, tijd, plaats, prijs_vol,
@@ -121,6 +122,7 @@ d( $concert );
 				<input name="wis" type="submit" id="wis" value="wis">
 			</div>
 				<?php  if (isset($concerten) AND is_array($concerten)) $aantal_concerten = count($concerten); else $aantal_concerten = 0;
+					d($aantal_concerten);
 					if ($aantal_concerten > 0) { 
 					echo <<<XXX
 					<p>$aantal_concerten resultaten. Klik een item aan:</p>
