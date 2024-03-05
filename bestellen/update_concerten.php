@@ -122,12 +122,12 @@ d( $concert );
 			</div>
 				<?php  if (isset($concerten) AND is_array($concerten)) $aantal_concerten = count($concerten); else $aantal_concerten = 0;
 					if ($aantal_concerten > 0) { 
-						echo <<<XXX
+					echo <<<XXX
 							<p>$aantal_concerten resultaten. Klik een item aan:</p>
 							<div id="navcontainer">
 								<ul id="navlist">
 									<li><a href="#" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">Close &times;</a></li>
-									XXX;		
+					XXX;		
 									foreach($concerten AS $conc) {
 										$datum = strftime("%a %e %B %Y", strtotime($conc['datum'])); 
 										$c = $conc['concerttitel'];
