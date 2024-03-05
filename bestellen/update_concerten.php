@@ -1,7 +1,6 @@
 <?php
 // stel php in dat deze fouten weergeeft
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
 error_reporting( E_ALL );
 
 require_once( 'modules/bestelfuncties.php' );
@@ -129,19 +128,19 @@ d( $concert );
 					<div id="navcontainer">
 						<ul id="navlist">
 							<li><a href="#" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">Close &times;</a></li>
-					XXX;		
-					foreach($concerten AS $conc) {
-						$datum = strftime("%a %e %B %Y", strtotime($conc['datum'])); 
-						$c = $conc['concerttitel'];
-						$href = $_SERVER['PHP_SELF'].'?concertId='.$conc['concertId'];
-						echo <<<XXX
-						<li id="active">
-							<a href="$href">$c<br><span class='klein'>($datum)</span></a></li>
-						XXX;
-					}
-					?>
-					</ul>
-				<?php } ?>	
+							XXX;		
+							foreach($concerten AS $conc) {
+								$datum = strftime("%a %e %B %Y", strtotime($conc['datum'])); 
+								$c = $conc['concerttitel'];
+								$href = $_SERVER['PHP_SELF'].'?concertId='.$conc['concertId'];
+								echo <<<XXX
+								<li id="active">
+									<a href="$href">$c<br><span class='klein'>($datum)</span></a></li>
+								XXX;
+							}
+							?>
+						</ul>
+					<?php } ?>	
 				</div>
 		</form>
 	</div>
