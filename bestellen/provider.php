@@ -9,6 +9,6 @@ require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
+use function php81_bc\strftime;
 
-Kint::$enabled_mode = false; //($_SERVER['REMOTE_ADDR'] === '45.82.191.170');
-?>
+Kint::$enabled_mode = false;
