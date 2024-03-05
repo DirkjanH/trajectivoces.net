@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="content" method="upgrade">
+	<name>Content - Ark Editor FormFields J4 compatiblity</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>May 2021</creationDate>
+	<copyright>>Copyright (C) 2021 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>Joomla4 fixes for Ark Editor's JFormField's</description>
+	<files>
+		<filename plugin="arkformfieldsj4compat">arkformfieldsj4compat.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>

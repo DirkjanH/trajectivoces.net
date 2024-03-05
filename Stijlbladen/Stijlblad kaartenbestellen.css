@@ -1,0 +1,39 @@
+@charset "iso-8859-1";
+
+/* CSS Document */
+
+.TekstpaginaAchtergrond#concertagenda {
+	background-color: #F4F4F4;
+	height: 755px;
+}
+#concertaankondigingen {
+	height: 40px;
+	width: 97%;
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px solid #FFF;
+	padding-left: 20px;
+	font-weight: bold;
+	padding-bottom: 15px;
+	background-color: #D2D0C4;
+}
+
+#concertaankondigingen > img{
+	float: right;
+	margin-top: 7px;
+}
+
+
+iframe {
+	width: 100%;
+	height: 735px;
+	overflow: auto;
+}
+h2 {
+	font-style: italic;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	color: #3E4A49;
+	text-decoration: underline;
+	margin-bottom: 0px;
+}

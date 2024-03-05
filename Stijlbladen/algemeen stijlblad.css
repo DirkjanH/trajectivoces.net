@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+/* CSS Document */
+
+Body
+{
+	background-color: #D7B044;
+	margin: 0px;
+	overflow: visible;
+	font-size: 100%;
+	font-style: normal;
+	top: 50px;
+	right: 50px;
+	}
+.Hoofdvenster {
+	float: right;
+	width: 100%;
+	margin-left: -200px;
+}
+.Centreervenster {
+	margin-left: 200px;
+	height: 775px;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #AB8D08;
+}
+.TekstpaginaAchtergrond {
+	padding-bottom: 10px;
+	padding-right: 1%;
+	padding-left: 1%;
+	padding-top: 10px;
+	color: #313131;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	height: 755px;
+	overflow: hidden;
+}
+#NavigatiekolomLinks {
+	width: 199px;
+	border-right-color: #EBE6DA;
+	border-top-color: #D3C7AB;
+	border-left-color: #D3C7AB;
+	float: left;
+	border-right-width: 1px;
+	border-right-style: solid;
+}
+}
+.Navigatiekader {
+	left: 20px;
+	top: 90px;
+	width: 120px;
+	border-left-width: 2px;
+	border-left-style: solid;
+	border-left-color: #B19407;
+	padding-left: 10px;
+	position: relative;
+}
+h1 {
+	background-color: #F2EFE9;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #B19407;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	letter-spacing: 0.3em;
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-left: 0px;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-left: 10px;
+	width: auto;
+	padding-bottom: 3px;
+}
+
+a > img {
+	border: 1px solid transparent;
+	height: 26px;
+	margin-bottom: 0px;
+}
+
+a:hover > img {
+	border: 1px solid #F8DA50;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+	height: 26px;
+}
+.Menuledenpagina{
+	width: 116px;
+	text-decoration: none;
+	overflow: hidden;
+}
+
+
+.dropmenudiv{
+	width: 132px;
+	visibility: hidden;
+	margin-top: 9px;
+	float: left;
+	margin-left: -4px;
+}
+
+.inhoud, .schaduw {
+  position: relative;
+  bottom: 4px;
+  right: 4px;
+}
+.inhoud {
+	border-left-width: 2px;
+	border-left-style: solid;
+	border-left-color: #B19407;
+	background-color: #6B6B5A;
+	padding-left: 10px;
+	padding-bottom: 2px;
+	margin-top: -3px;
+	padding-top: 2px;
+}
+.schaduw {
+	background-color: #80806C;
+}
+
+
+.Navigatiekader > img {
+	border: 1px solid transparent;
+	padding-right: 4px;
+	height: 26px;
+	width: 112px;
+}
+
+#NavigatiekolomLinks .Navigatiekader #valmenu2 img {
+	border: 1px solid transparent;
+	padding-right: 4px;
+}
+#NavigatiekolomLinks .Navigatiekader #valmenu1 .schaduw .inhoud img {
+	border: 1px solid transparent;
+	padding-right: 4px;
+}
+#Onderkant {
+	clear: both;
+}
+#randonderkant {
+	position: absolute;
+	bottom: 0px;
+	height: 2px;
+	width: 100%;
+	background-color: #EBE6DA;
+}
+#Onderkantlinks {
+	float: left;
+	height: 65px;
+	width: 199px;
+	margin-top: -23px;
+}
+#Onderkantrechts {
+	float: right;
+	height: 55px;
+	width: 325px;
+}
+
+a {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 0.9em;
+	font-style: italic;
+	color: #385030;
+}
+a:hover {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 0.9em;
+	font-style: italic;
+	color: #B5C6AE;
+}
+.onzichtbaar {
+	display: none;
+}
+.fb-like {
+	height: auto;
+	float: left;
+	width: 30%;
+	margin-top: 25px;
+}
+.CD {
+	font: bold 16px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	background: rgb(151,203,255);
+	clear: both;
+	height: 230px;
+	width: 650px;
+	padding: 15px;
+}
+.CD img {
+	margin-right: 15px;
+}

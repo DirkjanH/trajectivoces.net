@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="4.0" method="upgrade">
+    <name>All Video Share</name>
+    <creationDate>June 2023</creationDate>
+    <copyright>Copyright (c) 2012 - 2023 Vinoth Kumar. All Rights Reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <author>Vinoth Kumar</author>
+    <authorEmail>admin@mrvinoth.com</authorEmail>
+    <authorUrl>https://allvideoshare.mrvinoth.com/</authorUrl>
+    <version>4.2.1</version>
+    <description>COM_ALLVIDEOSHARE_XML_DESCRIPTION</description>
+    <namespace path="src">MrVinoth\Component\AllVideoShare</namespace>    
+    <scriptfile>script.allvideoshare.php</scriptfile>    
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <update> <!-- Runs on update -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>    
+    <files folder="site">        
+        <folder>forms</folder>
+        <folder>layouts</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+        <filename>komento_plugin.php</filename>
+    </files>
+    <media destination="com_allvideoshare" folder="media">
+        <folder>css</folder>
+        <folder>images</folder>
+        <folder>js</folder>
+        <folder>player</folder>
+        <filename>joomla.asset.json</filename>
+    </media>
+    <languages folder="site/language">        
+		<language tag="en-GB">en-GB/com_allvideoshare.ini</language>
+    </languages>
+    <administration>
+        <menu>COM_ALLVIDEOSHARE</menu>
+        <submenu>   
+            <menu link="option=com_allvideoshare&amp;view=videos">
+                COM_ALLVIDEOSHARE_TITLE_VIDEOS
+                <params>
+					<menu-quicktask-title>COM_ALLVIDEOSHARE_TITLE_VIDEOS</menu-quicktask-title>
+					<menu-quicktask>index.php?option=com_allvideoshare&amp;view=videos&amp;task=video.add</menu-quicktask>
+				</params>
+            </menu>     
+            <menu link="option=com_allvideoshare&amp;view=categories">
+                COM_ALLVIDEOSHARE_TITLE_CATEGORIES
+                <params>
+					<menu-quicktask-title>COM_ALLVIDEOSHARE_TITLE_CATEGORIES</menu-quicktask-title>
+					<menu-quicktask>index.php?option=com_allvideoshare&amp;view=categories&amp;task=category.add</menu-quicktask>
+				</params>
+            </menu>    
+			<menu link="option=com_allvideoshare&amp;view=advertisements">COM_ALLVIDEOSHARE_TITLE_ADVERTISEMENTS</menu>
+            <menu link="option=com_allvideoshare&amp;view=ratings">COM_ALLVIDEOSHARE_TITLE_RATINGS</menu>
+            <menu link="option=com_allvideoshare&amp;view=likes">COM_ALLVIDEOSHARE_TITLE_LIKES_DISLIKES</menu>
+        </submenu>
+        <files folder="admin">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <folder>forms</folder>
+            <folder>services</folder>            
+            <folder>sql</folder>
+            <folder>src</folder>
+            <folder>tmpl</folder>
+        </files>
+        <languages folder="admin/language">            
+			<language tag="en-GB">en-GB/com_allvideoshare.ini</language>
+			<language tag="en-GB">en-GB/com_allvideoshare.sys.ini</language>
+        </languages>
+    </administration>
+    <plugins>
+        <plugin plugin="allvideoshare" group="finder" />  
+        <plugin plugin="allvideoshareplayer" group="content" />
+    </plugins>
+    <modules>
+        <module module="mod_allvideosharegallery" client="site" />
+		<module module="mod_allvideoshareplayer" client="site" />
+        <module module="mod_allvideosharesearch" client="site" />
+	</modules>
+    <updateservers>
+        <server type="extension" priority="1" name="com_allvideoshare">https://allvideoshare.mrvinoth.com/updates/allvideoshare-update.xml</server>
+    </updateservers>
+</extension>

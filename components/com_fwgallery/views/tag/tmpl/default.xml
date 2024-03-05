@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Single Tag Layout">
+		<message>
+			Single Tag Layout
+		</message>
+	</layout>
+	<state>
+		<name>Single Tag Layout</name>
+		<description>Single Tag Layout</description>
+	</state>
+	<fields name="params">
+		<fieldset name="basic">
+            <field name="tag" type="sql" query="SELECT id, name FROM #__fwg_tags ORDER BY name" label="Select Tag" description="A tag to display" key_field="name" value_field="name" />
+		</fieldset>
+	</fields>
+</metadata>

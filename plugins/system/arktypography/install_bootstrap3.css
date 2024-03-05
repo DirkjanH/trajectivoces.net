@@ -1,0 +1,29 @@
+/** Bootstrap 3 -T3**/
+/* -- OBJECT STYLES  ------------------------------------------------------------*/
+/* -- Controls the object style columns -- */
+
+img.thumbnail {}
+img.img-circle {}
+img.img-rounded {}
+table.table {}
+ul.list-unstyled {}
+ul.list-inline {}
+
+/* -- BLOCK STYLES  ------------------------------------------------------------*/
+/* --  Controls the block style columns -- */
+
+p.text-error {}
+p.text-info {}
+p.text-warning {}
+p.text-success {}
+div.well {}
+div.jumbotron {}
+div.alert {}
+
+/* -- INLINE STYLES  ------------------------------------------------------------*/
+/* --  Controls the inline style columns -- */
+
+span.badge {}
+span.label {}
+
+/** End of Stylesheet **/

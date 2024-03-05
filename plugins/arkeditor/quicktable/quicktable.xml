@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="arkeditor" method="upgrade">
+	<name>ArkEditor - QuickTable</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>July 2014</creationDate>
+	<copyright>>Copyright (C) 2014- 2016 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>The ArkEditor Quick Table plugin</description>
+	<files>
+		<filename plugin="quicktable">index.html</filename>
+		<folder>quicktable</folder>
+	</files>
+	<config>
+		<fields name="params">
+				<fieldset name ="advanced">
+				<field name="qtRows" type="text" default="8" label="PLG_ARKEDITOR_QT_ROWS" description="PLG_ARKEDITOR_QT_ROWS_DESC" />
+				<field name="qtColumns" type="text" default="10" label="PLG_ARKEDITOR_QT_COLUMNS" description="PLG_ARKEDITOR_QT_COLUMNS_DESC" />
+				<field name="qtBorder" type="text" default="1" label="PLG_ARKEDITOR_QT_BORDER" description="PLG_ARKEDITOR_QT_BORDER_DESC" />
+				<field name="qtStyle" type="text" default="" label="PLG_ARKEDITOR_QT_STYLE" description="PLG_ARKEDITOR_QT_STYLE_DESC" />
+				<field name="qtClass" type="text" default="" label="PLG_ARKEDITOR_QT_CLASS" description="PLG_ARKEDITOR_QT_CLASS_DESC" />
+				<field name="qtCellPadding" type="text" default="1" label="PLG_ARKEDITOR_QT_CELLPADDING" description="PLG_ARKEDITOR_QT_CELLPADDING_DESC" />
+				<field name="qtCellSpacing" type="text" default="1" label="PLG_ARKEDITOR_QT_CELLSPACING" description="PLG_ARKEDITOR_QT_CELLSPACING_DESC" />
+				<field name="qtWidth" type="text" default="100%" label="PLG_ARKEDITOR_QT_WIDTH" description="PLG_ARKEDITOR_QT_WIDTH_DESC" />
+				</fieldset>
+		</fields>
+	</config>		
+</extension>

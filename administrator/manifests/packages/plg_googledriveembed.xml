@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="1.6">
+ <name>Google Drive Embed Plugins</name>
+ <author>Sören</author>
+ <creationDate>2012-07-09</creationDate>
+ <packagename>gdrive-embed</packagename>
+ <version>2.0.0</version>
+ <url>http://joomlacode.org/gf/project/googledocs/</url>
+ <packager>Sören</packager>
+ <packagerurl>http://joomlacode.org/gf/project/googledocs/</packagerurl>
+ <description>&lt;h2 style=&quot;font-size: 2.5em;&quot;&gt;Thanks for installing the Google Drive Embed Plugins Package!&lt;/h2&gt; &lt;p style=&quot;font-size:2.0em;&quot;&gt;You now have two new plugins: a Content and an Editor Button Plugin. &lt;span style=&quot;color:red;&quot;&gt;Remember
+ to publish both plugins so you can use them.&lt;/span&gt; &lt;br /&gt;&lt;br /&gt;For the &lt;i&gt;Editor Button Plugin&lt;/i&gt; you need to take additional Steps before it can
+ help you insert the correct tags into your Content. You need to go to &quot;Plugins&quot; =&amp;gt; &quot;Button - Google Drive Embed&quot; and read the description to start with the application registration.&lt;/p&gt;</description>
+ <!--<update>http://www.updateurl.com</update>-->
+ <files folder="packages">
+   <file type="plugin" id="content_googledocs" group="content">plg_content_googledocs_2.0.zip</file>
+   <file type="plugin" id="editors-xtd_googledocs" group="editors-xtd">plg_editors-xtd_googledocs_2.0.zip</file>
+ </files>
+</extension>

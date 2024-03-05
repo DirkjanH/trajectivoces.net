@@ -1,0 +1,26 @@
+@charset "iso-8859-1";
+.TekstpaginaAchtergrond#concertgeschiedenis {
+	padding-bottom: 10px;
+	padding-right: 1%;
+	padding-left: 1%;
+	background-image: url(../Afbeeldingen/afbeeldingen%20achtergrondopmaak/AchtergrondtekstkaderStartpagina2.png);
+	background-repeat: repeat;
+	padding-top: 10px;
+	color: #313131;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	height: auto;
+}
+.Centreervenster#paginaconcerthistorie {
+	margin-left: 200px;
+	height: auto;
+	background-image: url("../Afbeeldingen/afbeeldingen achtergrondopmaak/bodyachtergrond2.png");
+	background-repeat: repeat;
+	margin-bottom: 0px;
+}
+/* CSS Document */
+
+iframe {
+	width: 100%;
+	margin-bottom: -4px;
+}

@@ -1,0 +1,116 @@
+@charset "iso-8859-1";
+.TekstpaginaAchtergrond {
+	background-color: #F3F3F3;
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow: hidden;
+	padding-right: 1%;
+	padding-left: 1%;
+	border: 1px solid #EBE6DA;
+}
+/* CSS Document */
+
+
+		
+.table {
+	display: table;
+	width:770px;
+	margin-right: auto;
+	margin-left: auto;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-top-color: #666;
+	border-right-color: #666;
+	border-bottom-color: #666;
+	border-left-color: #666;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	margin-bottom: 15px;
+	float: left;
+}
+.row {
+display: table-row;
+width:100%;
+}
+.cell {
+	display: table-cell;
+	padding: 0em;
+	margin: 0px;
+}
+.table .row .cell.element1 {
+	width: 110px;
+	float: left;
+	text-align: left;
+}
+.table .row .cell.element2 {
+	width: 650px;
+	float: right;
+	text-align: left;
+}
+
+
+.element1 {
+	background-color: #C8E4EA;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 1em;
+}
+.table .row .cell.element1 p {
+	overflow: hidden;
+	margin: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #666;
+	border-right-color: #666;
+	border-bottom-color: #666;
+	border-left-color: #666;
+}
+
+.element2 {
+	background-color: #97B9B6;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 1em;
+}
+
+.table .row .cell.element2 p {
+	margin: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #666;
+	border-right-color: #666;
+	border-bottom-color: #666;
+	border-left-color: #666;
+}
+
+p {
+	font-size: 0.8em;
+	font-family: Tahoma, Geneva, sans-serif;
+}

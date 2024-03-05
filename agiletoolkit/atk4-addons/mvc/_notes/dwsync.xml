@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Controller.php" server="www.trajectivoces.nl//public_html/" local="129778812000000000" remote="129778812000000000" />
+<file name="CRUD.php" server="www.trajectivoces.nl//public_html/" local="129778812000000000" remote="129778812000000000" />
+<file name="FieldDefinition.php" server="www.trajectivoces.nl//public_html/" local="129778812000000000" remote="129778812000000000" />
+<file name="Model.php" server="www.trajectivoces.nl//public_html/" local="129984090638649505" remote="129778812000000000" />
+<file name="ModelException.php" server="www.trajectivoces.nl//public_html/" local="129778812000000000" remote="129778812000000000" />
+<file name="MVCFieldDefinition.php" server="www.trajectivoces.nl//public_html/" local="129984090641739681" remote="129778812000000000" />
+<file name="MVCForm.php" server="www.trajectivoces.nl//public_html/" local="129984090643439779" remote="129778812000000000" />
+<file name="MVCGrid.php" server="www.trajectivoces.nl//public_html/" local="129984090644959866" remote="129778812000000000" />
+<file name="MVCLister.php" server="www.trajectivoces.nl//public_html/" local="129778812000000000" remote="129778812000000000" />
+<file name="SelectGrid.php" server="www.trajectivoces.nl//public_html/" local="129984090648440065" remote="129778812000000000" />
+<file name="Validator.php" server="www.trajectivoces.nl//public_html/" local="129984090649960152" remote="129778812000000000" />
+</dwsync>

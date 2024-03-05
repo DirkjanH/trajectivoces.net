@@ -1,0 +1,19 @@
+@charset "iso-8859-1";
+/* CSS Document */
+
+
+.TekstpaginaAchtergrond {
+	width: 95%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	overflow: hidden;
+	padding-right: 1%;
+	padding-left: 1%;
+	border: 1px solid #EBE6DA;
+	background-image: url(../../Afbeeldingen/afbeeldingen%20achtergrondopmaak/AchtergrondtekstkaderStartpagina.png);
+	background-repeat: repeat;
+	padding-top: 10px;
+	color: #313131;
+}

@@ -1,0 +1,40 @@
+/*------------------------------------------------------------------------
+# Copyright (C) 2005-2021 WebxSolution Ltd. All Rights Reserved.
+# @license - GPLv2.0
+# Author: WebxSolution Ltd
+# Websites:  http://webx.solutions
+# Terms of Use: An extension that is derived from the Ark Editor will only be allowed under the following conditions: http://arkextensions.com/terms-of-use
+# ------------------------------------------------------------------------*/ 
+
+.img_icon {
+width:16px;
+height:16px;
+}
+
+.js-stools-container-bar,
+.js-stools-container-filters {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.js-stools-container-bar .btn-toolbar {
+  justify-content: flex-end;
+}
+.js-stools-container-bar .btn-toolbar > * {
+  margin: 5px 0;
+}
+.js-stools-container-bar .btn-toolbar > * + * {
+  -webkit-margin-start: 8px;
+          margin-inline-start: 8px;
+}
+
+.js-stools-container-bar .btn-toolbar .js-stools-btn-clear {
+  color: var(--atum-bg-dark);
+  border-color: #ccc;
+}
+
+
+.js-stools-container-bar .btn-toolbar .js-stools-btn-search {
+  color: #fff;  
+  background-color: var(--atum-bg-dark);
+}

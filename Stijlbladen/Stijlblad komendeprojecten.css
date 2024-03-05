@@ -1,0 +1,32 @@
+@charset "iso-8859-1";
+.TekstpaginaAchtergrond#engelsepagina {
+	padding-bottom: 10px;
+	padding-right: 1%;
+	padding-left: 1%;
+	background-image: url(../Afbeeldingen/afbeeldingen%20achtergrondopmaak/AchtergrondtekstkaderStartpagina.png);
+	background-repeat: repeat;
+	padding-top: 10px;
+	color: #313131;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	height: auto;
+	overflow: hidden;
+}
+.Centreervenster#engelsepagina {
+	margin-left: 200px;
+	height: auto;
+	background-image: url("../Afbeeldingen/afbeeldingen achtergrondopmaak/bodyachtergrond2.png");
+	background-repeat: repeat;
+}
+/* CSS Document */
+
+
+/* CSS Document */
+
+
+/* CSS Document */
+
+iframe {
+	height: 1680px;
+	width: 100%;
+}

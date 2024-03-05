@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Single Gallery Layout">
+		<message>
+			Single Gallery Layout
+		</message>
+	</layout>
+	<state>
+		<name>Single Gallery Layout</name>
+		<description>Single Gallery Layout</description>
+	</state>
+	<fields name="params">
+		<fieldset name="basic">
+            <field name="id" type="sql" query="SELECT id, name FROM #__fwg_projects WHERE published=1 ORDER BY ordering" label="Select Gallery" description="A gallery to display" key_field="id" value_field="name" />
+		</fieldset>
+	</fields>
+</metadata>

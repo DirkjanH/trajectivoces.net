@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config addfieldpath="/administrator/components/com_arkeditor/models/fields">
+	<fieldset name="buttons" label="COM_ARKEDITOR_TOOLBARS_HEADER_LABEL">
+	
+		<field 
+			name="spacer-buttons"
+			type="spacer"
+			label="COM_ARKEDITOR_HEADER_BUTTONS_LABEL"
+			description="COM_ARKEDITOR_HEADER_BUTTONS_LABEL" />
+		
+		<field name="show_versions" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_VERSIONS"
+			description="COM_ARKEDITOR_FIELD_SHOW_VERSIONS_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_new" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_NEW"
+			description="COM_ARKEDITOR_FIELD_SHOW_NEW_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_save" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_SAVE"
+			description="COM_ARKEDITOR_FIELD_SHOW_SAVE_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_undo" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_UNDO"
+			description="COM_ARKEDITOR_FIELD_SHOW_UNDO_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_redo" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_REDO"
+			description="COM_ARKEDITOR_FIELD_SHOW_REDO_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_find" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_FIND"
+			description="COM_ARKEDITOR_FIELD_SHOW_FIND_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_close" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_CLOSE"
+			description="COM_ARKEDITOR_FIELD_SHOW_CLOSE_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		
+		<field 
+			name="spacer-tabs"
+			type="spacer"
+			label="COM_ARKEDITOR_HEADER_TABS_LABEL"
+			description="COM_ARKEDITOR_HEADER_TABS_LABEL" />
+		
+		<field name="show_source" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_SHOW_SOURCE"
+		description="COM_ARKEDITOR_FIELD_SHOW_SOURCE_DESC"
+		default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_design" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_SHOW_DESIGN"
+		description="COM_ARKEDITOR_FIELD_SHOW_DESIGN_DESC"
+		default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_blocks" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_SHOW_ELEMENTS"
+		description="COM_ARKEDITOR_FIELD_SHOW_ELEMENTS_DESC"
+		default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		
+	</fieldset>
+	<fieldset name="inline" label="COM_ARKEDITOR_INLINE_LABEL">
+		<field name="enable_inline" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_INLINE"
+		description="COM_ARKEDITOR_FIELD_ENABLE_INLINE_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="auto_disable_inline" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_AUTO_DISABLE_INLINE"
+		description="COM_ARKEDITOR_FIELD_AUTO_DISABLE_INLINE_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enable_autosave" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_AUTOSAVE"
+		description="COM_ARKEDITOR_FIELD_ENABLE_AUTOSAVE_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enable_sefbasepath" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_SEFBASEPATH"
+		description="COM_ARKEDITOR_FIELD_ENABLE_SEFBASEPATH_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enable_toolbarswitcher" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_TOOLBARSWITCHER"
+		description="COM_ARKEDITOR_FIELD_ENABLE_TOOLBARSWITCHER_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enable_modulehistory" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_MODULEHISTORY"
+		description="COM_ARKEDITOR_FIELD_ENABLE_MODULEHISTORY_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+		name="enable_editable_titles"
+		type="radio"
+		class="btn-group btn-group-yesno"
+		default="1"
+		label="COM_ARKEDITOR_FIELD_ENABLE_EDITABLE_TITLES"
+		description="COM_ARKEDITOR_FIELD_ENABLE_EDITABLE_TITLES_DESC">
+		<option value="1">JYES</option>
+		<option value="0">JNO</option>
+		</field>
+		
+		<field
+		name="enable_editable_modules_titles"
+		type="radio"
+		class="btn-group btn-group-yesno"
+		default="0"
+		label="COM_ARKEDITOR_FIELD_ENABLE_EDITABLE_MODULES_TITLES"
+		description="COM_ARKEDITOR_FIELD_ENABLE_EDITABLE_MODULES_TITLES_DESC">
+		<option value="1">JYES</option>
+		<option value="0">JNO</option>
+		</field>
+		
+		<field
+		name="enable_user_warnings"
+		type="radio"
+		class="btn-group btn-group-yesno"
+		default="1"
+		label="COM_ARKEDITOR_FIELD_ENABLE_USER_WARNINGS"
+		description="COM_ARKEDITOR_FIELD_ENABLE_USER_WARNINGS_DESC">
+		<option value="1">JYES</option>
+		<option value="0">JNO</option>
+		</field>
+		
+		
+		<field 
+			name="component_auto_enable_editable_regions_list"
+			type="adercomponentList"
+			multiple="true"
+			label="COM_ARKEDITOR_FIELD_COMPONENT_AUTO_ENABLE_EDITABLE_REGIONS_LIST"
+			description="COM_ARKEDITOR_FIELD_COMPONENT_AUTO_ENABLE_EDITABLE_REGIONS_LIST_DESC"/>	
+			
+			
+		<field name="enable_magicline" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_MAGICLINE"
+		description="COM_ARKEDITOR_FIELD_ENABLE_MAGICLINE_DESC"
+		default="0"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>	
+		
+	<field
+			name="showSuccessMessage"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="1"
+			label="COM_ARKEDITOR_FIELD_SHOW_SUCCESS_MESSAGE"
+			description="COM_ARKEDITOR_FIELD_SHOW_SUCCESS_MESSAGE_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>		
+				
+	</fieldset>
+	<fieldset name="filebrowser" label="COM_ARKEDITOR_FILEBROWSER_LABEL">
+		<field name="imagePath" 
+		type="text" 
+		default="images" 
+		label="COM_ARKEDITOR_IMGPATH" 
+		description="COM_ARKEDITOR_IMGPATH_DESC" />
+		<field name="filePath" 
+		type="text" 
+		default="files" 
+		label="COM_ARKEDITOR_FILEPATH"
+		description="COM_ARKEDITOR_FILEPATH_DESC" />
+	</fieldset>
+	<fieldset addfieldpath="plugins/editors/arkeditor/form/fields" name="typography" label="COM_ARKEDITOR_TYPOGRAPHY_LABEL">
+		
+		<field 
+			name="spacer-format-display"
+			type="spacer"
+			label="COM_ARKEDITOR_FIELD_FORMAT_TITLE"
+			description="COM_ARKEDITOR_FIELD_FORMAT_TITLE" />
+	
+		
+		<field name="arktypographycontent" 
+		type="stylesheettextarea"  
+		cols="45" 
+		rows="10" 
+		height="340px"
+		buttonClass="btn btn-outline-secondary me-2"
+		default="" 
+		filter="base64_encode" 
+		label="COM_ARKEDITOR_FIELD_TYPOGRAPHY"
+		allow_disable ="true"	
+		description="COM_ARKEDITOR_FIELD_TYPOGRAPHY_DESC"/>
+		
+		
+		<field 
+			name="spacer-styleslist"
+			type="spacer"
+			label="COM_ARKEDITOR_FIELD_STYLESLIST_TITLE"
+			description="COM_ARKEDITOR_FIELD_STYLESLIST_TITLE" />
+		
+
+		<field 
+			name="custom-script"
+			type="script"
+			script="jQuery(function(){var a=jQuery('#jform_stylelistsource').val(),b=jQuery('#jform_arkcustomtypographycontent'),c=jQuery('#jform_arkcustomtypographycontent+br+br+input'),d=jQuery('#jform_arkcustomtypographyfile');switch(parseInt(a)){case 2:b.attr('readonly',!1),c.attr('disabled',!1),d.attr('readonly',!0);break;case 3:b.attr('readonly',!0),c.attr('disabled',!0),d.attr('readonly',!1);break;default:b.attr('readonly',!0),c.attr('disabled',!0),d.attr('readonly',!0)}});" />
+		
+				<field 
+			name="custom-script2"
+			type="script"
+			script="jQuery(function(){ jQuery('#jform_default_exclude_stylesheet_chzn').css('width','100%');  jQuery('#jform_default_exclude_selectors_chzn').css('width','100%');});" />
+			
+		<field name="stylelistsource" 
+		type="list" 
+		default="1" 
+		onchange="var arkswitcher={};switch(arkswitcher.a=jQuery(this).val(),arkswitcher.b=jQuery('#jform_arkcustomtypographycontent'),arkswitcher.c=jQuery('#jform_arkcustomtypographycontent+br+br+input'),arkswitcher.d=jQuery('#jform_arkcustomtypographyfile'),parseInt(arkswitcher.a)){case 2:arkswitcher.b.attr('readonly',!1),arkswitcher.c.attr('disabled',!1),arkswitcher.d.attr('readonly',!0);break;case 3:arkswitcher.b.attr('readonly',!0),arkswitcher.c.attr('disabled',!0),arkswitcher.d.attr('readonly',!1);break;default:arkswitcher.b.attr('readonly',!0),arkswitcher.c.attr('disabled',!0),arkswitcher.d.attr('readonly',!0)}"
+		label="COM_ARKEDITOR_FIELD_STYLELISTSOURCE"
+		description="COM_ARKEDITOR_FIELD_STYLELISTSOURCE_DESC"
+		>
+			<option value="1">ARKSTYLESHEETPARSER</option>
+			<option value="2">ARKCUSTOM</option>
+			<option value="3">ARKCUSTOMFILE</option>
+		</field>	
+		
+		<field name="customcssswitcher" 
+			type="listswitcher" 
+			display="['bootstrap2', 'bootstrap3', 'bootstrap3gantry5', 'uikit2', 'uikit3', 'arkuikit']"
+			target="arkcustomtypographycontent"
+			label ="COM_ARKEDITOR_FIELD_CUSTOM_CSS_SWITCHER"
+			default="0"
+			showon="stylelistsource:2"
+		>
+			<option value="0">BOOTSTRAP2</option>
+			<option value="1">BOOTSTRAP3</option>
+			<option value="2">BOOTSTRAP3GANTRY5</option>
+			<option value="3">UIKIT2</option>
+			<option value="4">UIKIT3</option>
+			<option value="5">ARKKIT</option>
+		</field>
+		
+		<field name="bootstrap2" 
+			type="hidden"
+			label="bootstrap2"
+			default="" />
+			
+		<field name="bootstrap3" 
+			type="hidden"
+			label="bootstrap3" 
+			default="" />
+
+		<field name="bootstrap3gantry5" 
+			type="hidden"
+			label="bootstrap3gantry5"
+			default="" />
+
+		<field name="uikit2" 
+			type="hidden"
+			label="uikit2"
+			default="" />
+
+		<field name="uikit3" 
+			type="hidden"
+			label="uikit3"
+			default="" />			
+		
+		<field name="arkuikit" 
+			type="hidden"
+			label="arkuikit"
+			default="" />
+				
+		<field name="arkcustomtypographycontent" 
+		type="stylesheettextarea"  
+		cols="45" 
+		rows="10" 
+		height="340px"
+		buttonClass="btn btn-outline-secondary me-2"
+		default="" 
+		filter="base64_encode" 
+		label="COM_ARKEDITOR_FIELD_CUSTOM_TYPOGRAPHY" 
+		description="COM_ARKEDITOR_FIELD_CUSTOM_TYPOGRAPHY_DESC"/>
+		
+		<field name="arkcustomtypographyfile" 
+		text="stylesheettextarea" 
+		hint="templates/"	
+		default="" 
+		label="COM_ARKEDITOR_FIELD_CUSTOM_TYPOGRAPHY_FILE" 
+		description="COM_ARKEDITOR_FIELD_CUSTOM_TYPOGRAPHY_FILE_DESC"/>
+				
+		<field 
+			name="spacer-stylesheet"
+			type="spacer"
+			label="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_TITLE"
+			description="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_TITLE" />
+		
+		<field 
+			name="default_exclude_stylesheet"
+			type="listmultiple"
+			multiple="true"
+			default="*"
+			label="COM_ARKEDITOR_FIELD_DEFAULT_EXCLUDE_STYLESHEET"
+			description="COM_ARKEDITOR_FIELD_DEFAULT_EXCLUDE_STYLESHEET_DESC"
+			filter="array">
+			<option value="modal">modal</option>
+			<option value="bootstrap">bootstrap</option>
+			<option value="frontediting">frontediting</option>
+			<option value="s5_responsive_rtl.css">s5_responsive_rtl.css</option>
+			<option value="s5_vertex_addons.php">s5_vertex_addons.php</option>
+			<option value="thirdparty.css">thirdparty.css</option>
+			<option value="s5_flex_menu.css">s5_flex_menu.css</option>
+			<option value="s5_responsive_bars.css">s5_responsive_bars.css</option>
+			<option value="s5_responsive_hide_classes.css">s5_responsive_hide_classes.css</option>
+			<option value="error.css">error.css</option>
+			<option value="arkeditor.min.css">arkeditor.min.css</option>
+		</field>
+		
+		<field 
+		name="exclude_stylesheets"
+		type="repeatablefix"
+		multiple="true"
+		buttonClass="btn-outline-secondary"
+		label="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_PARSER_LIST"
+		description="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_PARSER_LIST_DESC">
+			<fieldset hidden="true" repeat="true">
+				<field 
+					name="exclude_stylesheet" 
+					type="text" 
+					hint="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_HINT" 
+					label="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET" 
+					description="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_DESC"
+					filter="cmd" />
+			</fieldset>
+		</field>
+		
+	
+		<field 
+			name="default_exclude_selectors"
+			type="listmultiple"
+			multiple="true"
+			default="*"
+			label="COM_ARKEDITOR_FIELD_DEFAULT_EXCLUDE_SELECTOR_PARSER_LIST"
+			description="COM_ARKEDITOR_FIELD_DEFAULT_EXCLUDE_SELECTOR_PARSER_LIST_DESC"
+			filter="array">
+			<option value="body">body</option>
+			<option value=".cke_">cke_</option>
+			<option value="div.cke_">cke_</option>
+			<option value="ul.cke_">cke_</option>
+			<option value="__">__</option>
+			<option value="sbox">sbox</option>
+			<option value="input">input</option>
+			<option value="textarea">textarea</option>
+			<option value="button">button</option>
+			<option value="select">select</option>
+			<option value="form">form</option>
+			<option value="fieldset">fieldset</option>
+			<option value=".modal-backdrop">.modal-backdrop</option>
+			<option value=".modal">.modal</option>
+			<option value="div.modal">div.modal</option>
+			<option value=".chzn">.chzn</option>
+			<option value=".uk-slideshow-">.uk-slideshow-</option>
+			<option value=".fa-">.fa-</option>
+			<option value=".fa.">.fa.</option>
+			<option value="#jcemediabox-">#jcemediabox-</option>
+			<option value=".jcemediabox-">.jcemediabox-</option>
+			<option value=".pweb-">.pweb-</option>
+			<option value=".uk-position">.uk-position</option>
+			<option value=".uk-accordion-">.uk-accordion-</option>
+			<option value="div.video_">div.video_</option>
+			<option value="div.audio_">div.audio_</option>
+			<option value="a.">a.</option>
+			<option value="h1.">h1.</option>
+			<option value="h2.">h2.</option>
+			<option value="h3.">h3.</option>
+			<option value="h4.">h4.</option>
+			<option value="h5.">h5.</option>
+			<option value="h6.">h6.</option>
+			<option value=".ns2-">.ns2-</option>
+			<option value="p.ns2-">p.ns2-</option>
+			<option value="div.ns2-">div.ns2-</option>
+			<option value="span.ns2">span.ns2</option>
+			<option value=".tm-">.tm-</option>
+			<option value=".nss">.nss</option>
+			<option value="p.sp-">p.sp-</option>
+			<option value=".img-">.img-</option>
+			<option value=".col-">.col-</option>
+			<option value=".pull-">.pull-</option>
+			<option value=".size-">.size-</option>
+			<option value=".input-">.input-</option>
+			<option value=".btn-">.btn-</option>
+			<option value=".tab-">.tab-</option>
+			<option value=".tabs-">.tabs-</option>
+			<option value=".items-">.items-</option>
+			<option value=".list-">.list-</option>
+			<option value=".pill-">.pill-</option>
+			<option value=".carousel-">.carousel-</option>
+			<option value=".accordion-">.accordion-</option>
+			<option value=".progress-">.progress-</option>
+			<option value=".bar-">.bar-</option>
+			<option value=".popover-">.popover-</option>
+			<option value=".control-">.control-</option>
+			<option value=".controls-">.controls-</option>
+			<option value=".sidebar-">.sidebar-</option>
+			<option value=".blog-">.blog-</option>
+			<option value=".uneditable-">.uneditable-</option>
+			<option value=".hidden-">.hidden-</option>
+			<option value=".pre-">.pre-</option>
+			<option value=".google-">.google-</option>
+			<option value=".help-">.help-</option>
+			<option value=".gm-">.gm-</option>
+			<option value=".g-">.g-</option>
+			<option value="#g-">#g-</option>
+			<option value=".item_">.item_</option>
+			<option value=".site_">.site_</option>
+			<option value=".header_">.header_</option>
+			<option value=".content_">.content_</option>
+			<option value=".post_">.post_</option>
+			<option value=".grid_">.grid_</option>
+			<option value=".logo">.logo</option>
+			<option value=".bt">.bt</option>
+			<option value=".pull">.pull</option>
+			<option value=".nav">.nav</option>
+			<option value=".search">.search</option>
+			<option value=".footer">.footer</option>
+			<option value=".offset">.offset</option>
+			<option value=".table">.table</option>
+			<option value=".row">.row</option>
+			<option value=".radio">.radio</option>
+			<option value=".checkbox">.checkbox</option>
+			<option value=".tag">.tag</option>
+			<option value=".form">.form</option>
+			<option value=".width">.width</option>
+			<option value=".height">.height</option>
+			<option value=".container">.container</option>
+			<option value=".system">.system</option>
+			<option value=".dropdown">.dropdown</option>
+			<option value=".breadcrumb">.breadcrumb</option>
+			<option value=".module">.module</option>
+			<option value=".pagination">.pagination</option>
+			<option value=".fade">.fade</option>
+			<option value=".next">.next</option>
+			<option value=".prev">.prev</option>
+			<option value=".active">.active</option>
+			<option value=".clearfix">.clearfix</option>
+			<option value=".span">.span</option>
+			<option value="td.span">td.span</option>
+			<option value="th.span">th.span</option>
+			<option value=".tag">.tag</option>
+			<option value="i.fa-grav">i.fa-grav</option>
+			<option value="i.fa-gantry">i.fa-gantry</option>
+			<option value="#form">#form</option>
+			<option value="#map">#map</option>
+			<option value=".sbox-">.sbox-</option>
+			<option value="#sbox-">#sbox-</option>
+			<option value=".wk-">.wk-</option>
+			<option value=".media-">.media-</option>
+			<option value="img.pull-">img.pull-</option>
+			<option value="img.left">img.left</option>
+			<option value="img.right">img.right</option>
+			<option value="img.center">img.center</option>
+			<option value=".body-">.body-</option>
+			<option value=".uk-animation">.uk-animation</option>
+			<option value=".uk-article">.uk-article</option>
+			<option value=".uk-grid">.uk-grid</option>
+			<option value=".uk-width">.uk-width</option>
+			<option value=".uk-li">.uk-li</option>
+			<option value=".uk-ac">.uk-ac</option>
+			<option value=".uk-ta">.uk-ta</option>
+			<option value=".uk-to">.uk-to</option>
+			<option value=".uk-b">.uk-b</option>
+			<option value=".uk-c">.uk-c</option>
+			<option value=".uk-d">.uk-d</option>
+			<option value=".uk-f">.uk-f</option>
+			<option value=".uk-h">.uk-h</option>
+			<option value=".uk-m">.uk-m</option>
+			<option value=".uk-n">.uk-n</option>
+			<option value=".uk-o">.uk-o</option>
+			<option value=".uk-p">.uk-p</option>
+			<option value=".uk-r">.uk-r</option>
+			<option value=".uk-s">.uk-s</option>
+			<option value=".uk-v">.uk-v</option>
+			<option value="html.">html.</option>
+			<option value="div.pull-">div.pull-</option>
+			<option value="p.pull-">p.pull-</option>
+			<option value="p.ark_">p.ark_</option>
+			<option value=".h1">.h1</option>
+			<option value=".h2">.h2</option>
+			<option value=".h3">.h3</option>
+			<option value=".h4">.h4</option>
+			<option value=".h5">.h5</option>
+			<option value=".h6">.h6</option>
+			<option value=".bg-">.bg-</option>
+			<option value=".has-">.has-</option>
+			<option value=".jsn">.jsn</option>
+			<option value="#jsn">#jsn</option>
+			<option value=".visible-">.visible-</option>
+			<option value="label">label</option>
+			<option value=".page-">.page-</option>
+			<option value=".sr-">.sr-</option>
+			<option value=".pb_">.pb_</option>
+			<option value=".carousel">.carousel</option>
+			<option value=".uk-thumbnail">.uk-thumbnail</option>
+			<option value="img.modal">img.modal</option>
+			<option value=".ark-">.ark-</option>
+			<option value="#ark-">#ark-</option>
+			<option value=".ui-">.ui-</option>
+			<option value=".mv-">.mv-</option>
+			<option value=".mb-">.mb-</option>
+			<option value=".mt-">.mt-</option>
+			<option value=".mr-">.mr-</option>
+			<option value=".ml-">.ml-</option>
+			<option value=".pv-">.pv-</option>
+			<option value=".ph-">.ph-</option>
+			<option value=".pa-">.pa-</option>
+			<option value=".pt-">.pt-</option>
+			<option value=".pb-">.pb-</option>
+			<option value=".pl-">.pl-</option>
+			<option value=".pr-">.pr-</option>
+			<option value=".fs-">.fs-</option>
+			<option value=".fd-">.fd-</option>
+			<option value=".eb-">.eb-</option>
+			<option value="p.eb-">p.eb-</option>
+			<option value="div.eb-">div.eb-</option>
+			<option value=".markitup-">.markitup-</option>
+			<option value=".wysiwyg-">.wysiwyg-</option>
+			<option value=".textboxlist-">.textboxlist-</option>
+			<option value=".colorpicker-">.colorpicker-</option>
+			<option value=".mce-">.mce-</option>
+			<option value="figcaption.">figcaption.</option>
+		</field>
+		
+		<field 
+		name="exclude_selectors"
+		type="repeatablefix"
+		multiple="true"
+		buttonClass="btn-outline-secondary"
+		label="COM_ARKEDITOR_FIELD_EXCLUDE_SELECTOR_PARSER_LIST"
+		description="COM_ARKEDITOR_FIELD_EXCLUDE_SELECTOR_PARSER_LIST_DESC">
+			<fieldset hidden="true" repeat="true">
+				<field 
+					name="exclude_selector" 
+					type="text" 
+					hint="COM_ARKEDITOR_FIELD_EXCLUDE_SELECTOR_HINT" 
+					label="COM_ARKEDITOR_FIELD_EXCLUDE_SELECTOR" 
+					description="COM_ARKEDITOR_FIELD_EXCLUDE_SELECTOR_DESC"
+					filter="cmd" />
+			</fieldset>
+		</field>
+		
+		<field name="useArkProxy" default="0" type="hidden" />
+		
+	</fieldset>
+	<fieldset name="editor" label="COM_ARKEDITOR_EDITOR_LABEL">
+		<field
+			name="enable_preloader"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="1"
+			label="COM_ARKEDITOR_FIELD_ENABLE_PRELOADER"
+			description="COM_ARKEDITOR_FIELD_ENABLE_PRELOADER_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+			name="enable_debug"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="0"
+			label="COM_ARKEDITOR_FIELD_ENABLE_DEBUG"
+			description="COM_ARKEDITOR_FIELD_ENABLE_DEBUG_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+			name="enable_blocklevellinks"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="0"
+			label="COM_ARKEDITOR_FIELD_ENABLE_BLOCKLEVELLINKS"
+			description="COM_ARKEDITOR_FIELD_ENABLE_BLOCKLEVELLINKS_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field 
+			name="basicEntities" 
+			type="radio" 
+			class="btn-group" 
+			default="1" 
+			label="COM_ARKEDITOR_FIELD_ESCAPE_BASIC_ENTITIES" 
+			description="COM_ARKEDITOR_FIELD_ESCAPE_BASIC_ENTITIES_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</field>
+		<field 
+			name="entities" 
+			type="radio" 
+			class="btn-group" 
+			default="0" 
+			label="COM_ARKEDITOR_FIELD_PROCESS_HTML_ENTITIES" 
+			description="COM_ARKEDITOR_FIELD_PROCESS_HTML_ENTITIES_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</field>
+	</fieldset>
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC"
+		>
+
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			filter="rules"
+			validate="rules"
+			component="com_arkeditor"
+			section="component"/>
+	</fieldset>
+</config>                                  

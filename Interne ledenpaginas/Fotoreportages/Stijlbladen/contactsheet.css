@@ -1,0 +1,102 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #FDFDFD;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 100%;
+	font-style: normal;
+	background-image: url("../../../Afbeeldingen/afbeeldingen achtergrondopmaak/bodyachtergrond2.png");
+	background-repeat: repeat;
+	margin: 0px;
+}
+#Omhulsel {
+	padding-bottom: 10px;
+	padding-top: 10px;
+	height: auto;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #EBE6DA;
+	border-bottom-color: #EBE6DA;
+}
+
+
+a, 
+a:link, 
+a:visited, 
+a:hover, 
+a:active {
+	color: #999;
+}
+
+h1 {
+	font-size: 110%;
+	margin-bottom: 1em;
+	color: #666;
+	line-height: 1.1em;
+	font-style: italic;
+	font-weight: normal;
+}
+
+div#info-box {
+	clear: left;
+	float: left;
+	width: 20%;
+	padding: 2%;
+	margin: 0;
+}
+
+div#info-box p {
+	line-height: 1.35em;
+	font-size: 0.9em;
+}
+
+div#grid-box {
+	float: right;
+	width: 75%;
+	margin-top: 2%;
+}
+
+div.thumbnail-box {
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+div.thumbnail-box img {
+	margin:0 auto; 
+}
+
+ol#wcs-list {
+	list-style: none;
+	font-size: 80%;
+	display: block;
+}
+
+ol#wcs-list li {
+	display: inline;
+	float: left;
+	margin: 0 2em 1.5em 0;
+	text-align: center;
+}
+
+ol#wcs-list li img {
+	border: 0.5em solid #878258;
+}
+
+div#copyright-box {
+	clear: both;
+	border-top: 1pt solid #666;
+	margin: 2%;
+	padding-top: 0.5em;
+	font-size: 90%;
+	text-align: center;
+}
+#info-box em {
+	color: #666;
+	font-size: 80%;
+}

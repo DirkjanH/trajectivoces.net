@@ -1,0 +1,31 @@
+/** Uikit3 **/
+/* -- OBJECT STYLES  ------------------------------------------------------------*/
+/* -- Controls the object style columns -- */
+
+img.uk-thumbnail {}
+img.uk-border-circle {}
+img.uk-border-rounded {}
+table.uk-table {}
+ul.uk-list-striped {}
+
+/* -- BLOCK STYLES  ------------------------------------------------------------*/
+/* --  Controls the block style columns -- */
+
+p.uk-text-danger  {}
+p.uk-text-success {}
+p.uk-text-warning {}
+p.uk-text-contrast {}
+p.uk-text-uppercase  {}
+p.uk-text-capitalize {}
+div.uk-alert {}
+div.uk-placeholder {}
+div.uk-panel-box {}
+
+/* -- INLINE STYLES  ------------------------------------------------------------*/
+/* --  Controls the inline style columns -- */
+
+span.uk-badge {}
+span.uk-label {}
+span.uk-text-background {}
+
+/** End of Stylesheet **/

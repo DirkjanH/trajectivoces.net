@@ -1,0 +1,23 @@
+@charset "iso-8859-1";
+.TekstpaginaAchtergrond#nagalm {
+	padding-bottom: 10px;
+	padding-right: 1%;
+	padding-left: 1%;
+	background-image: url(../Afbeeldingen/afbeeldingen%20achtergrondopmaak/AchtergrondtekstkaderStartpagina2.png);
+	background-repeat: repeat;
+	padding-top: 10px;
+	color: #313131;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	height: 755px;
+	overflow: visible;
+}
+/* CSS Document */
+/* CSS Document */
+
+iframe#nagalm {
+	width: 100%;
+	margin-bottom: -4px;
+	margin-top: 10px;
+	height: 715px;
+}

@@ -1,0 +1,26 @@
+@charset "iso-8859-1";
+.Centreervenster#vacaturesprojekt {
+	margin-left: 200px;
+	background-image: url("../Afbeeldingen/afbeeldingen achtergrondopmaak/bodyachtergrond2.png");
+	background-repeat: repeat;
+	height: auto;
+}
+.TekstpaginaAchtergrond#paginavacaturesproject {
+	padding-bottom: 10px;
+	padding-right: 1%;
+	padding-left: 1%;
+	background-image: url(../Afbeeldingen/afbeeldingen%20achtergrondopmaak/AchtergrondtekstkaderStartpagina.png);
+	background-repeat: repeat;
+	padding-top: 10px;
+	color: #313131;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	height: auto;
+	overflow: hidden;
+}
+/* CSS Document */
+
+iframe#Vacatures {
+	width: 100%;
+	overflow: auto;
+}

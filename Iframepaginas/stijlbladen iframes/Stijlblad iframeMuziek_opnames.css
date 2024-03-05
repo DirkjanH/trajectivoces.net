@@ -1,0 +1,35 @@
+@charset "iso-8859-1";
+/* CSS Document */
+
+
+body {
+	background-color: transparent;
+	margin: 0px;
+}
+#menu {
+	background-color: #E4DEC5;
+	padding-top: 8px;
+	padding-bottom: 12px;
+	padding-left: 1%;
+	border: 1px solid #FFF;
+	width: 97%;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../../Afbeeldingen/afbeeldingen%20achtergrondopmaak/bodyachtergrond2.png);
+	background-repeat: repeat;
+}
+#menu a {
+	padding-right: 20px;
+	padding-left: 20px;
+	color: #40605C;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	font-style: italic;
+}
+#menu a:hover {
+	color: #C2B67C;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	font-style: italic;
+}

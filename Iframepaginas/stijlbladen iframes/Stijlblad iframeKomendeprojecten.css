@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+h1 {
+	background-color: #F2EFE9;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #B19407;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	letter-spacing: 0.3em;
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-left: 0px;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-left: 10px;
+	width: auto;
+	padding-bottom: 3px;
+}
+/* CSS Document */
+
+body {
+	color: #313131;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+}
+.style4 {
+	font-size: 16px
+}
+h2 {
+	color: #339;
+	font-size: 1.3em;
+}
+.opvallend {
+	color: #990000;
+}

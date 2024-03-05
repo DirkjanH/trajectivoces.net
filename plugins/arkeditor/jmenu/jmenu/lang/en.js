@@ -1,0 +1,1 @@
+CKEDITOR.plugins.setLang("jmenu","en",{menu:"Menu Link",toolbar:"menulinks"})

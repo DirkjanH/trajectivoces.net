@@ -1,0 +1,31 @@
+/** Bootstrap 2 **/
+/* -- OBJECT STYLES  ------------------------------------------------------------*/
+/* -- Controls the object style columns -- */
+img.thumbnail {}
+img.img-circle {}
+img.img-rounded {}
+img.img-polaroid {}
+ul.unstyled {}
+table.table {}
+table.table-striped {}
+
+/* -- BLOCK STYLES  ------------------------------------------------------------*/
+/* --  Controls the block style columns -- */
+p.text-error {}
+p.text-info {}
+p.text-warning {}
+p.text-success {}
+div.well {}
+div.alert {}
+p.hero-unit {}
+
+/* -- INLINE STYLES  ------------------------------------------------------------*/
+/* --  Controls the inline style columns -- */
+span.label {}
+span.badge {}
+i.icon-user {}
+i.icon-star {}
+i.icon-info-circle {}
+i.icon-download {}
+i.icon-file {}
+/** End of Stylesheet **/

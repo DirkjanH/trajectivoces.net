@@ -1,0 +1,96 @@
+@charset "iso-8859-1";
+h1 {
+	background-color: #F2EFE9;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #B19407;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	letter-spacing: 0.3em;
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-left: 0px;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-left: 10px;
+	width: auto;
+	padding-bottom: 3px;
+}
+
+a {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 0.9em;
+	font-style: italic;
+	color: #385030;
+}
+a:hover {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 0.9em;
+	font-style: italic;
+	color: #B5C6AE;
+}
+/* CSS Document */
+
+
+
+/* CSS Document */
+
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	background-color: transparent;
+}
+.TekstpaginaAchtergrond {
+	overflow: hidden;
+	border: 1px solid #EBE6DA;
+	background-image: url(../../Afbeeldingen/afbeeldingen%20achtergrondopmaak/AchtergrondtekstkaderStartpagina.png);
+	background-repeat: repeat;
+	padding-right: 1%;
+	padding-left: 1%;
+	padding-top: 5px;
+}
+p.MsoNormal {
+margin-top:0cm;
+margin-right:0cm;
+margin-bottom:8.0pt;
+margin-left:108.0pt;
+line-height:120%;
+font-size:10.0pt;
+font-family:"Calibri","sans-serif";
+color:#5A5A5A;
+}
+p.MsoTitleCxSpFirst {
+margin:0cm;
+margin-bottom:.0001pt;
+font-size:36.0pt;
+font-family:"Cambria","serif";
+font-variant:small-caps;
+color:#17365D;
+letter-spacing:.25pt;
+}
+p.MsoTitleCxSpLast {
+margin-top:0cm;
+margin-right:0cm;
+margin-bottom:8.0pt;
+margin-left:0cm;
+font-size:36.0pt;
+font-family:"Cambria","serif";
+font-variant:small-caps;
+color:#17365D;
+letter-spacing:.25pt;
+}
+p.MsoNoSpacing {
+margin-top:0cm;
+margin-right:0cm;
+margin-bottom:.0001pt;
+margin-left:108.0pt;
+font-size:10.0pt;
+font-family:"Calibri","sans-serif";
+color:#5A5A5A;
+}
+table.MsoNormalTable {
+font-size:10.0pt;
+font-family:Calibri;
+}

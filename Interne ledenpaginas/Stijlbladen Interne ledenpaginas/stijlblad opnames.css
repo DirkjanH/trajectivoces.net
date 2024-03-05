@@ -1,0 +1,15 @@
+@charset "iso-8859-1";
+.Centreervenster#opnames {
+	margin-left: 200px;
+	height: 665px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #EBE6DA;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #EBE6DA;
+	border-right-color: #EBE6DA;
+	border-left-color: #EBE6DA;
+	background-image: url("../../Afbeeldingen/afbeeldingen achtergrondopmaak/bodyachtergrond2.png");
+	background-repeat: repeat;
+}

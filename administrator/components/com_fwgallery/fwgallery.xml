@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0.0" method="upgrade">
+    <name>FW Gallery</name>
+    <creationDate>22 August 2013</creationDate>
+    <author>Fastw3b - We develop while you are thinking</author>
+    <authorEmail>dev@fastw3b.net</authorEmail>
+    <authorUrl>http://www.fastw3b.net</authorUrl>
+    <copyright>Copyright (C) 2013 Fastw3b. All rights reserved.</copyright>
+    <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+    <version>2.3.2</version>
+    <description><![CDATA[
+<p style="text-align: center;"><img style="margin-bottom: 20px; vertical-align: top;" alt="thank-yu3" src="components/com_fwgallery/assets/images/thank-yu3.png" width="960" height="77" /></p>
+<table style="width: 870px; height: 260px;" border="0">
+<tbody>
+<tr>
+<td><img style="float: left;" alt="01_c_gallery" src="components/com_fwgallery/assets/images/01_c_gallery.png" width="178" height="236" /></td>
+<td>
+<p><strong>FW Gallery has been installed successfully on your website. </strong></p>
+<p><strong>Many thanks for your choice!</strong></p>
+<p> </p>
+<p><strong>What to do next?</strong></p>
+<p>1. Go to Menus &gt;&gt; Main Menu &gt;&gt; click on New button</p>
+<p>2. Assign FW Gallery menu items to your website menu</p>
+<p>3. Go to FW Gallery &gt;&gt; Galleries to create your first photo gallery.</p>
+<ol> </ol></td>
+<td><img style="float: right;" alt="fw_gal_on_iphone_for_message" src="components/com_fwgallery/assets/images/fw_gal_on_iphone_for_message.png" width="264" height="172" /></td>
+</tr>
+</tbody>
+</table>
+<br />
+<p style="text-align: center;"><span style="font-size: 18pt;"><strong>Improve your photo gallery with extra features!</strong></span></p>
+<p style="text-align: left;"> </p>
+<table style="text-align: center; width: 959px; height: 350px;" border="0">
+<tbody>
+<tr>
+<td valign="top">
+<p><a target="_blank" href="http://fastw3b.net/joomla-extensions/best-offer/66-uncategorised/393-fw-gallery-subscriptions.html"><img alt="fw_gallery_free" src="components/com_fwgallery/assets/images/fw_gallery_free.png" width="125" height="135" /></a></p>
+<p><strong>FREE GALLERY</strong> <strong>SUBSCRIPTION</strong></p>
+<div style="text-align: center; clear: both;"><span style="font-size: 8pt;">Free Download!<strong> </strong></span></div>
+<a target="_blank" href="https://fastw3b.net/joomla-extensions/best-offer/66-uncategorised/393-fw-gallery-subscriptions.html"><span style="font-size: 8pt;">Get it now &gt;&gt;</span></a>
+<div style="text-align: center; clear: both;"><span style="font-size: 8pt;"> </span></div>
+<div><ol>
+<li>FW Gallery &amp; <strong>6 addons</strong></li>
+<li><strong>Future Updates </strong>for 6 months</li>
+<li>Unlimited domains usage</li>
+<li>Access to Documentation</li>
+</ol></div>
+<div></div>
+<p> </p>
+<p> </p>
+</td>
+<td valign="top">
+<p style="text-align: center;"><a target="_blank" href="http://fastw3b.net/joomla-extensions/best-offer/66-uncategorised/393-fw-gallery-subscriptions.html"><img alt="fw_gallery_basic" src="components/com_fwgallery/assets/images/fw_gallery_basic.png" width="125" height="135" /></a></p>
+<p style="text-align: center;"><strong>BASIC GALLERY SUBSCRIPTION</strong></p>
+<div style="text-align: center; clear: both;"><span style="font-size: 8pt;">Price: <strong>$29.99 </strong></span></div>
+<div style="text-align: center;"><a href="https://fastw3b.net/joomla-extensions/best-offer/66-uncategorised/393-fw-gallery-subscriptions.html" target="_blank"><span style="font-size: 8pt;">Get it now &gt;&gt;</span></a></div>
+<div style="text-align: center;"></div>
+<div style="text-align: center;"><ol>
+<li>
+<div style="text-align: left;">FW Gallery &amp; addons</div>
+</li>
+<li>
+<div style="text-align: left;"><strong>Future Updates</strong> for 6 months<strong><br /></strong></div>
+</li>
+<li>
+<div style="text-align: left;">Unlimited domains usage</div>
+</li>
+<li>
+<div style="text-align: left;">Access to Documentation</div>
+</li>
+</ol></div>
+</td>
+<td valign="top">
+<p style="text-align: center;"><a target="_blank" href="http://fastw3b.net/joomla-extensions/best-offer/66-uncategorised/393-fw-gallery-subscriptions.html"><img alt="fw_gallery_advanced" src="components/com_fwgallery/assets/images/fw_gallery_advanced.png" width="125" height="135" /></a></p>
+<div style="text-align: center; clear: both;"><strong>ADVANCED GALLERY SUBSCRIPTION</strong></div>
+<div style="text-align: center; clear: both;"><span style="font-size: 8pt;">Price: <strong>$49.99</strong></span></div>
+<div style="text-align: center;"><a href="http://fastw3b.net/joomla-extensions/product/177-advanced-gallery-subscription.html"><span style="font-size: 8pt;">Get it now &gt;&gt; </span></a></div>
+<div style="text-align: center;"></div>
+<div style="text-align: center;"><ol>
+<li>
+<div style="text-align: left;">FW Gallery &amp; addons</div>
+</li>
+<li>
+<div style="text-align: left;"><strong>Future Updates</strong> for <strong>6 months<br /></strong></div>
+</li>
+<li>
+<div style="text-align: left;"><strong>Support Service</strong> for <strong>6 months</strong></div>
+</li>
+<li>
+<div style="text-align: left;">Unlimited domains usage</div>
+</li>
+<li>
+<div style="text-align: left;">Access to Documentation</div>
+</li>
+</ol></div>
+</td>
+<td valign="top">
+<p style="text-align: center;"><a target="_blank" href="http://fastw3b.net/joomla-extensions/best-offer/66-uncategorised/393-fw-gallery-subscriptions.html"><img alt="fw_gallery_ultimate" src="components/com_fwgallery/assets/images/fw_gallery_ultimate.png" width="125" height="135" /></a></p>
+<p style="text-align: center;"><strong>ULTIMATE GALLERY SUBSCRIPTION</strong></p>
+<div style="text-align: center; clear: both;"></div>
+<div style="text-align: center; clear: both;"><span style="font-size: 8pt;">Price: <strong>$99.99</strong></span> <a target="_blank" href="http://www.fastw3b.net/joomla-extensions/product/62-fw-gallery-video-template.html"><span style="font-size: 8pt;"> </span></a></div>
+<div style="text-align: center; clear: both;"><a href="http://fastw3b.net/joomla-extensions/product/178-ultimate-gallery-subscription.html"><span style="font-size: 8pt;">Get it now &gt;&gt;</span></a><br /><ol>
+<li>
+<div style="text-align: left;">FW Gallery &amp; <strong>all addons</strong></div>
+</li>
+<li>
+<div style="text-align: left;"><strong>Future Updates</strong> for <strong>12 months<br /></strong></div>
+</li>
+<li>
+<div style="text-align: left;"><strong>Support Service</strong> for <strong>12 months</strong></div>
+</li>
+<li>
+<div style="text-align: left;">Unlimited domains usage</div>
+</li>
+<li>
+<div style="text-align: left;">Access to Documentation</div>
+</li>
+</ol></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: left;"><span style="font-size: 8pt;"> </span></p>
+<div style="text-align: center;"></div>
+<div style="text-align: center; clear: both;"></div>
+<div style="text-align: center; clear: both;"></div>
+<p><span style="font-size: 12pt;"><strong>Useful links:</strong></span></p>
+<ul>
+<li>Getting started <a target="_blank" href="http://fastw3b.net/support/fw-gallery.html">documentation &gt;&gt;</a></li>
+<li>FW Gallery <a href="https://fastw3b.net/joomla-extensions/best-offer/66-uncategorised/393-fw-gallery-subscriptions.html">Subscriptions &gt;&gt;</a></li>
+<li>FW Gallery <a target="_blank" href="http://fastw3b.net/joomla-extensions/fw-gallery.html">add-ons &gt;&gt;</a></li>
+<li>Read FW Gallery <a target="_blank" href="http://fastw3b.net/latest-news.html">latest news &gt;&gt;</a></li>
+<li>View <a target="_blank" href="http://extensions.joomla.org/extensions/photos-a-images/photo-gallery/13185">JED reviews and leave yours &gt;&gt;</a></li>
+<li>Follow FW Gallery news on <a target="_blank" href="http://twitter.com/#!/Fastw3b">Twitter</a> or <a target="_blank" href="http://www.facebook.com/pages/Fastw3b/165610930146118">Facebook &gt;&gt;</a></li>
+<li>Have any questions? Feel free to <a target="_blank" href="http://fastw3b.net/contact-us.html">contact us &gt;&gt;</a></li>
+</ul>
+<div>Developed by <a target="_blank" href="http://fastw3b.net/">Fastw3b</a></div>
+<div>Copyright &copy; 2007 - 2013 Fastw3b</div>
+	]]></description>
+    <install type="component">
+        <sql>
+            <file driver="mysql" charset="utf8">install.sql</file> 
+        </sql>
+    </install>
+    <scriptfile>install.script.php</scriptfile>
+    <files folder="site">
+        <filename>controller.php</filename>
+        <filename>index.html</filename>
+        <filename>fwgallery.php</filename>
+        <filename>router.php</filename>
+        <folder>assets</folder>
+        <folder>helpers</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+    </files>
+	<languages folder="site/language">
+        <language tag="de-DE">de-DE/de-DE.com_fwgallery.ini</language>
+        <language tag="el-GR">el-GR/el-GR.com_fwgallery.ini</language>
+        <language tag="en-GB">en-GB/en-GB.com_fwgallery.ini</language>
+        <language tag="es-ES">es-ES/es-ES.com_fwgallery.ini</language>
+        <language tag="fr-FR">fr-FR/fr-FR.com_fwgallery.ini</language>
+        <language tag="it-IT">it-IT/it-IT.com_fwgallery.ini</language>
+        <language tag="ru-RU">ru-RU/ru-RU.com_fwgallery.ini</language>
+        <language tag="uk-UA">uk-UA/uk-UA.com_fwgallery.ini</language>
+	</languages>
+    <administration>
+        <menu img="components/com_fwgallery/assets/images/fwgalleryicon.png">FW Gallery</menu>
+        <submenu>
+            <menu img="components/com_fwgallery/assets/images/galleries.png" view="fwgallery">Galleries</menu>
+            <menu img="components/com_fwgallery/assets/images/images.png" view="files">Images</menu>
+            <menu img="components/com_fwgallery/assets/images/plugins.png" view="plugins">Plugins</menu>
+            <menu img="components/com_fwgallery/assets/images/templates.png" view="templates">Templates</menu>
+            <menu img="components/com_fwgallery/assets/images/langugage.png" view="language">Language</menu>
+            <menu img="components/com_fwgallery/assets/images/fwconfig.png" view="config">Config</menu>
+            <menu img="components/com_fwgallery/assets/images/iphone.png" view="iphone">iPhone App</menu>
+        </submenu>
+        <files folder="admin">
+            <filename>install.script.php</filename>
+            <filename>install.sql</filename>
+            <filename>controller.php</filename> 
+            <filename>index.html</filename> 
+            <filename>fwgallery.php</filename> 
+            <folder>assets</folder>
+            <folder>elements16</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+        </files>
+        <languages folder="admin/language">
+            <language tag="de-DE">de-DE/de-DE.com_fwgallery.ini</language>
+            <language tag="de-DE">de-DE/de-DE.com_fwgallery.sys.ini</language>
+            <language tag="de-DE">de-DE/de-DE.com_fwgallery.menu.ini</language>
+            <language tag="el-GR">el-GR/el-GR.com_fwgallery.ini</language>
+            <language tag="el-GR">el-GR/el-GR.com_fwgallery.sys.ini</language>
+            <language tag="el-GR">el-GR/el-GR.com_fwgallery.menu.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_fwgallery.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_fwgallery.sys.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_fwgallery.menu.ini</language>
+            <language tag="es-ES">es-ES/es-ES.com_fwgallery.ini</language>
+            <language tag="es-ES">es-ES/es-ES.com_fwgallery.sys.ini</language>
+            <language tag="es-ES">es-ES/es-ES.com_fwgallery.menu.ini</language>
+            <language tag="fr-FR">fr-FR/fr-FR.com_fwgallery.ini</language>
+            <language tag="fr-FR">fr-FR/fr-FR.com_fwgallery.sys.ini</language>
+            <language tag="fr-FR">fr-FR/fr-FR.com_fwgallery.menu.ini</language>
+            <language tag="it-IT">it-IT/it-IT.com_fwgallery.ini</language>
+            <language tag="it-IT">it-IT/it-IT.com_fwgallery.sys.ini</language>
+            <language tag="it-IT">it-IT/it-IT.com_fwgallery.menu.ini</language>
+            <language tag="ru-RU">ru-RU/ru-RU.com_fwgallery.ini</language>
+            <language tag="ru-RU">ru-RU/ru-RU.com_fwgallery.sys.ini</language>
+            <language tag="ru-RU">ru-RU/ru-RU.com_fwgallery.menu.ini</language>
+            <language tag="uk-UA">uk-UA/uk-UA.com_fwgallery.ini</language>
+            <language tag="uk-UA">uk-UA/uk-UA.com_fwgallery.sys.ini</language>
+            <language tag="uk-UA">uk-UA/uk-UA.com_fwgallery.menu.ini</language>
+        </languages>
+    </administration>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field name="im_th_w" type="text" default="120" label="" description="" />
+				<field name="im_th_h" type="text" default="120" label="" description="" />
+				<field name="im_mid_w" type="text" default="200" label="" description="" />
+				<field name="im_mid_h" type="text" default="200" label="" description="" />
+				<field name="im_max_w" type="text" default="600" label="" description="" />
+				<field name="im_max_h" type="text" default="600" label="" description="" />
+				<field name="gallery_color" type="text" default="aaaaaa" label="" description="" />
+				<field name="gallery_box_width" type="text" default="160" label="" description="" />
+				<field name="image_box_width" type="text" default="240" label="" description="" />
+				<field name="ordering_galleries" type="text" default="name" label="" description="" />
+				<field name="ordering_images" type="text" default="new" label="" description="" />
+				<field name="use_watermark" type="text" default="0" label="" description="" />
+				<field name="watermark_file" type="text" default="" label="" description="" />
+				<field name="use_voting" type="text" default="1" label="" description="" />
+				<field name="public_voting" type="text" default="1" label="" description="" />
+				<field name="galleries_a_row" type="text" default="3" label="" description="" />
+				<field name="images_a_row" type="text" default="3" label="" description="" />
+				<field name="galleries_limit" type="text" default="20" label="" description="" />
+				<field name="images_limit" type="text" default="20" label="" description="" />
+				<field name="display_total_galleries" type="text" default="1" label="" description="" />
+				<field name="display_galleries_limit_selector" type="text" default="1" label="" description="" />
+				<field name="display_gallery_limit_selector" type="text" default="1" label="" description="" />
+				<field name="display_owner_gallery" type="text" default="1" label="" description="" />
+				<field name="display_owner_image" type="text" default="1" label="" description="" />
+				<field name="display_date_gallery" type="text" default="1" label="" description="" />
+				<field name="display_gallery_sorting" type="text" default="1" label="" description="" />
+				<field name="display_name_gallery" type="text" default="1" label="" description="" />
+				<field name="display_name_image" type="text" default="1" label="" description="" />
+				<field name="display_date_image" type="text" default="1" label="" description="" />
+				<field name="display_image_views" type="text" default="1" label="" description="" />
+				<field name="display_user_copyright" type="text" default="1" label="" description="" />
+				<field name="date_format" type="text" default="F d, Y" label="" description="" />
+				<field name="new_days" type="text" default="7" label="" description="" />
+				<field name="hide_fw_copyright" type="text" default="0" label="" description="" />
+				<field name="template" type="text" default="simple" label="" description="" />
+				<field name="im_just_shrink" type="text" default="0" label="" description="" />
+				<field name="watermark_position" type="text" default="left bottom" label="" description="" />
+				<field name="watermark_text" type="text" default="" label="" description="" />
+				<field name="allow_image_download" type="text" default="1" label="" description="" />
+				<field name="allow_print_button" type="text" default="1" label="" description="" />
+				<field name="hide_bottom_image" type="text" default="0" label="" description="" />
+				<field name="hide_mignifier" type="text" default="0" label="" description="" />
+				<field name="hide_single_image_view" type="text" default="0" label="" description="" />
+				<field name="hide_iphone_app_promo" type="text" default="0" label="" description="" />
+				<field name="display_image_tags" type="text" default="1" label="" description="" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
