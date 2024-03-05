@@ -113,7 +113,7 @@ d( $concert );
 	</script>
 </head>
 
-<body>
+<body> 
 <div id="nav" class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left">
 		<form id="vinden" method="post" action="<?php echo $editFormAction; ?>">
 			<div class="w3-panel">
