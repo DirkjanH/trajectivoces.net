@@ -113,20 +113,20 @@ d( $concert );
 </head>
 
 <body> 
-<div id="nav" class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left">
+	<div id="nav" class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left">
 		<form id="vinden" method="post" action="<?php echo $editFormAction; ?>">
 			<div class="w3-panel">
 				<label>Zoekterm: <br><input name="zoeknaam" type="text" id="zoeknaam" value="<?php echo $_SESSION['zoeknaam']; ?>" size="5"></label>
 				<input name="zoek" type="submit" id="zoek" value="zoek">
 				<input name="wis" type="submit" id="wis" value="wis">
+			</div>
 				<?php  if (isset($concerten) AND is_array($concerten)) $aantal_concerten = count($concerten); else $aantal_concerten = 0;
-				if ($aantal_concerten > 0) { 
+					if ($aantal_concerten > 0) { 
 					echo <<<XXX
 					<p>$aantal_concerten resultaten. Klik een item aan:</p>
-					</div>
-						<div id="navcontainer">
-							<ul id="navlist">
-								<li><a href="#" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">Close &times;</a></li>
+					<div id="navcontainer">
+						<ul id="navlist">
+							<li><a href="#" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">Close &times;</a></li>
 					XXX;		
 					foreach($concerten AS $conc) {
 						$datum = strftime("%a %e %B %Y", strtotime($conc['datum'])); 
@@ -140,7 +140,7 @@ d( $concert );
 					?>
 					</ul>
 				<?php } ?>	
-			</div>
+				</div>
 		</form>
 	</div>
 
