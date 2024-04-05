@@ -1,6 +1,6 @@
 <?php
 // stel php in dat deze fouten weergeeft
-ini_set('display_errors', 1);
+//ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
@@ -10,7 +10,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php');
 
 use function PHP81_BC\strftime;
 
-Kint::$enabled_mode = true;
+Kint::$enabled_mode = false;
 
 d($_REQUEST);
 
