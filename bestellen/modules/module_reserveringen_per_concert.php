@@ -67,7 +67,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 			var Checkbox = document.getElementById("aanw_" + id);
 			document.formulier.toggle.value = id;
 			document.formulier.submit();
-			if (Checkbox.checked == true) {
+			if (Checkbox.checked == false) {
 				Checkbox.checked = true;
 			} else {
 				Checkbox.checked = false;
