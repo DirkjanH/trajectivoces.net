@@ -151,6 +151,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 							$bedrag_kind = 0;
 						}
 						$som = $vol + $red + $kind;
+						$totaal = [];
 						$totaal['vol'] += $vol;
 						$totaal['red'] += $red;
 						$totaal['kind'] += $kind;
