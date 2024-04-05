@@ -107,6 +107,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 				</p>
 				<input name="sort" id="sort" type="hidden" value="">
 				<?php if (is_array($concert) and count($concert) > 0) {
+					$totaal = [];
 					foreach ($concert as $pl) {
 						$query_aantal = "SELECT sum(aantal_vol) as aantal_vol, sum(aantal_red) as aantal_red, sum(aantal_kind) as aantal_kind FROM {$tabel_reserveringen} 
 	WHERE concertId={$pl['concertId']} AND {$pl['online']} = 1 AND (betaalstatus = 'paid' OR betaalstatus IS NULL)";
@@ -151,7 +152,6 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 							$bedrag_kind = 0;
 						}
 						$som = $vol + $red + $kind;
-						$totaal = [];
 						$totaal['vol'] += $vol;
 						$totaal['red'] += $red;
 						$totaal['kind'] += $kind;
