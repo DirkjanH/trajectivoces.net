@@ -20,7 +20,7 @@ foreach ($concerten as $row) {
   if ($row['prijs_red'] > 0)
     if (isset($row['txt_red']) and $row['txt_red'] != '') $row['entree'] .= $txt['scheiding'] . $row['txt_red'] . " {$row['euro_red']}";
     else $row['entree'] .= $txt['CJP/studenten'] . $row['euro_red'];
-  if ($row['prijs_kind'] > 0 or $row['prijs_kind'] == -1 or (isset($row['txt_kind']) and $row['txt_kind'] != ''))
+  if ($row['prijs_kind'] > 0 or (isset($row['txt_kind']) and $row['txt_kind'] != ''))
     if (isset($row['euro_kind']) and $row['euro_kind'] != '') $row['entree'] .= $txt['scheiding'] . $row['txt_kind'] . " {$row['euro_kind']}";
     else $row['entree'] .= $txt['kinderen'] . $row['euro_kind'];
   $concert[$row['concertId']] = $row;
