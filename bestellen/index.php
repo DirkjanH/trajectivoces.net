@@ -72,27 +72,28 @@ require_once('modules/module_kaartverkoop.php');
                             class="commentaar">*</span></label>
                     <input class="w3-input w3-border" name="plaats" type="text"
                         id="plaats" size=30 value="<?php
-																											echo $_POST['plaats']; ?>" required>
+													echo $_POST['plaats']; ?>" required>
                 </div>
             </div>
             <div class="w3-container"> <?php
-				$allesuitverkocht = false;
-				//		foreach ($concert as $u) if ($u['uitverkocht']) $allesuitverkocht += 1;
-				if (is_array($concert) and count($concert) > 0) {
-					echo '<h5 class="w3-padding-0 w3-margin-0 w3-margin-top">' . $txt['wens'];
-					if (count($concert) > 1) echo ' <span class="w3-tag w3-red w3-small">' . $txt['kiezen'] . '</span>';
-					echo '</h5>';
-					foreach ($concert as $c) {
-						echo '<p class="w3-margin-0">'; ?> <input type="radio" class="w3-radio"
-                    name="concertId" value="<?php echo $c['concertId']; ?>"
+										$allesuitverkocht = false;
+										//		foreach ($concert as $u) if ($u['uitverkocht']) $allesuitverkocht += 1;
+										if (is_array($concert) and count($concert) > 0) {
+											echo '<h5 class="w3-padding-0 w3-margin-0 w3-margin-top">' . $txt['wens'];
+											if (count($concert) > 1) echo ' <span class="w3-tag w3-red w3-small">' . $txt['kiezen'] . '</span>';
+											echo '</h5>';
+											foreach ($concert as $c) {
+												echo '<p class="w3-margin-0">'; ?> <input type="radio"
+                    class="w3-radio" name="concertId"
+                    value="<?php echo $c['concertId']; ?>"
                     <?php if (count($concert) == 1) echo 'checked';
-							if (isset($_POST['concertId']) and ($_POST['concertId'] == $c['concertId'])) echo 'checked';
-							if (isset($c['uitverkocht']) and ($c['uitverkocht'] == 1)) echo ' disabled'; ?>> <?php echo stripslashes($c['concert']) . '; ';
-						if (isset($c['uitverkocht']) and ($c['uitverkocht'] == 1))
-							echo '<span class="w3-tag w3-red w3-small">' . $txt['uitverkocht'] . '</span>';
-						else echo $c['entree']; ?><br> <?php if (isset($c['details'])) echo '<p class="details">' . stripslashes($c['details']) . '</p>';
-					}
-					?> </div>
+												if (isset($_POST['concertId']) and ($_POST['concertId'] == $c['concertId'])) echo 'checked';
+												if (isset($c['uitverkocht']) and ($c['uitverkocht'] == 1)) echo ' disabled'; ?>> <?php echo stripslashes($c['concert']) . '; ';
+																												if (isset($c['uitverkocht']) and ($c['uitverkocht'] == 1))
+																													echo '<span class="w3-tag w3-red w3-small">' . $txt['uitverkocht'] . '</span>';
+																												else echo $c['entree']; ?><br> <?php if (isset($c['details'])) echo '<p class="details">' . stripslashes($c['details']) . '</p>';
+													}
+														?> </div>
             <div class="w3-container w3-margin-top">
                 <div class="w3-row-padding">
                     <div class="w3-third">
@@ -101,34 +102,34 @@ require_once('modules/module_kaartverkoop.php');
                         <input name="aantal_vol" type="text" required
                             class="w3-input w3-border aantal" id="aantal_vol"
                             value="<?php
-																																if (isset($aantal_vol)) echo $aantal_vol; ?>">
+											if (isset($aantal_vol)) echo $aantal_vol; ?>">
                     </div>
                     <div class="w3-third"
                         <?php if (!(isset($c['prijs_red']) and $c['prijs_red'] > 0)) echo 'style="display: none;"'; ?>>
                         <div
-                            <?php if (!(isset($c['prijs_red']) and $c['prijs_red'] > 0)) echo 'class="w3-grayscale w3-grey"'; ?>> <?php if (isset($c['txt_red']) and $c['txt_red'] != '') echo '<label class="w3-label">aantal ' . $c['txt_red'] . ':</label>';
-							else echo '<label class="w3-label">' . $txt['CJP'] . '</label>'; ?>
-                            <input class="w3-input w3-border aantal"
-                                name="aantal_red" type="text" id="aantal_red"
+                            <?php if (!(isset($c['prijs_red']) and $c['prijs_red'] > 0)) echo 'class="w3-grayscale w3-grey"'; ?>>
+                            <?php if (isset($c['txt_red']) and $c['txt_red'] != '') echo '<label class="w3-label">aantal ' . $c['txt_red'] . ':</label>';
+																																	else echo '<label class="w3-label">' . $txt['CJP'] . '</label>'; ?> <input class="w3-input w3-border aantal" name="aantal_red" type="text"
+                                id="aantal_red"
                                 value="<?php if (isset($aantal_red)) echo $aantal_red; ?>"
                                 <?php if (!(isset($c['prijs_red']) and $c['prijs_red'] > 0)) echo 'disabled'; ?>>
                         </div>
                     </div>
                     <div class="w3-third"
                         <?php if (!(isset($c['txt_kind']) and $c['txt_kind'] != '')) echo 'style="display: none;"'; ?>>
-                        <div
-                            <?php if (!(isset($c['prijs_kind']) and $c['prijs_kind'] > 0)) echo 'class="w3-grayscale w3-grey"'; ?>>
-                            <?php if (isset($c['txt_kind']) and $c['txt_kind'] != '') echo '<label class="w3-label>">kaarten ' . $c['txt_kind'] . ':</label>';
-							else echo '<label class="w3-label w3-validate">' . $txt['12_jaar'] . '</label>'; ?> <input class="w3-input w3-border aantal <?php if (!(isset($c['prijs_kind']) and $c['prijs_kind'] > 0)) echo ' w3-grey'; ?>"
-                                name="aantal_kind" type="text" id="aantal_kind"
-                                value="<?php if (isset($aantal_kind)) echo $aantal_kind; ?>"
-                                <?php if (!(isset($c['prijs_kind']) and $c['prijs_kind'] > 0)) echo 'disabled'; ?>>
+                        <div <?php if (isset($c['txt_kind']) and $c['txt_kind'] != '') echo '<label class="w3-label>">kaarten ' . $c['txt_kind'] . ':</label>';
+											else echo '<label class="w3-label w3-validate">' . $txt['12_jaar'] . '</label>'; ?>
+                            <input
+                            class="w3-input w3-border aantal <?php if (!(isset($c['prijs_kind']) and $c['prijs_kind'] > 0)) echo ' w3-grey'; ?>"
+                            name="aantal_kind" type="text" id="aantal_kind"
+                            value="<?php if (isset($aantal_kind)) echo $aantal_kind; ?>"
+                            <?php if (!(isset($c['prijs_kind']) and $c['prijs_kind'] > 0)) echo 'disabled'; ?>>
                         </div>
                     </div> <?php
-				}
-				if (count($concert) == 0) echo '<h5 class="w3-btn-block w3-white w3-text-red">' . $txt['geen_concert'] . '</h5>';
-				else echo '<h5 class="w3-tag w3-red w3-small">' . $txt['niet_prijs'] . '</h5>';
-				?>
+										}
+										if (count($concert) == 0) echo '<h5 class="w3-btn-block w3-white w3-text-red">' . $txt['geen_concert'] . '</h5>';
+										else echo '<h5 class="w3-tag w3-red w3-small">' . $txt['niet_prijs'] . '</h5>';
+							?>
                 </div>
             </div>
             <div
@@ -159,9 +160,8 @@ require_once('modules/module_kaartverkoop.php');
                                 class="w3-label w3-validate"><?php echo $txt['deelnemer']; ?></label>
                             <input class="blokje w3-input w3-border"
                                 name="aanbrenger" type="text" id="aanbrenger"
-                                size="20"
-                                value="<?php
-																																	if (isset($_POST['aanbrenger'])) echo $_POST['aanbrenger']; ?>">
+                                size="20" value="<?php
+										if (isset($_POST['aanbrenger'])) echo $_POST['aanbrenger']; ?>">
                         </p>
                     </div>
                     <div class="w3-third w3-panel w3-leftbar w3-border-green">
@@ -204,8 +204,7 @@ require_once('modules/module_kaartverkoop.php');
                                     class="blokje w3-input w3-border"
                                     name="anders" type="text"
                                     value="<?php
-																																										if (isset($_POST['anders'])) echo stripslashes($_POST['anders']); ?>"
-                                    size="20"></label>
+											if (isset($_POST['anders'])) echo stripslashes($_POST['anders']); ?>" size="20"></label>
                     </div>
                     </p>
                     <div class="w3-panel">
@@ -230,7 +229,7 @@ require_once('modules/module_kaartverkoop.php');
                         probleem tegenkomen, stuur dan SVP even een mailtje aan
                         <a
                             href="mailto:organisatie@trajectivoces.net">organisatie@trajectivoces.net</a>
-                        of een appje aan 0619 224 758.</p>
+                        of een appje aan 0619 224 758. </p>
                 </div>
         </FORM>
     </div>
