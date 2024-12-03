@@ -23,7 +23,7 @@ foreach ($concerten as $row) {
 	$row['euro_red'] = euro2($row['prijs_red']);
 	$row['euro_kind'] = euro2($row['prijs_kind']);
 	$row['concert'] = "<b>{$row['concerttitel']}</b>, te {$row['plaats']}, op {$datum}";
-	$row['concert_kort'] = '<b>' . $row['concerttitel'] . '</b> (' . $row['plaats'] . ', op <b>' . /* strftime("%e %B %Y", strtotime($row['datum']), 'nl_NL') .*/ '</b>)';
+//	$row['concert_kort'] = '<b>' . $row['concerttitel'] . '</b> (' . $row['plaats'] . ', op <b>' . strftime("%e %B %Y", strtotime($row['datum']), 'nl_NL') . '</b>)';
 	if ($tijd != '00:00') $row['concert'] .= ", {$tijd} uur";
 	if (!($row['prijs_vol'] > 0 or $row['prijs_red'] > 0))
 		$row['entree'] = "toegang gratis (collecte na afloop)";
