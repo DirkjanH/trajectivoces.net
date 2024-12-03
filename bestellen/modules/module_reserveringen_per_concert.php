@@ -175,7 +175,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 						$output .= "<p><b>Totaal aantal verkochte kaarten: {$som} ({$euro_som});</b> ";
 						if ($pl['prijs_vol'] > 0) $output .= "Aantal volle kaarten: {$vol} ({$euro_vol}); ";
 						if ($pl['prijs_red'] > 0) $output .= "aantal red. kaarten: {$red} ({$euro_red}); ";
-						if (isset($c['txt_kind']) and $c['txt_kind'] != '') $output .= "aantal kaarten {$pl['txt_kind']}: {$kind} ({$euro_kind})</p>";
+						if (isset($pl['txt_kind']) and $pl['txt_kind'] != '') $output .= "aantal kaarten {$pl['txt_kind']}: {$kind} ({$euro_kind})</p>";
 
 
 						$output .= "<table id=\"res\" class=\"w3-table-all\">
