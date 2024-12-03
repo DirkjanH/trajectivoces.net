@@ -235,7 +235,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 					echo $output;
 				} else echo 'Momenteel geen concerten in de verkoop.<br>'
 				?>
-				<p>laatste verversing: <?php echo //strftime("%c",,'nl_NL'); ?> </p>
+				<p>laatste verversing: <?php //echo strftime("%c",,'nl_NL'); ?> </p>
 				<input name="toggle" id="toggle" type="hidden" value="">
 				<input name="bestelnummer" type="hidden" id="bestelnummer">
 				<input name="bestelling_bewerken" type="hidden" id="bestelling_bewerken">
