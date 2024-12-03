@@ -7,8 +7,7 @@ session_start();
 
 require_once('modules/bestelfuncties.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php');
-
-//use function PHP81_BC\strftime;
+use function PHP81_BC\strftime;
 
 Kint::$enabled_mode = false;
 
@@ -220,7 +219,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
         <td>{$res['email']}&nbsp;</td>";
 							$output .= "<td width=\"1%\"><div align=\"center\">{$res['aantal_vol']}</div></td>";
 							if ($pl['prijs_red'] > 0) $output .= "<td><div align=\"center\">{$res['aantal_red']}</div></td>";
-							if ($pl['prijs_kind'] > 0) $output .= "<td><div align=\"center\">{$res['aantal_kind']}</div></td>";
+							if (isset($pl['txt_kind']) and $pl['txt_kind'] != '') $output .= "<td><div align=\"center\">{$res['aantal_kind']}</div></td>";
 							$output .= '<td>' . $via . '&nbsp;</td>';
 							$output .= '<td>' . $res['opmerkingen'] . '&nbsp;</td>
 <td class="w3-center">';
