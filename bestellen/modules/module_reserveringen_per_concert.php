@@ -16,14 +16,14 @@ d($_REQUEST);
 $concerten = select_query("SELECT * FROM {$tabel_concerten} WHERE online = 1 ORDER BY datum");
 d($concerten);
 foreach ($concerten as $row) {
-	$datum = strftime("%A %e %B %Y", strtotime($row['datum']), 'nl_NL');
-	$tijd = strftime("%H:%M", strtotime($row['tijd']), 'nl_NL');
+//	$datum = strftime("%A %e %B %Y", strtotime($row['datum']), 'nl_NL');
+//	$tijd = strftime("%H:%M", strtotime($row['tijd']), 'nl_NL');
 	$row['dag'] = (strtotime($row['datum']) - time()) / (60 * 60 * 24);
 	$row['euro_vol'] = euro2($row['prijs_vol']);
 	$row['euro_red'] = euro2($row['prijs_red']);
 	$row['euro_kind'] = euro2($row['prijs_kind']);
 	$row['concert'] = "<b>{$row['concerttitel']}</b>, te {$row['plaats']}, op {$datum}";
-	$row['concert_kort'] = '<b>' . $row['concerttitel'] . '</b> (' . $row['plaats'] . ', op <b>' . strftime("%e %B %Y", strtotime($row['datum']), 'nl_NL') . '</b>)';
+	$row['concert_kort'] = '<b>' . $row['concerttitel'] . '</b> (' . $row['plaats'] . ', op <b>' . /* strftime("%e %B %Y", strtotime($row['datum']), 'nl_NL') .*/ '</b>)';
 	if ($tijd != '00:00') $row['concert'] .= ", {$tijd} uur";
 	if (!($row['prijs_vol'] > 0 or $row['prijs_red'] > 0))
 		$row['entree'] = "toegang gratis (collecte na afloop)";
@@ -235,7 +235,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 					echo $output;
 				} else echo 'Momenteel geen concerten in de verkoop.<br>'
 				?>
-				<p>laatste verversing: <?php echo strftime("%c",,'nl_NL'); ?> </p>
+				<p>laatste verversing: <?php echo //strftime("%c",,'nl_NL'); ?> </p>
 				<input name="toggle" id="toggle" type="hidden" value="">
 				<input name="bestelnummer" type="hidden" id="bestelnummer">
 				<input name="bestelling_bewerken" type="hidden" id="bestelling_bewerken">
