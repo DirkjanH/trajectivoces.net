@@ -122,7 +122,7 @@ require_once('modules/module_kaartverkoop.php');
                             <input class="w3-input w3-border aantal"
                             name="aantal_kind" type="text" id="aantal_kind"
                             value="<?php if (isset($aantal_kind)) echo $aantal_kind; ?>"
-                            <?php if (!(isset($c['prijs_kind']) and $c['prijs_kind'] > 0)) echo 'disabled'; ?>>
+                            <?php if (!(isset($c['txt_kind']) and $c['txt_kind'] != '')) echo 'disabled'; ?>>
                         </div>
                     </div> <?php
 										}
