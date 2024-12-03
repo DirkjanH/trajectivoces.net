@@ -189,7 +189,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
       <th>Email:</th>";
 						$output .= "<th width=\"1%\">Aantal kaarten vol:</th>";
 						if ($pl['prijs_red'] > 0) $output .= "<th width=\"1%\">Aantal kaarten red.:</th>";
-						if ($pl['prijs_kind'] > 0) $output .= "<th width=\"1%\">Aantal kaarten kind:</th>";
+						if (isset($pl['txt_kind']) and $pl['txt_kind'] != '') $output .= "<th width=\"1%\">Aantal kaarten kind:</th>";
 						$output .= "<th>Weet ervan via:</th>
       <th>Opmerkingen:</th>
       <th>Wil digi-<br>flyers:</th>
