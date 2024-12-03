@@ -7,7 +7,7 @@ session_start();
 
 require_once('modules/bestelfuncties.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php');
-use function php81_bc\strftime;
+use function PHP81_BC\strftime;
 
 Kint::$enabled_mode = false;
 
