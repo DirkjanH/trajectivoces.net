@@ -9,7 +9,7 @@ require_once('modules/bestelfuncties.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php');
 use function PHP81_BC\strftime;
 
-Kint::$enabled_mode = false;
+Kint::$enabled_mode = true;
 
 d($_REQUEST);
 
@@ -32,11 +32,12 @@ foreach ($concerten as $row) {
 	if ($row['prijs_red'] > 0)
 		if (isset($row['txt_red']) and $row['txt_red'] != '') $row['entree'] .= ' | ' . $row['txt_red'] . " {$row['euro_red']}";
 		else $row['entree'] .= " | CJP/studenten {$row['euro_red']}";
-	if ($row['prijs_kind'] > 0)
+	if (isset($row['txt_kind']) and $row['txt_kind'] != '')
 		if (isset($row['txt_kind']) and $row['txt_kind'] != '') $row['entree'] .= ' | ' . $row['txt_kind'] . " {$row['euro_kind']}";
 		else $row['entree'] .= " | kinderen tot 12 jaar {$row['euro_kind']}";
 	$concert[$row['concertId']] = $row;
 }
+d($concert);
 
 $_SESSION['sort'] = 'reserveringnr';
 if (empty($_SESSION['sort']) or $_SESSION['sort'] == 'reserveringnr') $_SESSION['sort'] = 'reserveringnr';
