@@ -707,6 +707,7 @@
 *.pdf
 *.mp4
 *.mov
+<<<<<<< HEAD
 *.mp3
 *.zip
 *.tar
@@ -727,3 +728,5 @@
 *.tar.z
 *.tar.lz4
 /audio/*
+=======
+>>>>>>> eb4770210dfba01f0b0a6e587b8d774ed507151b
