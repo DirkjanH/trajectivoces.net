@@ -1,0 +1,33 @@
+/** ArkKit **/
+/* -- OBJECT STYLES  ------------------------------------------------------------*/
+/* -- Controls the object style columns -- */
+
+img.ark-thumbnail {}
+img.ark-border-rounded {}
+img.ark-border-circle  {}
+table.ark-table {}
+ul.ark-list {}
+ul.ark-list-striped {}
+
+/* -- BLOCK STYLES  ------------------------------------------------------------*/
+/* --  Controls the block style columns -- */
+
+p.ark-text-center {}
+p.ark-text-primary {}
+p.ark-text-success {}
+p.ark-text-warning {}
+p.ark-text-danger {}
+p.ark-dropcap {}
+p.ark-text-uppercase {}
+p.ark-text-capitalize {}
+div.ark-alert {}
+div.ark-placeholder {}
+
+/* -- INLINE STYLES  ------------------------------------------------------------*/
+/* --  Controls the inline style columns -- */
+
+span.ark-badge {}
+span.ark-label {}
+span.ark-text-background {}
+
+/** End of Stylesheet **/

@@ -1,0 +1,27 @@
+@charset "iso-8859-1";
+.Centreervenster#koor {
+	margin-left: 200px;
+	height: auto;
+	background-image: url("../Afbeeldingen/afbeeldingen achtergrondopmaak/bodyachtergrond2.png");
+	background-repeat: repeat;
+}
+/* CSS Document */
+
+
+.TekstpaginaAchtergrond#koor {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow: auto;
+	padding-right: 1%;
+	padding-left: 1%;
+	height: auto;
+}
+table {
+}
+p {
+
+}
+h5 {
+	color: #A68B2E;
+	text-decoration: underline;
+}

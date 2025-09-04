@@ -1,0 +1,15 @@
+@charset "iso-8859-1";
+/* CSS Document */
+
+iframe {
+	height: 775px;
+	width: 100%;
+}
+
+.dropmenudiv#valmenu1{
+	width: 132px;
+	visibility: visible;
+	margin-top: 9px;
+	float: left;
+	margin-left: -4px;
+}

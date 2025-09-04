@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="arkeditor" method="upgrade">
+	<name>ArkEditor - Menu Links</name>
+	<title>MenuLinks</title>
+	<author>WebxSolution Ltd</author>
+	<creationDate>Aug 2017</creationDate>
+	<copyright>Copyright (C) 2017- 2018 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>The ArkEditor Menu Links plugin</description>
+	<files>
+		<filename plugin="menulinks">menulinks.php</filename>
+		<filename>index.html</filename>
+		<folder>menulinks</folder>
+	</files>
+</extension>

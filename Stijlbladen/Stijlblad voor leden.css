@@ -1,0 +1,41 @@
+@charset "iso-8859-1";
+/* CSS Document */
+
+
+.Navigatiekader#roosters {
+	left: 20px;
+	top: 90px;
+	width: 116px;
+	height: 366px;
+	border-left-width: 2px;
+	border-left-style: solid;
+	border-left-color: #B19407;
+	padding-left: 10px;
+	position: relative;
+	overflow: visible;
+}
+.intern {
+	background-color: #6B6B5A;
+	padding-left: 10px;
+	margin-left: -10px;
+}
+.intern#roosters {
+	background-color: #6B6B5A;
+	padding-left: 10px;
+	margin-left: -10px;
+	margin-top: -1px;
+	padding-top: 1px;
+}
+.intern#informatie {
+	background-color: #6B6B5A;
+	padding-left: 10px;
+	margin-left: -10px;
+	margin-top: 0px;
+}
+
+.intern#fotoreportages {
+	background-color: #6B6B5A;
+	padding-left: 10px;
+	margin-left: -10px;
+	padding-bottom: 2px;
+}

@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+/* CSS Document */
+
+p.MsoNormal {
+margin:0cm;
+margin-bottom:.0001pt;
+font-size:12.0pt;
+font-family:Cambria;
+}
+p.kopje {
+margin-top:12.0pt;
+margin-right:0cm;
+margin-bottom:.0001pt;
+margin-left:0cm;
+tab-stops:center 171.0pt left 180.0pt;
+font-size:10.0pt;
+font-family:"Palatino Linotype";
+text-transform:uppercase;
+letter-spacing:1.5pt;
+font-weight:bold;
+}
+table.MsoNormalTable {
+line-height:115%;
+font-size:11.0pt;
+font-family:Calibri;
+}

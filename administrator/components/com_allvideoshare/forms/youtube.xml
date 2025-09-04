@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="MrVinoth\Component\AllVideoShare\Administrator\Field">
+    <fieldset>
+        <field
+            name="type" 
+            type="list"
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_TYPE"
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_TYPE"
+            >
+            <option value="playlist">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_PLAYLIST</option>
+            <option value="channel">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_CHANNEL</option>
+            <option value="username">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_USERNAME</option>
+            <option value="search">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_SEARCH</option>
+            <option value="video">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_VIDEO</option>
+            <option value="livestream">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_LIVESTREAM</option>
+            <option value="videos">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_VIDEOS</option>
+        </field>
+
+        <field 
+            name="playlist"                     
+            type="text" 
+            filter="string" 
+            default="" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PLAYLIST" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PLAYLIST" 
+            showon="type:playlist"
+        />
+
+        <field 
+            name="channel"                     
+            type="text" 
+            filter="string" 
+            default="" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_CHANNEL" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_CHANNEL" 
+            showon="type:channel,livestream"
+        />
+
+        <field 
+            name="username"                     
+            type="text" 
+            filter="string" 
+            default="" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_USERNAME" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_USERNAME" 
+            showon="type:username"
+        />
+
+        <field 
+            name="search"                     
+            type="text" 
+            filter="string" 
+            default="" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_SEARCH" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_SEARCH" 
+            showon="type:search"
+        />        
+
+        <field 
+            name="video"                     
+            type="text" 
+            filter="string" 
+            default="" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_VIDEO" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_VIDEO" 
+            showon="type:video"
+        />
+
+        <field 
+            name="videos"                     
+            type="textarea"
+            rows="5" 
+            default="" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_VIDEOS" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_VIDEOS" 
+            hint="COM_ALLVIDEOSHARE_YOUTUBE_FORM_PLACEHOLDER_VIDEOS"
+            showon="type:videos"
+        />
+
+        <field
+            name="order" 
+            type="list"
+            default="relevance"
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_ORDER"
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_ORDER"
+            showon="type:search"
+            >
+            <option value="date">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_ORDER_DATE</option>
+            <option value="rating">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_ORDER_RATING</option>
+            <option value="relevance">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_ORDER_RELEVANCE</option>
+            <option value="title">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_ORDER_TITLE</option>
+            <option value="viewCount">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_ORDER_VIEWCOUNT</option>
+        </field>
+
+        <field 
+            name="limit"                     
+            type="text" 
+            filter="int" 
+            default="" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_LIMIT" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_LIMIT" 
+            showon="type:search"
+        />
+
+        <field
+            name="cache" 
+            type="list"
+            default="86400"
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_CACHE"
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_CACHE"
+            showon="type!:livestream"
+            >
+            <option value="0">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_CACHE_0</option>
+            <option value="900">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_900</option>
+            <option value="1800">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_1800</option>
+            <option value="3600">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_3600</option>
+            <option value="86400">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_86400</option>
+            <option value="604800">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_604800</option>
+            <option value="2419200">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_TYPE_2419200</option>
+        </field>
+
+        <field
+            name="layout" 
+            type="list"
+            default="classic"
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_LAYOUT"
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_LAYOUT"
+            >
+            <option value="classic">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_LAYOUT_CLASSIC</option>
+            <option value="inline">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_LAYOUT_INLINE</option>
+            <option value="popup">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_LAYOUT_POPUP</option>
+            <option value="slider">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_LAYOUT_SLIDER</option>
+            <option value="playlist">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_LAYOUT_PLAYLIST</option>
+        </field>
+
+        <field 
+            name="columns"                     
+            type="text" 
+            filter="int" 
+            default="3" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_COLUMNS" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_COLUMNS" 
+            showon="layout!:playlist"
+        />
+
+        <field 
+            name="per_page"                     
+            type="text" 
+            filter="int" 
+            default="12" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PER_PAGE" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PER_PAGE" 
+        />
+
+        <field 
+            name="image_ratio"                     
+            type="list" 
+            filter="float" 
+            default="56.25" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_IMAGE_RATIO" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_IMAGE_RATIO" 
+            >
+            <option value="56.25">16:9</option>
+            <option value="75">4:3</option>
+        </field>
+
+        <field 
+            name="title" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="1" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_TITLE" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_TITLE" 
+            >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field 
+            name="title_length"                     
+            type="text" 
+            filter="int" 
+            default="0" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_TITLE_LENGTH" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_TITLE_LENGTH" 
+        />
+
+        <field 
+            name="excerpt" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="1" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_EXCERPT" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_EXCERPT" 
+            >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field 
+            name="excerpt_length"                     
+            type="text" 
+            filter="int" 
+            default="75" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_EXCERPT_LENGTH" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_EXCERPT_LENGTH" 
+        />
+
+        <field 
+            name="pagination" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="1" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PAGINATION" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PAGINATION" 
+            showon="layout!:slider,playlist"
+            >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field
+            name="pagination_type" 
+            type="list"
+            default="more"
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PAGINATION_TYPE"
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PAGINATION_TYPE"
+            showon="layout!:slider,playlist"
+            >
+            <option value="pager">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_PAGINATION_TYPE_PAGER</option>
+            <option value="more">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_PAGINATION_TYPE_MORE</option>
+        </field>
+
+        <field 
+            name="arrows" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="1" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_ARROWS" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_ARROWS" 
+            showon="layout:slider"
+            >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field 
+            name="arrow_size"                     
+            type="text" 
+            filter="int" 
+            default="24" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_ARROW_SIZE" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_ARROW_SIZE" 
+            showon="layout:slider"
+        />
+
+        <field 
+            name="arrow_bg_color" 
+            type="color" 
+            default="#0088cc" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_ARROW_BG_COLOR" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_ARROW_BG_COLOR" 
+            showon="layout:slider"
+        />
+
+        <field 
+            name="arrow_icon_color" 
+            type="color" 
+            default="#ffffff" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_ARROW_ICON_COLOR" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_ARROW_ICON_COLOR" 
+            showon="layout:slider"
+        />
+
+        <field 
+            name="arrow_radius"                     
+            type="text" 
+            filter="int" 
+            default="12" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_ARROW_RADIUS" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_ARROW_RADIUS" 
+            showon="layout:slider"
+        />
+
+        <field 
+            name="arrow_top_offset"                     
+            type="text" 
+            filter="int" 
+            default="30" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_ARROW_TOP_OFFSET" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_ARROW_TOP_OFFSET" 
+            showon="layout:slider"
+        />
+
+        <field 
+            name="arrow_left_offset"                     
+            type="text" 
+            filter="int" 
+            default="-25" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_ARROW_LEFT_OFFSET" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_ARROW_LEFT_OFFSET" 
+            showon="layout:slider"
+        />
+
+        <field 
+            name="arrow_right_offset"                     
+            type="text" 
+            filter="int" 
+            default="-25" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_ARROW_RIGHT_OFFSET" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_ARROW_RIGHT_OFFSET" 
+            showon="layout:slider"
+        />
+
+        <field 
+            name="dots" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="1" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_DOTS" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_DOTS" 
+            showon="layout:slider"
+            >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field> 
+
+        <field 
+            name="dot_size"                     
+            type="text" 
+            filter="int" 
+            default="24" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_DOT_SIZE" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_DOT_SIZE" 
+            showon="layout:slider"
+        />   
+
+        <field 
+            name="dot_color" 
+            type="color" 
+            default="#0088cc" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_DOT_COLOR" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_DOT_COLOR" 
+            showon="layout:slider"
+        /> 
+
+        <field
+            name="playlist_position" 
+            type="list"
+            default="right"
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PLAYLIST_POSITION"
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PLAYLIST_POSITION"
+            showon="layout:playlist"
+            >
+            <option value="right">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_PLAYLIST_POSITION_RIGHT</option>
+            <option value="bottom">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_PLAYLIST_POSITION_BOTTOM</option>
+        </field>
+
+        <field
+            name="playlist_color" 
+            type="list"
+            default="dark"
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PLAYLIST_COLOR"
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PLAYLIST_COLOR"
+            showon="layout:playlist"
+            >
+            <option value="light">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_PLAYLIST_COLOR_LIGHT</option>
+            <option value="dark">COM_ALLVIDEOSHARE_YOUTUBE_FORM_OPTION_PLAYLIST_COLOR_DARK</option>
+        </field>
+
+        <field 
+            name="playlist_width"                     
+            type="text" 
+            filter="int" 
+            default="250" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PLAYLIST_WIDTH" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PLAYLIST_WIDTH" 
+            showon="layout:playlist[AND]playlist_position:right"
+        /> 
+
+        <field 
+            name="playlist_height"                     
+            type="text" 
+            filter="int" 
+            default="250" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PLAYLIST_HEIGHT" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PLAYLIST_HEIGHT"
+            showon="layout:playlist" 
+        />
+
+        <field 
+            name="player_ratio"                     
+            type="list" 
+            filter="float" 
+            default="56.25" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PLAYER_RATIO" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PLAYER_RATIO"
+            showon="layout!:inline" 
+            >
+            <option value="56.25">16:9</option>
+            <option value="75">4:3</option>
+        </field>
+
+        <field 
+            name="player_title" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="1" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PLAYER_TITLE" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PLAYER_TITLE" 
+            >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>
+
+        <field 
+            name="player_description" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="1" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_PLAYER_DESCRIPTION" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_PLAYER_DESCRIPTION" 
+            >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field> 
+
+        <field 
+            name="autoplay" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="0" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_AUTOPLAY" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_AUTOPLAY"
+            showon="layout!:inline[AND]layout!:popup" 
+            >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field 
+            name="autoadvance" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="0" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_AUTOADVANCE" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_AUTOADVANCE" 
+            >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field 
+            name="loop" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="0" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_LOOP" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_LOOP" 
+            >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field 
+            name="controls" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="1" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_CONTROLS" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_CONTROLS" 
+            >
+            <option value="0">JHIDE</option>
+            <option value="1">JSHOW</option>
+        </field>  
+
+        <field 
+            name="modestbranding" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="1" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_MODESTBRANDING" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_MODESTBRANDING" 
+            >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field 
+            name="cc_load_policy" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="0" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_CC_LOAD_POLICY" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_CC_LOAD_POLICY" 
+            >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field 
+            name="iv_load_policy" 
+            type="radio" 
+            buttons="true" 
+            layout="joomla.form.field.radio.switcher" 
+            default="0" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_IV_LOAD_POLICY" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_IV_LOAD_POLICY" 
+            >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>  
+
+        <field 
+            name="hl"                     
+            type="text" 
+            filter="string" 
+            default="" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_HL" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_HL" 
+        />
+
+        <field 
+            name="cc_lang_pref"                     
+            type="text" 
+            filter="string" 
+            default="" 
+            label="COM_ALLVIDEOSHARE_YOUTUBE_FORM_LBL_CC_LANG_PREF" 
+            description="COM_ALLVIDEOSHARE_YOUTUBE_FORM_DESC_CC_LANG_PREF" 
+        /> 
+    </fieldset>
+</form>

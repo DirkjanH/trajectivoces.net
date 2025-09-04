@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="MrVinoth\Component\AllVideoShare\Administrator\Field">
+    <fields name="filter">
+        <field 
+            name="search" 
+            type="text" 
+            label="COM_ALLVIDEOSHARE_FORM_LBL_SEARCH"
+            hint="JSEARCH_FILTER"
+            class="js-stools-search-string" 
+        />
+
+        <field 
+            name="state"
+            type="status"
+            label="JSTATUS"
+            onchange="this.form.submit();"
+            >
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+
+        <field 
+            name="catid"             
+            type="nestedcategories" 
+            label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_CATID" 
+            onchange="this.form.submit();"
+            >
+            <option value="">COM_ALLVIDEOSHARE_FORM_HEADER_VIDEO_CATID</option>
+        </field>
+
+        <field 
+            name="featured"             
+            type="list" 
+            label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_FEATURED" 
+            onchange="this.form.submit();" 
+            >
+            <option value="">COM_ALLVIDEOSHARE_FORM_HEADER_VIDEO_FEATURED</option>
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field 
+            name="user"             
+            type="sql" 
+            query="SELECT name,username FROM #__users ORDER BY name ASC" 
+            key_field="username" 
+            value_field="name" 
+            header="COM_ALLVIDEOSHARE_FORM_HEADER_VIDEO_USER" 
+            label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_USER" 
+            translate="true"             
+            onchange="this.form.submit();"
+        />
+    </fields>
+
+    <fields name="list">
+        <field 
+            name="fullordering"
+            type="list"
+            default="a.id DESC"
+            label="JGLOBAL_SORT_BY"
+            onchange="this.form.submit();"            
+            >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="a.id ASC">JGRID_HEADING_ID_ASC</option>
+            <option value="a.id DESC">JGRID_HEADING_ID_DESC</option>                                   
+            <option value="a.title ASC">JGLOBAL_TITLE_ASC</option>
+            <option value="a.title DESC">JGLOBAL_TITLE_DESC</option>        
+            <option value="a.catid ASC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_CATEGORIES_ASC</option>
+            <option value="a.catid DESC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_CATEGORIES_DESC</option>
+            <option value="a.views ASC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_VIEWS_ASC</option>
+            <option value="a.views DESC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_VIEWS_DESC</option>
+            <option value="a.ratings ASC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_RATINGS_ASC</option>
+            <option value="a.ratings DESC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_RATINGS_DESC</option>
+            <option value="a.likes ASC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_LIKES_ASC</option>
+            <option value="a.likes DESC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_LIKES_DESC</option>
+            <option value="a.dislikes ASC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_DISLIKES_ASC</option>
+            <option value="a.dislikes DESC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_DISLIKES_DESC</option>
+            <option value="a.featured ASC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_FEATURED_ASC</option>
+            <option value="a.featured DESC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_FEATURED_DESC</option>
+            <option value="a.user ASC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_USER_ASC</option>
+            <option value="a.user DESC">COM_ALLVIDEOSHARE_FORM_OPTION_FULLORDERING_USER_DESC</option>
+            <option value="a.state ASC">JSTATUS_ASC</option>
+            <option value="a.state DESC">JSTATUS_DESC</option>
+            <option value="a.ordering ASC">JGRID_HEADING_ORDERING_ASC</option>
+            <option value="a.ordering DESC">JGRID_HEADING_ORDERING_DESC</option> 
+        </field>
+
+       <field 
+            name="limit"
+            type="limitbox"
+            default="25"
+            label="JGLOBAL_LIST_LIMIT"
+            class="input-mini"            
+            onchange="this.form.submit();"
+        />
+    </fields>
+</form>

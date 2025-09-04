@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="arkeditor" method="upgrade">
+	<name>ArkEditor - Format</name>
+	<title>Format</title>
+	<author>WebxSolution Ltd</author>
+	<creationDate>Aug 2016</creationDate>
+	<copyright>>Copyright (C) 2016- 2017 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>The Format plugin</description>
+	<files>
+		<filename plugin="format">format.php</filename>
+		<filename>index.html</filename>
+		<folder>format</folder>
+	</files>
+    <config>
+	    <fields name="params">
+		    <fieldset name ="advanced">
+			    <field name="format_tags" type="dualaddformatlist"  separator=";" default="" label="PLG_ARKEDITOR_TAG_LIST" description="PLG_ARKEDITOR_TAG_LIST_DESC">
+				    <option value="p">Normal</option>
+				    <option value="h1">Heading 1</option>
+				    <option value="h2">Heading 2</option>
+				    <option value="h3">Heading 3</option>
+				    <option value="h4">Heading 4</option>
+				    <option value="h5">Heading 5</option>
+				    <option value="h6">Heading 6</option>
+				    <option value="pre">Formatted</option>
+				    <option value="address">Address</option>
+				    <option value="div">Normal (DIV)</option>
+			    </field>
+			    <field name="format_force_useDefaultText" type="radio"  class="btn-group" default="0" label="Force use default text" description="If this option is selected then the format list dropdown will ignore any language file text values and only use the default text values for the labels for each item.">
+				    <option value="0">No</option>
+				    <option value="1">Yes</option>
+			    </field>
+		    </fieldset>	
+	    </fields>
+    </config>
+</extension>

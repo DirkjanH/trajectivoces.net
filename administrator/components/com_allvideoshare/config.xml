@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <fieldset name="general" label="COM_ALLVIDEOSHARE_FIELDSET_GENERAL" addfieldprefix="MrVinoth\Component\AllVideoShare\Administrator\Field">
+    <fieldset name="general_gallery" label="COM_ALLVIDEOSHARE_FIELDSET_GALLERY">
+      <field 
+        name="rows"          
+        type="text" 
+        filter="int"
+        default="3" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_ROWS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_ROWS" 
+      />
+
+      <field 
+        name="cols"        
+        type="text" 
+        filter="int" 
+        default="3" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_COLS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_COLS" 
+      /> 
+
+      <field 
+        name="image_ratio"         
+        type="text" 
+        filter="float"
+        default="56.25" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_IMAGE_RATIO" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_IMAGE_RATIO" 
+      />
+
+      <field 
+        name="default_image" 
+        type="media" 
+        directory=""       
+        default=""
+        label="COM_ALLVIDEOSHARE_FORM_LBL_DEFAULT_IMAGE" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_DEFAULT_IMAGE" 
+      /> 
+
+      <field 
+        name="title_length"                    
+        type="text" 
+        filter="int" 
+        default="" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_TITLE_LENGTH" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_TITLE_LENGTH" 
+      />      
+
+      <field 
+        name="excerpt" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_EXCERPT" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_EXCERPT" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field> 
+
+      <field 
+        name="excerpt_length"      
+        type="text" 
+        filter="int" 
+        default="100" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_EXCERPT_LENGTH" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_EXCERPT_LENGTH" 
+      />
+
+      <field 
+        name="category_name" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_CATEGORY_NAME" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_CATEGORY_NAME" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="author_name" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_AUTHOR_NAME" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_AUTHOR_NAME" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="date_added" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_DATE_ADDED" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_DATE_ADDED" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="videos_count" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEOS_COUNT" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_VIDEOS_COUNT" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field> 
+
+      <field 
+        name="views" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_VIEWS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_VIEWS" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>     
+
+      <field 
+        name="popup" 
+        type="customradio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_POPUP" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_POPUP" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="show_noauth" 
+        type="list" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_SHOW_NOAUTH" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_SHOW_NOAUTH" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+    </fieldset>    
+
+    <fieldset name="general_ratings" label="COM_ALLVIDEOSHARE_FIELDSET_RATINGS">
+      <field 
+        name="ratings" 
+        type="customradio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_RATINGS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_RATINGS" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="guest_ratings" 
+        type="customradio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_GUEST_RATINGS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_GUEST_RATINGS" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+    </fieldset>
+
+    <fieldset name="general_likes" label="COM_ALLVIDEOSHARE_FIELDSET_LIKES">
+      <field 
+        name="likes" 
+        type="customradio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_LIKES" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_LIKES" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="guest_likes" 
+        type="customradio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_GUEST_LIKES" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_GUEST_LIKES" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+    </fieldset>     
+
+    <fieldset name="general_rss_feed" label="COM_ALLVIDEOSHARE_FIELDSET_RSS_FEED">
+      <field 
+        name="show_feed" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_SHOW_FEED" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_SHOW_FEED" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="feed_icon" 
+        type="media" 
+        directory="" 
+        default=""
+        label="COM_ALLVIDEOSHARE_FORM_LBL_FEED_ICON" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_FEED_ICON" 
+      />
+
+      <field 
+        name="feed_limit"          
+        type="text" 
+        filter="int"
+        default="20" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_FEED_LIMIT" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_FEED_LIMIT" 
+      />
+    </fieldset>
+
+    <fieldset name="general_misc" label="COM_ALLVIDEOSHARE_FIELDSET_MISC">
+      <field 
+        name="multi_categories" 
+        type="customradio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_MULTI_CATEGORIES" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_MULTI_CATEGORIES" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+    </fieldset>
+  </fieldset>
+
+  <fieldset name="player" label="COM_ALLVIDEOSHARE_FIELDSET_PLAYER">
+    <fieldset name="player_options" label="COM_ALLVIDEOSHARE_FIELDSET_OPTIONS">
+      <field 
+        name="player_width"        
+        type="text" 
+        filter="string"        
+        default="" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_PLAYER_WIDTH" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_PLAYER_WIDTH" 
+      />
+
+      <field 
+        name="player_ratio"        
+        type="text" 
+        filter="float"        
+        default="56.25" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_PLAYER_RATIO" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_PLAYER_RATIO" 
+      />
+
+      <field 
+        name="autoplay" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_AUTOPLAY" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_AUTOPLAY" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="loop" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_LOOP" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_LOOP" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="volume" 
+        type="integer" 
+        first="0" 
+        last="100" 
+        step="1"         
+        default="50" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_VOLUME" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_VOLUME" 
+        >
+        <option value="-1">--/--</option>
+      </field>
+
+      <field 
+        name="muted" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_MUTED" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_MUTED" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="hotkeys" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_HOTKEYS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_HOTKEYS" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="show_gdpr_consent" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_SHOW_GDPR_CONSENT" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_SHOW_GDPR_CONSENT" 
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+    </fieldset>
+
+    <fieldset name="player_controls" label="COM_ALLVIDEOSHARE_FIELDSET_CONTROLS">
+      <field 
+        name="controlbar" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_CONTROLBAR" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_CONTROLBAR" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>   
+
+      <field 
+        name="playlarge" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_PLAYLARGE" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_PLAYLARGE" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="rewind" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_REWIND" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_REWIND" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="play" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_PLAY" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_PLAY" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>  
+
+      <field 
+        name="fastforward" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_FASTFORWARD" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_FASTFORWARD" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>   
+
+      <field 
+        name="progress" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_PROGRESS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_PROGRESS"
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="currenttime" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_CURRENTTIME" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_CURRENTTIME"
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>     
+
+      <field 
+        name="duration" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_DURATION"
+        description="COM_ALLVIDEOSHARE_FORM_DESC_DURATION"  
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="volumectrl" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_VOLUMECTRL"
+        description="COM_ALLVIDEOSHARE_FORM_DESC_VOLUMECTRL"  
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="captions" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_CAPTIONS"
+        description="COM_ALLVIDEOSHARE_FORM_DESC_CAPTIONS"  
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="quality" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_QUALITY" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_QUALITY" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="speed" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_SPEED" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_SPEED"
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="pip" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_PIP" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_PIP"
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field> 
+
+      <field 
+        name="download" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_DOWNLOAD" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_DOWNLOAD"
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="fullscreen" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_FULLSCREEN" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_FULLSCREEN" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>      
+
+      <field 
+        name="embed" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_EMBED"
+        description="COM_ALLVIDEOSHARE_FORM_DESC_EMBED"  
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="share" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_SHARE" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_SHARE" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+    </fieldset>
+
+    <fieldset name="player_advertisements" label="COM_ALLVIDEOSHARE_FIELDSET_ADVERTISEMENTS">
+      <field 
+        name="adsource" 
+        type="list" 
+        default="custom"         
+        label="COM_ALLVIDEOSHARE_FORM_LBL_ADSOURCE"
+        description="COM_ALLVIDEOSHARE_FORM_DESC_ADSOURCE" 
+        >
+        <option value="custom">COM_ALLVIDEOSHARE_FORM_OPTION_ADSOURCE_CUSTOM</option>
+        <option value="vast">COM_ALLVIDEOSHARE_FORM_OPTION_ADSOURCE_VAST</option>
+      </field>
+
+      <field 
+        name="preroll" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_PREROLL"
+        description="COM_ALLVIDEOSHARE_FORM_DESC_PREROLL"  
+        showon="adsource:custom"
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="postroll" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="0" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_POSTROLL"
+        description="COM_ALLVIDEOSHARE_FORM_DESC_POSTROLL" 
+        showon="adsource:custom"
+        >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+
+      <field 
+        name="adtagurl"      
+        type="customurl" 
+        validate="url" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_ADTAGURL" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_ADTAGURL" 
+        showon="adsource:vast"
+      />
+    </fieldset>
+  </fieldset>  
+
+  <fieldset name="single_video_page" label="COM_ALLVIDEOSHARE_FIELDSET_SINGLE_VIDEO_PAGE">
+    <fieldset name="single_video_page_general" label="COM_ALLVIDEOSHARE_FIELDSET_SINGLE_VIDEO_PAGE">
+      <field 
+        name="title" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_TITLE" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_TITLE" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="description" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_DESCRIPTION" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_DESCRIPTION" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>           
+
+      <field 
+        name="search" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_SEARCH" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_SEARCH" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>      
+    </fieldset>
+
+    <fieldset name="single_video_page_related" label="COM_ALLVIDEOSHARE_FIELDSET_RELATED">
+      <field 
+        name="related_videos" 
+        type="radio" 
+        buttons="true" 
+        layout="joomla.form.field.radio.switcher" 
+        default="1" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_RELATED_VIDEOS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_RELATED_VIDEOS" 
+        >
+        <option value="0">JHIDE</option>
+        <option value="1">JSHOW</option>
+      </field>
+
+      <field 
+        name="related_rows"      
+        type="text" 
+        filter="int" 
+        default="" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_ROWS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_ROWS" 
+      />
+
+      <field 
+        name="related_cols" 
+        type="text" 
+        filter="int"       
+        default="" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_COLS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_COLS" 
+      />
+
+      <field 
+        name="related_orderby"
+        type="list"
+        default=""
+        label="COM_ALLVIDEOSHARE_FORM_LBL_ORDERBY"                                
+        >
+        <option value="">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_NONE</option>
+        <option value="latest">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_LATEST</option>
+        <option value="latest_by_date">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_LATEST_BY_DATE</option>
+        <option value="title_asc">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_TITLE_ASC</option>
+        <option value="title_desc">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_TITLE_DESC</option>
+        <option value="popular">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_POPULAR</option>
+        <option value="popular_by_ratings">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_POPULAR_BY_RATINGS</option>
+        <option value="popular_by_likes">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_POPULAR_BY_LIKES</option>
+        <option value="random">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_RANDOM</option> 
+        <option value="ordering">COM_ALLVIDEOSHARE_FORM_OPTION_ORDERBY_ORDERING</option>     
+      </field>
+    </fieldset> 
+
+    <fieldset name="single_video_page_comments" label="COM_ALLVIDEOSHARE_FIELDSET_COMMENTS">
+      <field 
+        name="comments_type" 
+        type="list"
+        default=""          
+        label="COM_ALLVIDEOSHARE_FORM_LBL_COMMENTS_TYPE" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_COMMENTS_TYPE" 
+        >
+        <option value="">COM_ALLVIDEOSHARE_FORM_OPTION_COMMENTS_NONE</option>
+        <option value="facebook">COM_ALLVIDEOSHARE_FORM_OPTION_COMMENTS_TYPE_FACEBOOK</option>
+        <option value="komento">COM_ALLVIDEOSHARE_FORM_OPTION_COMMENTS_TYPE_KOMENTO</option>
+        <option value="jlex">COM_ALLVIDEOSHARE_FORM_OPTION_COMMENTS_JLEX</option>
+      </field>
+
+      <field 
+        name="fbappid"         
+        type="text"
+        filter="string"  
+        label="COM_ALLVIDEOSHARE_FORM_LBL_FBAPPID" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_FBAPPID" 
+        showon="comments_type:facebook"
+      />
+
+      <field 
+        name="comments_posts" 
+        type="text" 
+        filter="int"         
+        default="5" 
+        label="COM_ALLVIDEOSHARE_FORM_LBL_COMMENTS_POSTS" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_COMMENTS_POSTS" 
+        showon="comments_type:facebook"
+      />
+
+      <field 
+        name="comments_color" 
+        type="list" 
+        default="light"         
+        label="COM_ALLVIDEOSHARE_FORM_LBL_COMMENTS_COLOR" 
+        description="COM_ALLVIDEOSHARE_FORM_DESC_COMMENTS_COLOR" 
+        showon="comments_type:facebook"
+        >
+        <option value="light">COM_ALLVIDEOSHARE_FORM_OPTION_COMMENTS_COLOR_LIGHT</option>
+        <option value="dark">COM_ALLVIDEOSHARE_FORM_OPTION_COMMENTS_COLOR_DARK</option>
+      </field> 
+    </fieldset> 
+  </fieldset> 
+
+  <fieldset name="front_end_video_form" label="COM_ALLVIDEOSHARE_FIELDSET_FRONT_END_VIDEO_FORM">
+    <field 
+      name="type_youtube" 
+      type="radio" 
+      buttons="true" 
+      layout="joomla.form.field.radio.switcher" 
+      default="0" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_TYPE_YOUTUBE"
+      description="COM_ALLVIDEOSHARE_FORM_DESC_TYPE_YOUTUBE" 
+      >
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+
+    <field 
+      name="type_vimeo" 
+      type="radio" 
+      buttons="true" 
+      layout="joomla.form.field.radio.switcher" 
+      default="0" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_TYPE_VIMEO" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_TYPE_VIMEO" 
+      >
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+
+    <field 
+      name="type_hls" 
+      type="radio" 
+      buttons="true" 
+      layout="joomla.form.field.radio.switcher" 
+      default="0" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_TYPE_HLS" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_TYPE_HLS" 
+      >
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+  </fieldset>  
+
+  <fieldset name="seo" label="COM_ALLVIDEOSHARE_FIELDSET_SEO">
+    <field 
+      name="itemid_category" 
+      type="menuitem" 
+      filter="int"
+      default="-1"        
+      label="COM_ALLVIDEOSHARE_FORM_LBL_ITEMID_CATEGORY" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_ITEMID_CATEGORY" 
+      >
+      <option value="0">COM_ALLVIDEOSHARE_FORM_OPTION_ITEMID_NONE</option>
+      <option value="-1">COM_ALLVIDEOSHARE_FORM_OPTION_ITEMID_AUTO</option>   
+    </field> 
+
+    <field 
+      name="itemid_video" 
+      type="menuitem" 
+      filter="int"
+      default="-1"        
+      label="COM_ALLVIDEOSHARE_FORM_LBL_ITEMID_VIDEO" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_ITEMID_VIDEO" 
+      >
+      <option value="0">COM_ALLVIDEOSHARE_FORM_OPTION_ITEMID_NONE</option> 
+      <option value="-1">COM_ALLVIDEOSHARE_FORM_OPTION_ITEMID_AUTO</option>    
+    </field>         
+  </fieldset>
+
+  <fieldset name="api_keys" label="COM_ALLVIDEOSHARE_FIELDSET_API_KEYS">
+    <field 
+      name="youtube_api_key"         
+      type="text"
+      filter="string"  
+      label="COM_ALLVIDEOSHARE_FORM_LBL_YOUTUBE_API_KEY" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_YOUTUBE_API_KEY" 
+    />
+
+    <field 
+      name="vimeo_authorization_token" 
+      type="text" 
+      filter="string" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIMEO_AUTHORIZATION_TOKEN" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_VIMEO_AUTHORIZATION_TOKEN" 
+    /> 
+
+    <field 
+      name="clearcache" 
+      type="clearcache"
+    /> 
+  </fieldset>
+
+  <fieldset name="licensing" label="COM_ALLVIDEOSHARE_FIELDSET_LICENSING">
+    <field 
+      type="customnote"
+      name="customnote_licensing"
+    />
+
+    <field 
+      name="licensekey" 
+      type="text" 
+      filter="string" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_LICENSEKEY" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_LICENSEKEY" 
+    />
+
+    <field 
+      name="logo" 
+      type="media"
+      directory="" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_LOGO" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_LOGO" 
+    />
+
+    <field 
+      name="logoposition" 
+      type="list"
+      default="bottomleft"        
+      label="COM_ALLVIDEOSHARE_FORM_LBL_LOGOPOSITION" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_LOGOPOSITION" 
+      >
+      <option value="topleft">COM_ALLVIDEOSHARE_FORM_OPTION_LOGOPOSITION_TOPLEFT</option>
+      <option value="topright">COM_ALLVIDEOSHARE_FORM_OPTION_LOGOPOSITION_TOPRIGHT</option>
+      <option value="bottomleft">COM_ALLVIDEOSHARE_FORM_OPTION_LOGOPOSITION_BOTTOMLEFT</option>
+      <option value="bottomright">COM_ALLVIDEOSHARE_FORM_OPTION_LOGOPOSITION_BOTTOMRIGHT</option>
+    </field>
+
+    <field 
+      name="logoalpha" 
+      type="integer" 
+      first="0" 
+      last="100" 
+      step="1"       
+      default="50" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_LOGOALPHA" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_LOGOALPHA" 
+    />
+
+    <field 
+      name="logotarget" 
+      type="url" 
+      validate="url"  
+      label="COM_ALLVIDEOSHARE_FORM_LBL_LOGOTARGET" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_LOGOTARGET" 
+    />
+
+    <field 
+      name="displaylogo" 
+      type="radio" 
+      buttons="true" 
+      layout="joomla.form.field.radio.switcher" 
+      default="1" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_DISPLAYLOGO" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_DISPLAYLOGO" 
+      >
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+  </fieldset>
+
+  <fieldset name="custom_css" label="COM_ALLVIDEOSHARE_FIELDSET_CUSTOM_CSS">
+    <field 
+      name="load_bootstrap" 
+      type="radio" 
+      buttons="true" 
+      layout="joomla.form.field.radio.switcher" 
+      default="0" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_LOAD_BOOTSTRAP" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_LOAD_BOOTSTRAP" 
+      >
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+
+    <field 
+      name="custom_css" 
+      type="textarea"
+      filter="safehtml"          
+      label="COM_ALLVIDEOSHARE_FORM_LBL_CUSTOM_CSS" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_CUSTOM_CSS" 
+      rows="10"
+    />                  
+  </fieldset> 
+
+  <fieldset name="permissions" description="JCONFIG_PERMISSIONS_DESC" label="JCONFIG_PERMISSIONS_LABEL">
+    <field 
+      name="rules" 
+      type="rules" 
+      component="com_allvideoshare" 
+      class="inputbox" 
+      filter="rules" 
+      validate="rules" 
+      label="JCONFIG_PERMISSIONS_LABEL" 
+      section="component"
+    />
+	</fieldset>
+</config>

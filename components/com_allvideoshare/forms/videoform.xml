@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="MrVinoth\Component\AllVideoShare\Administrator\Field">
+  <fieldset>
+    <field 
+      name="id" 
+      type="text" 
+      readonly="true" 
+      class="readonly" 
+      default="0" 
+      description="JGLOBAL_FIELD_ID_DESC"
+    />    
+
+    <field 
+      name="title"       
+      type="text" 
+      filter="string" 
+      required="true" 
+      label="JGLOBAL_TITLE"
+    />
+
+    <field 
+      name="catid" 
+      type="nestedcategories" 
+      layout="joomla.form.field.list-fancy-select" 
+      required="true" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_CATID" 
+      >
+      <option value="">COM_ALLVIDEOSHARE_FORM_HEADER_VIDEO_CATID</option>
+    </field>
+
+    <field 
+      name="catids" 
+      type="nestedcategories" 
+      multiple="true" 
+      layout="joomla.form.field.list-fancy-select"       
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_CATIDS" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_VIDEO_CATIDS" 
+    />
+
+    <field 
+      name="type"       
+      type="list" 
+      default="general" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_TYPE" 
+      >
+      <option value="general">COM_ALLVIDEOSHARE_FORM_OPTION_TYPE_GENERAL</option>
+      <option value="youtube">COM_ALLVIDEOSHARE_FORM_OPTION_TYPE_YOUTUBE</option>
+      <option value="vimeo">COM_ALLVIDEOSHARE_FORM_OPTION_TYPE_VIMEO</option>
+      <option value="hls">COM_ALLVIDEOSHARE_FORM_OPTION_TYPE_HLS</option>
+    </field>
+
+    <field 
+      name="video" 
+      type="fileupload" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO" 
+      class="required-conditionally" 
+      labelclass="required-conditionally-label"
+      showon="type:general"
+    />
+
+    <field 
+      name="hd" 
+      type="fileupload" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_HD" 
+      showon="type:general"
+    />
+
+    <field 
+      name="youtube"       
+      type="url" 
+      validate="url" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_YOUTUBE" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_VIDEO_YOUTUBE" 
+      class="required-conditionally" 
+      labelclass="required-conditionally-label"
+      showon="type:youtube"
+    />
+
+    <field 
+      name="vimeo"       
+      type="url" 
+      validate="url" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_VIMEO" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_VIDEO_VIMEO" 
+      class="required-conditionally" 
+      labelclass="required-conditionally-label"
+      showon="type:vimeo"
+    />
+
+    <field 
+      name="hls"       
+      type="url" 
+      validate="url" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_HLS" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_VIDEO_HLS" 
+      class="required-conditionally" 
+      labelclass="required-conditionally-label"
+      showon="type:hls"
+    />
+
+    <field 
+      name="captions" 
+      type="hidden"
+      filter="string"
+    />
+
+    <field 
+      name="thumb" 
+      type="fileupload" 
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_THUMB" 
+    />
+
+    <field 
+      name="description" 
+      type="editor" 
+      filter="JComponentHelper::filterText" 
+      editor="|" 
+      buttons="false"       
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_DESCRIPTION" 
+    />
+
+    <field 
+      name="access" 
+      type="hidden" 
+      filter="int" 
+    />
+
+    <field 
+      name="featured" 
+      type="hidden" 
+      filter="int" 
+    />
+
+    <field 
+      name="views" 
+      type="hidden" 
+      filter="int" 
+    />
+
+    <field 
+      name="ratings" 
+      type="hidden"
+      filter="float" 
+    />
+
+    <field 
+      name="likes" 
+      type="hidden"
+      filter="int" 
+    /> 
+
+    <field 
+      name="dislikes" 
+      type="hidden"
+      filter="int" 
+    /> 
+
+    <field 
+      name="tags" 
+      type="textarea" 
+      filter="string"       
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_TAGS" 
+      description="COM_ALLVIDEOSHARE_FORM_DESC_VIDEO_TAGS" 
+    />
+
+    <field 
+      name="metadescription" 
+      type="textarea" 
+      filter="string"       
+      label="COM_ALLVIDEOSHARE_FORM_LBL_VIDEO_METADESCRIPTION" 
+    /> 
+
+    <field 
+      name="state" 
+      default="1" 
+      type="list" 
+      label="JSTATUS" 
+      description="JFIELD_PUBLISHED_DESC" 
+      class="inputbox" 
+      size="1">
+      <option value="1">JPUBLISHED</option>
+      <option value="0">JUNPUBLISHED</option>
+    </field> 
+
+    <field 
+      name="ordering"
+      type="hidden" 
+      filter="unset"
+    />
+
+    <field 
+      name="checked_out" 
+      type="hidden" 
+      filter="unset"
+    />
+
+    <field 
+      name="checked_out_time" 
+      type="hidden" 
+      filter="unset"
+    />
+
+    <field 
+      name="created_date" 
+      type="hidden" 
+      filter="server_utc" 
+    />
+  </fieldset>  
+</form>

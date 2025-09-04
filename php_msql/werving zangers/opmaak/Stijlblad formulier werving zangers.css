@@ -1,0 +1,175 @@
+@charset "iso-8859-1";
+body {
+	margin: 0px;
+	font-size: 0.8em;
+	font-style: normal;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+table {
+	width: 99%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 0px;
+}
+
+.TekstpaginaAchtergrond {
+	width: 98%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 6px;
+	padding-top: 3px;
+	border: 1px none #EBE6DA;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #333;
+	background-image: url(../../../Afbeeldingen/afbeeldingen%20achtergrondopmaak/AchtergrondtekstkaderStartpagina.png);
+	background-repeat: repeat;
+	font-size: 0.8em;
+	padding-bottom: 10px;
+	margin-bottom: 0px;
+}
+
+
+
+#kop  {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	height: auto;
+}
+td#aanhefvacatureformulier {
+	text-align: left;
+	padding-right: 1%;
+	padding-left: 1%;
+	border: 1px solid #FFF;
+	font-size: 1.2em;
+	color: #F00;
+	padding-top: 10px;
+	padding-bottom: 11px;
+	background-color: #D2D0C4;
+	height: 30px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+td#tekstkader {
+	padding-left: 16px;
+	border: 1px solid #D2D0C4;
+	padding-bottom: 10px;
+	color: #333;
+}
+h3     {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	color: #324B41;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+h2 {
+	font-size: 1.2em;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #243730;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	display: inline;
+}
+#Bovenbalkformulier {
+	clear: both;
+	width: 96%;
+	font-family: Calibri, Verdana, Arial;
+	font-size: 14px;
+	color: #333;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: left;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 1%;
+	padding-left: 16px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px solid #D2D0C4;
+	visibility: hidden;
+	display: none;
+}
+a {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1em;
+	font-style: italic;
+	color: #385030;
+}
+a:hover {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1em;
+	font-style: italic;
+	color: #B5C6AE;
+}
+/* CSS Document */
+
+ label {
+	color: #181D1B;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+        }
+
+
+
+
+/* CSS Document */
+
+ label.error {
+            color: #FF0000;
+        }
+.Invulveld {
+	background-color: #515555;
+	color: #FFF;
+}
+#formulierbody {
+	text-align: left;
+	width: 94%;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../../../Afbeeldingen/afbeeldingen%20achtergrondopmaak/achtergrondformulier1.png);
+	background-repeat: repeat;
+	border: 1px solid #FFF;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	overflow: auto;
+	padding-right: 1%;
+	padding-left: 1%;
+}
+#kaderverzendknop {
+	text-align: center;
+	/* [disabled]height: 55px; */
+	width: 98%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 7px;
+	border: 1px solid #D2D0C4;
+	background-color: #DDDBD2;
+}
+
+.Verzendknop {
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: normal;
+	color: #F4F4F4;
+	background-color: #7B8282;
+	font-weight: bold;
+	width: 110px;
+	height: 30px;
+	font-size: 15px;
+	margin-top: 12px;
+	margin-bottom: 20px;
+}
+.stemselectie , .informatieverzoek{
+	color: #7A360E;
+}
+.stijl1 {
+	font-style: italic;
+	font-weight: bold;
+	font-size: 120%;
+	color: #666;
+}
+.stijl2 {
+	font-weight: bold;
+	text-decoration: underline;
+}

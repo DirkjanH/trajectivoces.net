@@ -1,0 +1,58 @@
+@charset "iso-8859-1";
+table {
+
+}
+p {
+
+}
+H2, H3, H4, H5, H6 
+{
+	font-family: Verdana, Arial, sans-serif; 
+	color: #66776B
+}
+
+.fotobijschrift {
+	font-size: 15px;
+	color: #999999;
+}
+.fotolinks {
+	font-size: 11px;
+	text-align: center;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.fotocenter {
+	font-size: 10px;
+	text-align: center;
+	line-height: 2em;
+}
+.fotorechts {
+	font-size: 10px;
+	text-align: center;
+	float: right;
+	margin-left: 20px;
+}
+/* CSS Document */
+
+
+table#res {
+	width: 100%;
+	border: medium double #336633;
+	border-collapse: collapse;
+}
+#res td, th {
+	font-size: 70%;
+	border: thin solid #000000;
+	padding: 3px;
+}
+#res th {
+	background: #FFFF00;
+}
+.klein {
+	font-size: 70%;
+}
+.commentaar {
+	font-size: 80%;
+	color: #FF0000;
+}

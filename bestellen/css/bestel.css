@@ -1,0 +1,163 @@
+@charset "utf-8";
+@import 'w3.css';
+#mainform {
+	background-color: white;
+}
+h1 {
+	display: inline;
+	font-weight: 600;
+	font-size: 36px;
+}
+h2 {
+	display: inline;
+	font-size: 24px;
+	font-style: italic;
+	font-weight: bold;
+	height: auto;
+	width: auto;
+}
+h3, h4 {
+	font-weight: bold;
+	letter-spacing: 0.1em;
+}
+.rood {
+	color: #FF0000;
+}
+.kleinkap {
+	font-variant: small-caps;
+}
+a:link {
+	color: #006633;
+	text-decoration: underline;
+}
+a:visited {
+	color: #660066;
+	text-decoration: underline;
+}
+img {
+	border: 1px solid #000000;
+}
+img.geenlijn {
+	border-style: none;
+}
+.fotobijschrift {
+	font-size: 0.63em;
+}
+.fotolinks {
+	font-size: 0.63em;
+	text-align: center;
+	line-height: 2em;
+	float: left;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+.fotocenter {
+	font-size: 0.63em;
+	text-align: center;
+	line-height: 2em;
+}
+.fotorechts {
+	font-size: 0.63em;
+	text-align: center;
+	float: right;
+	margin-left: 20px;
+}
+.nadruk {
+	color: #F00;
+	font-weight: bold;
+	font-size: 80%;
+}
+.kleinkap {
+	font-variant: small-caps;
+}
+.klein {
+	font-size: 70%;
+}
+.commentaar {
+	font-size: 80%;
+	color: #FF0000;
+}
+hr {
+	color: #00CC33;
+}
+.onzichtbaar {
+	display: none;
+}
+input, textarea {
+	background-color: palegoldenrod;
+}
+table#res {
+	width: 100%;
+	border: medium double #336633;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	page-break-after: always;
+}
+#res td, th {
+	font-size: 70%;
+	border: thin solid #000000;
+	padding: 3px;
+}
+#res th {
+	background-color: rgba(253,255,193,1.00);
+}
+div#main {
+	margin-left: 250px;
+}
+div#nav {
+	width: 250px;
+	background-color: lightgrey;
+}
+div#navcontainer {
+	margin-left: 25px;
+}
+#navcontainer a {
+	display: block;
+	padding: 3px;
+	width: 180px;
+	border-bottom: 1px solid #1A2B38;
+	font-weight: bold;
+	text-decoration: none;
+}
+#navcontainer ul {
+	margin-left: 0px;
+	padding-left: 0px;
+	list-style-type: none;
+	font-size: 15px;
+}
+#navcontainer li {
+	padding-bottom: 0px;
+	padding-top: 0px;
+	margin-top: 3px;
+	margin-bottom: 0px;
+}
+#navcontainer a:link, #navlist a:visited {
+	color: #1A2B38;
+}
+#navcontainer a:hover, #navlist a:active {
+	background-color: #1A2B38;
+	color: #fff;
+}
+.klein {
+	font-size: 70%;
+}
+
+@media print {
+h2 {
+	page-break-before: always !important;
+}
+p, p * {
+	page-break-before: avoid;
+}
+.niet-printen, .niet-printen * {
+	display: none !important;
+}
+#res td, th {
+	font-size: 100%;
+}
+}
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>Social Facebook Widget</name>
+	<author>Alex Mudie</author>
+	<creationDate>December 2015</creationDate>
+	<copyright>All rights reserved by SocialFBWidget.COM.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>alex@socialfbwidgets.com</authorEmail>
+	<authorUrl>http://www.socialfbwidgets.com</authorUrl>
+	<version>1.0</version>
+	<description>Thanks For installing Social Facebook Widget. Clean - simple widget will get up and run in few mins.</description>
+
+	<files>
+		<filename module="mod_socialfacebookwidget">mod_socialfacebookwidget.php</filename>
+		<folder>tmpl</folder>
+		<filename>index.html</filename>
+		<filename>mod_socialfacebookwidget.xml</filename>
+	</files>
+
+	<config>
+        <fields name="params">
+            <fieldset name="basic">
+
+            	<field
+					name="facebook_name"
+					type="text"
+					default="Facebook"
+					label="Facebook Page Name"
+					description="Facebook Page Name" />
+				
+				<field
+					name="facebook_url"
+					type="url"
+					default="https://www.facebook.com/facebook"
+					label="Facebook Page URL"
+					description="Facebook Page URL" />
+
+				<field
+					name="tabs"
+					type="radio"
+					class="btn-group"
+					default="timeline"
+					label="Tabs"
+					description="Tabs to render i.e. timeline, events, messages. ">
+					<option value="timeline">Timeline</option>
+					<option value="events">Events</option>
+					<option value="messages">Messages</option>
+				</field>	
+
+				<field
+					name="facebook_width"
+					type="text"
+					default="350"
+					label="Facebook Page Width"
+					description="Facebook Page Width" />
+					
+				<field
+					name="facebook_height"
+					type="text"
+					default="500"
+					label="Facebook Page Height"
+					description="Facebook Page Height" />		
+
+				<field
+					name="face"
+					type="radio"
+					class="btn-group"
+					default="true"
+					label="Show Faces"
+					description="Show Faces">
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</field>
+
+				<field
+					name="hide_cover"
+					type="radio"
+					class="btn-group"
+					default="false"
+					label="Hide Cover Photo"
+					description="Hide Cover Photo">
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</field>
+
+				<field
+					name="small_header"
+					type="radio"
+					class="btn-group"
+					default="false"
+					label="Show Small Header"
+					description="Show Small Header">
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</field>
+
+				<field
+					name="hide_button"
+					type="radio"
+					class="btn-group"
+					default="false"
+					label="Hide the custom call to action button"
+					description="Hide the custom call to action button (if available)">
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</field>
+
+				<field
+					name="adapt_container_width"
+					type="radio"
+					class="btn-group"
+					default="true"
+					label="Adapt Container Width"
+					description="Adapt Container Width">
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</field>
+             </fieldset>
+				
+            <fieldset name="advanced">
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_LAYOUT_DESC" />
+                    <field
+						name="moduleclass_sfx"
+						type="text" 
+						label="Module Class Suffix"
+						description="Put your module class suffix here" />	
+		    </fieldset>
+	    </fields>
+   </config>
+</extension>

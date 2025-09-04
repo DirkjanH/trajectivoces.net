@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Single Image Layout">
+		<message>
+			Single Image Layout
+		</message>
+	</layout>
+	<state>
+		<name>Single Image Layout</name>
+		<description>Single Image Layout</description>
+	</state>
+	<fields name="params">
+		<fieldset name="basic">
+            <field name="id" type="sql" query="SELECT id, name FROM #__fwg_files WHERE published=1 ORDER BY ordering" label="Select Image" description="An image to display" key_field="id" value_field="name" />
+ 		</fieldset>
+	</fields>
+</metadata>

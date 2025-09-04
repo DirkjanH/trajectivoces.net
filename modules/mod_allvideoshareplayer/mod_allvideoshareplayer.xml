@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="4.0" method="upgrade" client="site">
+    <name>mod_allvideoshareplayer</name>
+    <creationDate>June 2023</creationDate>
+    <copyright>Copyright (c) 2012 - 2023 Vinoth Kumar. All Rights Reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <author>Vinoth Kumar</author>
+    <authorEmail>admin@mrvinoth.com</authorEmail>
+    <authorUrl>https://allvideoshare.mrvinoth.com/</authorUrl>
+    <version>4.2.1</version>
+    <description>MOD_ALLVIDEOSHAREPLAYER_XML_DESCRIPTION</description>
+	<namespace path="src">MrVinoth\Module\AllVideoSharePlayer</namespace>    
+    <files>
+        <filename module="mod_allvideoshareplayer">mod_allvideoshareplayer.php</filename>
+		<filename>index.html</filename>
+		<folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+    <languages folder="language">        
+		<language tag="en-GB">en-GB/mod_allvideoshareplayer.ini</language>
+		<language tag="en-GB">en-GB/mod_allvideoshareplayer.sys.ini</language>
+    </languages>  
+    <config>
+		<fields name="params">
+			<fieldset name="basic" addfieldprefix="MrVinoth\Component\AllVideoShare\Administrator\Field">
+				<field 
+					name="videoid" 
+					type="video" 	
+					key_field="id" 			
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_VIDEOID"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_VIDEOID"  
+					extension="mod_allvideoshareplayer"
+					select="true"
+					new="true"
+					edit="true"
+				/>	
+
+				<field 
+					name="note_videoid_dynamic" 
+					type="note" 					
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_NOTE_VIDEOID_DYNAMIC" 
+					class="lead"
+					heading="p" 
+				/>
+
+				<field 
+					name="catid" 
+                    type="nestedcategories" 
+					layout="joomla.form.field.list-fancy-select" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_CATID" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_CATID" 
+				    >
+                    <option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_HEADER_SELECT_CATEGORY</option>
+                </field>
+
+				<field 
+                    name="orderby"
+                    type="list"
+                    label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_ORDERBY"                                
+                    >
+                    <option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_NONE</option>                    
+                    <option value="latest">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_LATEST</option>
+                    <option value="latest_by_date">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_LATEST_VIDEOS_BY_DATE</option>
+                    <option value="title_asc">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_TITLE_ASC</option>
+                    <option value="title_desc">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_TITLE_DESC</option>
+                    <option value="popular">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_POPULAR</option>
+                    <option value="popular_by_ratings">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_POPULAR_BY_RATINGS</option>
+                    <option value="popular_by_likes">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_POPULAR_BY_LIKES</option>
+                    <option value="random">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_RANDOM</option>
+                    <option value="ordering">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ORDERBY_ORDERING</option>       
+                </field>               
+
+				<field 
+					name="featured" 
+					type="radio" 
+					buttons="true" 
+					layout="joomla.form.field.radio.switcher" 
+					default="0" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_FEATURED" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_FEATURED" 
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>	
+
+				<field 					
+					name="spacer_basic" 
+					type="spacer" 
+					hr="true" 
+				/>
+
+				<field 
+					name="title" 
+					type="radio" 
+					buttons="true" 
+					layout="joomla.form.field.radio.switcher" 
+					default="0" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_TITLE" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_TITLE" 
+					>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="description" 
+					type="radio" 
+					buttons="true" 
+					layout="joomla.form.field.radio.switcher" 
+					default="0" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_DESCRIPTION" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_DESCRIPTION" 
+					>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="spacer_player" 
+					type="spacer" 					
+					hr="true" 
+				/>				
+
+				<field 
+					name="note_player" 
+					type="note" 					
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_NOTE" 
+					class="fw-bold"
+					heading="h3"  
+				/>
+
+				<field 
+					name="player_width"        
+					type="text" 
+					filter="string"        
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_PLAYER_WIDTH" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_PLAYER_WIDTH" 
+				/>
+
+				<field 
+					name="player_ratio"        
+					type="text" 
+					filter="float"        
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_PLAYER_RATIO" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_PLAYER_RATIO" 
+				/>
+
+				<field 
+					name="autoplay" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_AUTOPLAY" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_AUTOPLAY" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field 
+					name="loop" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_LOOP" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_LOOP" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field 
+					name="muted" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_MUTED" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_MUTED" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field 
+					name="note_controls" 
+					type="note" 					
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_NOTE_CONTROLS" 
+					class="fw-bold"
+					heading="h3" 
+				/>
+
+				<field 
+					name="controlbar" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_CONTROLBAR" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_CONTROLBAR" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="playlarge" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_PLAYLARGE" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_PLAYLARGE" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="rewind" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_REWIND" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_REWIND" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="play" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_PLAY" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_PLAY" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="fastforward" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_FASTFORWARD" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_FASTFORWARD" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="progress" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_PROGRESS" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_PROGRESS" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>               
+
+				<field 
+					name="currenttime" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_CURRENTTIME" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_CURRENTTIME"
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="duration" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_DURATION"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_DURATION"  
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="volumectrl" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_VOLUMECTRL"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_VOLUMECTRL"  
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="captions" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_CAPTIONS"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_CAPTIONS"  
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="quality" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_QUALITY"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_QUALITY"  
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="speed" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_SPEED"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_SPEED"  
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="pip" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_PIP"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_PIP"  
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="download" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_DOWNLOAD"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_DOWNLOAD"  
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="fullscreen" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_FULLSCREEN" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_FULLSCREEN" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="embed" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_EMBED"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_EMBED"  
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field 
+					name="share" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_SHARE" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_SHARE" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>	
+
+				<field 
+					name="note_advertisements" 
+					type="note" 					
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_NOTE_ADVERTISEMENTS" 
+					class="fw-bold"
+					heading="h3" 
+				/>
+
+				<field 
+					name="adsource" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_ADSOURCE"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_ADSOURCE" 
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="custom">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ADSOURCE_CUSTOM</option>
+					<option value="vast">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_ADSOURCE_VAST</option>
+				</field>
+
+				<field 
+					name="preroll" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_PREROLL"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_PREROLL"  
+					showon="adsource:custom"
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field 
+					name="postroll" 
+					type="list" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_POSTROLL"
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_POSTROLL" 
+					showon="adsource:custom"
+					>
+					<option value="">MOD_ALLVIDEOSHAREPLAYER_FORM_OPTION_GLOBAL</option>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field 
+					name="adtagurl"      
+					type="customurl" 
+					validate="url" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_ADTAGURL" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_ADTAGURL" 
+					extension="mod_allvideoshareplayer"
+					showon="adsource:vast"
+				/>
+			</fieldset>
+			
+			<fieldset name="advanced">
+				<field 
+					name="autodetect" 
+					type="radio" 
+					buttons="true" 
+					layout="joomla.form.field.radio.switcher" 
+					default="0" 
+					label="MOD_ALLVIDEOSHAREPLAYER_FORM_LBL_AUTODETECT" 
+					description="MOD_ALLVIDEOSHAREPLAYER_FORM_DESC_AUTODETECT" 
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				
+			    <field
+					name="moduleclass_sfx"
+					type="textarea"
+					validate="CssIdentifier"
+					rows="3"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"					
+				/>
+			</fieldset>
+		</fields>
+	</config>  
+</extension>

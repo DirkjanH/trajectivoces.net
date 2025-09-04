@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="font" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Aug 2016</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description> 
+	<languages>
+	</languages>
+	<params group="options">
+		<param name="format_tags" type="dualaddformatlist"  separator=";" default="" label="PLG_ARKEDITOR_TAG_LIST" description="PLG_ARKEDITOR_TAG_LIST_DESC">
+			<option value="p">Normal</option>
+			<option value="h1">Heading 1</option>
+			<option value="h2">Heading 2</option>
+			<option value="h3">Heading 3</option>
+			<option value="h4">Heading 4</option>
+			<option value="h5">Heading 5</option>
+			<option value="h6">Heading 6</option>
+			<option value="pre">Formatted</option>
+			<option value="address">Address</option>
+			<option value="div">Normal (DIV)</option>
+		</param>
+		<param name="format_force_useDefaultText" type="radio"  default="0" label="Force use default text" "If this option is selected then the format list dropdown will ignore any language file text values and only use the default text values for the labels for each item."  >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>	
+	</params>
+</install>

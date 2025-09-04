@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Galleries Layout">
+		<message>
+			Galleries Layout
+		</message>
+	</layout>
+	<state>
+		<name>Galleries Layout</name>
+		<description>Galleries Layout</description>
+	</state>
+	<fields name="params">
+		<fieldset name="basic" addfieldpath="/administrator/components/com_fwgallery/elements16">
+            <field name="galleries_id" type="FWGGallery" label="Select Galleries" description="Galleries to display"/>
+		</fieldset>
+	</fields>
+</metadata>

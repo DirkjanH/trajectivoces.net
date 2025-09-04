@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `#__allvideoshare_cache` (
+    `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,    
+    `name` VARCHAR(255) NOT NULL,
+	`value` TEXT NULL,
+    `expiry_date` DATETIME NULL DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;

@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "Alleen voor de zangers"
+AuthUserFile /home/trajecnet/domains/trajectivoces.net/.htpasswd/.httrajectivfotografie
+AuthGroupFile /dev/null
+<Limit GET>
+require valid-user
+</Limit>

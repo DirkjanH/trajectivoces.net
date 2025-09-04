@@ -1,0 +1,75 @@
+@charset "iso-8859-1";
+.Centreervenster#roostersledenlijst {
+	margin-left: 200px;
+	height: auto;
+	background-image: url(../../Afbeeldingen/afbeeldingen%20achtergrondopmaak/bodyachtergrond2.png);
+	background-repeat: repeat;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #AB8D08;
+}
+.TekstpaginaAchtergrond#roostersledenlijst {
+	padding-bottom: 10px;
+	padding-right: 1%;
+	padding-left: 1%;
+	background-image: url(../../Afbeeldingen/afbeeldingen%20achtergrondopmaak/AchtergrondtekstkaderStartpagina2.png);
+	background-repeat: repeat;
+	padding-top: 10px;
+	color: #313131;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	height: auto;
+	overflow: hidden;
+}
+/* CSS Document */
+
+iframe#roosters {
+	width: 100%;
+	overflow: auto;
+	padding-right: 30px;
+	height: 100%;
+}
+
+.dropmenudiv#valmenu1{
+	width: 132px;
+	visibility: visible;
+	margin-top: 9px;
+	float: left;
+	margin-left: -4px;
+}
+#menu {
+	padding-top: 8px;
+	padding-bottom: 12px;
+	padding-left: 1%;
+	border: 1px solid #FFF;
+	margin-bottom: 10px;
+	background-color: #D2D0C4;
+}
+#menu a {
+	padding-right: 20px;
+	padding-left: 20px;
+	color: #40605C;
+	font-style: italic;
+}
+#menu a:hover {
+	color: #C2B67C;
+	font-style: italic;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.TekstpaginaAchtergrond#interneledenpaginas {
+	background-image: url(../../Afbeeldingen/afbeeldingen%20achtergrondopmaak/AchtergrondtekstkaderStartpagina.png);
+	background-repeat: repeat;
+	padding-top: 10px;
+	color: #313131;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #EBE6DA;
+	border-right-color: #EBE6DA;
+	border-bottom-color: #EBE6DA;
+	border-left-color: #EBE6DA;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+}

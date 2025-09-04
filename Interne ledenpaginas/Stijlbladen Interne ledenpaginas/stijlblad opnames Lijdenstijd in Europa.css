@@ -1,0 +1,44 @@
+@charset "iso-8859-1";
+h2 {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 1.2em;
+	color: #EBEAE0;
+	font-style: italic;
+	margin-bottom: -30px;
+}
+.Hoofdvenster #opnames ul li {
+	margin-top: -15px;
+}
+.Hoofdvenster #opnames table tr {
+}
+
+
+h3 {
+	margin-bottom: -17px;
+	font-family: Calibri, Verdana, Arial;
+	font-size: 1em;
+	color: #333;
+}
+
+
+
+/* CSS Document */
+
+
+.Centreervenster#opnames {
+	margin-left: 200px;
+	height: 665px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #EBE6DA;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #EBE6DA;
+	border-right-color: #EBE6DA;
+	border-left-color: #EBE6DA;
+	background-image: url("../../Afbeeldingen/afbeeldingen achtergrondopmaak/bodyachtergrond2.png");
+	background-repeat: repeat;
+}
+.Hoofdvenster #opnames table tr td {
+	text-align: left;
+}
