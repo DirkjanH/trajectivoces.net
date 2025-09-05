@@ -126,7 +126,7 @@ d( $concert );
 							<div id="navcontainer">
 								<ul id="navlist">
 									<li><a href="#" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">Close &times;</a></li>
-					XXX;		
+						XXX;		
 									foreach($concerten AS $conc) {
 										$datum = strftime("%a %e %B %Y", strtotime($conc['datum'])); 
 										$c = $conc['concerttitel'];
