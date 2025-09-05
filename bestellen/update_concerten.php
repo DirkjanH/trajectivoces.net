@@ -128,7 +128,7 @@ d( $concert );
 									<li><a href="#" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">Close &times;</a></li>
 						XXX;		
 									foreach($concerten AS $conc) {
-										$datum = strftime("%a %e %B %Y", strtotime($conc['datum'])); 
+										$datum = strftime('%a %e %B %Y', strtotime($conc['datum']), 'nl_NL'); 
 										$c = $conc['concerttitel'];
 										$href = $_SERVER['PHP_SELF'].'?concertId='.$conc['concertId'];
 										echo <<<XXX
