@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 error_reporting( E_ALL );
 
 require_once( 'modules/bestelfuncties.php' );
-echo $_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php';
+echo $_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php<br>';
 require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php' );
 use function PHP81_BC\strftime;
 
