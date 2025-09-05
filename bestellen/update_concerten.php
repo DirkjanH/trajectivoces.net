@@ -7,7 +7,7 @@ require_once( 'modules/bestelfuncties.php' );
 require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php' );
 use function PHP81_BC\strftime;
 
-Kint::$enabled_mode = false;
+Kint::$enabled_mode = true;
 
 session_start();
 if ( isset( $_POST[ 'zoeknaam' ] )AND $_POST[ 'zoeknaam' ] != '' )$_SESSION[ 'zoeknaam' ] = $_POST[ 'zoeknaam' ];
