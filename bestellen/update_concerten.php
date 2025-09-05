@@ -7,7 +7,7 @@ require_once( 'modules/bestelfuncties.php' );
 require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php' );
 use function PHP81_BC\strftime;
 
-echo strftime('%a %e %B %Y', strtotime($conc['datum']), 'nl_NL');
+echo strftime('%a %e %B %Y', new DateTime($conc['datum']), 'nl_NL');
 
 Kint::$enabled_mode = true;
 
