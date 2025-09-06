@@ -9,7 +9,7 @@ use function PHP81_BC\strftime;
 
 echo strftime('%a %e %B %Y', new DateTime($conc['datum']), 'nl_NL');
 
-Kint::$enabled_mode = true;
+Kint::$enabled_mode = false;
 
 session_start();
 if ( isset( $_POST[ 'zoeknaam' ] )AND $_POST[ 'zoeknaam' ] != '' )$_SESSION[ 'zoeknaam' ] = $_POST[ 'zoeknaam' ];
