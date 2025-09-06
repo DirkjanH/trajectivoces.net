@@ -17,16 +17,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-- name: Check if Composer files changed
-  id: composer_changed
-  run: |
-    if git diff --name-only ${{ github.sha }} ${{ github.event.before }} | grep -E 'composer.json|composer.lock'; then
-      echo "changed=true" >> $GITHUB_OUTPUT
-    else
-      echo "changed=false" >> $GITHUB_OUTPUT
-    fi
+    - name: Check if Composer files changed
+      id: composer_changed
+      run: |
+        if git diff --name-only ${{ github.sha }} ${{ github.event.before }} | grep -E 'composer.json|composer.lock'; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
 
-- name: Install Composer dependencies
-  if: steps.composer_changed.outputs.changed == 'true'
-  run: composer install --no-interaction --prefer-dist --optimize-autoloader
+    - name: Install Composer dependencies
+      if: steps.composer_changed.outputs.changed == 'true'
+      run: composer install --no-interaction --prefer-dist --optimize-autoloader
   
+s
