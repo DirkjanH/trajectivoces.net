@@ -11,6 +11,7 @@ echo strftime('%a %e %B %Y', new DateTime($conc['datum']), 'nl_NL');
 
 Kint::$enabled_mode = false;
 
+
 session_start();
 if ( isset( $_POST[ 'zoeknaam' ] )AND $_POST[ 'zoeknaam' ] != '' )$_SESSION[ 'zoeknaam' ] = $_POST[ 'zoeknaam' ];
 if ( isset( $_POST[ 'wis' ] )AND $_POST[ 'wis' ] == 'wis' )unset( $_SESSION[ 'zoeknaam' ] );
