@@ -1,0 +1,11 @@
+table#werken tr td {
+    vertical-align: top;
+    padding: 3px;
+    border: 1px solid black;
+	font-size: 0.7em;
+}
+table#werken tr td ol {
+	margin-bottom: 0;
+}
+
+
