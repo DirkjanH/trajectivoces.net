@@ -5,7 +5,7 @@ error_reporting( E_ALL );
 
 require_once( 'modules/bestelfuncties.php' );
 require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php' );
-use function php81_bc/strftime as strftime;
+use function php81_bc/strftime;
 
 Kint::$enabled_mode = true;
 
