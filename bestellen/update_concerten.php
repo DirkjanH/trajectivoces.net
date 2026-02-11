@@ -1,13 +1,13 @@
 <?php
 // stel php in dat deze fouten weergeeft
-ini_set('display_errors', 1);
+//ini_set('display_errors', 1);
 error_reporting( E_ALL );
 
 require_once('modules/bestelfuncties.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php');
 use function php81_bc\strftime as strftime;
 
-Kint::$enabled_mode = true;
+Kint::$enabled_mode = false;
 
 session_start();
 if ( isset( $_POST[ 'zoeknaam' ] )AND $_POST[ 'zoeknaam' ] != '' )$_SESSION[ 'zoeknaam' ] = $_POST[ 'zoeknaam' ];
