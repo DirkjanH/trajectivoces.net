@@ -12,13 +12,14 @@ $t['uitverkocht'] 	= 'NB: de voorverkoop voor dit concert is reeds gesloten, maa
 $t['uitverkocht2']	= 'NB: dit concert is uitverkocht. Er komt een intekenlijst voor openvallende plaatsen aan de deur van de kerk. Kom SVP ca. een uur voor de voorstelling begint om je naam op de lijst te zetten.';
 $t['kiezen'] 			= '* SVP concert kiezen';
 $t['invullen'] 		= '(SVP het gewenste aantal invullen)';
+
 $t['aantal_k']			= 'aantal ';
 $t['volle_prijs']		= ' (volle prijs)';
 $t['CJP']				= 'aantal kaarten CJP/studenten:';
 $t['12_jaar']			= 'aantal kaarten kinderen tot 12 jaar:';
 $t['geen_concert']	= 'Momenteel geen voorverkoop voor concerten';
 $t['niet_prijs']		= '(SVP de gewenste <strong>aantallen</strong> per soort invullen, <strong>niet </strong>de prijs)';
-$t['werkwijze'] 		= 'Na het verzenden van dit formulier wordt je doorgestuurd naar de betaalpagina. Je kunt je bestelde kaarten betalen met iDEAL/Wero of met een creditcard. Je ontvangt een bevestiging met QR-code per e-mail. Er is geen aparte korting voor 65+.';
+$t['werkwijze'] 		= 'Na het verzenden van dit formulier wordt je doorgestuurd naar de betaalpagina. Je kunt je bestelde kaarten betalen met iDEAL|Wero of met een creditcard. Na betaling ontvang je een bevestiging met QR-code per e-mail die als toegangsbewijs dient. Er is geen aparte korting voor 65+.';
 $t['aankondiging'] 	= 'Ik wil voortaan graag concert-aankondigingen per e-mail ontvangen en ga akkoord met het <a href="' . $privacybeleid . '" target="_blank">privacybeleid</a>';
 $t['vraag_hoe'] 		= 'Hoe wist je van dit concert?';
 $t['kennis'] 			= 'via een kennis';
