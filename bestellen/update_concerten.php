@@ -128,15 +128,19 @@ d( $concert );
 				<?php  if (isset($concerten) AND is_array($concerten)) $aantal_concerten = count($concerten); else $aantal_concerten = 0;
 					if ($aantal_concerten > 0) { 
 						echo '<p>' . $aantal_concerten . ' resultaten. Klik een item aan:</p>';
-						echo '<div id="navcontainer"><ul id="navlist">';
-						echo '<li><a href="#" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">Close &times;</a></li>';
-									foreach($concerten AS $conc) {
-										$datum = strftime('%a %e %B %Y', strtotime($conc['datum']), 'nl_NL'); 
-						$c = htmlspecialchars($conc['concerttitel'], ENT_QUOTES, 'UTF-8');
-						$href = htmlspecialchars($_SERVER['PHP_SELF'] . '?concertId=' . (int) $conc['concertId'], ENT_QUOTES, 'UTF-8');
-						echo '<li><a href="' . $href . '">' . $c . '<br><span class="klein">(' . htmlspecialchars($datum, ENT_QUOTES, 'UTF-8') . ')</span></a></li>';
-									}
-					echo '</ul></div>';
+					?>
+					<div id="navcontainer">
+						<ul id="navlist">
+							<?php foreach (array_values($concerten) as $conc) {
+								$datum = strftime('%a %e %B %Y', strtotime($conc['datum']), 'nl_NL');
+								$titel = htmlspecialchars($conc['concerttitel'], ENT_QUOTES, 'UTF-8');
+								$href = htmlspecialchars($_SERVER['PHP_SELF'] . '?concertId=' . (int) $conc['concertId'], ENT_QUOTES, 'UTF-8');
+							?>
+							<li><a href="<?php echo $href; ?>"><?php echo $titel; ?><br><span class="klein"><?php echo htmlspecialchars('(' . $datum . ')', ENT_QUOTES, 'UTF-8'); ?></span></a></li>
+							<?php } ?>
+						</ul>
+					</div>
+					<?php
 								}
 					?>
 		</form>
