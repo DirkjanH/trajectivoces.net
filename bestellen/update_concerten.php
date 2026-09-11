@@ -132,7 +132,7 @@ d( $concert );
 					<div id="navcontainer">
 						<ul id="navlist">
 							<?php foreach (array_values($concerten) as $conc) {
-								$datum = strftime('%a %e %B %Y', strtotime($conc['datum']), 'nl_NL');
+								$datum = date('d-m-Y', strtotime($conc['datum']));
 								$titel = htmlspecialchars($conc['concerttitel'], ENT_QUOTES, 'UTF-8');
 								$href = htmlspecialchars($_SERVER['PHP_SELF'] . '?concertId=' . (int) $conc['concertId'], ENT_QUOTES, 'UTF-8');
 							?>
