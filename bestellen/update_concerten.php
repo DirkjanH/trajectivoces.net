@@ -10,12 +10,14 @@ use function php81_bc\strftime;
 Kint::$enabled_mode = false;
 
 session_start();
-if ( isset( $_POST[ 'zoeknaam' ] )AND $_POST[ 'zoeknaam' ] != '' )$_SESSION[ 'zoeknaam' ] = $_POST[ 'zoeknaam' ];
-if ( isset( $_POST[ 'wis' ] )AND $_POST[ 'wis' ] == 'wis' )unset( $_SESSION[ 'zoeknaam' ] );
+if ( !isset( $_SESSION[ 'zoeknaam' ] ) ) $_SESSION[ 'zoeknaam' ] = '';
+if ( isset( $_POST[ 'zoeknaam' ] ) ) $_SESSION[ 'zoeknaam' ] = trim( $_POST[ 'zoeknaam' ] );
+if ( isset( $_POST[ 'wis' ] )AND $_POST[ 'wis' ] == 'wis' ) $_SESSION[ 'zoeknaam' ] = '';
 
 d( $_REQUEST, $_SESSION );
 
-$concerten = select_query( "SELECT * FROM {$tabel_concerten} WHERE datum LIKE '%%{$_SESSION['zoeknaam']}%%' OR concerttitel LIKE '%%{$_SESSION['zoeknaam']}%%' OR plaats LIKE '%%{$_SESSION['zoeknaam']}%%' ORDER BY datum ASC" );
+$zoekterm = quote( '%' . $_SESSION[ 'zoeknaam' ] . '%' );
+$concerten = select_query( "SELECT * FROM {$tabel_concerten} WHERE datum LIKE {$zoekterm} OR concerttitel LIKE {$zoekterm} OR plaats LIKE {$zoekterm} ORDER BY datum ASC" );
 d($concerten);
 
 if ( ( isset( $_POST[ "Toevoegen" ] ) ) && ( $_POST[ "Toevoegen" ] == "Toevoegen" ) ) {
@@ -112,6 +114,7 @@ d( $concert );
 </head>
 
 <body> 
+	<button id="openNav" class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()" type="button">&#9776; Concerten</button>
 	<div id="nav" class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left">
 		<form id="vinden" method="post" action="<?php echo $editFormAction; ?>">
 			<div class="w3-panel">
