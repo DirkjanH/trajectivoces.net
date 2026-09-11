@@ -13,6 +13,7 @@ session_start();
 if ( !isset( $_SESSION[ 'zoeknaam' ] ) ) $_SESSION[ 'zoeknaam' ] = '';
 if ( isset( $_POST[ 'zoeknaam' ] ) ) $_SESSION[ 'zoeknaam' ] = trim( $_POST[ 'zoeknaam' ] );
 if ( isset( $_POST[ 'wis' ] )AND $_POST[ 'wis' ] == 'wis' ) $_SESSION[ 'zoeknaam' ] = '';
+$toon_navigatie = isset( $_POST[ 'zoek' ] ) || isset( $_POST[ 'zoeknaam' ] );
 
 d( $_REQUEST, $_SESSION );
 
@@ -100,6 +101,7 @@ d( $concert );
 	<script>
 		function w3_open() {
 			document.getElementById( "main" ).style.marginLeft = "260px";
+			document.getElementById( "nav" ).style.display = "block";
 			document.getElementById( "navcontainer" ).style.width = "250px";
 			document.getElementById( "navcontainer" ).style.display = "block";
 			document.getElementById( "openNav" ).style.display = "none";
@@ -107,6 +109,7 @@ d( $concert );
 
 		function w3_close() {
 			document.getElementById( "main" ).style.marginLeft = "0%";
+			document.getElementById( "nav" ).style.display = "none";
 			document.getElementById( "navcontainer" ).style.display = "none";
 			document.getElementById( "openNav" ).style.display = "inline-block";
 		}
@@ -115,7 +118,7 @@ d( $concert );
 
 <body> 
 	<button id="openNav" class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()" type="button">&#9776; Concerten</button>
-	<div id="nav" class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left">
+	<div id="nav" class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"<?php echo $toon_navigatie ? ' style="display:block"' : ''; ?>>
 		<form id="vinden" method="post" action="<?php echo $editFormAction; ?>">
 			<div class="w3-panel">
 				<label>Zoekterm: <br><input name="zoeknaam" type="text" id="zoeknaam" value="<?php echo $_SESSION['zoeknaam']; ?>" size="5"></label>
