@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 session_start();
 
-require_once('modules/bestelfuncties.php');
+require_once __DIR__ . '/bestelfuncties.php';
 require_once($_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php');
 use function PHP81_BC\strftime;
 
