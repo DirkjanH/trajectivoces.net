@@ -1,3 +1,7 @@
+/composer.json
+/composer.lock
+/composer.phar
+/vendor/
 /.htaccess
 /administrator/cache/*
 /administrator/components/com_actionlogs/*
