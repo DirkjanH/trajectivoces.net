@@ -99,7 +99,7 @@ require_once('modules/module_kaartverkoop.php');
                     <div class="w3-third">
                         <label
                             class="w3-label w3-validate"><?php echo $txt['aantal_k']; ?><?php if ($c['prijs_vol'] != '0.00') echo $txt['volle_prijs']; ?>:</label>
-                        <input name="aantal_vol" type="text" required
+                        <input name="aantal_vol" type="text"
                             class="w3-input w3-border aantal" id="aantal_vol"
                             value="<?php
 											if (isset($aantal_vol)) echo $aantal_vol; ?>">

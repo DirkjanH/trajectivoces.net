@@ -104,7 +104,7 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "verzenden") {
   $euro_red = $concert[$_POST['concertId']]['euro_red'];
   $euro_kind = $concert[$_POST['concertId']]['euro_kind'];
   $dag = $concert[$_POST['concertId']]['dag'];
-  if (!($aantal_vol > 0 or $aantal_red > 0)) {
+  if ($aantal_vol + $aantal_red + $aantal_kind <= 0) {
     $error = true;
     $fout .= "   <li>{$txt['fout_kaarten']}</li>\n";
   }
