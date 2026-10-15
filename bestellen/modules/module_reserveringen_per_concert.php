@@ -52,7 +52,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 	<title>Reserveringen per concert</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta http-equiv="refresh" content="500; url=<?php echo $_SERVER['../bestelsysteem/PHP_SELF']; // refresh iedere 500 seconden 
+	<meta http-equiv="refresh" content="500; url=<?php echo $_SERVER['PHP_SELF']; // refresh iedere 500 seconden
 													?>">
 	<link href="<?php echo $css; ?>" rel="stylesheet" type="text/css">
 	<link rel="icon" type="image/png" href=<?php echo $favicon; ?>>
