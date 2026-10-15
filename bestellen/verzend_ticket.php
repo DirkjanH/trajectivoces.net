@@ -34,7 +34,15 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 			$payment = $mollie->payments->get($mollie_id);
 			$random_id = $payment->metadata->random_id;
 			d($payment->status);
-			if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
+			$payment_succeeded = $payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks();
+			$payment_definitively_failed = in_array($payment->status, ['failed', 'canceled', 'expired'], true);
+
+			if (!$payment_succeeded && !$payment_definitively_failed) {
+				http_response_code(200);
+				exit;
+			}
+
+			if ($payment_succeeded) {
 				/*
 				 * The payment is paid and isn't refunded or charged back.
 				 * At this point you'd probably want to start the process of delivering the product to the customer.
