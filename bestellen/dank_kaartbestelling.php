@@ -86,6 +86,8 @@ MESSAGE;
 <<<MESSAGE
     <p>Beste {$reservering['voornaam']},</p>\n
     </p>Hartelijk dank voor je bestelling van concertkaartjes. Helaas is de betaling niet gelukt. De kaartjes zijn dus nog niet gereserveerd. We raden je aan om de bestelling en betaling nogmaals uit te voeren. <a href="javascript:history.go(-3)">Klik op deze link om terug te gaan naar je bestelling</a>.</p>
+    <p>Het kan zijn dat een volgende bestelling wel succesvol is. In dat geval krijg je een bevestigingsmail met een QR code voor je concertkaartje. Dan is alles goed gegaan en kun je deze mail met een gerust hart negeren.</p>
+
 MESSAGE;
     $message .= "<p>Met muzikale groet,\n\n<br><br>{$organisator}</p>\n<br>";
             d($message);
