@@ -114,7 +114,8 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 				$message = "<header class=\"w3-panel-0\"><img src=\"{$logo}\" alt=\"logo\" style=\"width: 100%; max-width: 600px; height: auto; border: none;\"></header>\n";}
 			else $message = '';
 			$message .= "<p>Beste {$reservering['voornaam']},</p>\n";
-			$message .= "<p>Hartelijk dank voor je bestelling van concertkaartjes. Helaas lijkt de door jou gestarte betaling te zijn mislukt. Mogelijk heb je de betaling zelf geannuleerd of is er iets mis gegaan. De kaartjes zijn dus nog niet gereserveerd en er is nog niets afgeschreven. We raden je aan om de bestelling en betaling nogmaals uit te voeren.</p>\n\n";
+			$message .= "<p>Hartelijk dank voor je bestelling van concertkaartjes. Helaas lijkt de door jou gestarte betaling te zijn mislukt. Mogelijk heb je de betaling zelf geannuleerd of is er iets mis gegaan. De kaartjes zijn dus nog niet gereserveerd en er is nog niets afgeschreven. We raden je aan om de bestelling en betaling nogmaals uit te voeren.</p>\n";
+			$message .= "<p>Het kan zijn dat een volgende bestelling wel succesvol is geweest. In dat geval krijg je een bevestigingsmail met een QR code voor je concertkaartje. Dan is alles goed gegaan en kun je deze mail met een gerust hart negeren.</p>\n\n";
 			if (isset($reservering['opmerkingen'])and $reservering['opmerkingen'] != "") {
 				$reservering['opmerkingen'] = htmlentities(stripslashes($reservering['opmerkingen']));
 				$message .= "<p>Je opmerkingen waren: {$reservering['opmerkingen']}</p>\n";
