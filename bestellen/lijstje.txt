@@ -1,0 +1,38 @@
+reserveringnr#voornaam#tussenvoegsel#achternaam#plaats#telefoon#email#concertId#aantal_vol#aantal_red#aantal_kind#publiciteit#aanbrenger#flyers#anders#opmerkingen#huisgenoten#betaald#betaalstatus#timestamp#totaal#methode#random_id#Mollie_ID#verschenen#email_verzonden
+3840#Jacobine##Eijgenraam#Amsterdam#0650257677#jacobine.eijgenraam@gmail.com#123#2#0#0#deelnemer#Broer #0#####paid#2026-10-16 18:58:00#50.00##64b0f6bd#tr_96FJzUZAedCBDbzLk5FYJ##
+3841#Lisanne##Kalisvaart#Nijmegen#0630385316#lisanne_kalisvaart@hotmail.com#123#2#0#0#deelnemer#Jan Kalisvaart#0#####paid#2026-10-16 22:17:41#50.00##ceda866b#tr_oFL7HHTnUYj8SpouDSFYJ##
+3842#Jolanda##Lee#Zeist#0610152036#lee-nicolai@hetnet.nl#122#2#0#0#viavia##0#####paid#2026-10-17 10:02:41#50.00##e9c31ea2#tr_vKPzEWCJtD4b99eRUhGYJ##
+3843#Lennert##Middelkoop#De Meern#0610430429#lzmiddelkoop@me.com#123#2#0#0#deelnemer#Annejet#0#####paid#2026-10-17 14:37:24#50.00##9b7de024#tr_KyupyrMgk5MD4mDJdCHYJ##
+3844#Ellie##Brundel#Utrecht#0620644777#brundel.e@gmail.com#125#1#0#0#deelnemer#Kirsten Canté #0##Ik doe zelf mee met het Requiem van Mozart###paid#2026-10-17 17:09:51#25.00##45260074#tr_Gcmj5kcJK2dECV6nFUHYJ##
+3845#Alexandra##Licher#Bergen#0652322653#alexandra.licher@gift.nl#125#1#0#0#deelnemer#A.Morsink#0#####paid#2026-10-18 08:07:13#25.00##a75941a5#tr_uZ2aohgPH4sbS4XEE6KYJ##
+3846#Hans##Schenk#Bussum#0655141591#hansschenk07@gmail.com#123#2#0#0#internet##0#####paid#2026-10-18 11:54:19#50.00##1da9d9ce#tr_iGCfBLPfMjsp9ibnVVKYJ##
+3847#Nicolien##Kort#Culemborg#0633792301#nicolien@klsvrt.nl#123#1#0#0###0#####paid#2026-10-18 14:43:31#25.00##e81ac967#tr_dUgHTwT9KVwWEiQGqnKYJ##
+3849#Leo##Lansink#Nieuwegein#06415482#lh47lansink@ziggo.nl#122#2#0#0#deelnemer#Han Hoes#1#####paid#2026-10-19 09:51:43#50.00##36aaeaef#tr_L6QbrMQzYRUGhi2zWrMYJ##
+3850#Paul##Simons#Utrecht#0614754547#pa.simons@ziggo.nl#122#1#0#0#viavia##0#####paid#2026-10-19 10:23:52#25.00##f5bd50b2#tr_xTijgamAxdPWKkAoouMYJ##
+
+
+Find files matching `**/lijstje.txt`
+
+Read , lines 1 to 160
+Completed with input: {
+  "path": "D:\\Dropbox\\GitHub\\trajectivoces.net\\bestellen\\lijstje.txt",
+  "view_range": [
+    1,
+    160
+  ]
+}
+
+Uit `lijstje.txt`:
+
+| Reserveringsnummer | Volledige naam | E-mailadres |
+|---|---|---|
+| 3840 | Jacobine Eijgenraam | [jacobine.eijgenraam@gmail.com](mailto:jacobine.eijgenraam@gmail.com) |
+| 3841 | Lisanne Kalisvaart | [lisanne_kalisvaart@hotmail.com](mailto:lisanne_kalisvaart@hotmail.com) |
+| 3842 | Jolanda Lee | [lee-nicolai@hetnet.nl](mailto:lee-nicolai@hetnet.nl) |
+| 3843 | Lennert Middelkoop | [lzmiddelkoop@me.com](mailto:lzmiddelkoop@me.com) |
+| 3844 | Ellie Brundel | [brundel.e@gmail.com](mailto:brundel.e@gmail.com) |
+| 3845 | Alexandra Licher | [alexandra.licher@gift.nl](mailto:alexandra.licher@gift.nl) |
+| 3846 | Hans Schenk | [hansschenk07@gmail.com](mailto:hansschenk07@gmail.com) |
+| 3847 | Nicolien Kort | [nicolien@klsvrt.nl](mailto:nicolien@klsvrt.nl) |
+| 3849 | Leo Lansink | [lh47lansink@ziggo.nl](mailto:lh47lansink@ziggo.nl) |
+| 3850 | Paul Simons | [pa.simons@ziggo.nl](mailto:pa.simons@ziggo.nl) |

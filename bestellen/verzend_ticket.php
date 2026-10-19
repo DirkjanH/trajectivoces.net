@@ -75,12 +75,19 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 				'payment_definitively_failed' => $payment_definitively_failed
 			]);
 
+			if (!$payment->isPaid() && !$payment_definitively_failed) {
+				$ticket_log('opnieuw_proberen_geen_definitieve_betaling');
+				http_response_code(503);
+				exit;
+			}
+
 			if (!$payment_succeeded && !$payment_definitively_failed) {
-				$ticket_log('overgeslagen_geen_definitieve_betaling');
+				$ticket_log('overgeslagen_terugbetaald_of_teruggeboekt');
 				http_response_code(200);
 				exit;
 			}
 
+			$gelukt = false;
 			if ($payment_succeeded) {
 				$ticket_log('bevestiging_opbouwen');
 				/*
@@ -95,7 +102,10 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 
 				$concert = select_query("SELECT * FROM {$tabel_concerten} WHERE concertId = {$reservering['concertId']};", 1);
 
-				$datumentijd = strftime("%A %e %B %Y, aanvang %H:%M", strtotime($concert['datum'].' '.$concert['tijd']));
+				$concert_timestamp = strtotime($concert['datum'].' '.$concert['tijd']);
+				$concert_plaats = htmlspecialchars($concert['plaats'], ENT_QUOTES, 'UTF-8');
+				$datumentijd = strftime("%A %e %B %Y", $concert_timestamp)
+					. " te {$concert_plaats}, aanvang " . strftime("%H:%M", $concert_timestamp);
 
 				$concert['euro_vol'] = euro2($concert['prijs_vol']);
 				$concert['euro_red'] = euro2($concert['prijs_red']);

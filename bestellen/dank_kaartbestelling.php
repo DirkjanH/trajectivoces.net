@@ -22,7 +22,10 @@ if (isset($reservering)) {
         $concert = select_query("SELECT * FROM {$tabel_concerten} WHERE concertId = {$reservering['concertId']};", 1);
         d($concert);
 
-        $datumentijd = strftime("%A %e %B %Y, aanvang %H:%M", strtotime($concert['datum'] . ' ' . $concert['tijd']));
+        $concert_timestamp = strtotime($concert['datum'] . ' ' . $concert['tijd']);
+        $concert_plaats = htmlspecialchars($concert['plaats'], ENT_QUOTES, 'UTF-8');
+        $datumentijd = strftime("%A %e %B %Y", $concert_timestamp)
+            . " te {$concert_plaats}, aanvang " . strftime("%H:%M", $concert_timestamp);
 
         $concert['euro_vol'] = euro2($concert['prijs_vol']);
         $concert['euro_red'] = euro2($concert['prijs_red']);
