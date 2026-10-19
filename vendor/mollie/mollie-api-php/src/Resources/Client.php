@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
 use Mollie\Api\Contracts\EmbeddedResourcesContract;
@@ -11,9 +9,21 @@ use Mollie\Api\Contracts\EmbeddedResourcesContract;
  */
 class Client extends BaseResource implements EmbeddedResourcesContract
 {
-    public string $id;
+    /**
+     * The unique identifier of the client, which corresponds to the ID of the organization
+     *
+     * @var string
+     */
+    public $id;
 
-    public ?string $organizationCreatedAt = null;
+    /**
+     * UTC datetime the order was created in ISO-8601 format.
+     *
+     * @example "2018-03-21T13:13:37+00:00"
+     *
+     * @var string|null
+     */
+    public $organizationCreatedAt;
 
     /**
      * @var \stdClass

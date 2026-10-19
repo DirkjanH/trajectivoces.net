@@ -1,23 +1,28 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
 /**
- * OAuth permission returned by the Permissions API.
- *
  * @property \Mollie\Api\MollieApiClient $connector
- * @link https://docs.mollie.com/docs/permissions Full list of permission IDs (scopes)
  */
 class Permission extends BaseResource
 {
-    /** @example payments.read */
-    public string $id;
+    /**
+     * @var string
+     *
+     * @example payments.read
+     */
+    public $id;
 
-    public string $description;
+    /**
+     * @var string
+     */
+    public $description;
 
-    public bool $granted;
+    /**
+     * @var bool
+     */
+    public $granted;
 
     /**
      * @var \stdClass

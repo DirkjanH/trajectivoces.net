@@ -1,12 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
-/**
- * @extends CursorCollection<\Mollie\Api\Resources\Terminal>
- */
 class TerminalCollection extends CursorCollection
 {
     /**

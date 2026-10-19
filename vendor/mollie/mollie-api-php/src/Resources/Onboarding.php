@@ -1,26 +1,41 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
 use Mollie\Api\Types\OnboardingStatus;
-use Mollie\Api\Utils\Utility;
 
 /**
  * @property \Mollie\Api\MollieApiClient $connector
  */
 class Onboarding extends BaseResource
 {
-    public string $name;
+    /**
+     * @var string
+     */
+    public $name;
 
-    public string $signedUpAt;
+    /**
+     * @var string
+     */
+    public $signedUpAt;
 
-    public OnboardingStatus|string $status;
+    /**
+     * Either "needs-data", "in-review" or "completed".
+     * Indicates this current status of the organization’s onboarding process.
+     *
+     * @var string
+     */
+    public $status;
 
-    public bool $canReceivePayments;
+    /**
+     * @var bool
+     */
+    public $canReceivePayments;
 
-    public bool $canReceiveSettlements;
+    /**
+     * @var bool
+     */
+    public $canReceiveSettlements;
 
     /**
      * @var \stdClass
@@ -29,16 +44,16 @@ class Onboarding extends BaseResource
 
     public function needsData(): bool
     {
-        return Utility::equals($this->status, OnboardingStatus::NeedsData);
+        return $this->status === OnboardingStatus::NEEDS_DATA;
     }
 
     public function inReview(): bool
     {
-        return Utility::equals($this->status, OnboardingStatus::InReview);
+        return $this->status === OnboardingStatus::IN_REVIEW;
     }
 
     public function isCompleted(): bool
     {
-        return Utility::equals($this->status, OnboardingStatus::Completed);
+        return $this->status === OnboardingStatus::COMPLETED;
     }
 }

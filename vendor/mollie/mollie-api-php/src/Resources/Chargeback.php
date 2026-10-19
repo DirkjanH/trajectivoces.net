@@ -1,61 +1,81 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
-
-use Mollie\Api\Http\Data\Money;
 
 /**
  * @property \Mollie\Api\MollieApiClient $connector
  */
 class Chargeback extends BaseResource
 {
-    public string $id;
-
     /**
-     * The amount that was charged back.
+     * Always 'chargeback'.
+     *
+     * @var string
      */
-    public Money $amount;
+    public $resource;
 
     /**
-     * UTC datetime the chargeback was created in ISO-8601 format.
+     * Id of the payment method.
+     *
+     * @var string
+     */
+    public $id;
+
+    /**
+     * The $amount that was refunded.
+     *
+     * @var \stdClass
+     */
+    public $amount;
+
+    /**
+     * UTC datetime the payment was created in ISO-8601 format.
      *
      * @example "2013-12-25T10:30:54+00:00"
+     *
+     * @var string|null
      */
-    public ?string $createdAt = null;
+    public $createdAt;
 
     /**
-     * The payment id that was charged back.
+     * The payment id that was refunded.
+     *
+     * @var string
      */
-    public string $paymentId;
+    public $paymentId;
 
     /**
      * The settlement amount.
+     *
+     * @var \stdClass
      */
-    public ?Money $settlementAmount = null;
+    public $settlementAmount;
 
     /**
      * The identifier referring to the settlement this payment was settled with.
+     *
+     * @var string|null
      */
-    public ?string $settlementId = null;
+    public $settlementId;
 
     /**
-     * The chargeback reason.
+     * The chargeback reason
      *
      * @var \stdClass|null
      */
     public $reason;
 
     /**
-     * UTC datetime the chargeback was reversed in ISO-8601 format.
+     * UTC datetime the date and time the chargeback was reversed in ISO-8601 format.
      *
      * @example "2013-12-25T10:30:54+00:00"
+     *
+     * @var string|null
      */
-    public ?string $reversedAt = null;
+    public $reversedAt;
 
     /**
-     * @var \stdClass|null
+     * @var \stdClass
      */
     public $_links;
 }

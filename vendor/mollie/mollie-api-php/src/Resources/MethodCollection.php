@@ -1,12 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
-/**
- * @extends ResourceCollection<\Mollie\Api\Resources\Method>
- */
 class MethodCollection extends ResourceCollection
 {
     /**

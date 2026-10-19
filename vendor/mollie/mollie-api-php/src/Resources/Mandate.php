@@ -1,80 +1,97 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
-use Mollie\Api\Traits\HasMode;
+use Mollie\Api\Http\Requests\RevokeMandateRequest;
 use Mollie\Api\Types\MandateStatus;
-use Mollie\Api\Utils\Utility;
 
 /**
  * @property \Mollie\Api\MollieApiClient $connector
  */
 class Mandate extends BaseResource
 {
-    use HasMode;
+    /**
+     * @var string
+     */
+    public $id;
 
-    public string $id;
+    /**
+     * @var string
+     */
+    public $status;
 
-    public MandateStatus|string|null $status = null;
+    /**
+     * @var string
+     */
+    public $mode;
 
-    public string $mode;
-
-    public ?string $method = null;
+    /**
+     * @var string
+     */
+    public $method;
 
     /**
      * @var \stdClass|null
      */
     public $details;
 
-    public ?string $customerId = null;
-
-    public ?string $createdAt = null;
-
-    public ?string $mandateReference = null;
-
     /**
-     * Date of signature, for example: 2018-05-07.
+     * @var string|null
      */
-    public ?string $signatureDate = null;
+    public $customerId;
 
     /**
-     * @var \stdClass|null
+     * @var string
+     */
+    public $createdAt;
+
+    /**
+     * @var string
+     */
+    public $mandateReference;
+
+    /**
+     * Date of signature, for example: 2018-05-07
+     *
+     * @var string
+     */
+    public $signatureDate;
+
+    /**
+     * @var \stdClass
      */
     public $_links;
 
     public function isValid(): bool
     {
-        return Utility::equals($this->status, MandateStatus::Valid);
+        return $this->status === MandateStatus::VALID;
     }
 
     public function isPending(): bool
     {
-        return Utility::equals($this->status, MandateStatus::Pending);
+        return $this->status === MandateStatus::PENDING;
     }
 
     public function isInvalid(): bool
     {
-        return Utility::equals($this->status, MandateStatus::Invalid);
+        return $this->status === MandateStatus::INVALID;
     }
 
     /**
-     * Revoke the mandate.
+     * Revoke the mandate
      */
-    public function revoke(): void
+    public function revoke(): ?Mandate
     {
         if (! isset($this->customerId)) {
-            return;
+            return $this;
         }
 
-        $this
+        return $this
             ->connector
-            ->mandates
-            ->revokeForId(
+            ->send((new RevokeMandateRequest(
                 $this->customerId,
                 $this->id,
-                $this->isInTestmode()
-            );
+            ))->test($this->mode === 'test'))
+            ->toResource();
     }
 }

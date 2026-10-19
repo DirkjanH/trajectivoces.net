@@ -1,21 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
 use ArrayObject;
-use Mollie\Api\Config;
 use Mollie\Api\Contracts\Connector;
 use Mollie\Api\Contracts\IsResponseAware;
 use Mollie\Api\Traits\HasResponse;
 use Mollie\Api\Utils\Arr;
 
-/**
- * @template TItem of object
- *
- * @extends ArrayObject<int, TItem>
- */
 abstract class BaseCollection extends ArrayObject implements IsResponseAware
 {
     use HasResponse;
@@ -24,8 +16,6 @@ abstract class BaseCollection extends ArrayObject implements IsResponseAware
 
     /**
      * The name of the collection resource in Mollie's API.
-     *
-     * @deprecated Use ResourceRegistry to resolve plural names instead.
      */
     public static string $collectionName = '';
 
@@ -58,7 +48,7 @@ abstract class BaseCollection extends ArrayObject implements IsResponseAware
         $filteredItems = array_filter($this->getArrayCopy(), $callback);
 
         /** @phpstan-ignore-next-line */
-        return (new static($this->connector, $filteredItems,  $this->_links))->setOrigin($this->getOrigin());
+        return (new static($this->connector, $filteredItems,  $this->_links))->setResponse($this->response);
     }
 
     public function first()
@@ -88,23 +78,10 @@ abstract class BaseCollection extends ArrayObject implements IsResponseAware
 
     public static function getCollectionResourceName(): string
     {
-        // Preferred: resolve via registry using the declared resource class on the collection
-        if (method_exists(static::class, 'getResourceClass')) {
-            /** @var class-string<BaseResource> $resourceClass */
-            $resourceClass = static::getResourceClass();
-
-            $registry = Config::resourceRegistry();
-
-            if ($registry->isRegistered($resourceClass)) {
-                return $registry->pluralOf($resourceClass);
-            }
+        if (empty(static::$collectionName)) {
+            throw new \RuntimeException('Collection name not set');
         }
 
-        // Deprecated fallback: read static::$collectionName if set
-        if (! empty(static::$collectionName)) {
-            return static::$collectionName;
-        }
-
-        throw new \RuntimeException('Collection name not set');
+        return static::$collectionName;
     }
 }

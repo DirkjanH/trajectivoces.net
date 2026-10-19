@@ -1,38 +1,46 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
-
-use Mollie\Api\Http\Data\Money;
-use Mollie\Api\Types\PaymentMethodStatus;
 
 /**
  * @property \Mollie\Api\MollieApiClient $connector
  */
 class Method extends BaseResource
 {
-    public string $id;
+    /**
+     * Id of the payment method.
+     *
+     * @var string
+     */
+    public $id;
 
     /**
      * More legible description of the payment method.
+     *
+     * @var string
      */
-    public string $description;
+    public $description;
 
     /**
-     * Minimum payment amount allowed when using this payment method.
+     * An object containing value and currency. It represents the minimum payment amount required to use this
+     * payment method.
+     *
+     * @var \stdClass
      */
-    public ?Money $minimumAmount = null;
+    public $minimumAmount;
 
     /**
-     * Maximum payment amount allowed when using this payment method.
+     * An object containing value and currency. It represents the maximum payment amount allowed when using this
+     * payment method.
+     *
+     * @var \stdClass
      */
-    public ?Money $maximumAmount = null;
+    public $maximumAmount;
 
     /**
      * The $image->size1x and $image->size2x to display the payment method logo.
      *
-     * @var \stdClass|null
+     * @var \stdClass
      */
     public $image;
 
@@ -40,71 +48,56 @@ class Method extends BaseResource
      * The issuers available for this payment method. Only for the methods iDEAL, KBC/CBC and gift cards.
      * Will only be filled when explicitly requested using the query string `include` parameter.
      *
-     * @var array|null
+     * @var array|object[]
      */
-    public ?array $issuers = null;
+    public $issuers;
 
     /**
      * The pricing for this payment method. Will only be filled when explicitly requested using the query string
      * `include` parameter.
      *
-     * @var array|null
+     * @var array|object[]
      */
-    public ?array $pricing = null;
+    public $pricing;
 
     /**
-     * The activation status the method is in. Enum case if recognised, raw string for
-     * forward-compat, null when the method was never requested. The API marks the field
-     * required (nullable), so there is no default: an omitted field stays uninitialized.
+     * The activation status the method is in.
+     * If the method has status "null", this value will be returned as a null value, not as a string.
+     *
+     * @var string | null
      */
-    public PaymentMethodStatus|string|null $status;
+    public $status;
 
     /**
-     * @var \stdClass|null
+     * @var \stdClass
      */
     public $_links;
 
+    /**
+     * Get the issuer value objects
+     */
     public function issuers(): IssuerCollection
     {
-        /** @var IssuerCollection $collection */
-        $collection = ResourceFactory::createCollection(
+        /** @var IssuerCollection */
+        return ResourceFactory::createResourceCollection(
             $this->connector,
-            IssuerCollection::class
+            IssuerCollection::class,
+            $this->response,
+            $this->issuers
         );
-
-        if ($this->issuers === null) {
-            return $collection;
-        }
-
-        /** @var IssuerCollection $collection */
-        $collection = (new ResourceHydrator)->hydrateCollection(
-            $collection,
-            (array) $this->issuers,
-            $this->getOrigin()
-        );
-
-        return $collection;
     }
 
+    /**
+     * Get the method price value objects.
+     */
     public function pricing(): MethodPriceCollection
     {
-        /** @var MethodPriceCollection $collection */
-        $collection = ResourceFactory::createCollection(
+        /** @var MethodPriceCollection */
+        return ResourceFactory::createResourceCollection(
             $this->connector,
-            MethodPriceCollection::class
+            MethodPriceCollection::class,
+            $this->response,
+            $this->pricing
         );
-
-        if ($this->pricing === null) {
-            return $collection;
-        }
-
-        /** @var MethodPriceCollection $collection */
-        $collection = (new ResourceHydrator)->hydrateCollection(
-            $collection,
-            (array) $this->pricing,
-            $this->getOrigin()
-        );
-
-        return $collection;
     }
 }

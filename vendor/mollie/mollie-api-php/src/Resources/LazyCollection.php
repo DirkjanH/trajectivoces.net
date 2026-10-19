@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
 use Iterator;
@@ -49,7 +47,7 @@ class LazyCollection implements IsResponseAware, IteratorAggregate
     public function get($key)
     {
         foreach ($this as $outerKey => $outerValue) {
-            if ($outerKey === $key) {
+            if ($outerKey == $key) {
                 return $outerValue;
             }
         }
@@ -70,7 +68,7 @@ class LazyCollection implements IsResponseAware, IteratorAggregate
                     yield $key => $value;
                 }
             }
-        }))->setOrigin($this->getOrigin());
+        }))->setResponse($this->response);
     }
 
     /**
@@ -114,7 +112,7 @@ class LazyCollection implements IsResponseAware, IteratorAggregate
             foreach ($this as $key => $value) {
                 yield $key => $callback($value, $key);
             }
-        }))->setOrigin($this->getOrigin());
+        }))->setResponse($this->response);
     }
 
     /**
@@ -138,7 +136,7 @@ class LazyCollection implements IsResponseAware, IteratorAggregate
                     $iterator->next();
                 }
             }
-        }))->setOrigin($this->getOrigin());
+        }))->setResponse($this->response);
     }
 
     /**

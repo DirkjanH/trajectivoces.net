@@ -1,82 +1,104 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
-use Mollie\Api\Http\Data\Money;
 use Mollie\Api\Types\InvoiceStatus;
-use Mollie\Api\Utils\Utility;
 
 /**
  * @property \Mollie\Api\MollieApiClient $connector
  */
 class Invoice extends BaseResource
 {
-    public string $id;
-
-    public ?string $reference = null;
-
-    public ?string $vatNumber = null;
-
-    public InvoiceStatus|string|null $status = null;
+    /**
+     * @var string
+     */
+    public $id;
 
     /**
-     * Date the invoice was issued, e.g. 2018-01-01.
+     * @var string
      */
-    public ?string $issuedAt = null;
+    public $reference;
 
     /**
-     * Date the invoice was paid, e.g. 2018-01-01.
+     * @var string
      */
-    public ?string $paidAt = null;
+    public $vatNumber;
 
     /**
-     * Date the invoice is due, e.g. 2018-01-01.
+     * @var string
      */
-    public ?string $dueAt = null;
+    public $status;
 
     /**
-     * Total amount of the invoice excluding VAT.
+     * Date the invoice was issued, e.g. 2018-01-01
+     *
+     * @var string
      */
-    public ?Money $netAmount = null;
+    public $issuedAt;
 
     /**
-     * VAT amount of the invoice.
+     * Date the invoice was paid, e.g. 2018-01-01
+     *
+     * @var string|null
      */
-    public ?Money $vatAmount = null;
+    public $paidAt;
+
+    /**
+     * Date the invoice is due, e.g. 2018-01-01
+     *
+     * @var string|null
+     */
+    public $dueAt;
+
+    /**
+     * Amount object containing the total amount of the invoice excluding VAT.
+     *
+     * @var \stdClass
+     */
+    public $netAmount;
+
+    /**
+     * Amount object containing the VAT amount of the invoice. Only for merchants registered in the Netherlands.
+     *
+     * @var \stdClass
+     */
+    public $vatAmount;
 
     /**
      * Total amount of the invoice including VAT.
+     *
+     * @var \stdClass
      */
-    public ?Money $grossAmount = null;
+    public $grossAmount;
 
     /**
      * Array containing the invoice lines.
      *
-     * @var array|null
+     * @see https://docs.mollie.com/reference/v2/invoices-api/get-invoice
+     *
+     * @var array
      */
-    public ?array $lines = null;
+    public $lines;
 
     /**
-     * Contains a PDF link to the invoice.
+     * Contains a PDF to the Invoice
      *
-     * @var \stdClass|null
+     * @var \stdClass
      */
     public $_links;
 
     public function isPaid(): bool
     {
-        return Utility::equals($this->status, InvoiceStatus::Paid);
+        return $this->status == InvoiceStatus::PAID;
     }
 
     public function isOpen(): bool
     {
-        return Utility::equals($this->status, InvoiceStatus::Open);
+        return $this->status == InvoiceStatus::OPEN;
     }
 
     public function isOverdue(): bool
     {
-        return Utility::equals($this->status, InvoiceStatus::Overdue);
+        return $this->status == InvoiceStatus::OVERDUE;
     }
 }

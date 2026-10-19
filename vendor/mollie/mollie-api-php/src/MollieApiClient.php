@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api;
 
 use Mollie\Api\Contracts\Connector;
@@ -15,7 +13,6 @@ use Mollie\Api\EndpointCollection\CapabilityEndpointCollection;
 use Mollie\Api\EndpointCollection\ChargebackEndpointCollection;
 use Mollie\Api\EndpointCollection\ClientEndpointCollection;
 use Mollie\Api\EndpointCollection\ClientLinkEndpointCollection;
-use Mollie\Api\EndpointCollection\ConnectBalanceTransferEndpointCollection;
 use Mollie\Api\EndpointCollection\CustomerEndpointCollection;
 use Mollie\Api\EndpointCollection\CustomerPaymentsEndpointCollection;
 use Mollie\Api\EndpointCollection\InvoiceEndpointCollection;
@@ -32,7 +29,6 @@ use Mollie\Api\EndpointCollection\PaymentLinkEndpointCollection;
 use Mollie\Api\EndpointCollection\PaymentLinkPaymentEndpointCollection;
 use Mollie\Api\EndpointCollection\PaymentRefundEndpointCollection;
 use Mollie\Api\EndpointCollection\PaymentRouteEndpointCollection;
-use Mollie\Api\EndpointCollection\PayoutEndpointCollection;
 use Mollie\Api\EndpointCollection\PermissionEndpointCollection;
 use Mollie\Api\EndpointCollection\ProfileEndpointCollection;
 use Mollie\Api\EndpointCollection\ProfileMethodEndpointCollection;
@@ -47,10 +43,7 @@ use Mollie\Api\EndpointCollection\SettlementRefundEndpointCollection;
 use Mollie\Api\EndpointCollection\SubscriptionEndpointCollection;
 use Mollie\Api\EndpointCollection\SubscriptionPaymentEndpointCollection;
 use Mollie\Api\EndpointCollection\TerminalEndpointCollection;
-use Mollie\Api\EndpointCollection\TerminalPairingCodeEndpointCollection;
 use Mollie\Api\EndpointCollection\WalletEndpointCollection;
-use Mollie\Api\EndpointCollection\WebhookEndpointCollection;
-use Mollie\Api\EndpointCollection\WebhookEventEndpointCollection;
 use Mollie\Api\Fake\MockMollieClient;
 use Mollie\Api\Http\Adapter\MollieHttpAdapterPicker;
 use Mollie\Api\Idempotency\DefaultIdempotencyKeyGenerator;
@@ -67,12 +60,6 @@ use Mollie\Api\Traits\SendsRequests;
 use Mollie\Api\Utils\Url;
 
 /**
- * Main Mollie API Client
- *
- * Access endpoint collections via magic properties:
- * @example $client->payments->get('tr_xxx')
- * @example $client->customers->create(['name' => 'John Doe'])
- *
  * @property BalanceEndpointCollection $balances
  * @property BalanceReportEndpointCollection $balanceReports
  * @property BalanceTransactionEndpointCollection $balanceTransactions
@@ -80,7 +67,6 @@ use Mollie\Api\Utils\Url;
  * @property CapabilityEndpointCollection $capabilities
  * @property ClientEndpointCollection $clients
  * @property ClientLinkEndpointCollection $clientLinks
- * @property ConnectBalanceTransferEndpointCollection $connectBalanceTransfers
  * @property CustomerPaymentsEndpointCollection $customerPayments
  * @property CustomerEndpointCollection $customers
  * @property InvoiceEndpointCollection $invoices
@@ -98,7 +84,6 @@ use Mollie\Api\Utils\Url;
  * @property PaymentRefundEndpointCollection $paymentRefunds
  * @property PaymentRouteEndpointCollection $paymentRoutes
  * @property PermissionEndpointCollection $permissions
- * @property PayoutEndpointCollection $payouts
  * @property ProfileEndpointCollection $profiles
  * @property ProfileMethodEndpointCollection $profileMethods
  * @property RefundEndpointCollection $refunds
@@ -112,10 +97,7 @@ use Mollie\Api\Utils\Url;
  * @property SubscriptionEndpointCollection $subscriptions
  * @property SubscriptionPaymentEndpointCollection $subscriptionPayments
  * @property TerminalEndpointCollection $terminals
- * @property TerminalPairingCodeEndpointCollection $terminalPairingCodes
  * @property WalletEndpointCollection $wallets
- * @property WebhookEndpointCollection $webhooks
- * @property WebhookEventEndpointCollection $webhookEvents
  * @property HttpAdapterContract $httpClient
  */
 class MollieApiClient implements Connector
@@ -134,7 +116,7 @@ class MollieApiClient implements Connector
     /**
      * Version of our client.
      */
-    public const CLIENT_VERSION = '4.0.0';
+    public const CLIENT_VERSION = '3.0.0';
 
     /**
      * Endpoint of the remote API.
@@ -189,9 +171,9 @@ class MollieApiClient implements Connector
         return Url::join($this->apiEndpoint, self::API_VERSION);
     }
 
-    public static function fake(array $expectedResponses = [], bool $retainRequests = false): MockMollieClient
+    public static function fake(array $expectedResponses = []): MockMollieClient
     {
-        return new MockMollieClient($expectedResponses, $retainRequests);
+        return new MockMollieClient($expectedResponses);
     }
 
     public function __serialize(): array

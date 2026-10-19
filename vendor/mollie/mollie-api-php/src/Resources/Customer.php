@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
 use Mollie\Api\Exceptions\ApiException;
@@ -14,18 +12,34 @@ class Customer extends BaseResource
 {
     use HasMode;
 
-    public string $id;
+    /**
+     * Id of the customer.
+     *
+     * @var string
+     */
+    public $id;
 
     /**
-     * Either "live" or "test". Indicates this being a test or a live customer.
+     * Either "live" or "test". Indicates this being a test or a live (verified) customer.
+     *
+     * @var string
      */
-    public string $mode;
+    public $mode;
 
-    public ?string $name = null;
+    /**
+     * @var string
+     */
+    public $name;
 
-    public ?string $email = null;
+    /**
+     * @var string
+     */
+    public $email;
 
-    public ?string $locale = null;
+    /**
+     * @var string|null
+     */
+    public $locale;
 
     /**
      * @var \stdClass|mixed|null
@@ -33,14 +47,17 @@ class Customer extends BaseResource
     public $metadata;
 
     /**
-     * @var array|null
+     * @var string[]|array
      */
-    public ?array $recentlyUsedMethods = null;
-
-    public ?string $createdAt = null;
+    public $recentlyUsedMethods;
 
     /**
-     * @var \stdClass|null
+     * @var string
+     */
+    public $createdAt;
+
+    /**
+     * @var \stdClass
      */
     public $_links;
 
@@ -77,9 +94,6 @@ class Customer extends BaseResource
 
     /**
      * Get all payments for this customer
-     *
-     * This method performs an API request. Prefer embedded payments when they
-     * are already present to avoid one request per customer in loops.
      *
      * @return PaymentCollection
      *
@@ -125,9 +139,6 @@ class Customer extends BaseResource
     /**
      * Get all subscriptions for this customer
      *
-     * This method performs an API request. Prefer embedded subscriptions when
-     * they are already present to avoid one request per customer in loops.
-     *
      * @return SubscriptionCollection
      *
      * @throws ApiException
@@ -170,9 +181,6 @@ class Customer extends BaseResource
 
     /**
      * Get all mandates for this customer
-     *
-     * This method performs an API request. Prefer embedded mandates when they
-     * are already present to avoid one request per customer in loops.
      *
      * @return MandateCollection
      *

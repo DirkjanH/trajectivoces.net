@@ -1,45 +1,46 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Types;
 
-enum PaymentStatus: string
+class PaymentStatus
 {
     /**
      * The payment has just been created, no action has happened on it yet.
      */
-    case Open = 'open';
+    public const OPEN = 'open';
 
     /**
      * The payment has just been started, no final confirmation yet.
      */
-    case Pending = 'pending';
+    public const PENDING = 'pending';
 
     /**
      * The payment is authorized, but captures still need to be created in order to receive the money.
      *
+     * This is currently only possible for Klarna Pay later and Klarna Slice it. Payments with these payment methods can
+     * only be created with the Orders API. You should create a Shipment to trigger the capture to receive the money.
+     *
      * @see https://docs.mollie.com/reference/v2/shipments-api/create-shipment
      */
-    case Authorized = 'authorized';
+    public const AUTHORIZED = 'authorized';
 
     /**
      * The customer has canceled the payment.
      */
-    case Canceled = 'canceled';
+    public const CANCELED = 'canceled';
 
     /**
      * The payment has expired due to inaction of the customer.
      */
-    case Expired = 'expired';
+    public const EXPIRED = 'expired';
 
     /**
      * The payment has been paid.
      */
-    case Paid = 'paid';
+    public const PAID = 'paid';
 
     /**
      * The payment has failed.
      */
-    case Failed = 'failed';
+    public const FAILED = 'failed';
 }

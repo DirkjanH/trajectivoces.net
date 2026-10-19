@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Types;
 
-enum ProfileStatus: string
+class ProfileStatus
 {
     /**
      * The profile has not been verified yet and can only be used to create test payments.
      */
-    case Unverified = 'unverified';
+    public const UNVERIFIED = 'unverified';
 
     /**
      * The profile has been verified and can be used to create live payments and test payments.
      */
-    case Verified = 'verified';
+    public const VERIFIED = 'verified';
 
     /**
      * The profile is blocked and can thus no longer be used or changed.
      */
-    case Blocked = 'blocked';
+    public const BLOCKED = 'blocked';
 }

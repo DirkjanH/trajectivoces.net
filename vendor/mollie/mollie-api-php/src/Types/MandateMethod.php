@@ -1,33 +1,32 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Types;
 
-enum MandateMethod: string
+class MandateMethod
 {
-    case Bacs = 'bacs';
-    case Directdebit = 'directdebit';
-    case Creditcard = 'creditcard';
-    case Paypal = 'paypal';
+    public const DIRECTDEBIT = 'directdebit';
 
-    public static function getForFirstPaymentMethod(string $firstPaymentMethod): string
+    public const CREDITCARD = 'creditcard';
+
+    public const PAYPAL = 'paypal';
+
+    /**
+     * @param  string  $firstPaymentMethod
+     * @return string
+     */
+    public static function getForFirstPaymentMethod($firstPaymentMethod)
     {
-        if ($firstPaymentMethod === PaymentMethod::Paypal->value) {
-            return self::Paypal->value;
-        }
-
-        if ($firstPaymentMethod === PaymentMethod::Bacs->value) {
-            return self::Bacs->value;
+        if ($firstPaymentMethod === PaymentMethod::PAYPAL) {
+            return static::PAYPAL;
         }
 
         if (in_array($firstPaymentMethod, [
-            PaymentMethod::Applepay->value,
-            PaymentMethod::Creditcard->value,
-        ], true)) {
-            return self::Creditcard->value;
+            PaymentMethod::APPLEPAY,
+            PaymentMethod::CREDITCARD,
+        ])) {
+            return static::CREDITCARD;
         }
 
-        return self::Directdebit->value;
+        return static::DIRECTDEBIT;
     }
 }

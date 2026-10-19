@@ -1,18 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Mollie\Api\Resources;
 
 use Generator;
 use Mollie\Api\Http\Requests\DynamicGetRequest;
 use Mollie\Api\Http\Response;
 
-/**
- * @template TItem of object
- *
- * @extends ResourceCollection<TItem>
- */
 abstract class CursorCollection extends ResourceCollection
 {
     /**
@@ -79,21 +72,21 @@ abstract class CursorCollection extends ResourceCollection
     public function getAutoIterator(bool $iterateBackwards = false): LazyCollection
     {
         $page = $this;
-        $hasMorePages = $iterateBackwards ? 'hasPrevious' : 'hasNext';
-        $fetchPage = $iterateBackwards ? 'previous' : 'next';
 
-        return (new LazyCollection(function () use ($page, $hasMorePages, $fetchPage): Generator {
+        return (new LazyCollection(function () use ($page, $iterateBackwards): Generator {
             while (true) {
                 foreach ($page as $item) {
                     yield $item;
                 }
 
-                if (! $page->{$hasMorePages}()) {
+                if (($iterateBackwards && ! $page->hasPrevious()) || ! $page->hasNext()) {
                     break;
                 }
 
-                $page = $page->{$fetchPage}();
+                $page = $iterateBackwards
+                    ? $page->previous()
+                    : $page->next();
             }
-        }))->setOrigin($this->getOrigin());
+        }))->setResponse($this->response);
     }
 }
