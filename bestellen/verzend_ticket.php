@@ -193,6 +193,19 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 	    trigger_error('Kon de fout bij het verzenden van de kaartbestellingsmail niet naar de PHP-errorlog schrijven.', E_USER_WARNING);
 	  }
 	  echo "Mailer Error: " . $mail->ErrorInfo;
+	} else {
+	  $timestamp_opgeslagen = exec_query(
+	    "UPDATE {$tabel_reserveringen} SET `email_verzonden` = NOW()"
+	    . " WHERE `Mollie_ID` = " . quote($mollie_id)
+	    . " AND `reserveringnr` = " . quote($reservering['reserveringnr'])
+	  );
+	  if (!$timestamp_opgeslagen) {
+	    error_log(sprintf(
+	      '[verzend_ticket] E-mail is verzonden, maar timestamp opslaan is mislukt; reservering=%s; mollie_id=%s',
+	      $reservering['reserveringnr'],
+	      $mollie_id
+	    ));
+	  }
 	}
 }
 else exit('Deze boeking bestaat niet in de tabel.<br');
