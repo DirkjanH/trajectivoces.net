@@ -1,4 +1,29 @@
 <?php
+$ticket_stage = 'initialisatie';
+$ticket_context = [];
+$ticket_log = function ($stage, array $details = []) use (&$ticket_stage, &$ticket_context) {
+	$ticket_stage = $stage;
+	$entry = json_encode(
+		array_merge(['tijd' => date(DATE_ATOM), 'stap' => $stage], $ticket_context, $details),
+		JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE
+	);
+	if (!error_log('[verzend_ticket] ' . $entry)) {
+		trigger_error('Kon de webhookdiagnose niet naar de PHP-errorlog schrijven.', E_USER_WARNING);
+	}
+};
+register_shutdown_function(function () use (&$ticket_stage, $ticket_log) {
+	$error = error_get_last();
+	if ($error !== null && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR], true)) {
+		$ticket_log('fatale_fout', [
+			'laatste_stap' => $ticket_stage,
+			'fout' => $error['message'],
+			'bestand' => $error['file'],
+			'regel' => $error['line']
+		]);
+	}
+});
+$ticket_log('initialisatie');
+
 require_once( 'modules/bestelfuncties.php' );
 
 // stel php in dat deze fouten weergeeft
@@ -18,7 +43,13 @@ Kint::$enabled_mode = false; //($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
 
 if (isset($_POST['id']) AND $_POST['id'] != '') $mollie_id = $_POST['id'];
 	elseif (isset($_GET['mollie_id']) AND $_GET['mollie_id'] != '') $mollie_id = $_GET['mollie_id'];
-else exit('Geen geldige ID voor Mollie<br>');
+else {
+	$ticket_log('geen_mollie_id');
+	exit('Geen geldige ID voor Mollie<br>');
+}
+
+$ticket_context['mollie_id'] = $mollie_id;
+$ticket_log('boeking_opzoeken');
 
 $bestaat_boeking = select_query("SELECT count(*) FROM {$tabel_reserveringen} WHERE `Mollie_ID` = '{$mollie_id}';", 0);
 
@@ -29,20 +60,29 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 	$reservering_query = "SELECT * FROM {$tabel_reserveringen} WHERE `Mollie_ID` = '{$mollie_id}';";
 	$reservering = select_query($reservering_query, 1);
 	d($reservering_query, $reservering);
+	$ticket_context['reservering'] = $reservering['reserveringnr'];
 	
 	try {
+			$ticket_log('betaling_ophalen');
 			$payment = $mollie->payments->get($mollie_id);
 			$random_id = $payment->metadata->random_id;
 			d($payment->status);
 			$payment_succeeded = $payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks();
 			$payment_definitively_failed = in_array($payment->status, ['failed', 'canceled', 'expired'], true);
+			$ticket_log('betaling_gecontroleerd', [
+				'status' => $payment->status,
+				'payment_succeeded' => $payment_succeeded,
+				'payment_definitively_failed' => $payment_definitively_failed
+			]);
 
 			if (!$payment_succeeded && !$payment_definitively_failed) {
+				$ticket_log('overgeslagen_geen_definitieve_betaling');
 				http_response_code(200);
 				exit;
 			}
 
 			if ($payment_succeeded) {
+				$ticket_log('bevestiging_opbouwen');
 				/*
 				 * The payment is paid and isn't refunded or charged back.
 				 * At this point you'd probably want to start the process of delivering the product to the customer.
@@ -98,6 +138,7 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 
 				$message .= "<p>Met muzikale groet,\n\n<br><br>{$organisator}</p>\n<br>";
 
+				$ticket_log('qr_code_maken');
 				$qrcode = (new QRCode)->render($url.'check_QR.php?res='.$reservering['random_id']);
 				$file = fopen("qrcode.png", "w");
 				$base64 = explode(',', $qrcode);
@@ -126,7 +167,9 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 		}
 		}
 	 catch (\Mollie\Api\Exceptions\ApiException $e) {
+	 $ticket_log('mollie_api_fout', ['fout' => $e->getMessage()]);
 	 echo "API call failed: " . htmlspecialchars($e->getMessage());
+	 exit;
 	}
 
 
@@ -134,11 +177,13 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 	$to = $reservering[ 'email' ];
 	$from = $afzender;
 	$naam = str_replace('  ', ' ', $reservering['voornaam'].' '.$reservering['tussenvoegsel'].' '.$reservering['achternaam']);
+	$ticket_log('mail_opmaken');
 	$message = CssInliner::fromHtml($message)->inlineCss($css)->render();
 	d($message);
 
 
 	//Create a new PHPMailer instance
+	$ticket_log('smtp_voorbereiden');
 	$mail = new PHPMailer;
 
 	//Set who the message is to be sent from
@@ -178,7 +223,11 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 	$mail->Body = $message;
 	$mail->AltBody = strip_tags($message);
 
+	$ticket_log('smtp_verzenden');
 	$mail_verzonden = $mail->send();
+	$ticket_log($mail_verzonden ? 'smtp_geaccepteerd' : 'smtp_mislukt', [
+		'fout' => $mail_verzonden ? null : $mail->ErrorInfo
+	]);
 	d($mail, $mail_verzonden);
 
 	if ( !$mail_verzonden ) {
@@ -194,6 +243,7 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 	  }
 	  echo "Mailer Error: " . $mail->ErrorInfo;
 	} else {
+	  $ticket_log('verzendtijd_opslaan');
 	  $timestamp_opgeslagen = exec_query(
 	    "UPDATE {$tabel_reserveringen} SET `email_verzonden` = NOW()"
 	    . " WHERE `Mollie_ID` = " . quote($mollie_id)
@@ -206,9 +256,13 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 	      $mollie_id
 	    ));
 	  }
+	  $ticket_log($timestamp_opgeslagen ? 'verzendtijd_opgeslagen' : 'verzendtijd_opslaan_mislukt');
 	}
 }
-else exit('Deze boeking bestaat niet in de tabel.<br');
+else {
+	$ticket_log('boeking_niet_gevonden');
+	exit('Deze boeking bestaat niet in de tabel.<br');
+}
 ?>
 
 

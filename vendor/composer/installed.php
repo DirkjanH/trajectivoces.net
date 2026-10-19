@@ -3,7 +3,7 @@
         'name' => 'trajecti/voces',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd6d99eaccd35b4dbc7621acd5e4ba51b7e51a234',
+        'reference' => '6ae0a152b7c65577e9b227453b090366bdaa6b0b',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -246,7 +246,7 @@
         'trajecti/voces' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd6d99eaccd35b4dbc7621acd5e4ba51b7e51a234',
+            'reference' => '6ae0a152b7c65577e9b227453b090366bdaa6b0b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
