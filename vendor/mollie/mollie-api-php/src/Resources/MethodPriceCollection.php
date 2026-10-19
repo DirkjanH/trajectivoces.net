@@ -1,14 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Resources;
 
-class MethodPriceCollection extends BaseCollection
+/**
+ * @extends ResourceCollection<\Mollie\Api\Resources\MethodPrice>
+ */
+class MethodPriceCollection extends ResourceCollection
 {
     /**
-     * @return string|null
+     * The name of the collection resource in Mollie's API.
      */
-    public function getCollectionResourceName()
-    {
-        return null;
-    }
+    public static string $collectionName = 'prices';
+
+    /**
+     * Resource class name.
+     */
+    public static string $resource = MethodPrice::class;
 }

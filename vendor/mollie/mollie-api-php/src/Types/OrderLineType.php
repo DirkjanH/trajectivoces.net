@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Types;
 
-class OrderLineType
+enum OrderLineType: string
 {
-    public const TYPE_PHYSICAL = 'physical';
-    public const TYPE_DISCOUNT = 'discount';
-    public const TYPE_DIGITAL = 'digital';
-    public const TYPE_SHIPPING_FEE = 'shipping_fee';
-    public const TYPE_STORE_CREDIT = 'store_credit';
-    public const TYPE_GIFT_CARD = 'gift_card';
-    public const TYPE_SURCHARGE = 'surcharge';
+    case Physical = 'physical';
+    case Discount = 'discount';
+    case Digital = 'digital';
+    case ShippingFee = 'shipping_fee';
+    case StoreCredit = 'store_credit';
+    case GiftCard = 'gift_card';
+    case Surcharge = 'surcharge';
 }

@@ -1,12 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Types;
 
-class SubscriptionStatus
+enum SubscriptionStatus: string
 {
-    public const STATUS_ACTIVE = "active";
-    public const STATUS_PENDING = "pending";   // Waiting for a valid mandate.
-    public const STATUS_CANCELED = "canceled";
-    public const STATUS_SUSPENDED = "suspended"; // Active, but mandate became invalid.
-    public const STATUS_COMPLETED = "completed";
+    case Active = 'active';
+    case Pending = 'pending';
+    case Canceled = 'canceled';
+    case Suspended = 'suspended';
+    case Completed = 'completed';
+
+    /**
+     * Returns all values of the enum (backwards compatibility for GetAllConstants::all()).
+     *
+     * @return list<string>
+     */
+    public static function all(): array
+    {
+        return array_map(fn (self $case) => $case->value, self::cases());
+    }
 }

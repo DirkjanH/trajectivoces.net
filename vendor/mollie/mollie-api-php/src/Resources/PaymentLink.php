@@ -1,122 +1,86 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Resources;
 
+use Mollie\Api\Http\Data\Address;
+use Mollie\Api\Http\Data\Money;
+use Mollie\Api\Traits\HasMode;
+
+/**
+ * @property \Mollie\Api\MollieApiClient $connector
+ */
 class PaymentLink extends BaseResource
 {
-    /**
-     * Id of the payment link (on the Mollie platform).
-     *
-     * @var string
-     */
-    public $id;
+    use HasMode;
+
+    public string $id;
 
     /**
-     * Mode of the payment link, either "live" or "test" depending on the API Key that was
-     * used.
-     *
-     * @var string
+     * Mode of the payment link, either "live" or "test" depending on the API Key that was used.
      */
-    public $mode;
+    public string $mode;
 
     /**
-     * The profile ID this payment link belongs to.
-     *
-     * @example pfl_QkEhN94Ba
-     * @var string
+     * The profile ID this payment link belongs to. Nullable per the API contract.
      */
-    public $profileId;
+    public ?string $profileId;
+
+    public ?string $createdAt = null;
+
+    public ?string $paidAt = null;
+
+    public bool $archived = false;
+
+    public ?string $updatedAt = null;
+
+    public ?string $expiresAt = null;
 
     /**
-     * UTC datetime the payment link was created in ISO-8601 format.
-     *
-     * @example "2013-12-25T10:30:54+00:00"
-     * @var string|null
+     * Amount object containing the value and currency.
      */
-    public $createdAt;
+    public ?Money $amount = null;
 
     /**
-     * UTC datetime the payment was paid in ISO-8601 format.
-     *
-     * @example "2013-12-25T10:30:54+00:00"
-     * @var string|null
+     * The minimum amount. Only used for payment links without a fixed amount.
      */
-    public $paidAt;
+    public ?Money $minimumAmount = null;
 
     /**
-     * Whether the payment link is archived. Customers will not be able to complete
-     * payments on archived payment links.
+     * The order lines for this payment link (used for Klarna and other BNPL methods).
      *
-     * @var bool
+     * @var array|null
      */
-    public $archived;
-    
-    /**
-     * UTC datetime the payment link was updated in ISO-8601 format.
-     *
-     * @example "2013-12-25T10:30:54+00:00"
-     * @var string|null
-     */
-    public $updatedAt;
+    public ?array $lines = null;
+
+    public ?Address $billingAddress = null;
+
+    public ?Address $shippingAddress = null;
+
+    public string $description;
+
+    public ?string $redirectUrl = null;
+
+    public ?string $webhookUrl = null;
 
     /**
-     * UTC datetime - the expiry date of the payment link in ISO-8601 format.
-     *
-     * @example "2013-12-25T10:30:54+00:00"
-     * @var string|null
-     */
-    public $expiresAt;
-
-    /**
-     * Amount object containing the value and currency
-     *
-     * @var \stdClass
-     */
-    public $amount;
-
-    /**
-     * Description of the payment link that is shown to the customer during the payment,
-     * and possibly on the bank or credit card statement.
-     *
-     * @var string
-     */
-    public $description;
-
-    /**
-     * Redirect URL set on this payment
-     *
-     * @var string
-     */
-    public $redirectUrl;
-
-    /**
-     * Webhook URL set on this payment link
-     *
-     * @var string|null
-     */
-    public $webhookUrl;
-
-    /**
-     * @var \stdClass
+     * @var \stdClass|null
      */
     public $_links;
 
     /**
      * Is this payment paid for?
-     *
-     * @return bool
      */
-    public function isPaid()
+    public function isPaid(): bool
     {
         return ! empty($this->paidAt);
     }
 
     /**
      * Get the checkout URL where the customer can complete the payment.
-     *
-     * @return string|null
      */
-    public function getCheckoutUrl()
+    public function getCheckoutUrl(): ?string
     {
         if (empty($this->_links->paymentLink)) {
             return null;
@@ -128,77 +92,45 @@ class PaymentLink extends BaseResource
     /**
      * Persist the current local Payment Link state to the Mollie API.
      *
-     * @return mixed|\Mollie\Api\Resources\BaseResource
      * @throws \Mollie\Api\Exceptions\ApiException
      */
-    public function update()
+    public function update(): ?PaymentLink
     {
-        $body = $this->withPresetOptions([
+        return $this->connector->paymentLinks->update($this->id, $this->withMode([
             'description' => $this->description,
             'archived' => $this->archived,
-        ]);
-
-        $result = $this->client->paymentLinks->update($this->id, $body);
-
-        return ResourceFactory::createFromApiResult($result, new PaymentLink($this->client));
+        ]));
     }
 
     /**
      * Archive this Payment Link.
      *
      * @return \Mollie\Api\Resources\PaymentLink
+     *
      * @throws \Mollie\Api\Exceptions\ApiException
      */
     public function archive()
     {
-        $data = $this->withPresetOptions([
+        return $this->connector->paymentLinks->update($this->id, $this->withMode([
             'archived' => true,
-        ]);
-
-        return $this->client->paymentLinks->update($this->id, $data);
+        ]));
     }
 
     /**
      * Retrieve a paginated list of payments associated with this payment link.
      *
-     * @param string|null $from
-     * @param int|null $limit
-     * @param array $filters
+     * This method performs an API request. Avoid calling it once per payment
+     * link in loops unless that extra request per item is intentional.
+     *
      * @return mixed|\Mollie\Api\Resources\BaseCollection
      */
     public function payments(?string $from = null, ?int $limit = null, array $filters = [])
     {
-        return $this->client->paymentLinkPayments->pageFor(
+        return $this->connector->paymentLinkPayments->pageFor(
             $this,
             $from,
             $limit,
-            $this->withPresetOptions($filters)
+            $this->withMode($filters)
         );
-    }
-
-    /**
-     * When accessed by oAuth we want to pass the testmode by default
-     *
-     * @return array
-     */
-    private function getPresetOptions()
-    {
-        $options = [];
-        if ($this->client->usesOAuth()) {
-            $options["testmode"] = $this->mode === "test";
-        }
-
-        return $options;
-    }
-
-    /**
-     * Apply the preset options.
-     *
-     * @param array $options
-     * @return array
-     */
-    private function withPresetOptions(array $options)
-    {
-        return array_merge($this->getPresetOptions(), $options);
     }
 }

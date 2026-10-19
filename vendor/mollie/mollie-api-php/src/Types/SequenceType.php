@@ -1,15 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Types;
 
-class SequenceType
+enum SequenceType: string
 {
-    /**
-     * Sequence types.
-     *
-     * @see https://docs.mollie.com/guides/recurring
-     */
-    public const SEQUENCETYPE_ONEOFF = "oneoff";
-    public const SEQUENCETYPE_FIRST = "first";
-    public const SEQUENCETYPE_RECURRING = "recurring";
+    case Oneoff = 'oneoff';
+    case First = 'first';
+    case Recurring = 'recurring';
 }

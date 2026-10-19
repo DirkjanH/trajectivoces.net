@@ -1,22 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Resources;
 
+/**
+ * @extends CursorCollection<\Mollie\Api\Resources\Settlement>
+ */
 class SettlementCollection extends CursorCollection
 {
     /**
-     * @return string
+     * The name of the collection resource in Mollie's API.
      */
-    public function getCollectionResourceName()
-    {
-        return "settlements";
-    }
+    public static string $collectionName = 'settlements';
 
     /**
-     * @return BaseResource
+     * Resource class name.
      */
-    protected function createResourceObject()
-    {
-        return new Settlement($this->client);
-    }
+    public static string $resource = Settlement::class;
 }

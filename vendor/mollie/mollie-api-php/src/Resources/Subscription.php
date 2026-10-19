@@ -1,75 +1,49 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Resources;
 
-use Mollie\Api\MollieApiClient;
+use Mollie\Api\Http\Data\Money;
+use Mollie\Api\Http\Requests\CancelSubscriptionRequest;
+use Mollie\Api\Http\Requests\DynamicGetRequest;
 use Mollie\Api\Types\SubscriptionStatus;
+use Mollie\Api\Utils\Utility;
 
+/**
+ * @property \Mollie\Api\MollieApiClient $connector
+ */
 class Subscription extends BaseResource
 {
-    /**
-     * @var string
-     */
-    public $id;
+    public string $id;
 
-    /**
-     * @var string
-     */
-    public $customerId;
+    public string $customerId;
 
     /**
      * Either "live" or "test" depending on the customer's mode.
-     *
-     * @var string
      */
-    public $mode;
+    public string $mode;
 
     /**
-     * UTC datetime the subscription created in ISO-8601 format.
-     *
-     * @var string
+     * UTC datetime the subscription was created in ISO-8601 format.
      */
-    public $createdAt;
+    public string $createdAt;
 
-    /**
-     * @var string
-     */
-    public $status;
+    public SubscriptionStatus|string|null $status = null;
 
-    /**
-     * @var \stdClass
-     */
-    public $amount;
+    public Money $amount;
 
-    /**
-     * @var int|null
-     */
-    public $times;
+    public ?int $times = null;
 
-    /**
-     * @var int|null
-     */
-    public $timesRemaining;
+    public ?int $timesRemaining = null;
 
-    /**
-     * @var string
-     */
-    public $interval;
+    public string $interval;
 
-    /**
-     * @var string
-     */
-    public $description;
+    public string $description;
 
-    /**
-     * @var string|null
-     */
-    public $method;
+    public ?string $method = null;
 
-    /**
-     * @var string|null
-     */
-    public $mandateId;
+    public ?string $mandateId = null;
 
     /**
      * @var \stdClass|null
@@ -77,160 +51,109 @@ class Subscription extends BaseResource
     public $metadata;
 
     /**
-     * UTC datetime the subscription canceled in ISO-8601 format.
-     *
-     * @var string|null
+     * UTC datetime the subscription was canceled in ISO-8601 format.
      */
-    public $canceledAt;
+    public ?string $canceledAt = null;
 
     /**
-     * Date the subscription started. For example: 2018-04-24
-     *
-     * @var string|null
+     * Date the subscription started. For example: 2018-04-24.
      */
-    public $startDate;
+    public ?string $startDate = null;
 
     /**
      * Contains an optional 'webhookUrl'.
-     *
+     */
+    public ?string $webhookUrl = null;
+
+    /**
+     * Date the next subscription payment will take place. For example: 2018-04-24.
+     */
+    public ?string $nextPaymentDate = null;
+
+    /**
      * @var \stdClass|null
-     */
-    public $webhookUrl;
-
-    /**
-     * Date the next subscription payment will take place. For example: 2018-04-24
-     *
-     * @var string|null
-     */
-    public $nextPaymentDate;
-
-    /**
-     * @var \stdClass
      */
     public $_links;
 
     /**
-     * @return Subscription
      * @throws \Mollie\Api\Exceptions\ApiException
      */
-    public function update()
+    public function update(): ?Subscription
     {
         $body = [
-            "amount" => $this->amount,
-            "times" => $this->times,
-            "startDate" => $this->startDate,
-            "webhookUrl" => $this->webhookUrl,
-            "description" => $this->description,
-            "mandateId" => $this->mandateId,
-            "metadata" => $this->metadata,
-            "interval" => $this->interval,
+            'amount' => $this->amount,
+            'times' => $this->times,
+            'startDate' => $this->startDate,
+            'webhookUrl' => $this->webhookUrl,
+            'description' => $this->description,
+            'mandateId' => $this->mandateId,
+            'metadata' => $this->metadata,
+            'interval' => $this->interval,
         ];
 
-        $result = $this->client->subscriptions->update($this->customerId, $this->id, $body);
-
-        return ResourceFactory::createFromApiResult($result, new Subscription($this->client));
+        return $this->connector->subscriptions->update($this->customerId, $this->id, $body);
     }
 
-    /**
-     * Returns whether the Subscription is active or not.
-     *
-     * @return bool
-     */
-    public function isActive()
+    public function isActive(): bool
     {
-        return $this->status === SubscriptionStatus::STATUS_ACTIVE;
+        return Utility::equals($this->status, SubscriptionStatus::Active);
     }
 
-    /**
-     * Returns whether the Subscription is pending or not.
-     *
-     * @return bool
-     */
-    public function isPending()
+    public function isPending(): bool
     {
-        return $this->status === SubscriptionStatus::STATUS_PENDING;
+        return Utility::equals($this->status, SubscriptionStatus::Pending);
     }
 
-    /**
-     * Returns whether the Subscription is canceled or not.
-     *
-     * @return bool
-     */
-    public function isCanceled()
+    public function isCanceled(): bool
     {
-        return $this->status === SubscriptionStatus::STATUS_CANCELED;
+        return Utility::equals($this->status, SubscriptionStatus::Canceled);
     }
 
-    /**
-     * Returns whether the Subscription is suspended or not.
-     *
-     * @return bool
-     */
-    public function isSuspended()
+    public function isSuspended(): bool
     {
-        return $this->status === SubscriptionStatus::STATUS_SUSPENDED;
+        return Utility::equals($this->status, SubscriptionStatus::Suspended);
     }
 
-    /**
-     * Returns whether the Subscription is completed or not.
-     *
-     * @return bool
-     */
-    public function isCompleted()
+    public function isCompleted(): bool
     {
-        return $this->status === SubscriptionStatus::STATUS_COMPLETED;
+        return Utility::equals($this->status, SubscriptionStatus::Completed);
     }
 
     /**
-     * Cancels this subscription
+     * Cancels this subscription.
      *
-     * @return Subscription
      * @throws \Mollie\Api\Exceptions\ApiException
      */
-    public function cancel()
+    public function cancel(): ?Subscription
     {
         if (! isset($this->_links->self->href)) {
             return $this;
         }
 
-        $body = null;
-        if ($this->client->usesOAuth()) {
-            $body = json_encode([
-                "testmode" => $this->mode === "test" ? true : false,
-            ]);
-        }
-
-        $result = $this->client->performHttpCallToFullUrl(
-            MollieApiClient::HTTP_DELETE,
-            $this->_links->self->href,
-            $body
-        );
-
-        return ResourceFactory::createFromApiResult($result, new Subscription($this->client));
+        return $this
+            ->connector
+            ->send((new CancelSubscriptionRequest(
+                $this->customerId,
+                $this->id
+            ))->test($this->mode === 'test'));
     }
 
     /**
-     * Get subscription payments
+     * Get subscription payments.
      *
-     * @return \Mollie\Api\Resources\PaymentCollection
+     * This method performs an API request. Prefer embedded payments when they
+     * are already present to avoid one request per subscription in loops.
+     *
      * @throws \Mollie\Api\Exceptions\ApiException
      */
-    public function payments()
+    public function payments(): PaymentCollection
     {
         if (! isset($this->_links->payments->href)) {
-            return new PaymentCollection($this->client, 0, null);
+            return $this->connector->subscriptionPayments->pageFor($this, null, null, ['testmode' => $this->mode === 'test']);
         }
 
-        $result = $this->client->performHttpCallToFullUrl(
-            MollieApiClient::HTTP_GET,
-            $this->_links->payments->href
-        );
-
-        return ResourceFactory::createCursorResourceCollection(
-            $this->client,
-            $result->_embedded->payments,
-            Payment::class,
-            $result->_links
-        );
+        return $this
+            ->connector
+            ->send((new DynamicGetRequest($this->_links->payments->href))->setHydratableResource(PaymentCollection::class));
     }
 }

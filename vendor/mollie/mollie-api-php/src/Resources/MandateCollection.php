@@ -1,40 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Resources;
 
+use Mollie\Api\Types\MandateStatus;
+use Mollie\Api\Utils\Utility;
+
+/**
+ * @extends CursorCollection<\Mollie\Api\Resources\Mandate>
+ */
 class MandateCollection extends CursorCollection
 {
     /**
-     * @return string
+     * The name of the collection resource in Mollie's API.
      */
-    public function getCollectionResourceName()
-    {
-        return "mandates";
-    }
+    public static string $collectionName = 'mandates';
 
     /**
-     * @return BaseResource
+     * Resource class name.
      */
-    protected function createResourceObject()
+    public static string $resource = Mandate::class;
+
+    public function whereStatus(MandateStatus|string $status): self
     {
-        return new Mandate($this->client);
-    }
-
-    /**
-     * @param string $status
-     * @return array|\Mollie\Api\Resources\MandateCollection
-     */
-    public function whereStatus($status)
-    {
-        $collection = new self($this->client, 0, $this->_links);
-
-        foreach ($this as $item) {
-            if ($item->status === $status) {
-                $collection[] = $item;
-                $collection->count++;
-            }
-        }
-
-        return $collection;
+        return $this->filter(fn (Mandate $mandate) => Utility::equals($mandate->status, $status));
     }
 }

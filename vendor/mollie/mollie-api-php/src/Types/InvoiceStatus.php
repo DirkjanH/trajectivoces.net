@@ -1,21 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Types;
 
-class InvoiceStatus
+enum InvoiceStatus: string
 {
     /**
      * The invoice is not paid yet.
      */
-    public const STATUS_OPEN = "open";
+    case Open = 'open';
 
     /**
      * The invoice is paid.
      */
-    public const STATUS_PAID = "paid";
+    case Paid = 'paid';
 
     /**
      * Payment of the invoice is overdue.
      */
-    public const STATUS_OVERDUE = "overdue";
+    case Overdue = 'overdue';
 }

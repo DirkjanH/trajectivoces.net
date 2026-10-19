@@ -4,11 +4,11 @@
 	 "description": "dependencies voor Dirkjan",
 	 "license": "proprietary",
     "require": {
-        "phpmailer/phpmailer": "~6.0",
+        "phpmailer/phpmailer": "^7.1",
         "tinymce/tinymce": "^8.8",
-        "pelago/emogrifier": "^1.0",
+        "pelago/emogrifier": "^8.3",
         "kint-php/kint": "^5.0",
-        "mollie/mollie-api-php": "^2.0",
+        "mollie/mollie-api-php": "^4.0",
         "chillerlan/php-qrcode": "^4.3",
           "league/oauth2-google": "^5.0",
           "php81_bc/strftime":"^0.7"

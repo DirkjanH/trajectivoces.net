@@ -1,112 +1,80 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Resources;
 
-use Mollie\Api\MollieApiClient;
+use Mollie\Api\Traits\HasMode;
 use Mollie\Api\Types\MandateStatus;
+use Mollie\Api\Utils\Utility;
 
+/**
+ * @property \Mollie\Api\MollieApiClient $connector
+ */
 class Mandate extends BaseResource
 {
-    /**
-     * @var string
-     */
-    public $id;
+    use HasMode;
 
-    /**
-     * @var string
-     */
-    public $status;
+    public string $id;
 
-    /**
-     * @var string
-     */
-    public $mode;
+    public MandateStatus|string|null $status = null;
 
-    /**
-     * @var string
-     */
-    public $method;
+    public string $mode;
+
+    public ?string $method = null;
 
     /**
      * @var \stdClass|null
      */
     public $details;
 
-    /**
-     * @var string
-     */
-    public $customerId;
+    public ?string $customerId = null;
+
+    public ?string $createdAt = null;
+
+    public ?string $mandateReference = null;
 
     /**
-     * @var string
+     * Date of signature, for example: 2018-05-07.
      */
-    public $createdAt;
+    public ?string $signatureDate = null;
 
     /**
-     * @var string
-     */
-    public $mandateReference;
-
-    /**
-     * Date of signature, for example: 2018-05-07
-     *
-     * @var string
-     */
-    public $signatureDate;
-
-    /**
-     * @var \stdClass
+     * @var \stdClass|null
      */
     public $_links;
 
-    /**
-     * @return bool
-     */
-    public function isValid()
+    public function isValid(): bool
     {
-        return $this->status === MandateStatus::STATUS_VALID;
+        return Utility::equals($this->status, MandateStatus::Valid);
+    }
+
+    public function isPending(): bool
+    {
+        return Utility::equals($this->status, MandateStatus::Pending);
+    }
+
+    public function isInvalid(): bool
+    {
+        return Utility::equals($this->status, MandateStatus::Invalid);
     }
 
     /**
-     * @return bool
+     * Revoke the mandate.
      */
-    public function isPending()
+    public function revoke(): void
     {
-        return $this->status === MandateStatus::STATUS_PENDING;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isInvalid()
-    {
-        return $this->status === MandateStatus::STATUS_INVALID;
-    }
-
-    /**
-     * Revoke the mandate
-     *
-     * @return null|\stdClass|\Mollie\Api\Resources\Mandate
-     */
-    public function revoke()
-    {
-        if (! isset($this->_links->self->href)) {
-            return $this;
+        if (! isset($this->customerId)) {
+            return;
         }
 
-        $body = null;
-        if ($this->client->usesOAuth()) {
-            $body = json_encode([
-                "testmode" => $this->mode === "test" ? true : false,
-            ]);
-        }
-
-        $result = $this->client->performHttpCallToFullUrl(
-            MollieApiClient::HTTP_DELETE,
-            $this->_links->self->href,
-            $body
-        );
-
-        return $result;
+        $this
+            ->connector
+            ->mandates
+            ->revokeForId(
+                $this->customerId,
+                $this->id,
+                $this->isInTestmode()
+            );
     }
 }

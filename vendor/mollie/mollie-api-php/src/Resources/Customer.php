@@ -1,41 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Resources;
 
 use Mollie\Api\Exceptions\ApiException;
+use Mollie\Api\Traits\HasMode;
 
+/**
+ * @property \Mollie\Api\MollieApiClient $connector
+ */
 class Customer extends BaseResource
 {
-    use HasPresetOptions;
+    use HasMode;
+
+    public string $id;
 
     /**
-     * Id of the customer.
-     *
-     * @var string
+     * Either "live" or "test". Indicates this being a test or a live customer.
      */
-    public $id;
+    public string $mode;
 
-    /**
-     * Either "live" or "test". Indicates this being a test or a live (verified) customer.
-     *
-     * @var string
-     */
-    public $mode;
+    public ?string $name = null;
 
-    /**
-     * @var string
-     */
-    public $name;
+    public ?string $email = null;
 
-    /**
-     * @var string
-     */
-    public $email;
-
-    /**
-     * @var string|null
-     */
-    public $locale;
+    public ?string $locale = null;
 
     /**
      * @var \stdClass|mixed|null
@@ -43,151 +33,154 @@ class Customer extends BaseResource
     public $metadata;
 
     /**
-     * @var string[]|array
+     * @var array|null
      */
-    public $recentlyUsedMethods;
+    public ?array $recentlyUsedMethods = null;
+
+    public ?string $createdAt = null;
 
     /**
-     * @var string
-     */
-    public $createdAt;
-
-    /**
-     * @var \stdClass
+     * @var \stdClass|null
      */
     public $_links;
 
     /**
-     * @return \Mollie\Api\Resources\Customer
-     * @throws \Mollie\Api\Exceptions\ApiException
+     * @throws ApiException
      */
-    public function update()
+    public function update(): ?Customer
     {
         $body = [
-            "name" => $this->name,
-            "email" => $this->email,
-            "locale" => $this->locale,
-            "metadata" => $this->metadata,
+            'name' => $this->name,
+            'email' => $this->email,
+            'locale' => $this->locale,
+            'metadata' => $this->metadata,
         ];
 
-        $result = $this->client->customers->update($this->id, $body);
-
-        return ResourceFactory::createFromApiResult($result, new Customer($this->client));
+        /** @var null|Customer */
+        return $this->connector->customers->update($this->id, $body);
     }
 
     /**
-     * @param array $options
-     * @param array $filters
-     *
      * @return Payment
+     *
      * @throws ApiException
      */
     public function createPayment(array $options = [], array $filters = [])
     {
-        return $this->client->customerPayments->createFor($this, $this->withPresetOptions($options), $filters);
+        return $this->connector->customerPayments->createFor(
+            $this,
+            $options,
+            $filters,
+            $this->isInTestmode()
+        );
     }
 
     /**
      * Get all payments for this customer
      *
+     * This method performs an API request. Prefer embedded payments when they
+     * are already present to avoid one request per customer in loops.
+     *
      * @return PaymentCollection
+     *
      * @throws ApiException
      */
     public function payments()
     {
-        return $this->client->customerPayments->listFor($this, null, null, $this->getPresetOptions());
+        return $this->connector->customerPayments->pageFor($this, null, null, $this->withMode());
     }
 
     /**
-     * @param array $options
-     * @param array $filters
-     *
      * @return Subscription
+     *
      * @throws ApiException
      */
     public function createSubscription(array $options = [], array $filters = [])
     {
-        return $this->client->subscriptions->createFor($this, $this->withPresetOptions($options), $filters);
+        return $this->connector->subscriptions->createFor($this, $options, $this->isInTestmode());
     }
 
     /**
-     * @param string $subscriptionId
-     * @param array $parameters
-     *
+     * @param  string  $subscriptionId
      * @return Subscription
+     *
      * @throws ApiException
      */
-    public function getSubscription($subscriptionId, array $parameters = [])
+    public function getSubscription($subscriptionId)
     {
-        return $this->client->subscriptions->getFor($this, $subscriptionId, $this->withPresetOptions($parameters));
+        return $this->connector->subscriptions->getFor($this, $subscriptionId, $this->isInTestmode());
     }
 
     /**
-     * @param string $subscriptionId
-     *
+     * @param  string  $subscriptionId
      * @return \Mollie\Api\Resources\Subscription
+     *
      * @throws ApiException
      */
     public function cancelSubscription($subscriptionId)
     {
-        return $this->client->subscriptions->cancelFor($this, $subscriptionId, $this->getPresetOptions());
+        return $this->connector->subscriptions->cancelFor($this, $subscriptionId, $this->isInTestmode());
     }
 
     /**
      * Get all subscriptions for this customer
      *
+     * This method performs an API request. Prefer embedded subscriptions when
+     * they are already present to avoid one request per customer in loops.
+     *
      * @return SubscriptionCollection
+     *
      * @throws ApiException
      */
     public function subscriptions()
     {
-        return $this->client->subscriptions->listFor($this, null, null, $this->getPresetOptions());
+        return $this->connector->subscriptions->pageFor($this, null, null, $this->withMode());
     }
 
     /**
-     * @param array $options
-     * @param array $filters
-     *
      * @return Mandate
+     *
      * @throws ApiException
      */
-    public function createMandate(array $options = [], array $filters = [])
+    public function createMandate(array $options = [])
     {
-        return $this->client->mandates->createFor($this, $this->withPresetOptions($options), $filters);
+        return $this->connector->mandates->createFor($this, $options, $this->isInTestmode());
     }
 
     /**
-     * @param string $mandateId
-     * @param array $parameters
-     *
+     * @param  string  $mandateId
      * @return Mandate
+     *
      * @throws ApiException
      */
     public function getMandate($mandateId, array $parameters = [])
     {
-        return $this->client->mandates->getFor($this, $mandateId, $parameters);
+        return $this->connector->mandates->getFor($this, $mandateId, $this->withMode($parameters));
     }
 
     /**
-     * @param string $mandateId
+     * @param  string  $mandateId
      *
-     * @return null
      * @throws ApiException
      */
-    public function revokeMandate($mandateId)
+    public function revokeMandate($mandateId): void
     {
-        return $this->client->mandates->revokeFor($this, $mandateId, $this->getPresetOptions());
+        $this->connector->mandates->revokeFor($this, $mandateId, $this->withMode());
     }
 
     /**
      * Get all mandates for this customer
      *
+     * This method performs an API request. Prefer embedded mandates when they
+     * are already present to avoid one request per customer in loops.
+     *
      * @return MandateCollection
+     *
      * @throws ApiException
      */
     public function mandates()
     {
-        return $this->client->mandates->listFor($this, null, null, $this->getPresetOptions());
+        return $this->connector->mandates->pageFor($this, null, null, $this->withMode());
     }
 
     /**
@@ -197,30 +190,16 @@ class Customer extends BaseResource
      */
     public function hasValidMandate()
     {
-        $mandates = $this->mandates();
-        foreach ($mandates as $mandate) {
-            if ($mandate->isValid()) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->mandates()
+            ->contains(fn (Mandate $mandate) => $mandate->isValid());
     }
 
     /**
      * Helper function to check for specific payment method mandate with status valid
-     *
-     * @return bool
      */
-    public function hasValidMandateForMethod($method)
+    public function hasValidMandateForMethod($method): bool
     {
-        $mandates = $this->mandates();
-        foreach ($mandates as $mandate) {
-            if ($mandate->method === $method && $mandate->isValid()) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->mandates()
+            ->contains(fn (Mandate $mandate) => $mandate->isValid() && $mandate->method === $method);
     }
 }

@@ -1,184 +1,157 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Resources;
 
+use Mollie\Api\Http\Data\Money;
+use Mollie\Api\Http\Requests\CancelPaymentRefundRequest;
+use Mollie\Api\Traits\HasMode;
 use Mollie\Api\Types\RefundStatus;
+use Mollie\Api\Utils\Utility;
 
+/**
+ * @property \Mollie\Api\MollieApiClient $connector
+ */
 class Refund extends BaseResource
 {
-    use HasPresetOptions;
+    use HasMode;
 
-    /**
-     * Id of the payment method.
-     *
-     * @var string
-     */
-    public $id;
+    public string $id;
 
     /**
      * Mode of the refund, either "live" or "test".
-     *
-     * @var string
      */
-    public $mode;
+    public string $mode;
 
     /**
-     * The $amount that was refunded.
-     *
-     * @var \stdClass
+     * The amount that was refunded.
      */
-    public $amount;
+    public Money $amount;
 
     /**
-     * UTC datetime the payment was created in ISO-8601 format.
+     * UTC datetime the refund was created in ISO-8601 format.
      *
      * @example "2013-12-25T10:30:54+00:00"
-     * @var string
      */
-    public $createdAt;
+    public string $createdAt;
 
     /**
      * The refund's description, if available.
-     *
-     * @var string|null
      */
-    public $description;
+    public ?string $description = null;
 
     /**
      * The payment id that was refunded.
-     *
-     * @var string
      */
-    public $paymentId;
+    public string $paymentId;
 
     /**
      * The order id that was refunded.
-     *
-     * @var string|null
      */
-    public $orderId;
+    public ?string $orderId = null;
 
     /**
      * The order lines contain the actual things the customer ordered.
      * The lines will show the quantity, discountAmount, vatAmount and totalAmount
      * refunded.
      *
-     * @var array|object[]|null
+     * @var array|null
      */
-    public $lines;
+    public ?array $lines = null;
 
     /**
-     * The settlement amount
-     *
-     * @var \stdClass
+     * The settlement amount.
      */
-    public $settlementAmount;
+    public ?Money $settlementAmount = null;
 
     /**
-     * The refund status
-     *
-     * @var string
+     * The refund status. Enum case if recognised, raw string for forward-compat.
      */
-    public $status;
+    public RefundStatus|string|null $status = null;
 
     /**
-     * @var \stdClass
+     * @var \stdClass|null
      */
     public $_links;
 
     /**
      * An object containing information relevant to a refund issued for a split payment.
      *
-     * @var array|object[]|null
+     * @var array|null
      */
-    public $routingReversal;
+    public ?array $routingReversal = null;
 
     /**
      * @var \stdClass|null
      */
     public $metadata;
 
-    /**
-     * @return bool
-     */
-    public function canBeCanceled()
+    public function canBeCanceled(): bool
     {
         return $this->isQueued() || $this->isPending();
     }
 
     /**
      * Is this refund queued?
-     *
-     * @return bool
      */
-    public function isQueued()
+    public function isQueued(): bool
     {
-        return $this->status === RefundStatus::STATUS_QUEUED;
+        return Utility::equals($this->status, RefundStatus::Queued);
     }
 
     /**
      * Is this refund pending?
-     *
-     * @return bool
      */
-    public function isPending()
+    public function isPending(): bool
     {
-        return $this->status === RefundStatus::STATUS_PENDING;
+        return Utility::equals($this->status, RefundStatus::Pending);
     }
 
     /**
      * Is this refund processing?
-     *
-     * @return bool
      */
-    public function isProcessing()
+    public function isProcessing(): bool
     {
-        return $this->status === RefundStatus::STATUS_PROCESSING;
+        return Utility::equals($this->status, RefundStatus::Processing);
     }
 
     /**
      * Is this refund transferred to consumer?
-     *
-     * @return bool
      */
-    public function isTransferred()
+    public function isTransferred(): bool
     {
-        return $this->status === RefundStatus::STATUS_REFUNDED;
+        return Utility::equals($this->status, RefundStatus::Refunded);
     }
 
     /**
      * Is this refund failed?
-     *
-     * @return bool
      */
-    public function isFailed()
+    public function isFailed(): bool
     {
-        return $this->status === RefundStatus::STATUS_FAILED;
+        return Utility::equals($this->status, RefundStatus::Failed);
     }
 
     /**
      * Is this refund canceled?
-     *
-     * @return bool
      */
-    public function isCanceled()
+    public function isCanceled(): bool
     {
-        return $this->status === RefundStatus::STATUS_CANCELED;
+        return Utility::equals($this->status, RefundStatus::Canceled);
     }
 
     /**
      * Cancel the refund.
-     * Returns null if successful.
      *
-     * @return null
      * @throws \Mollie\Api\Exceptions\ApiException
      */
-    public function cancel()
+    public function cancel(): void
     {
-        return $this->client->paymentRefunds->cancelForId(
-            $this->paymentId,
-            $this->id,
-            $this->getPresetOptions()
-        );
+        $this
+            ->connector
+            ->send((new CancelPaymentRefundRequest(
+                $this->paymentId,
+                $this->id
+            ))->test($this->isInTestmode()));
     }
 }

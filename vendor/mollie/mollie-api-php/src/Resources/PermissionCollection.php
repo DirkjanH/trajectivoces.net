@@ -1,14 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mollie\Api\Resources;
 
-class PermissionCollection extends BaseCollection
+/**
+ * @extends ResourceCollection<\Mollie\Api\Resources\Permission>
+ */
+class PermissionCollection extends ResourceCollection
 {
     /**
-     * @return string
+     * The name of the collection resource in Mollie's API.
      */
-    public function getCollectionResourceName()
-    {
-        return "permissions";
-    }
+    public static string $collectionName = 'permissions';
+
+    public static string $resource = Permission::class;
 }
