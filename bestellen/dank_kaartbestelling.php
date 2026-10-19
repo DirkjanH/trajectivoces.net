@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 require_once($_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php');
 require_once('modules/bestelfuncties.php');
 
-//Kint::$enabled_mode = true; //($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
+Kint::$enabled_mode = true; //($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
 
 d($_REQUEST);
 
@@ -20,6 +20,7 @@ if (isset($_GET['res']) & is_string($_GET['res'])) {
 if (isset($reservering)) {
     if ($reservering['betaalstatus'] == 'paid') {
         $concert = select_query("SELECT * FROM {$tabel_concerten} WHERE concertId = {$reservering['concertId']};", 1);
+        d($concert);
 
         $datumentijd = strftime("%A %e %B %Y, aanvang %H:%M", strtotime($concert['datum'] . ' ' . $concert['tijd']));
 
