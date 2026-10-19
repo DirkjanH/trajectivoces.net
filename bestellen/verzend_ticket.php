@@ -182,6 +182,16 @@ if (!is_null($bestaat_boeking) AND $bestaat_boeking == true) {
 	d($mail, $mail_verzonden);
 
 	if ( !$mail_verzonden ) {
+	  $mail_error = preg_replace('/[\r\n\t]+/', ' ', $mail->ErrorInfo);
+	  $log_entry = sprintf(
+	    '[verzend_ticket] E-mail verzenden mislukt; reservering=%s; mollie_id=%s; fout=%s',
+	    $reservering['reserveringnr'],
+	    $mollie_id,
+	    $mail_error
+	  );
+	  if (!error_log($log_entry)) {
+	    trigger_error('Kon de fout bij het verzenden van de kaartbestellingsmail niet naar de PHP-errorlog schrijven.', E_USER_WARNING);
+	  }
 	  echo "Mailer Error: " . $mail->ErrorInfo;
 	}
 }
