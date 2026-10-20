@@ -24,22 +24,21 @@ register_shutdown_function(function () use (&$ticket_stage, $ticket_log) {
 });
 $ticket_log('initialisatie');
 
-require_once( 'modules/bestelfuncties.php' );
-
 // stel php in dat deze fouten weergeeft
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php');
+Kint::$enabled_mode = false;
+
+require_once( 'modules/bestelfuncties.php' );
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 use chillerlan\QRCode\{QRCode, QROptions};
 use Pelago\Emogrifier\CssInliner;
-
-Kint::$enabled_mode = false; //($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
 
 if (isset($_POST['id']) AND $_POST['id'] != '') $mollie_id = $_POST['id'];
 	elseif (isset($_GET['mollie_id']) AND $_GET['mollie_id'] != '') $mollie_id = $_GET['mollie_id'];
