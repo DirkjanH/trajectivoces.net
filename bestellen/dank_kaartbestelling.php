@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 require_once($_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php');
 require_once('modules/bestelfuncties.php');
 
-Kint::$enabled_mode = true; //($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
+Kint::$enabled_mode = false; //($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
 
 d($_REQUEST);
 
