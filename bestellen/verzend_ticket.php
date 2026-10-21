@@ -150,11 +150,13 @@ if (!is_null($bestaat_boeking) and $bestaat_boeking == true) {
 
 			$ticket_log('qr_code_maken');
 			$qrcode = (new QRCode)->render($url . 'check_QR.php?res=' . $reservering['random_id']);
-			$file = fopen("qrcode.png", "w");
-			$base64 = explode(',', $qrcode);
-			fwrite($file, base64_decode($base64[1]));
-			fclose($file);
-			d($qrcode, $base64);
+			if (!preg_match('#^data:image/png;base64,(.+)$#s', $qrcode, $qr_match)) {
+				throw new RuntimeException('De QR-code is niet als PNG-data gegenereerd.');
+			}
+			$qr_image_data = base64_decode($qr_match[1], true);
+			if ($qr_image_data === false) {
+				throw new RuntimeException('De PNG-data van de QR-code is ongeldig.');
+			}
 		} else {
 			// maak een waarschuwngsmail aan:
 			$subject = "Kaartbestelling {$organisator} niet gelukt";
@@ -186,6 +188,7 @@ if (!is_null($bestaat_boeking) and $bestaat_boeking == true) {
 	$naam = str_replace('  ', ' ', $reservering['voornaam'] . ' ' . $reservering['tussenvoegsel'] . ' ' . $reservering['achternaam']);
 	$ticket_log('mail_opmaken');
 	$message = CssInliner::fromHtml($message)->inlineCss($css)->render();
+	$page_message = $message;
 	d($message);
 
 
@@ -226,8 +229,10 @@ if (!is_null($bestaat_boeking) and $bestaat_boeking == true) {
 	//Send HTML or Plain Text email
 	$mail->isHTML(true);
 	if ($gelukt) {
-		$mail->AddEmbeddedImage('qrcode.png', "qrcode");
+		$mail->addStringEmbeddedImage($qr_image_data, 'qrcode', 'qrcode.png', PHPMailer::ENCODING_BASE64, 'image/png');
 		$message .= '<p>Toon deze QR code bij de kassa:<br><img class="w3-center" src="cid:qrcode" alt ="QR-code"></p>';
+		$page_message .= '<p>Toon deze QR code bij de kassa:<br><img class="w3-center" src="' .
+			htmlspecialchars($qrcode, ENT_QUOTES, 'UTF-8') . '" alt="QR-code"></p>';
 	}
 	$mail->Body = $message;
 	$mail->AltBody = strip_tags($message);
@@ -284,7 +289,7 @@ if (!is_null($bestaat_boeking) and $bestaat_boeking == true) {
 </head>
 
 <body class="w3-gray">
-	<div class="w3-content"> <?php echo ($message); ?> </div>
+	<div class="w3-content"> <?php echo ($page_message ?? $message); ?> </div>
 </body>
 
 </html>
