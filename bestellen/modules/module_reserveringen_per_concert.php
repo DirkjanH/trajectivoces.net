@@ -13,7 +13,7 @@ Kint::$enabled_mode = false;
 
 d($_REQUEST);
 
-$concerten = select_query("SELECT * FROM {$tabel_concerten} ORDER BY datum");
+$concerten = select_query("SELECT * FROM {$tabel_concerten} WHERE datum >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) ORDER BY datum");
 d($concerten);
 foreach ($concerten as $row) {
 	$datum = strftime("%A %e %B %Y", strtotime($row['datum']));
