@@ -1,42 +1,51 @@
 <?php
-// stel php in dat deze fouten weergeeft
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+ini_set('display_errors', '0');
+header('Cache-Control: no-store');
+header('Referrer-Policy: no-referrer');
+header('X-Content-Type-Options: nosniff');
 
 require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php');
 
-require_once('modules/bestelfuncties.php');
-
 Kint::$enabled_mode = false;
 
-d($_REQUEST);
+require_once(__DIR__ . '/modules/bestelfuncties.php');
 
-if (isset($_GET['res']) & is_string($_GET['res'])) $bestaat_boeking = select_query("SELECT count(*) FROM {$tabel_reserveringen} WHERE `random_id` = '{$_GET['res']}'", 0);
+use function PHP81_BC\strftime;
 
-$res = $_GET['res'];
+$res = $_GET['res'] ?? null;
+$reservering = false;
 
-d($res, $bestaat_boeking);
+try {
+if (is_string($res) && preg_match('/\A[0-9a-f]{8}\z/', $res) === 1) {
+  $reservering_query = $db->prepare("SELECT * FROM {$tabel_reserveringen} WHERE `random_id` = :res");
+  $reservering_query->execute(['res' => $res]);
+  $reservering = $reservering_query->fetch(PDO::FETCH_ASSOC);
+}
 
-if ($bestaat_boeking) {    
-  $reservering_query = "SELECT * FROM {$tabel_reserveringen} WHERE `random_id` = '$res'";
-  $reservering = select_query($reservering_query, 1);
-  d($reservering_query, $reservering);
+if ($reservering) {
 
   $naam = str_replace('  ', ' ', ($reservering['voornaam'].' '.$reservering['tussenvoegsel'].
   ' '.$reservering['achternaam']));
 
-  $concert = select_query("SELECT * FROM {$tabel_concerten} WHERE `concertId` = {$reservering['concertId']}", 1);
+  $concert_query = $db->prepare("SELECT * FROM {$tabel_concerten} WHERE `concertId` = :concertId");
+  $concert_query->execute(['concertId' => $reservering['concertId']]);
+  $concert = $concert_query->fetch(PDO::FETCH_ASSOC);
+  if (!$concert) throw new UnexpectedValueException('Concert ontbreekt bij QR-reservering.');
     
   $nu = date('Y-m-d');
   $datumentijd = strftime("%A %e %B %Y, aanvang %H:%M", strtotime($concert['datum'].' '.$concert['tijd']));
-  d($datumentijd, $concert['datum'], $concert['tijd']);
-  $al_afgevinkt = $reservering['verschenen'];
-  d($nu, $concert['datum']);
+  $naam = htmlspecialchars($naam, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+  $concert['concerttitel'] = htmlspecialchars($concert['concerttitel'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+  $datumentijd = htmlspecialchars($datumentijd, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+  foreach (['aantal_vol', 'aantal_red', 'aantal_kind'] as $veld) {
+    $reservering[$veld] = (int) $reservering[$veld];
+  }
 
     if ($concert['datum'] == $nu) {
-      if (!$al_afgevinkt) {
-        exec_query("UPDATE {$tabel_reserveringen} SET verschenen = 1 WHERE `random_id` = '$res'");
+      $afvinken = $db->prepare("UPDATE {$tabel_reserveringen} SET verschenen = 1 WHERE `random_id` = :res AND (verschenen IS NULL OR verschenen = 0)");
+      $afvinken->execute(['res' => $res]);
+      if ($afvinken->rowCount() > 0) {
       $message = 
 <<<MESSAGE
         <body class="w3-green w3-center">
@@ -94,6 +103,7 @@ MESSAGE;
 
 }
 else {
+http_response_code(404);
 $message = <<<MESSAGE
            <body class="w3-red w3-center">
             <div class="w3-content w3-panel">
@@ -102,6 +112,13 @@ $message = <<<MESSAGE
            </body>
 MESSAGE; 
 }
+} catch (PDOException | UnexpectedValueException $e) {
+    if (!error_log('[check_QR] Ticketcontrole mislukt: ' . get_class($e) . ' (code ' . $e->getCode() . ')')) {
+        trigger_error('Kon de QR-controlefout niet naar de PHP-errorlog schrijven.', E_USER_WARNING);
+    }
+    http_response_code(500);
+    $message = '<body class="w3-red w3-center"><div class="w3-content w3-panel"><h3>Ticketcontrole tijdelijk niet mogelijk</h3><p>Probeer het opnieuw of neem contact op met de organisatie.</p></div></body>';
+}
 ?>
 
 <!doctype html>
@@ -109,8 +126,8 @@ MESSAGE;
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<link href="<?php echo $css; ?>" rel="stylesheet" type="text/css">
-	<link rel="icon" type="image/png" href=<?php echo $favicon; ?>>
+	<link href="<?php echo htmlspecialchars($css, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?>" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/png" href="<?php echo htmlspecialchars($favicon, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?>">
     <title>Controle QR codes</title>
 </head>
     <?php echo $message;?>
