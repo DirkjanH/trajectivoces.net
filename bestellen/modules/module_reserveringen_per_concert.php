@@ -13,7 +13,10 @@ Kint::$enabled_mode = false;
 
 d($_REQUEST);
 
-$concerten = select_query("SELECT * FROM {$tabel_concerten} WHERE datum >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) ORDER BY datum");
+$toon_offline = isset($_GET['oud']) && $_GET['oud'] === '1';
+$online_filter = $toon_offline ? '' : ' AND online = 1';
+$concert = [];
+$concerten = select_query("SELECT * FROM {$tabel_concerten} WHERE datum >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH){$online_filter} ORDER BY datum");
 d($concerten);
 foreach ($concerten as $row) {
 	$datum = strftime("%A %e %B %Y", strtotime($row['datum']));
@@ -52,7 +55,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 	<title>Reserveringen per concert</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta http-equiv="refresh" content="500; url=<?php echo $_SERVER['PHP_SELF']; // refresh iedere 500 seconden
+	<meta http-equiv="refresh" content="500; url=<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . ($toon_offline ? '?oud=1' : ''), ENT_QUOTES, 'UTF-8'); // refresh iedere 500 seconden
 													?>">
 	<link href="<?php echo $css; ?>" rel="stylesheet" type="text/css">
 	<link rel="icon" type="image/png" href=<?php echo $favicon; ?>>
