@@ -13,7 +13,7 @@ Kint::$enabled_mode = false;
 
 d($_REQUEST);
 
-$concerten = select_query("SELECT * FROM {$tabel_concerten} WHERE online = 1 ORDER BY datum");
+$concerten = select_query("SELECT * FROM {$tabel_concerten} ORDER BY datum");
 d($concerten);
 foreach ($concerten as $row) {
 	$datum = strftime("%A %e %B %Y", strtotime($row['datum']));
@@ -111,12 +111,12 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 					foreach ($concert as $pl) {
 						d($pl);
 						$query_aantal = "SELECT sum(aantal_vol) as aantal_vol, sum(aantal_red) as aantal_red, sum(aantal_kind) as aantal_kind FROM {$tabel_reserveringen} 
-	WHERE concertId={$pl['concertId']} AND {$pl['online']} = 1 AND (betaalstatus = 'paid' OR betaalstatus IS NULL)";
+	WHERE concertId={$pl['concertId']} AND (betaalstatus = 'paid' OR betaalstatus IS NULL)";
 						$aantal = select_query($query_aantal, 1);
 						//d($query_aantal, $aantal, $pl);
 						// begin Recordset
 						$query_reserveringen = "SELECT reserveringnr, CONCAT_WS(' ', voornaam, tussenvoegsel, achternaam) as naam, plaats,
-	telefoon, email, concertId, aantal_vol, aantal_red, aantal_kind, publiciteit, aanbrenger, verschenen, betaalstatus, opmerkingen, flyers, timestamp FROM {$tabel_reserveringen} WHERE concertId={$pl['concertId']} AND {$pl['online']} = 1 AND (`betaalstatus` IS NULL OR `betaalstatus` = 'paid') ORDER BY {$_SESSION['sort']} ASC";
+	telefoon, email, concertId, aantal_vol, aantal_red, aantal_kind, publiciteit, aanbrenger, verschenen, betaalstatus, opmerkingen, flyers, timestamp FROM {$tabel_reserveringen} WHERE concertId={$pl['concertId']} AND (`betaalstatus` IS NULL OR `betaalstatus` = 'paid') ORDER BY {$_SESSION['sort']} ASC";
 						$reserveringen = select_query($query_reserveringen);
 						d($query_reserveringen, $reserveringen);
 						// end Recordset
@@ -172,7 +172,9 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 						$euro_totaal['som'] = euro2($bedrag_totaal['totaal']);
 						// end Recordset
 
-						$output .= 	"<h4>{$pl['concert_kort']}</h4>";
+						$output .= 	"<h4>{$pl['concert_kort']}";
+						if ($pl['online'] != 1) $output .= ' <span class="w3-tag w3-red w3-small">reservering offline</span>';
+						$output .= "</h4>";
 						$output .= "<p><b>Totaal aantal verkochte kaarten: {$som} ({$euro_som});</b> ";
 						if ($pl['prijs_vol'] > 0) $output .= "Aantal volle kaarten: {$vol} ({$euro_vol}); ";
 						if ($pl['prijs_red'] > 0) $output .= "aantal red. kaarten: {$red} ({$euro_red}); ";
