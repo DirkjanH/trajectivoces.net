@@ -4,22 +4,23 @@
 //ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once($_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php');
+require_once($_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php');
 
 Kint::$enabled_mode = false; //($_SERVER['REMOTE_ADDR'] === '83.85.191.103');
 
-require_once( 'bestelfuncties.php' );
+require_once('bestelfuncties.php');
 
 // begin Recordset
-$reserveringen = select_query( "SELECT DISTINCT CONCAT_WS(' ', voornaam, tussenvoegsel, achternaam) as naam, voornaam, plaats, telefoon, email, aanbrenger, opmerkingen FROM {$tabel_reserveringen} WHERE flyers = 1 GROUP BY email ORDER BY achternaam ASC" );
+$reserveringen = select_query("SELECT DISTINCT CONCAT_WS(' ', voornaam, tussenvoegsel, achternaam) as naam, voornaam, plaats, telefoon, email, aanbrenger, opmerkingen FROM {$tabel_reserveringen} WHERE flyers = 1 GROUP BY email ORDER BY achternaam ASC");
 // end Recordset
 
-$aantal = count( $reserveringen );
+$aantal = count($reserveringen);
 ?>
 <!doctype html>
 <html>
+
 <head>
-	<title>SVP op de hoogte houden:</title>
+	<title>TV publiek dat een flyer heeft aangevraagd</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<link href="<?php echo $css; ?>" rel="stylesheet" type="text/css">
@@ -28,14 +29,15 @@ $aantal = count( $reserveringen );
 
 <body>
 	<div class="w3-white w3-panel w3-margin-top">
-		<h3>De volgende <?php echo $aantal; ?> mensen willen op de hoogte gehouden worden van concerten van <?php echo $organisator; ?>:</h3>
+		<h3>De volgende <?php echo $aantal; ?> mensen willen op de hoogte
+			gehouden worden van concerten van <?php echo $organisator; ?>:</h3>
 		<p><?php
 			$contactlijst = array();
 			foreach ($reserveringen as $res) {
 				$contactlijst[] = $res['naam'] . ' <' . $res['email'] . '>';
 			}
 			echo htmlspecialchars(implode(', ', $contactlijst), ENT_QUOTES, 'UTF-8');
-		?></p>
+			?></p>
 		<table id="res" class="w3-table-all">
 			<tr>
 				<th>Email:</th>
@@ -45,21 +47,19 @@ $aantal = count( $reserveringen );
 				<th>Telefoon:</th>
 				<th>Aanbrenger:</th>
 				<th>Opmerkingen:</th>
-			</tr>
-			<?php foreach($reserveringen as $res) {?>
-			<tr>
-				<td><?php echo $res['email']; ?>&nbsp;</td>
-				<td><?php echo $res['naam']; ?>&nbsp;</td>
-				<td><?php echo $res['voornaam']; ?>&nbsp;</td>
-				<td><?php echo $res['plaats']; ?>&nbsp;</td>
-				<td><?php echo $res['telefoon']; ?>&nbsp;</td>
-				<td><?php echo $res['aanbrenger']; ?>&nbsp;</td>
-				<td><?php echo $res['opmerkingen']; ?>&nbsp;</td>
-			</tr>
-			<?php
-			}
-			?>
+			</tr> <?php foreach ($reserveringen as $res) { ?> <tr>
+					<td><?php echo $res['email']; ?>&nbsp;</td>
+					<td><?php echo $res['naam']; ?>&nbsp;</td>
+					<td><?php echo $res['voornaam']; ?>&nbsp;</td>
+					<td><?php echo $res['plaats']; ?>&nbsp;</td>
+					<td><?php echo $res['telefoon']; ?>&nbsp;</td>
+					<td><?php echo $res['aanbrenger']; ?>&nbsp;</td>
+					<td><?php echo $res['opmerkingen']; ?>&nbsp;</td>
+				</tr> <?php
+					}
+						?>
 		</table>
 	</div>
 </body>
+
 </html>
