@@ -1,7 +1,3 @@
-/composer.json
-/composer.lock
-/composer.phar
-/vendor/
 /.htaccess
 /administrator/cache/*
 /administrator/components/com_actionlogs/*
@@ -708,29 +704,5 @@
 /robots.txt.dist
 /web.config.txt
 *.jpa
-*.pdf
 *.mp4
 *.mov
-<<<<<<< HEAD
-*.mp3
-*.zip
-*.tar
-*.gz
-*.tgz
-*.bz2
-*.7z
-*.tar.bz2
-*.tar.gz
-*.tar.xz
-*.tar.lz
-*.tar.lzo
-*.tar.lzma
-*.tar.lzop
-*.tar.zst
-*.tar.zstd
-*.tar.zlib
-*.tar.z
-*.tar.lz4
-/audio/*
-=======
->>>>>>> eb4770210dfba01f0b0a6e587b8d774ed507151b
