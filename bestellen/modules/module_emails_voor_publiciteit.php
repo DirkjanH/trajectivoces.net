@@ -29,6 +29,13 @@ $aantal = count( $reserveringen );
 <body>
 	<div class="w3-white w3-panel w3-margin-top">
 		<h3>De volgende <?php echo $aantal; ?> mensen willen op de hoogte gehouden worden van concerten van <?php echo $organisator; ?>:</h3>
+		<p><?php
+			$contactlijst = array();
+			foreach ($reserveringen as $res) {
+				$contactlijst[] = $res['naam'] . ' <' . $res['email'] . '>';
+			}
+			echo htmlspecialchars(implode(', ', $contactlijst), ENT_QUOTES, 'UTF-8');
+		?></p>
 		<table id="res" class="w3-table-all">
 			<tr>
 				<th>Email:</th>
