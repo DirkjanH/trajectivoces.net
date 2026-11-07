@@ -4,12 +4,20 @@ namespace Mollie\Api\Http\Requests;
 
 use DateTimeInterface;
 use Mollie\Api\Contracts\HasPayload;
+use Mollie\Api\Contracts\SupportsTestmodeInPayload;
+use Mollie\Api\Http\Data\Address;
+use Mollie\Api\Http\Data\ApplicationFee;
+use Mollie\Api\Http\Data\DataCollection;
+use Mollie\Api\Http\Data\DateTime;
 use Mollie\Api\Http\Data\Money;
 use Mollie\Api\Resources\PaymentLink;
 use Mollie\Api\Traits\HasJsonPayload;
 use Mollie\Api\Types\Method;
 
-class CreatePaymentLinkRequest extends ResourceHydratableRequest implements HasPayload
+/**
+ * @see https://docs.mollie.com/reference/v2/payment-links-api/create-payment-link
+ */
+class CreatePaymentLinkRequest extends ResourceHydratableRequest implements HasPayload, SupportsTestmodeInPayload
 {
     use HasJsonPayload;
 
@@ -35,9 +43,26 @@ class CreatePaymentLinkRequest extends ResourceHydratableRequest implements HasP
 
     private ?bool $reusable;
 
-    private ?DateTimeInterface $expiresAt;
+    /**
+     * @var DateTime|DateTimeInterface
+     */
+    private $expiresAt;
 
     private ?array $allowedMethods;
+
+    private ?string $sequenceType;
+
+    private ?string $customerId;
+
+    private ?DataCollection $lines;
+
+    private ?Address $billingAddress;
+
+    private ?Address $shippingAddress;
+
+    private ?Money $minimumAmount;
+
+    private ?ApplicationFee $applicationFee;
 
     public function __construct(
         string $description,
@@ -46,8 +71,15 @@ class CreatePaymentLinkRequest extends ResourceHydratableRequest implements HasP
         ?string $webhookUrl = null,
         ?string $profileId = null,
         ?bool $reusable = null,
-        ?DateTimeInterface $expiresAt = null,
-        ?array $allowedMethods = null
+        $expiresAt = null,
+        ?array $allowedMethods = null,
+        ?string $sequenceType = null,
+        ?string $customerId = null,
+        ?DataCollection $lines = null,
+        ?Address $billingAddress = null,
+        ?Address $shippingAddress = null,
+        ?Money $minimumAmount = null,
+        ?ApplicationFee $applicationFee = null
     ) {
         $this->description = $description;
         $this->amount = $amount;
@@ -57,6 +89,13 @@ class CreatePaymentLinkRequest extends ResourceHydratableRequest implements HasP
         $this->reusable = $reusable;
         $this->expiresAt = $expiresAt;
         $this->allowedMethods = $allowedMethods;
+        $this->sequenceType = $sequenceType;
+        $this->customerId = $customerId;
+        $this->lines = $lines;
+        $this->billingAddress = $billingAddress;
+        $this->shippingAddress = $shippingAddress;
+        $this->minimumAmount = $minimumAmount;
+        $this->applicationFee = $applicationFee;
     }
 
     protected function defaultPayload(): array
@@ -64,12 +103,19 @@ class CreatePaymentLinkRequest extends ResourceHydratableRequest implements HasP
         return [
             'description' => $this->description,
             'amount' => $this->amount,
+            'minimumAmount' => $this->minimumAmount,
             'redirectUrl' => $this->redirectUrl,
             'webhookUrl' => $this->webhookUrl,
             'profileId' => $this->profileId,
             'reusable' => $this->reusable,
             'expiresAt' => $this->expiresAt,
             'allowedMethods' => $this->allowedMethods,
+            'sequenceType' => $this->sequenceType,
+            'customerId' => $this->customerId,
+            'lines' => $this->lines,
+            'billingAddress' => $this->billingAddress,
+            'shippingAddress' => $this->shippingAddress,
+            'applicationFee' => $this->applicationFee,
         ];
     }
 

@@ -5,13 +5,13 @@ How to create, list, and revoke mandates for recurring payments using the Mollie
 ## Create a Mandate
 
 ```php
-use Mollie\Api\Http\Requests\CreateCustomerMandateRequest;
+use Mollie\Api\Http\Requests\CreateMandateRequest;
 use Mollie\Api\Types\MandateMethod;
 
 try {
     // Create a SEPA Direct Debit mandate
     $mandate = $mollie->send(
-        new CreateCustomerMandateRequest(
+        new CreateMandateRequest(
             customerId: 'cst_8wmqcHMN4U',
             method: MandateMethod::DIRECTDEBIT,
             consumerName: 'B. A. Example',
@@ -28,13 +28,15 @@ try {
 ## List Mandates
 
 ```php
-use Mollie\Api\Http\Requests\ListCustomerMandatesRequest;
+use Mollie\Api\Http\Requests\GetPaginatedMandateRequest;
+use Mollie\Api\Types\MandateQuery;
 
 try {
     // List all mandates for a customer
     $response = $mollie->send(
-        new ListCustomerMandatesRequest(
-            customerId: 'cst_8wmqcHMN4U'
+        new GetPaginatedMandateRequest(
+            customerId: 'cst_8wmqcHMN4U',
+            scopes: [MandateQuery::SCOPE_CUSTOMER_NOT_PRESENT]
         )
     );
 
@@ -53,12 +55,12 @@ try {
 ## Revoke a Mandate
 
 ```php
-use Mollie\Api\Http\Requests\RevokeCustomerMandateRequest;
+use Mollie\Api\Http\Requests\RevokeMandateRequest;
 
 try {
     // Revoke a specific mandate
     $mollie->send(
-        new RevokeCustomerMandateRequest(
+        new RevokeMandateRequest(
             customerId: 'cst_8wmqcHMN4U',
             mandateId: 'mdt_h3gAaD5zP'
         )
@@ -95,3 +97,6 @@ $mandate->mandateReference; // "YOUR-COMPANY-MD13804" (optional)
   - `valid`: The mandate is valid and can be used for payments
   - `pending`: The mandate is pending and cannot be used yet
   - `invalid`: The mandate is invalid and cannot be used
+- Mandates can be filtered by scope when listing:
+  - `MandateQuery::SCOPE_CUSTOMER_PRESENT`
+  - `MandateQuery::SCOPE_CUSTOMER_NOT_PRESENT`

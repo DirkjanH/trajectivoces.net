@@ -4,11 +4,13 @@ namespace Mollie\Api\Http\Requests;
 
 use Mollie\Api\Contracts\HasPayload;
 use Mollie\Api\Contracts\SupportsTestmodeInPayload;
-use Mollie\Api\Http\Data\Metadata;
 use Mollie\Api\Resources\Customer;
 use Mollie\Api\Traits\HasJsonPayload;
 use Mollie\Api\Types\Method;
 
+/**
+ * @see https://docs.mollie.com/reference/v2/customers-api/create-customer
+ */
 class CreateCustomerRequest extends ResourceHydratableRequest implements HasPayload, SupportsTestmodeInPayload
 {
     use HasJsonPayload;
@@ -23,13 +25,13 @@ class CreateCustomerRequest extends ResourceHydratableRequest implements HasPayl
 
     private ?string $locale;
 
-    private ?Metadata $metadata;
+    private ?array $metadata;
 
     public function __construct(
         ?string $name = null,
         ?string $email = null,
         ?string $locale = null,
-        ?Metadata $metadata = null
+        ?array $metadata = null
     ) {
         $this->name = $name;
         $this->email = $email;

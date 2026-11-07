@@ -6,19 +6,20 @@ How to capture a payment that was created with manual capture using the Mollie A
 
 ```php
 use Mollie\Api\Http\Data\Money;
+use Mollie\Api\Resources\Capture;
 use Mollie\Api\Http\Requests\CreatePaymentCaptureRequest;
 
 try {
     // Create a capture for the payment
-    $response = $mollie->send(
+    /** @var Capture */
+    $capture = $mollie->send(
         new CreatePaymentCaptureRequest(
             paymentId: 'tr_WDqYK6vllg',
             description: 'Order #12345',
-            amount: new Money(currency: 'EUR', value: '5.00')
+            amount: Money::euro('5.00')
         )
     );
 
-    $capture = $response->toResource();
     echo "New capture created: {$capture->id}\n";
 } catch (\Mollie\Api\Exceptions\ApiException $e) {
     echo "API call failed: " . htmlspecialchars($e->getMessage());

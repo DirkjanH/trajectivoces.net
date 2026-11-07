@@ -9,6 +9,7 @@ use Mollie\Api\EndpointCollection\CapabilityEndpointCollection;
 use Mollie\Api\EndpointCollection\ChargebackEndpointCollection;
 use Mollie\Api\EndpointCollection\ClientEndpointCollection;
 use Mollie\Api\EndpointCollection\ClientLinkEndpointCollection;
+use Mollie\Api\EndpointCollection\ConnectBalanceTransferEndpointCollection;
 use Mollie\Api\EndpointCollection\CustomerEndpointCollection;
 use Mollie\Api\EndpointCollection\CustomerPaymentsEndpointCollection;
 use Mollie\Api\EndpointCollection\InvoiceEndpointCollection;
@@ -25,6 +26,7 @@ use Mollie\Api\EndpointCollection\PaymentLinkEndpointCollection;
 use Mollie\Api\EndpointCollection\PaymentLinkPaymentEndpointCollection;
 use Mollie\Api\EndpointCollection\PaymentRefundEndpointCollection;
 use Mollie\Api\EndpointCollection\PaymentRouteEndpointCollection;
+use Mollie\Api\EndpointCollection\PayoutEndpointCollection;
 use Mollie\Api\EndpointCollection\PermissionEndpointCollection;
 use Mollie\Api\EndpointCollection\ProfileEndpointCollection;
 use Mollie\Api\EndpointCollection\ProfileMethodEndpointCollection;
@@ -39,7 +41,10 @@ use Mollie\Api\EndpointCollection\SettlementRefundEndpointCollection;
 use Mollie\Api\EndpointCollection\SubscriptionEndpointCollection;
 use Mollie\Api\EndpointCollection\SubscriptionPaymentEndpointCollection;
 use Mollie\Api\EndpointCollection\TerminalEndpointCollection;
+use Mollie\Api\EndpointCollection\TerminalPairingCodeEndpointCollection;
 use Mollie\Api\EndpointCollection\WalletEndpointCollection;
+use Mollie\Api\EndpointCollection\WebhookEndpointCollection;
+use Mollie\Api\EndpointCollection\WebhookEventEndpointCollection;
 use Mollie\Api\MollieApiClient;
 
 /**
@@ -65,6 +70,7 @@ trait HasEndpoints
             'chargebacks' => ChargebackEndpointCollection::class,
             'clients' => ClientEndpointCollection::class,
             'clientLinks' => ClientLinkEndpointCollection::class,
+            'connectBalanceTransfers' => ConnectBalanceTransferEndpointCollection::class,
             'customerPayments' => CustomerPaymentsEndpointCollection::class,
             'customers' => CustomerEndpointCollection::class,
             'invoices' => InvoiceEndpointCollection::class,
@@ -82,6 +88,7 @@ trait HasEndpoints
             'paymentLinkPayments' => PaymentLinkPaymentEndpointCollection::class,
             'paymentRoutes' => PaymentRouteEndpointCollection::class,
             'permissions' => PermissionEndpointCollection::class,
+            'payouts' => PayoutEndpointCollection::class,
             'profiles' => ProfileEndpointCollection::class,
             'profileMethods' => ProfileMethodEndpointCollection::class,
             'refunds' => RefundEndpointCollection::class,
@@ -95,7 +102,10 @@ trait HasEndpoints
             'subscriptions' => SubscriptionEndpointCollection::class,
             'subscriptionPayments' => SubscriptionPaymentEndpointCollection::class,
             'terminals' => TerminalEndpointCollection::class,
+            'terminalPairingCodes' => TerminalPairingCodeEndpointCollection::class,
             'wallets' => WalletEndpointCollection::class,
+            'webhooks' => WebhookEndpointCollection::class,
+            'webhookEvents' => WebhookEventEndpointCollection::class,
         ];
 
         foreach ($endpointClasses as $name => $class) {

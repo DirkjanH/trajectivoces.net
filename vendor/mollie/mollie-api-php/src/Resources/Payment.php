@@ -4,7 +4,6 @@ namespace Mollie\Api\Resources;
 
 use Mollie\Api\Contracts\EmbeddedResourcesContract;
 use Mollie\Api\Exceptions\ApiException;
-use Mollie\Api\Http\Data\Metadata;
 use Mollie\Api\Http\Requests\DynamicGetRequest;
 use Mollie\Api\Http\Requests\UpdatePaymentRequest;
 use Mollie\Api\Traits\HasMode;
@@ -100,6 +99,13 @@ class Payment extends BaseResource implements EmbeddedResourcesContract
      * @var string
      */
     public $status = PaymentStatus::OPEN;
+
+    /**
+     * The reason for the status of the payment.
+     *
+     * @var object|null
+     */
+    public $statusReason;
 
     /**
      * UTC datetime the payment was created in ISO-8601 format.
@@ -270,7 +276,7 @@ class Payment extends BaseResource implements EmbeddedResourcesContract
      * During creation of the payment you can set custom metadata that is stored with
      * the payment, and given back whenever you retrieve that payment.
      *
-     * @var \stdClass|mixed|null
+     * @var \stdClass|array|null
      */
     public $metadata;
 
@@ -594,7 +600,7 @@ class Payment extends BaseResource implements EmbeddedResourcesContract
     public function refunds(): RefundCollection
     {
         if (! isset($this->_links->refunds->href)) {
-            return RefundCollection::withResponse($this->response, $this->connector);
+            return $this->listRefunds();
         }
 
         return $this
@@ -636,7 +642,7 @@ class Payment extends BaseResource implements EmbeddedResourcesContract
     public function captures(): CaptureCollection
     {
         if (! isset($this->_links->captures->href)) {
-            return CaptureCollection::withResponse($this->response, $this->connector);
+            return $this->connector->paymentCaptures->pageFor($this, [], $this->isInTestmode());
         }
 
         return $this
@@ -667,7 +673,7 @@ class Payment extends BaseResource implements EmbeddedResourcesContract
     public function chargebacks(): ChargebackCollection
     {
         if (! isset($this->_links->chargebacks->href)) {
-            return ChargebackCollection::withResponse($this->response, $this->connector);
+            return $this->connector->paymentChargebacks->pageFor($this, $this->withMode());
         }
 
         return $this
@@ -720,7 +726,7 @@ class Payment extends BaseResource implements EmbeddedResourcesContract
             $this->redirectUrl,
             $this->cancelUrl,
             $this->webhookUrl,
-            new Metadata((array) $this->metadata),
+            (array) $this->metadata,
             $this->method,
             $this->locale,
             $this->restrictPaymentMethodsToCountry,

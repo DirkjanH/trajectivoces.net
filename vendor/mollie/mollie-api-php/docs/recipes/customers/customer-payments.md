@@ -6,7 +6,6 @@ How to create and manage payments for customers using the Mollie API.
 
 ```php
 use Mollie\Api\Http\Data\Money;
-use Mollie\Api\Http\Data\Metadata;
 use Mollie\Api\Http\Requests\CreateCustomerPaymentRequest;
 use Mollie\Api\Types\SequenceType;
 
@@ -16,15 +15,12 @@ try {
         new CreateCustomerPaymentRequest(
             customerId: 'cst_8wmqcHMN4U',
             description: 'First payment - Order #12345',
-            amount: new Money(
-                currency: 'EUR',
-                value: '29.95'
-            ),
+            amount: Money::euro('29.95'),  // Using convenience method
             redirectUrl: 'https://example.com/payments/return?order_id=12345',
             webhookUrl: 'https://example.com/payments/webhook',
-            metadata: new Metadata([
+            metadata: [
                 'order_id' => '12345'
-            ]),
+            ],
             sequenceType: SequenceType::FIRST // This creates a mandate for future payments
         )
     );
@@ -40,7 +36,6 @@ try {
 
 ```php
 use Mollie\Api\Http\Data\Money;
-use Mollie\Api\Http\Data\Metadata;
 use Mollie\Api\Http\Requests\CreateCustomerPaymentRequest;
 use Mollie\Api\Types\SequenceType;
 
@@ -50,14 +45,11 @@ try {
         new CreateCustomerPaymentRequest(
             customerId: 'cst_8wmqcHMN4U',
             description: 'Recurring payment - Order #12346',
-            amount: new Money(
-                currency: 'EUR',
-                value: '29.95'
-            ),
+            amount: Money::euro('29.95'),  // Using convenience method
             webhookUrl: 'https://example.com/payments/webhook',
-            metadata: new Metadata([
+            metadata: [
                 'order_id' => '12346'
-            ]),
+            ],
             sequenceType: SequenceType::RECURRING // This uses the mandate created by the first payment
         )
     );
@@ -74,29 +66,31 @@ try {
 
 ```php
 use Mollie\Api\Http\Requests\GetPaginatedCustomerPaymentsRequest;
+use Mollie\Api\Resources\PaymentCollection;
 
 try {
     // Get all payments for a customer
-    $response = $mollie->send(
+    /** @var PaymentCollection */
+    $payments = $mollie->send(
         new GetPaginatedCustomerPaymentsRequest(
             customerId: 'cst_8wmqcHMN4U'
         )
     );
 
-    foreach ($response->toResource() as $payment) {
+    foreach ($payments as $payment) {
         echo "Payment {$payment->id}:\n";
         echo "- Description: {$payment->description}\n";
         echo "- Amount: {$payment->amount->currency} {$payment->amount->value}\n";
         echo "- Status: {$payment->status}\n";
-        
+
         if ($payment->hasRefunds()) {
             echo "- Has been (partially) refunded\n";
         }
-        
+
         if ($payment->hasChargebacks()) {
             echo "- Has been charged back\n";
         }
-        
+
         echo "\n";
     }
 } catch (\Mollie\Api\Exceptions\ApiException $e) {

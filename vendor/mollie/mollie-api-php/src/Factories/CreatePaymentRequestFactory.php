@@ -3,14 +3,16 @@
 namespace Mollie\Api\Factories;
 
 use Mollie\Api\Http\Data\Address;
-use Mollie\Api\Http\Data\Metadata;
 use Mollie\Api\Http\Requests\CreatePaymentRequest;
+use Mollie\Api\Types\PaymentQuery;
 use Mollie\Api\Utils\Utility;
 
 class CreatePaymentRequestFactory extends RequestFactory
 {
     public function create(): CreatePaymentRequest
     {
+        $includeQrCode = $this->queryIncludes('include', PaymentQuery::INCLUDE_QR_CODE);
+
         return new CreatePaymentRequest(
             $this->payload('description'),
             MoneyFactory::new($this->payload('amount'))->create(),
@@ -28,7 +30,7 @@ class CreatePaymentRequestFactory extends RequestFactory
             $this->payload('method'),
             $this->payload('issuer'),
             $this->payload('restrictPaymentMethodsToCountry'),
-            $this->transformFromPayload('metadata', Metadata::class),
+            $this->payload('metadata'),
             $this->payload('captureMode'),
             $this->payload('captureDelay'),
             $this->transformFromPayload(
@@ -44,7 +46,7 @@ class CreatePaymentRequestFactory extends RequestFactory
             $this->payload('customerId'),
             $this->payload('profileId'),
             $this->payload('additional') ?: Utility::filterByProperties(CreatePaymentRequest::class, $this->payload()) ?: [],
-            $this->query('includeQrCode', false)
+            $this->query('includeQrCode', $includeQrCode),
         );
     }
 }

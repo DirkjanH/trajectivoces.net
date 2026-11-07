@@ -81,6 +81,27 @@ class PaymentMethod
     public const GIROPAY = 'giropay';
 
     /**
+     * Wallet identifier for the Methods API's `includeWallets` parameter.
+     * This value is not a valid `method` for Create payment.
+     *
+     * For hosted checkout, use {@see PaymentMethod::CREDITCARD}. Google Pay
+     * appears automatically when enabled on the profile and supported by the
+     * customer's device and browser. For direct integration, also pass the
+     * `googlePayPaymentToken` field on the create payment request.
+     *
+     * @link https://docs.mollie.com/docs/google-pay
+     * @link https://docs.mollie.com/docs/direct-integration-of-google-pay
+     * @link https://docs.mollie.com/reference/list-methods
+     */
+    public const GOOGLEPAY = 'googlepay';
+
+    /**
+     * @link https://www.mollie.com/payments/swish
+     */
+    public const SWISH = 'swish';
+
+
+    /**
      * @link https://www.mollie.com/en/payments/in3
      */
     public const IN3 = 'in3';
@@ -124,12 +145,12 @@ class PaymentMethod
     /**
      * @link https://www.mollie.com/en/payments/mb-way
      */
-    public const MBWAY = "mbway";
+    public const MBWAY = 'mbway';
 
     /**
      * @link https://www.mollie.com/en/payments/multibanco
      */
-    public const MULTIBANCO = "multibanco";
+    public const MULTIBANCO = 'multibanco';
 
     /**
      * @link https://www.mollie.com/en/payments/mybank
@@ -196,4 +217,9 @@ class PaymentMethod
      * @link https://www.mollie.com/en/payments/twint
      */
     public const TWINT = 'twint';
+
+    /**
+     * @link https://www.mollie.com/en/payments/wero
+     */
+    public const WERO = 'wero';
 }

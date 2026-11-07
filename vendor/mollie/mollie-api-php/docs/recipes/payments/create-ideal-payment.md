@@ -6,7 +6,6 @@ How to prepare a new iDEAL payment with the Mollie API.
 
 ```php
 use Mollie\Api\Http\Data\Money;
-use Mollie\Api\Http\Data\Metadata;
 use Mollie\Api\Http\Requests\CreatePaymentRequest;
 use Mollie\Api\Types\PaymentMethod;
 
@@ -18,11 +17,11 @@ try {
     $payment = $mollie->send(
         new CreatePaymentRequest(
             description: "Order #{$orderId}",
-            amount: new Money(currency: 'EUR', value: '27.50'),
+            amount: Money::euro('27.50'),  // Using convenience method
             redirectUrl: "https://example.com/return.php?order_id={$orderId}",
             cancelUrl: "https://example.com/cancel.php",
             webhookUrl: "https://example.com/webhook.php",
-            metadata: new Metadata(['order_id' => $orderId]),
+            metadata: ['order_id' => $orderId],
             method: PaymentMethod::IDEAL
         )
     );

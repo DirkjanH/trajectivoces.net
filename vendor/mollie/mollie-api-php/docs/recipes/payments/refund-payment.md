@@ -7,7 +7,7 @@ How to refund a payment using the Mollie API.
 ```php
 use Mollie\Api\Http\Data\Money;
 use Mollie\Api\Http\Requests\GetPaymentRequest;
-use Mollie\Api\Http\Requests\CreateRefundRequest;
+use Mollie\Api\Http\Requests\CreatePaymentRefundRequest;
 
 try {
     // Retrieve the payment you want to refund
@@ -20,11 +20,13 @@ try {
     // Check if the payment can be refunded
     if ($payment->canBeRefunded() && $payment->amountRemaining->currency === 'EUR' && floatval($payment->amountRemaining->value) >= 2.00) {
         // Refund € 2,00 of the payment
+        // Note: Using named parameters to avoid PHP 8+ deprecation warnings
+        // Alternative: Use factory method CreatePaymentRefundRequest::for($paymentId, Money::euro('2.00'), 'Description')
         $refund = $mollie->send(
-            new CreateRefundRequest(
+            new CreatePaymentRefundRequest(
                 paymentId: $payment->id,
-                description: 'Order cancelled by customer',
-                amount: new Money(currency: 'EUR', value: '2.00')
+                amount: Money::euro('2.00'),
+                description: 'Order cancelled by customer'
             )
         );
 

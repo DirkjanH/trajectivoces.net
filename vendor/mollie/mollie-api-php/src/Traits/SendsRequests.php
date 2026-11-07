@@ -2,17 +2,43 @@
 
 namespace Mollie\Api\Traits;
 
+use Mollie\Api\Contracts\ConditionalRetryStrategyContract;
+use Mollie\Api\Contracts\RetryStrategyContract;
+use Mollie\Api\Exceptions\LogicException;
 use Mollie\Api\Exceptions\MollieException;
+use Mollie\Api\Exceptions\RetryableNetworkRequestException;
+use Mollie\Api\Http\LinearRetryStrategy;
 use Mollie\Api\Http\PendingRequest;
 use Mollie\Api\Http\Request;
 use Mollie\Api\MollieApiClient;
 use Mollie\Api\Utils\DataTransformer;
+use Throwable;
 
 /**
  * @mixin MollieApiClient
  */
 trait SendsRequests
 {
+    /**
+     * Strategy that defines retry behavior.
+     */
+    protected RetryStrategyContract $retryStrategy;
+
+    protected function initializeSendsRequests(): void
+    {
+        $this->retryStrategy = $this->retryStrategy ?? new LinearRetryStrategy();
+    }
+
+    /**
+     * Set a custom retry strategy implementation.
+     */
+    public function setRetryStrategy(RetryStrategyContract $strategy): self
+    {
+        $this->retryStrategy = $strategy;
+
+        return $this;
+    }
+
     /**
      * @return mixed
      */
@@ -21,16 +47,59 @@ trait SendsRequests
         $pendingRequest = new PendingRequest($this, $request);
         $pendingRequest = $pendingRequest->executeRequestHandlers();
 
-        $pendingRequest = (new DataTransformer())->transform($pendingRequest);
+        $pendingRequest = (new DataTransformer)->transform($pendingRequest);
 
-        try {
-            $response = $this->httpClient->sendRequest($pendingRequest);
+        $lastException = null;
 
-            return $pendingRequest->executeResponseHandlers($response);
-        } catch (MollieException $exception) {
-            $exception = $pendingRequest->executeFatalHandlers($exception);
+        for ($attempt = 0; $attempt <= $this->retryStrategy->maxRetries(); $attempt++) {
+            if ($attempt > 0) {
+                $delayMs = $this->retryDelayMs($attempt, $lastException);
 
-            throw $exception;
+                usleep($delayMs * 1000);
+            }
+
+            try {
+                $response = $this->httpClient->sendRequest($pendingRequest);
+
+                return $pendingRequest->executeResponseHandlers($response);
+            } catch (MollieException $exception) {
+                if ($this->retryStrategyAllows($exception)) {
+                    $lastException = $exception;
+
+                    continue;
+                }
+
+                $exception = $pendingRequest->executeFatalHandlers($exception);
+
+                throw $exception;
+            }
         }
+
+        if ($lastException instanceof MollieException) {
+            $lastException = $pendingRequest->executeFatalHandlers($lastException);
+
+            throw $lastException;
+        }
+
+        // This should be unreachable, but keep a safe fallback for static analysis
+        throw new LogicException('Request failed after retries without a final exception.');
+    }
+
+    private function retryStrategyAllows(MollieException $exception): bool
+    {
+        if ($this->retryStrategy instanceof ConditionalRetryStrategyContract) {
+            return $this->retryStrategy->shouldRetry($exception);
+        }
+
+        return $exception instanceof RetryableNetworkRequestException;
+    }
+
+    private function retryDelayMs(int $attempt, ?Throwable $exception): int
+    {
+        if ($this->retryStrategy instanceof ConditionalRetryStrategyContract) {
+            return $this->retryStrategy->delayBeforeAttemptMs($attempt, $exception);
+        }
+
+        return $this->retryStrategy->delayBeforeAttemptMs($attempt);
     }
 }

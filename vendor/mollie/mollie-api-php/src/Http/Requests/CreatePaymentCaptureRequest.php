@@ -4,12 +4,14 @@ namespace Mollie\Api\Http\Requests;
 
 use Mollie\Api\Contracts\HasPayload;
 use Mollie\Api\Contracts\SupportsTestmodeInPayload;
-use Mollie\Api\Http\Data\Metadata;
 use Mollie\Api\Http\Data\Money;
 use Mollie\Api\Resources\Capture;
 use Mollie\Api\Traits\HasJsonPayload;
 use Mollie\Api\Types\Method;
 
+/**
+ * @see https://docs.mollie.com/reference/v2/captures-api/create-capture
+ */
 class CreatePaymentCaptureRequest extends ResourceHydratableRequest implements HasPayload, SupportsTestmodeInPayload
 {
     use HasJsonPayload;
@@ -30,13 +32,13 @@ class CreatePaymentCaptureRequest extends ResourceHydratableRequest implements H
 
     private ?Money $amount;
 
-    private ?Metadata $metadata;
+    private ?array $metadata;
 
     public function __construct(
         string $paymentId,
         string $description,
         ?Money $amount = null,
-        ?Metadata $metadata = null
+        ?array $metadata = null
     ) {
         $this->paymentId = $paymentId;
         $this->description = $description;
