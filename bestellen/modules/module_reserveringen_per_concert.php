@@ -63,6 +63,14 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 		tr.verschenen td {
 			background: palegreen;
 		}
+
+		@media only screen and (max-width: 600px) {
+			.reserveringen-tabel th,
+			.reserveringen-tabel td {
+				padding: 6px 4px;
+				font-size: 13px;
+			}
+		}
 	</style>
 	<SCRIPT TYPE="text/javascript">
 		<!--
@@ -184,7 +192,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 						if (isset($pl['txt_kind']) and $pl['txt_kind'] != '') $output .= "aantal kaarten {$pl['txt_kind']}: {$kind} ({$euro_kind})</p>";
 
 
-						$output .= "<table id=\"res\" class=\"w3-table-all\">
+						$output .= "<div class=\"w3-responsive\"><table id=\"res\" class=\"w3-table-all reserveringen-tabel\">
     <tr>
       <th width=\"1%\">Res. nr.:</th>
       <th width=\"140px\">Datum/tijd:</th>
@@ -196,9 +204,9 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 						$output .= "<th width=\"1%\">Aantal kaarten vol:</th>";
 						if ($pl['prijs_red'] > 0) $output .= "<th width=\"1%\">Aantal kaarten red.:</th>";
 						if (isset($pl['txt_kind']) and $pl['txt_kind'] != '') $output .= "<th width=\"1%\">Aantal kaarten kind:</th>";
-						$output .= "<th>Weet ervan via:</th>
-      <th>Opmerkingen:</th>
-      <th>Wil digi-<br>flyers:</th>
+						$output .= "<th class=\"w3-hide-small\">Weet ervan via:</th>
+      <th class=\"w3-hide-small\">Opmerkingen:</th>
+      <th class=\"w3-hide-small\">Wil digi-<br>flyers:</th>
     </tr>";
 
 						foreach ($reserveringen as $res) {
@@ -227,14 +235,14 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 							$output .= "<td width=\"1%\"><div align=\"center\">{$res['aantal_vol']}</div></td>";
 							if ($pl['prijs_red'] > 0) $output .= "<td><div align=\"center\">{$res['aantal_red']}</div></td>";
 							if (isset($pl['txt_kind']) and $pl['txt_kind'] != '') $output .= "<td><div align=\"center\">{$res['aantal_kind']}</div></td>";
-							$output .= '<td>' . $via . '&nbsp;</td>';
-							$output .= '<td>' . $res['opmerkingen'] . '&nbsp;</td>
-<td class="w3-center">';
+							$output .= '<td class="w3-hide-small">' . $via . '&nbsp;</td>';
+							$output .= '<td class="w3-hide-small">' . $res['opmerkingen'] . '&nbsp;</td>
+<td class="w3-center w3-hide-small">';
 							if ($res['flyers'] == 1) $output .= 'ja';
-							$output .= '&nbsp;</div></td>
+							$output .= '&nbsp;</td>
       </tr>';
 						}
-						$output .= '</table>';
+						$output .= '</table></div>';
 					}
 					echo "<p><b>Totaal verkochte kaarten: {$totaal['totaal']} ({$euro_totaal['som']});</b><br>
 {$totaal['vol']} x vol ({$euro_totaal['vol']});  {$totaal['red']} x red. ({$euro_totaal['red']}); {$totaal['kind']} x 3e tarief ({$euro_totaal['kind']})</p>";
