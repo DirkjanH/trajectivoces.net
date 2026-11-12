@@ -6,7 +6,7 @@
     "require": {
         "phpmailer/phpmailer": "~7",
         "pelago/emogrifier": "~8",
-        "kint-php/kint": "~5.1.1",
+        "kint-php/kint":"~6",
         "mollie/mollie-api-php": "~3",
         "chillerlan/php-qrcode": "~4",
           "php81_bc/strftime":"~0.7"
