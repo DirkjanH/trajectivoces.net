@@ -64,6 +64,11 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 			background: palegreen;
 		}
 
+		.reserveringsnummer-kolom {
+			width: 1%;
+			white-space: nowrap;
+		}
+
 		@media only screen and (max-width: 600px) {
 			.reserveringen-tabel th,
 			.reserveringen-tabel td {
@@ -194,9 +199,9 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 
 						$output .= "<div class=\"w3-responsive\"><table id=\"res\" class=\"w3-table-all reserveringen-tabel\">
     <tr>
-      <th width=\"1%\">Res. nr.:</th>
+      <th class=\"reserveringsnummer-kolom\">Res.<br>nr.:</th>
       <th width=\"140px\">Datum/tijd:</th>
-      <th width=\"1%\">Verschenen:</th>
+      <th width=\"1%\" class=\"w3-hide-small\">Verschenen:</th>
       <th width=\"140px\">Naam:</th>";
 						if ($GDPR) $output .= "<th>Plaats:</th>
 		<th>Telefoon:</th>
@@ -223,9 +228,9 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 							else
 								$via = $res['publiciteit'];
 							$output .= "<tr{$verschenen}>
-        <td><div align=\"right\">{$res['reserveringnr']}</div></td>
+        <td class=\"reserveringsnummer-kolom\"><div align=\"right\">{$res['reserveringnr']}</div></td>
         <td>{$res['timestamp']}&nbsp;</td>
-		<td class=\"w3-center\"><input name=\"aanw_$Nr\" id=\"aanw_$Nr\" onClick=\"toggleCheckbox($Nr)\" type=\"checkbox\" ";
+		<td class=\"w3-center w3-hide-small\"><input name=\"aanw_$Nr\" id=\"aanw_$Nr\" onClick=\"toggleCheckbox($Nr)\" type=\"checkbox\" ";
 							if ($res['verschenen']) $output .=  'checked ';
 							$output .= "></td>
         <td>{$res['naam']}&nbsp;</td>";
