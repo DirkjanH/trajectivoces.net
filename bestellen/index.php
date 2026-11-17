@@ -231,6 +231,7 @@ require_once('modules/module_kaartverkoop.php');
                     <input class="w3-btn w3-green"
                         <?php if (isset($allesuitverkocht) and $allesuitverkocht === true) echo 'DISABLED '; ?>name="submit"
                         type="submit" value="<?php echo $txt['verzenden']; ?>">
+                    <p>We hopen u natuurlijk bij een van onze concerten te mogen verwelkomen. Mocht u onverhoopt verhinderd zijn, dan kunnen aangekochte kaarten helaas niet worden gerestitueerd.</p>
                     <p>P.S. het kaartverkoopsysteem is vernieuwd. Mocht je een
                         probleem tegenkomen, stuur dan SVP even een mailtje aan
                         <a
