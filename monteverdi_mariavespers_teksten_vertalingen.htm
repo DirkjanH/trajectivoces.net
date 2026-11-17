@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claudio Monteverdi – Vespro della Beata Vergine (1610) | Teksten & Vertalingen</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cormorant Garamond, Lora & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        parchment: '#FAF8F5',
+                        parchmentDark: '#F2EDE4',
+                        venetian: '#6B1D2F',
+                        venetianLight: '#8A283F',
+                        ochre: '#B08D57',
+                        ochreLight: '#D4B98C',
+                        charcoal: '#1F1E1C',
+                        charcoalMuted: '#5A5650',
+                    },
+                    fontFamily: {
+                        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        latin: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        dutch: ['"Lora"', 'Georgia', 'serif'],
+                        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom typografie en weergavemodi */
+        :root {
+            --font-scale: 1;
+        }
+
+        body {
+            background-color: #FAF8F5;
+            color: #1F1E1C;
+            font-family: 'Lora', Georgia, serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Schaalbare tekst voor zangers en lezers */
+        .verse-latin {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: calc(1.22rem * var(--font-scale));
+            line-height: 1.55;
+        }
+
+        .verse-dutch {
+            font-family: 'Lora', Georgia, serif;
+            font-size: calc(1.02rem * var(--font-scale));
+            line-height: 1.65;
+        }
+
+        /* Weergavemodi (Tweetalig / Alleen Latijn / Alleen Nederlands) */
+        body.mode-latin .col-dutch {
+            display: none !important;
+        }
+        body.mode-latin .verse-grid {
+            grid-template-columns: 1fr !important;
+        }
+        body.mode-latin .col-latin {
+            max-width: 48rem;
+        }
+
+        body.mode-dutch .col-latin {
+            display: none !important;
+        }
+        body.mode-dutch .verse-grid {
+            grid-template-columns: 1fr !important;
+        }
+        body.mode-dutch .col-dutch {
+            max-width: 48rem;
+        }
+
+        /* Subtiele scrollbar voor navigatie */
+        .toc-scroll::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .toc-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .toc-scroll::-webkit-scrollbar-thumb {
+            background: #D4B98C;
+            border-radius: 9999px;
+        }
+
+        /* Highlight bij zoekopdrachten */
+        mark.search-highlight {
+            background-color: rgba(176, 141, 87, 0.35);
+            color: #1F1E1C;
+            padding: 0.05em 0.2em;
+            border-radius: 0.2rem;
+        }
+
+        /* Print-stylesheet voor programmaboekje */
+        @media print {
+            body {
+                background-color: #FFFFFF !important;
+                color: #000000 !important;
+                font-size: 10.5pt !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-container {
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .movement-card {
+                break-inside: avoid-page;
+                box-shadow: none !important;
+                border: none !important;
+                border-bottom: 1px solid #CCCCCC !important;
+                padding: 1.2rem 0 !important;
+                margin-bottom: 1.2rem !important;
+                background: transparent !important;
+            }
+            .verse-row {
+                break-inside: avoid;
+                border-bottom: 1px dotted #E5E5E5 !important;
+                padding-top: 0.45rem !important;
+                padding-bottom: 0.45rem !important;
+            }
+            .verse-latin {
+                font-size: 11.5pt !important;
+                line-height: 1.4 !important;
+            }
+            .verse-dutch {
+                font-size: 10pt !important;
+                line-height: 1.45 !important;
+            }
+            header.hero-header {
+                border-bottom: 2px solid #6B1D2F !important;
+                padding-bottom: 1rem !important;
+                margin-bottom: 1.5rem !important;
+                background: transparent !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-ochre/30 selection:text-venetian">
+
+    <!-- Decoratieve bovenrand -->
+    <div class="h-1.5 w-full bg-gradient-to-r from-venetian via-ochre to-venetian no-print"></div>
+
+    <!-- Hero Header -->
+    <header class="hero-header bg-parchmentDark/60 border-b border-ochre/30 pt-10 pb-8 px-4 sm:px-8">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="font-sans uppercase tracking-[0.22em] text-xs sm:text-sm font-semibold text-ochre mb-2">
+                Venetië, 1610 &bull; SV 206
+            </p>
+            <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-venetian tracking-tight leading-tight">
+                Vespro della Beata Vergine
+            </h1>
+            <p class="font-display italic text-xl sm:text-2xl text-charcoalMuted mt-2">
+                Claudio Monteverdi (1567–1643) &mdash; Volledige Latijnse teksten &amp; Nederlandse vertalingen
+            </p>
+            <div class="flex items-center justify-center gap-3 mt-5 text-ochre">
+                <span class="h-px w-12 bg-ochre/50"></span>
+                <span class="text-sm">&#10022;</span>
+                <span class="h-px w-12 bg-ochre/50"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Interactieve Bedieningsbalk (Sticky op mobiel/tablet of bovenaan content) -->
+    <div class="no-print sticky top-0 z-30 bg-parchment/95 backdrop-blur-md border-b border-ochre/30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+                
+                <!-- 1. Weergavemodus + Mobiele Inhoudsopgave Knop -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <div class="inline-flex rounded-lg bg-parchmentDark p-1 border border-ochre/30" role="group" aria-label="Taalweergave">
+                        <button type="button" data-mode="bilingual" class="mode-btn active px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md transition-all bg-venetian text-white shadow-sm">
+                            Tweetalig
+                        </button>
+                        <button type="button" data-mode="latin" class="mode-btn px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md transition-all text-charcoal hover:text-venetian">
+                            Alleen Latijn
+                        </button>
+                        <button type="button" data-mode="dutch" class="mode-btn px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md transition-all text-charcoal hover:text-venetian">
+                            Alleen Nederlands
+                        </button>
+                    </div>
+
+                    <!-- Mobiele Inhoudsopgave Toggle -->
+                    <button type="button" id="mobile-toc-toggle" class="lg:hidden inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-lg border border-ochre/40 bg-white text-charcoal hover:border-venetian">
+                        <svg class="w-4 h-4 text-venetian" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h10"/>
+                        </svg>
+                        <span>Delen (1–13)</span>
+                    </button>
+                </div>
+
+                <!-- 2. Zoekbalk, Lettergrootte & Print -->
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                    <!-- Zoekveld -->
+                    <div class="relative flex-1 sm:flex-initial min-w-[200px] sm:w-64">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            placeholder="Zoek in Latijn, NL of deel..." 
+                            class="w-full pl-9 pr-8 py-1.5 text-sm font-sans bg-white border border-ochre/40 rounded-lg text-charcoal placeholder:text-charcoalMuted/70 focus:outline-none focus:border-venetian focus:ring-1 focus:ring-venetian"
+                        >
+                        <svg class="w-4 h-4 text-charcoalMuted absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        <button type="button" id="clear-search" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-charcoalMuted hover:text-venetian text-xs font-sans font-bold" title="Wis zoekopdracht">
+                            &#10005;
+                        </button>
+                    </div>
+
+                    <!-- Lettergrootte regelaar -->
+                    <div class="inline-flex items-center rounded-lg bg-parchmentDark p-1 border border-ochre/30" role="group" aria-label="Lettergrootte">
+                        <span class="px-2 text-[11px] font-sans uppercase tracking-wider text-charcoalMuted hidden sm:inline">Tekst:</span>
+                        <button type="button" data-size="0.9" class="size-btn px-2.5 py-1 text-xs font-sans font-medium rounded-md text-charcoal hover:text-venetian" title="Kleine tekst">
+                            A-
+                        </button>
+                        <button type="button" data-size="1" class="size-btn active px-2.5 py-1 text-xs font-sans font-medium rounded-md bg-white text-venetian shadow-sm" title="Normale tekst">
+                            A
+                        </button>
+                        <button type="button" data-size="1.18" class="size-btn px-2.5 py-1 text-xs font-sans font-medium rounded-md text-charcoal hover:text-venetian" title="Grote tekst">
+                            A+
+                        </button>
+                    </div>
+
+                    <!-- Afdrukken / PDF -->
+                    <button type="button" onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-lg bg-white border border-ochre/40 text-charcoal hover:border-venetian hover:text-venetian transition-colors shadow-2xs" title="Druk af of bewaar als PDF-programmaboekje">
+                        <svg class="w-4 h-4 text-venetian" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                        </svg>
+                        <span class="hidden sm:inline">Afdrukken / PDF</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Uitklapbare Inhoudsopgave voor Mobiel / Tablet -->
+            <nav id="mobile-toc-drawer" class="hidden lg:hidden mt-3 pt-3 border-t border-ochre/20 max-h-64 overflow-y-auto toc-scroll">
+                <ul id="mobile-toc-list" class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-sm font-sans"></ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hoofdlayout: Sticky Zijbalk (Desktop) + Tekstkolom -->
+    <div class="print-container flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-8 xl:gap-12 items-start">
+            
+            <!-- Sticky Zijbalk Inhoudsopgave (Alleen Desktop) -->
+            <aside class="no-print hidden lg:block w-72 xl:w-80 shrink-0 sticky top-20">
+                <div class="bg-white/80 rounded-xl border border-ochre/30 p-5 shadow-2xs">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-ochre/25">
+                        <h2 class="font-display text-xl font-bold text-venetian tracking-wide">
+                            Inhoudsopgave
+                        </h2>
+                        <span class="text-xs font-sans text-charcoalMuted">13 delen</span>
+                    </div>
+                    <nav aria-label="Delen van de Mariavespers" class="max-h-[calc(100vh-12rem)] overflow-y-auto toc-scroll pr-1">
+                        <ul id="desktop-toc-list" class="space-y-1 text-sm font-sans"></ul>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Hoofdinhoud: De 13 delen -->
+            <main class="flex-1 min-w-0 w-full">
+                <!-- Zoekstatus melding -->
+                <div id="search-status" class="hidden no-print mb-6 px-4 py-3 rounded-xl bg-parchmentDark border border-ochre/40 flex items-center justify-between text-sm font-sans">
+                    <span id="search-status-text" class="text-charcoal"></span>
+                    <button type="button" id="reset-search-btn" class="text-venetian font-medium underline hover:no-underline ml-4">
+                        Toon alle 13 delen
+                    </button>
+                </div>
+
+                <!-- Container voor alle delen -->
+                <div id="movements-container" class="space-y-10"></div>
+
+                <!-- Voettekst / Colofon -->
+                <footer class="mt-14 pt-8 pb-6 border-t border-ochre/30 text-center text-sm text-charcoalMuted font-sans">
+                    <p class="font-display italic text-lg text-venetian mb-1">
+                        Ad maiorem Dei gloriam &amp; Beatae Mariae Virginis
+                    </p>
+                    <p>
+                        Claudio Monteverdi &bull; <em>Sanctissimae Virgini Missa senis vocibus ad ecclesiarum choros ac Vespere pluribus decantandae</em> (Venetië, 1610).
+                    </p>
+                </footer>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Knop terug naar boven -->
+    <button type="button" id="back-to-top" aria-label="Terug naar boven" class="no-print hidden fixed bottom-6 right-6 z-20 p-3 rounded-full bg-venetian text-white shadow-lg hover:bg-venetianLight transition-all">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <!-- Gegevens & Interactieve Logica -->
+    <script>
+        /**
+         * Volledige dataset van alle 13 delen van Monteverdi's Vespro della Beata Vergine (1610)
+         * Inclusief alle verzen en Gloria Patri / Sicut erat doxologieën.
+         */
+        const vespersData = [
+            {
+                id: "deel-1",
+                number: 1,
+                title: "Deus in adjutorium",
+                subtitle: "Intonatio & Responsorium",
+                scoring: "Gregoriaans",
+                notes: "",
+                verses: [
+                    {
+                        label: "Intonatio (Tenor)",
+                        latin: "Deus in adjutorium meum intende.",
+                        dutch: "God, kom mij te hulp."
+                    },
+                    {
+                        label: "Responsorium (Tutti)",
+                        latin: "Domine ad adjuvandum me festina.\nGloria Patri et Filio et Spiritui Sancto.\nSicut erat in principio et nunc et semper,\net in saecula saeculorum. Amen.\nAlleluja.",
+                        dutch: "Heer, haast U mij te helpen.\nEer aan de Vader en de Zoon en de Heilige Geest.\nZoals het was in het begin en nu en altijd,\nen in de eeuwen der eeuwen. Amen.\nAlleluja."
+                    }
+                ]
+            },
+            {
+                id: "deel-2",
+                number: 2,
+                title: "Dixit Dominus",
+                subtitle: "Psalm 109 (Hebreeuwse telling: Psalm 110)",
+                scoring: "6-stemmig koor (SSATTB), 6 instrumenten (ritornelli) & basso continuo",
+                notes: "De eerste vesperpsalm. Monteverdi verankert elk vers rond de traditionele gregoriaanse psalmtoon, afgewisseld met uitroepen van het koor (falsobordone).",
+                verses: [
+                    {
+                        label: "Vers 1",
+                        latin: "Dixit Dominus Domino meo:\nSede a dextris meis,\ndonec ponam inimicos tuos scabellum pedum tuorum.",
+                        dutch: "De Heer sprak tot mijn Heer:\n‘Zit aan mijn rechterhand,\ntotdat Ik uw vijanden gelegd heb als een voetbank voor uw voeten.’"
+                    },
+                    {
+                        label: "Vers 2",
+                        latin: "Virgam virtutis tuae emittet Dominus ex Sion:\ndominare in medio inimicorum tuorum.",
+                        dutch: "De scepter van uw macht strekt de Heer uit vanuit Sion:\nheers te midden van uw vijanden."
+                    },
+                    {
+                        label: "Vers 3",
+                        latin: "Tecum principium in die virtutis tuae in splendoribus sanctorum:\nex utero ante luciferum genui te.",
+                        dutch: "Met U is de heerschappij op de dag van uw kracht, in heilige luister:\nuit de schoot, nog vóór de morgenster, heb Ik U verwekt."
+                    },
+                    {
+                        label: "Vers 4",
+                        latin: "Juravit Dominus et non poenitebit eum:\nTu es sacerdos in aeternum secundum ordinem Melchisedech.",
+                        dutch: "Gezworen heeft de Heer en het zal Hem niet berouwen:\n‘Gij zijt priester in eeuwigheid volgens de orde van Melchisedek.’"
+                    },
+                    {
+                        label: "Vers 5",
+                        latin: "Dominus a dextris tuis,\nconfregit in die irae suae reges.",
+                        dutch: "De Heer staat aan uw rechterhand,\nHij verplettert koningen op de dag van zijn toorn."
+                    },
+                    {
+                        label: "Vers 6",
+                        latin: "Judicabit in nationibus, implebit ruinas,\nconquassabit capita in terra multorum.",
+                        dutch: "Hij zal rechtspreken onder de volken, het slagveld vullen met gevallenen,\nhoofden verpletteren wijd over de aarde."
+                    },
+                    {
+                        label: "Vers 7",
+                        latin: "De torrente in via bibet:\npropterea exaltabit caput.",
+                        dutch: "Onderweg zal Hij drinken uit de beek:\ndaarom zal Hij het hoofd fier omhoogheffen."
+                    },
+                    {
+                        label: "Doxologie",
+                        latin: "Gloria Patri et Filio et Spiritui Sancto.\nSicut erat in principio et nunc et semper,\net in saecula saeculorum. Amen.",
+                        dutch: "Eer aan de Vader en de Zoon en de Heilige Geest.\nZoals het was in het begin en nu en altijd,\nen in de eeuwen der eeuwen. Amen."
+                    }
+                ]
+            },
+            {
+                id: "deel-3",
+                number: 3,
+                title: "Nigra sum",
+                subtitle: "Concertato / Motet (naar Hooglied 1:5 & 2:10–12)",
+                scoring: "Tenor solo & basso continuo",
+                notes: "Tussen de psalmen plaatst Monteverdi kamermuzikale concertati op teksten uit het Bijbelse Hooglied, in de Mariadevotie betrokken op de Maagd Maria. In deze intieme monodie voor tenor klinkt een directe emotionele zeggingskracht die nauw verwant is aan Monteverdi's opera-aria's.",
+                verses: [
+                    {
+                        label: "Motet",
+                        latin: "Nigra sum, sed formosa, filiae Jerusalem.\nIdeo dilexit me Rex, et introduxit me in cubiculum suum,\net dixit mihi:\nSurge, amica mea, et veni.\nJam hiems transiit, imber abiit et recessit,\nflores apparuerunt in terra nostra,\ntempus putationis advenit.",
+                        dutch: "Donker ben ik, maar schoon, dochters van Jeruzalem.\nDaarom heeft de Koning mij liefgehad en mij binnengeleid in zijn bruidsvertrek,\nen Hij sprak tot mij:\nSta op, mijn vriendin, en kom!\nWant zie, de winter is voorbij, de regentijd is geweken en voorbijgegaan,\nde bloemen zijn verschenen op ons land,\nde tijd van zingen en snoeien is aangebroken."
+                    }
+                ]
+            },
+            {
+                id: "deel-4",
+                number: 4,
+                title: "Laudate pueri Dominum",
+                subtitle: "Psalm 112 (Hebreeuwse telling: Psalm 113)",
+                scoring: "Achtstemmig dubbelkoor (SATB-SATB) & basso continuo (orgel)",
+                notes: "Een grootschalige lofpsalm waarin twee vierstemmige koren in levendige dialoog treden. Boven de voortstuwende baslijn ontvouwt zich een schitterend contrapuntisch weefsel dat uitmondt in een jubelend 'Amen'.",
+                verses: [
+                    {
+                        label: "Vers 1",
+                        latin: "Laudate pueri Dominum:\nlaudate nomen Domini.",
+                        dutch: "Looft, dienaren des Heren,\nlooft de naam van de Heer."
+                    },
+                    {
+                        label: "Vers 2",
+                        latin: "Sit nomen Domini benedictum,\nex hoc nunc et usque in saeculum.",
+                        dutch: "Gezegend zij de naam van de Heer,\nvan nu aan tot in eeuwigheid."
+                    },
+                    {
+                        label: "Vers 3",
+                        latin: "A solis ortu usque ad occasum,\nlaudabile nomen Domini.",
+                        dutch: "Van de opgang der zon tot haar ondergang\nzij geprezen de naam van de Heer."
+                    },
+                    {
+                        label: "Vers 4",
+                        latin: "Excelsus super omnes gentes Dominus,\net super caelos gloria ejus.",
+                        dutch: "Verheven boven alle volken is de Heer,\nen boven de hemelen reikt zijn heerlijkheid."
+                    },
+                    {
+                        label: "Vers 5",
+                        latin: "Quis sicut Dominus Deus noster, qui in altis habitat,\net humilia respicit in caelo et in terra?",
+                        dutch: "Wie is gelijk aan de Heer onze God, die troont in den hoge,\nen die neerziet op het nederige in de hemel en op de aarde?"
+                    },
+                    {
+                        label: "Vers 6",
+                        latin: "Suscitans a terra inopem,\net de stercore erigens pauperem:",
+                        dutch: "Die de behoeftige opricht uit het stof,\nen de arme omhoogheft uit het slijk,"
+                    },
+                    {
+                        label: "Vers 7",
+                        latin: "Ut collocet eum cum principibus,\ncum principibus populi sui.",
+                        dutch: "Om hem te doen zetelen bij de vorsten,\nbij de vorsten van zijn volk."
+                    },
+                    {
+                        label: "Vers 8",
+                        latin: "Qui habitare facit sterilem in domo,\nmatrem filiorum laetantem.",
+                        dutch: "Die de onvruchtbare doet wonen in haar huis,\nals een gelukkige moeder van kinderen."
+                    },
+                    {
+                        label: "Doxologie",
+                        latin: "Gloria Patri et Filio et Spiritui Sancto.\nSicut erat in principio et nunc et semper,\net in saecula saeculorum. Amen.",
+                        dutch: "Eer aan de Vader en de Zoon en de Heilige Geest.\nZoals het was in het begin en nu en altijd,\nen in de eeuwen der eeuwen. Amen."
+                    }
+                ]
+            },
+            {
+                id: "deel-5",
+                number: 5,
+                title: "Pulchra es",
+                subtitle: "Concertato / Motet (naar Hooglied 6:4–5)",
+                scoring: "Twee solosopranen & basso continuo",
+                notes: "Een sensueel en verfijnd duet voor twee sopranen op woorden uit het Hooglied. De stemmen verstrengelen zich in weelderige dissonanten en parallelle tertsen, kenmerkend voor Monteverdi's expressieve seconda pratica.",
+                verses: [
+                    {
+                        label: "Motet",
+                        latin: "Pulchra es, amica mea,\nsuavis et decora filia Jerusalem.\nPulchra es, amica mea,\nsuavis et decora sicut Jerusalem,\nterribilis ut castrorum acies ordinata.\nAverte oculos tuos a me,\nquia ipsi me avolare fecerunt.",
+                        dutch: "Schoon zijt gij, mijn vriendin,\nlieflijk en bevallig, dochter van Jeruzalem.\nSchoon zijt gij, mijn vriendin,\nlieflijk en bevallig als Jeruzalem,\nontzagwekkend als een slagorde met banieren.\nWend uw ogen van mij af,\nwant zij doen mij in vervoering wegvliegen."
+                    }
+                ]
+            },
+            {
+                id: "deel-6",
+                number: 6,
+                title: "Laetatus sum",
+                subtitle: "Psalm 121 (Hebreeuwse telling: Psalm 122)",
+                scoring: "Zesstemmig koor (SSATTB) & basso continuo",
+                notes: "De pelgrimspsalm over de vreugde van de intocht in Jeruzalem. Het hele stuk rust op een energieke ostinate baslijn (vier dalende en stijgende noten) die als het gestage stappen van pelgrims door het werk heen klinkt, afgewisseld met levendige zangduetten en volledige koorklanken.",
+                verses: [
+                    {
+                        label: "Vers 1",
+                        latin: "Laetatus sum in his quae dicta sunt mihi:\nIn domum Domini ibimus.",
+                        dutch: "Verheugd was ik om wat mij werd gezegd:\n‘Wij zullen optrekken naar het huis van de Heer.’"
+                    },
+                    {
+                        label: "Vers 2",
+                        latin: "Stantes erant pedes nostri,\nin atriis tuis, Jerusalem.",
+                        dutch: "Nu staan onze voeten\nin uw poorten, Jeruzalem."
+                    },
+                    {
+                        label: "Vers 3",
+                        latin: "Jerusalem, quae aedificatur ut civitas:\ncujus participatio ejus in idipsum.",
+                        dutch: "Jeruzalem, gebouwd als een hechte stad,\nwaar alles harmonisch samenkomt."
+                    },
+                    {
+                        label: "Vers 4",
+                        latin: "Illuc enim ascenderunt tribus, tribus Domini,\ntestimonium Israel ad confitendum nomini Domini.",
+                        dutch: "Daarheen immers stijgen de stammen op, de stammen van de Heer,\neen getuigenis voor Israël om de naam van de Heer te loven."
+                    },
+                    {
+                        label: "Vers 5",
+                        latin: "Quia illic sederunt sedes in judicio,\nsedes super domum David.",
+                        dutch: "Want daar staan de zetels voor het gericht,\nde tronen van het huis van David."
+                    },
+                    {
+                        label: "Vers 6",
+                        latin: "Rogate quae ad pacem sunt Jerusalem:\net abundantia diligentibus te.",
+                        dutch: "Bidt om vrede voor Jeruzalem:\nmoge voorspoed zijn met hen die u liefhebben."
+                    },
+                    {
+                        label: "Vers 7",
+                        latin: "Fiat pax in virtute tua:\net abundantia in turribus tuis.",
+                        dutch: "Vrede heerse binnen uw wallen,\nen welvaart in uw burchten."
+                    },
+                    {
+                        label: "Vers 8",
+                        latin: "Propter fratres meos et proximos meos,\nloquebar pacem de te.",
+                        dutch: "Omwille van mijn broeders en mijn naasten\nspreek ik: ‘Vrede zij in u.’"
+                    },
+                    {
+                        label: "Vers 9",
+                        latin: "Propter domum Domini Dei nostri,\nquaesivi bona tibi.",
+                        dutch: "Omwille van het huis van de Heer onze God\nzoek ik het goede voor u."
+                    },
+                    {
+                        label: "Doxologie",
+                        latin: "Gloria Patri et Filio et Spiritui Sancto.\nSicut erat in principio et nunc et semper,\net in saecula saeculorum. Amen.",
+                        dutch: "Eer aan de Vader en de Zoon en de Heilige Geest.\nZoals het was in het begin en nu en altijd,\nen in de eeuwen der eeuwen. Amen."
+                    }
+                ]
+            },
+            {
+                id: "deel-7",
+                number: 7,
+                title: "Duo Seraphim",
+                subtitle: "Concertato / Motet (naar Jesaja 6:3 & 1 Johannes 5:7)",
+                scoring: "Drie tenoren (twee tenoren in het eerste deel, drie tenoren vanaf 'Tres sunt') & basso continuo",
+                notes: "Een theologisch en muzikaal meesterwerk. Twee tenoren bezingen de twee serafijnen die elkaar het 'Sanctus' toeroepen. Zodra de tekst overgaat op de Heilige Drie-eenheid ('Tres sunt qui testimonium dant'), voegt zich een derde tenor bij hen; bij de woorden 'et hi tres unum sunt' ('en deze drie zijn één') smelten alle drie de stemmen samen tot één eenstemmige toon.",
+                verses: [
+                    {
+                        label: "Deel I (2 Tenoren)",
+                        latin: "Duo Seraphim clamabant alter ad alterum:\nSanctus, Sanctus, Sanctus Dominus Deus Sabaoth.\nPlena est omnis terra gloria ejus.",
+                        dutch: "Twee serafijnen riepen elkander toe:\n‘Heilig, Heilig, Heilig is de Heer, de God der hemelse machten.\nGeheel de aarde is vervuld van zijn heerlijkheid.’"
+                    },
+                    {
+                        label: "Deel II (3 Tenoren)",
+                        latin: "Tres sunt qui testimonium dant in caelo:\nPater, Verbum et Spiritus Sanctus:\net hi tres unum sunt.\nSanctus, Sanctus, Sanctus Dominus Deus Sabaoth.\nPlena est omnis terra gloria ejus.",
+                        dutch: "Drie zijn er die getuigenis afleggen in de hemel:\nde Vader, het Woord en de Heilige Geest;\nen deze drie zijn één.\nHeilig, Heilig, Heilig is de Heer, de God der hemelse machten.\nGeheel de aarde is vervuld van zijn heerlijkheid."
+                    }
+                ]
+            },
+            {
+                id: "deel-8",
+                number: 8,
+                title: "Nisi Dominus",
+                subtitle: "Psalm 126 (Hebreeuwse telling: Psalm 127)",
+                scoring: "10-stemmig dubbelkoor (SSATB + SSATB) & basso continuo",
+                notes: "De machtigste koorpsalm uit de cyclus, geschreven voor twee vijfstemmige koren in de Venetiaanse meerkorige traditie (cori spezzati). In de Gloria Patri-doxologie keert Monteverdi de openingsmuziek van het eerste vers terug, waarmee hij de architectonische cirkel sluit.",
+                verses: [
+                    {
+                        label: "Vers 1",
+                        latin: "Nisi Dominus aedificaverit domum,\nin vanum laboraverunt qui aedificant eam.",
+                        dutch: "Als de Heer het huis niet bouwt,\nvergeefs zwoegen dan de bouwers eraan."
+                    },
+                    {
+                        label: "Vers 2",
+                        latin: "Nisi Dominus custodierit civitatem,\nfrustra vigilat qui custodit eam.",
+                        dutch: "Als de Heer de stad niet behoedt,\nvergeefs waakt dan de wachter."
+                    },
+                    {
+                        label: "Vers 3",
+                        latin: "Vanum est vobis ante lucem surgere:\nsurgite postquam sederitis, qui manducatis panem doloris.",
+                        dutch: "Vergeefs is het voor u om vóór dag en dauw op te staan\nen laat ter ruste te gaan, gij die het brood van moeite en zorg eet;"
+                    },
+                    {
+                        label: "Vers 4",
+                        latin: "Cum dederit dilectis suis somnum:\necce haereditas Domini filii: merces, fructus ventris.",
+                        dutch: "Want aan zijn beminden geeft Hij het in de slaap.\nZie, zonen zijn een erfdeel van de Heer, de vrucht van de moederschoot is een beloning."
+                    },
+                    {
+                        label: "Vers 5",
+                        latin: "Sicut sagittae in manu potentis:\nita filii excussorum.",
+                        dutch: "Zoals pijlen in de hand van een held,\nzo zijn de zonen in de kracht van de jeugd."
+                    },
+                    {
+                        label: "Vers 6",
+                        latin: "Beatus vir qui implevit desiderium suum ex ipsis:\nnon confundetur cum loquetur inimicis suis in porta.",
+                        dutch: "Gelukkig de man die zijn pijlkoker daarmee heeft gevuld:\nhij zal niet beschaamd staan wanneer hij met zijn vijanden spreekt in de poort."
+                    },
+                    {
+                        label: "Doxologie",
+                        latin: "Gloria Patri et Filio et Spiritui Sancto.\nSicut erat in principio et nunc et semper,\net in saecula saeculorum. Amen.",
+                        dutch: "Eer aan de Vader en de Zoon en de Heilige Geest.\nZoals het was in het begin en nu en altijd,\nen in de eeuwen der eeuwen. Amen."
+                    }
+                ]
+            },
+            {
+                id: "deel-9",
+                number: 9,
+                title: "Audi coelum",
+                subtitle: "Concertato / Motet (Anonieme Mariale dichttekst)",
+                scoring: "Tenor solo, tweede tenor (echo) & zesstemmig koor (SSATTB) met basso continuo",
+                notes: "Een poëtisch dialooggedicht waarin een solotenor zijn gebed richt tot de hemel, beantwoord door een verborgen tweede tenor als een geestelijke echo die elk woord van betekenis verandert (bijv. 'gaudio' – 'audio', 'benedictam' – 'dictam'). In het slotgedeelte ('Omnes hanc ergo sequamur') valt het zesstemmige koor jubelend in.",
+                verses: [
+                    {
+                        label: "Solotenor & Echo",
+                        latin: "Audi coelum, verba mea, plena desiderio et perfusa gaudio. — (Audio.)\nDic, quaeso, mihi: Quae est ista, quae consurgens ut aurora rutilat,\nut benedicam? — (Dicam.)\nDic nam ista pulchra ut luna, electa ut sol replet laetitia terras,\ncoelos, maria? — (Maria.)\nMaria virgo illa dulcis praedicata de propheta Ezechiel\nporta orientalis. — (Talis.)\nIlla sacra et felix porta, per quam mors fuit expulsa,\nintroduxit autem vitam. — (Ita.)\nQuae semper tutum est medium inter homines et Deum,\npro culpis remedium. — (Medium.)",
+                        dutch: "Hoor, o hemel, mijn woorden, vol verlangen en overvloeiend van vreugde. — (Ik hoor.)\nZeg mij, bid ik u: wie is zij, die oprijzend als de dageraad straalt,\nopdat ik haar prijze? — (Ik zal het zeggen.)\nZeg dan, is zij die schoon is als de maan en uitverkoren als de zon, die aarde,\nhemelen en zeeën vervult met blijdschap? — (Maria.)\nMaria, die lieflijke Maagd, door de profeet Ezechiël verkondigd\nals de oostelijke poort. — (Zo is zij.)\nDie heilige en gezegende poort waardoor de dood werd verdreven,\nmaar het leven werd binnengeleid. — (Zo is het.)\nZij die altijd de veilige middelaar is tussen de mensen en God,\neen geneesmiddel voor onze schuld. — (Middelaar.)"
+                    },
+                    {
+                        label: "Slotkoor (SSATTB)",
+                        latin: "Omnes hanc ergo sequamur qua cum gratia mereamur\nvitam aeternam. Consequamur. — (Sequamur.)\nPraestet nobis Deus, Pater hoc et Filius et Mater\ncujus nomen invocamus dulce miseris solamen. — (Amen.)",
+                        dutch: "Laten wij allen haar dan volgen, opdat wij door haar genade\nhet eeuwig leven mogen verwerven. Laten wij het verkrijgen. — (Laten wij volgen.)\nMoge God, de Vader en de Zoon, en de Moeder\nwier naam wij aanroepen als zoete troost voor de bedrukten, ons dit schenken. — (Amen.)"
+                    }
+                ]
+            },
+            {
+                id: "deel-10",
+                number: 10,
+                title: "Lauda Jerusalem",
+                subtitle: "Psalm 147 (Vulgaat: Psalm 147:12–20)",
+                scoring: "Zevenstemmig koor (2 driestemmige koren SAB rond een cantus firmus in de tenor) & basso continuo",
+                notes: "De vijfde en laatste vesperpsalm, een feestelijke lofzang op Jeruzalem. Terwijl de tenor onverstoorbaar de gregoriaanse psalmtoon zingt, wisselen twee driestemmige koren elkaar in hoog tempo af met virtuoze en ritmische figuren.",
+                verses: [
+                    {
+                        label: "Vers 1",
+                        latin: "Lauda Jerusalem Dominum:\nlauda Deum tuum, Sion.",
+                        dutch: "Prijs, Jeruzalem, de Heer;\nloof uw God, o Sion."
+                    },
+                    {
+                        label: "Vers 2",
+                        latin: "Quoniam confortavit seras portarum tuarum:\nbenedixit filiis tuis in te.",
+                        dutch: "Want Hij heeft de grendels van uw poorten versterkt,\nHij heeft uw kinderen binnen uw muren gezegend."
+                    },
+                    {
+                        label: "Vers 3",
+                        latin: "Qui posuit fines tuos pacem:\net adipe frumenti satiat te.",
+                        dutch: "Hij schenkt vrede aan uw grenzen\nen verzadigt u met het fijnste tarwemeel."
+                    },
+                    {
+                        label: "Vers 4",
+                        latin: "Qui emittit eloquium suum terrae:\nvelociter currit sermo ejus.",
+                        dutch: "Hij zendt zijn bevel uit naar de aarde;\nrazendsnel snelt zijn woord voort."
+                    },
+                    {
+                        label: "Vers 5",
+                        latin: "Qui dat nivem sicut lanam:\nnebulam sicut cinerem spargit.",
+                        dutch: "Hij geeft sneeuw als wol;\nrijp strooit Hij uit als as."
+                    },
+                    {
+                        label: "Vers 6",
+                        latin: "Mittit crystallum suam sicut buccellas:\nante faciem frigoris ejus quis sustinebit?",
+                        dutch: "Hij werpt zijn ijs neer als brokken brood;\nwie kan standhouden voor zijn koude?"
+                    },
+                    {
+                        label: "Vers 7",
+                        latin: "Emittet verbum suum, et liquefaciet ea:\nflabit spiritus ejus, et fluent aquae.",
+                        dutch: "Hij zendt zijn woord uit en doet ze smelten;\nzijn adem waait en de wateren stromen."
+                    },
+                    {
+                        label: "Vers 8",
+                        latin: "Qui annuntiat verbum suum Jacob:\njustitias et judicia sua Israel.",
+                        dutch: "Hij verkondigt zijn woord aan Jakob,\nzijn wetten en verordeningen aan Israël."
+                    },
+                    {
+                        label: "Vers 9",
+                        latin: "Non fecit taliter omni nationi:\net judicia sua non manifestavit eis.",
+                        dutch: "Zo heeft Hij aan geen enkel ander volk gedaan;\nzijn verordeningen heeft Hij hun niet bekendgemaakt."
+                    },
+                    {
+                        label: "Doxologie",
+                        latin: "Gloria Patri et Filio et Spiritui Sancto.\nSicut erat in principio et nunc et semper,\net in saecula saeculorum. Amen.",
+                        dutch: "Eer aan de Vader en de Zoon en de Heilige Geest.\nZoals het was in het begin en nu en altijd,\nen in de eeuwen der eeuwen. Amen."
+                    }
+                ]
+            },
+            {
+                id: "deel-11",
+                number: 11,
+                title: "Frescobaldi - Recercar su “Sancta Maria, ora pro nobis”",
+                subtitle: "Orgelwerk met litanie-aanroep",
+                scoring: "Orgel en sopranen (unisono)",
+                notes: "De Recercar \"Sancta Maria\" (officieel: Recercar con obbligo di cantare la quinta parte senza toccarla) is een beroemd orgelwerk van de Italiaanse componist Girolamo Frescobaldi. Frescobaldi schrijft hierin voor dat zangers de melodie van het Sancta Maria, ora pro nobis moeten zingen als een vijfde partij (\"quinta parte\"), terwijl de organist de overige stemmen op het orgel speelt zonder die vijfde partij op het klavier aan te raken (\"senza toccarla\")",
+                verses: [
+                    {
+                        label: "Litanie-ostinato (11x)",
+                        latin: "Sancta Maria, ora pro nobis.",
+                        dutch: "Heilige Maria, bid voor ons."
+                    }
+                ]
+            },
+            {
+                id: "deel-12",
+                number: 12,
+                title: "Ave maris stella",
+                subtitle: "Vesperhymne voor Mariafeesten (alle 7 strofen)",
+                scoring: "Dubbelkoor (achtstemmig: SATB-SATB), solisten & basso continuo",
+                notes: "De beroemde middeleeuwse Maria-hymne. Monteverdi voorziet elk van de zeven strofen van een eigen muzikale gedaante: strofe 1 voor dubbelkoor, strofe 2 en 3 voor enkel koor, strofe 4, 5 en 6 als intieme soloverzen, en strofe 7 als een grootschalige slotlofprijzing.",
+                verses: [
+                    {
+                        label: "Strofe 1 (Dubbelkoor)",
+                        latin: "Ave maris stella,\nDei Mater alma,\natque semper Virgo,\nfelix coeli porta.",
+                        dutch: "Wees gegroet, sterre der zee,\nverheven Moeder van God,\nen immer Maagd,\ngezegende poort des hemels."
+                    },
+                    {
+                        label: "Strofe 2 (Koor I + Ritornello)",
+                        latin: "Sumens illud Ave\nGabrielis ore,\nfunda nos in pace,\nmutans Evae nomen.",
+                        dutch: "Gij die dat ‘Ave’ ontvingt\nuit de mond van Gabriël,\ngrondvest ons in vrede,\nen keer de naam van Eva ten goede."
+                    },
+                    {
+                        label: "Strofe 3 (Koor II + Ritornello)",
+                        latin: "Solve vincla reis,\nprofer lumen caecis,\nmala nostra pelle,\nbona cuncta posce.",
+                        dutch: "Slaak de boeien van de schuldigen,\nbreng licht aan de blinden,\nverdrijf ons kwaad,\nen smeek al het goede voor ons af."
+                    },
+                    {
+                        label: "Strofe 4 (Sopraan solo + Ritornello)",
+                        latin: "Monstra te esse matrem:\nsumat per te preces,\nqui pro nobis natus,\ntulit esse tuus.",
+                        dutch: "Toon dat gij onze moeder zijt:\nmoge Hij door u onze gebeden aanvaarden,\ndie, voor ons geboren,\nde uwe wilde zijn."
+                    },
+                    {
+                        label: "Strofe 5 (Tenor solo + Ritornello)",
+                        latin: "Virgo singularis,\ninter omnes mitis,\nnos culpis solutos,\nmites fac et castos.",
+                        dutch: "Unieke Maagd,\nzachtmoedig boven allen,\nmaak ons, bevrijd van schuld,\nzachtmoedig en zuiver van hart."
+                    },
+                    {
+                        label: "Strofe 6 (Sopraan solo)",
+                        latin: "Vitam praesta puram,\niter para tutum,\nut videntes Jesum,\nsemper collaetemur.",
+                        dutch: "Schenk ons een zuiver leven,\nbereid ons een veilige weg,\nopdat wij, Jezus aanschouwend,\nons voor eeuwig mogen verblijden."
+                    },
+                    {
+                        label: "Strofe 7 (Dubbelkoor)",
+                        latin: "Sit laus Deo Patri,\nsummo Christo decus,\nSpiritui Sancto,\ntribus honor unus. Amen.",
+                        dutch: "Lof zij God de Vader,\neer aan Christus de Allerhoogste,\nen aan de Heilige Geest,\naan de Drie dezelfde eer. Amen."
+                    }
+                ]
+            },
+            {
+                id: "deel-13",
+                number: 13,
+                title: "Magnificat",
+                subtitle: "Lofzang van Maria (Lucas 1:46–55) — Versie a 6 vocibus",
+                scoring: "Zesstemmig koor (SSATTB), solisten & basso continuo",
+                notes: "Het liturgische en muzikale kroonjuweel van de vespers (in de druk van 1610 opgenomen voor zes stemmen en tevens in een rijk geïnstrumenteerde versie voor zeven stemmen). Elk van de twaalf verzen van Maria's lofzang wordt een eigen klankschilderij, waarbij het gregoriaanse Magnificat-thema als een rode draad door alle delen heen geweven blijft.",
+                verses: [
+                    {
+                        label: "Vers 1 — Magnificat",
+                        latin: "Magnificat anima mea Dominum.",
+                        dutch: "Hoog verheft mijn ziel de Heer."
+                    },
+                    {
+                        label: "Vers 2 — Et exsultavit",
+                        latin: "Et exsultavit spiritus meus\nin Deo salutari meo.",
+                        dutch: "En mijn geest jubelt\nin God, mijn redder."
+                    },
+                    {
+                        label: "Vers 3 — Quia respexit",
+                        latin: "Quia respexit humilitatem ancillae suae:\necce enim ex hoc beatam me dicent omnes generationes.",
+                        dutch: "Omdat Hij heeft omgezien naar de geringheid van zijn dienstmaagd;\nzie, vanaf nu zullen alle geslachten mij zalig prijzen."
+                    },
+                    {
+                        label: "Vers 4 — Quia fecit",
+                        latin: "Quia fecit mihi magna qui potens est:\net sanctum nomen ejus.",
+                        dutch: "Want grote dingen heeft aan mij gedaan de Machtige,\nen heilig is zijn naam."
+                    },
+                    {
+                        label: "Vers 5 — Et misericordia",
+                        latin: "Et misericordia ejus a progenie in progenies\ntimentibus eum.",
+                        dutch: "En zijn barmhartigheid strekt zich uit van geslacht tot geslacht\nover hen die Hem vrezen."
+                    },
+                    {
+                        label: "Vers 6 — Fecit potentiam",
+                        latin: "Fecit potentiam in brachio suo:\ndispersit superbos mente cordis sui.",
+                        dutch: "Hij toont de kracht van zijn arm;\nhoogmoedigen van hart slaat Hij uiteen."
+                    },
+                    {
+                        label: "Vers 7 — Deposuit potentes",
+                        latin: "Deposuit potentes de sede,\net exaltavit humiles.",
+                        dutch: "Machtigen haalt Hij neer van hun troon,\nen nederigen verheft Hij."
+                    },
+                    {
+                        label: "Vers 8 — Esurientes",
+                        latin: "Esurientes implevit bonis:\net divites dimisit inanes.",
+                        dutch: "Hongerigen overlaadt Hij met gaven,\nen rijken zendt Hij met lege handen weg."
+                    },
+                    {
+                        label: "Vers 9 — Suscepit Israel",
+                        latin: "Suscepit Israel puerum suum,\nrecordatus misericordiae suae.",
+                        dutch: "Hij trekt zich het lot aan van Israël, zijn dienaar,\ngedachtig aan zijn barmhartigheid,"
+                    },
+                    {
+                        label: "Vers 10 — Sicut locutus est",
+                        latin: "Sicut locutus est ad patres nostros,\nAbraham et semini ejus in saecula.",
+                        dutch: "Zoals Hij gesproken heeft tot onze vaderen,\ntot Abraham en zijn nageslacht voor eeuwig."
+                    },
+                    {
+                        label: "Vers 11 — Gloria Patri",
+                        latin: "Gloria Patri et Filio\net Spiritui Sancto.",
+                        dutch: "Eer aan de Vader en de Zoon\nen de Heilige Geest."
+                    },
+                    {
+                        label: "Vers 12 — Sicut erat",
+                        latin: "Sicut erat in principio et nunc et semper,\net in saecula saeculorum. Amen.",
+                        dutch: "Zoals het was in het begin en nu en altijd,\nen in de eeuwen der eeuwen. Amen."
+                    }
+                ]
+            }
+        ];
+
+        // DOM-elementen
+        const movementsContainer = document.getElementById('movements-container');
+        const desktopTocList = document.getElementById('desktop-toc-list');
+        const mobileTocList = document.getElementById('mobile-toc-list');
+        const mobileTocToggle = document.getElementById('mobile-toc-toggle');
+        const mobileTocDrawer = document.getElementById('mobile-toc-drawer');
+        const searchInput = document.getElementById('search-input');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const searchStatus = document.getElementById('search-status');
+        const searchStatusText = document.getElementById('search-status-text');
+        const resetSearchBtn = document.getElementById('reset-search-btn');
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        // Hulpfunctie om HTML veilig te escapen en optioneel zoektermen te markeren
+        function formatText(text, query = '') {
+            const escaped = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+            
+            let highlighted = escaped;
+            if (query && query.trim().length >= 2) {
+                const safeQuery = query.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`(${safeQuery})`, 'gi');
+                highlighted = escaped.replace(regex, '<mark class="search-highlight">$1</mark>');
+            }
+            return highlighted.replace(/\n/g, '<br>');
+        }
+
+        // Bouw de inhoudsopgave op (Desktop & Mobiel)
+        function renderTOC() {
+            const itemsHTML = vespersData.map(item => `
+                <li>
+                    <a href="#${item.id}" data-target="${item.id}" class="toc-link group flex items-baseline gap-2.5 px-2.5 py-1.5 rounded-lg text-charcoal hover:bg-parchmentDark hover:text-venetian transition-colors">
+                        <span class="font-display font-bold text-ochre group-hover:text-venetian w-5 shrink-0 text-right">${item.number}.</span>
+                        <span class="truncate font-medium">${item.title}</span>
+                    </a>
+                </li>
+            `).join('');
+
+            desktopTocList.innerHTML = itemsHTML;
+            mobileTocList.innerHTML = itemsHTML;
+
+            // Sluit mobiele lade na klik op link
+            mobileTocList.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileTocDrawer.classList.add('hidden');
+                });
+            });
+        }
+
+        // Bouw alle 13 delen op (met ondersteuning voor zoekfilter)
+        function renderMovements(query = '') {
+            const cleanQuery = query.trim().toLowerCase();
+            let visibleCount = 0;
+
+            const html = vespersData.map(item => {
+                // Controleer of het deel of een van de verzen overeenkomt met de zoekopdracht
+                const matchesHeader = !cleanQuery ||
+                    item.title.toLowerCase().includes(cleanQuery) ||
+                    item.subtitle.toLowerCase().includes(cleanQuery) ||
+                    item.scoring.toLowerCase().includes(cleanQuery) ||
+                    item.notes.toLowerCase().includes(cleanQuery) ||
+                    String(item.number) === cleanQuery;
+
+                const matchingVerses = item.verses.filter(v =>
+                    !cleanQuery ||
+                    v.label.toLowerCase().includes(cleanQuery) ||
+                    v.latin.toLowerCase().includes(cleanQuery) ||
+                    v.dutch.toLowerCase().includes(cleanQuery)
+                );
+
+                // Als de zoekterm in de titel/toelichting staat, toon alle verzen; anders alleen de matchende verzen
+                const versesToDisplay = matchesHeader ? item.verses : matchingVerses;
+
+                if (versesToDisplay.length === 0) {
+                    return '';
+                }
+
+                visibleCount++;
+
+                const versesHTML = versesToDisplay.map((verse, idx) => `
+                    <div class="verse-row py-4 ${idx !== versesToDisplay.length - 1 ? 'border-b border-ochre/20' : ''}">
+                        <div class="mb-1.5">
+                            <span class="inline-block font-sans text-[11px] uppercase tracking-widest font-semibold text-ochre">
+                                ${formatText(verse.label, query)}
+                            </span>
+                        </div>
+                        <div class="verse-grid grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-start">
+                            <div class="col-latin verse-latin text-charcoal font-medium">
+                                ${formatText(verse.latin, query)}
+                            </div>
+                            <div class="col-dutch verse-dutch text-charcoal/90 md:border-l md:border-ochre/20 md:pl-6">
+                                ${formatText(verse.dutch, query)}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                return `
+                    <article id="${item.id}" class="movement-card scroll-mt-24 bg-white/90 rounded-2xl border border-ochre/30 p-6 sm:p-8 shadow-2xs transition-all">
+                        <!-- Deelkop -->
+                        <header class="pb-5 mb-5 border-b border-ochre/30">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-sans font-semibold bg-venetian text-white">
+                                    Deel ${item.number}
+                                </span>
+                                <span class="text-xs sm:text-sm font-sans font-medium text-ochre">
+                                    ${formatText(item.subtitle, query)}
+                                </span>
+                            </div>
+                            
+                            <h2 class="font-display text-3xl sm:text-4xl font-bold text-venetian mt-1">
+                                ${formatText(item.title, query)}
+                            </h2>
+
+                            <!-- Bezetting & Toelichting -->
+                            <div class="mt-4 bg-parchmentDark/70 rounded-xl p-4 border border-ochre/20 text-sm">
+                                <p class="font-sans text-xs sm:text-sm text-charcoal mb-1.5">
+                                    <strong class="text-venetian font-semibold">Bezetting:</strong> ${formatText(item.scoring, query)}
+                                </p>
+                                <p class="font-dutch text-charcoalMuted leading-relaxed text-xs sm:text-sm">
+                                    ${formatText(item.notes, query)}
+                                </p>
+                            </div>
+                        </header>
+
+                        <!-- Kolomkoppen (alleen zichtbaar in tweetalige modus op desktop) -->
+                        <div class="hidden md:grid verse-grid grid-cols-2 gap-8 pb-2 mb-1 border-b border-ochre/25 text-xs font-sans uppercase tracking-widest text-charcoalMuted">
+                            <div class="col-latin">Latijnse tekst</div>
+                            <div class="col-dutch md:pl-6">Nederlandse vertaling</div>
+                        </div>
+
+                        <!-- Verzen -->
+                        <div>
+                            ${versesHTML}
+                        </div>
+                    </article>
+                `;
+            }).join('');
+
+            if (visibleCount === 0) {
+                movementsContainer.innerHTML = `
+                    <div class="bg-white rounded-2xl border border-ochre/30 p-10 text-center">
+                        <p class="font-display text-2xl text-venetian font-semibold mb-2">Geen teksten gevonden</p>
+                        <p class="font-sans text-sm text-charcoalMuted mb-4">Er zijn geen verzen of delen gevonden voor "<strong>${formatText(query)}</strong>".</p>
+                        <button type="button" onclick="resetSearch()" class="px-4 py-2 rounded-lg bg-venetian text-white text-sm font-sans font-medium hover:bg-venetianLight">
+                            Zoekopdracht wissen
+                        </button>
+                    </div>
+                `;
+            } else {
+                movementsContainer.innerHTML = html;
+            }
+
+            // Update zoekstatusbalk
+            if (cleanQuery) {
+                searchStatus.classList.remove('hidden');
+                searchStatusText.innerHTML = `Resultaten voor <strong>"${formatText(query)}"</strong> (${visibleCount} van de 13 delen getoond)`;
+            } else {
+                searchStatus.classList.add('hidden');
+            }
+
+            setupScrollSpy();
+        }
+
+        // Weergavemodus wisselen (Tweetalig / Alleen Latijn / Alleen Nederlands)
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const mode = btn.getAttribute('data-mode');
+                document.body.classList.remove('mode-latin', 'mode-dutch');
+                if (mode === 'latin') document.body.classList.add('mode-latin');
+                if (mode === 'dutch') document.body.classList.add('mode-dutch');
+
+                document.querySelectorAll('.mode-btn').forEach(b => {
+                    b.classList.remove('bg-venetian', 'text-white', 'shadow-sm', 'active');
+                    b.classList.add('text-charcoal');
+                });
+                btn.classList.add('bg-venetian', 'text-white', 'shadow-sm', 'active');
+                btn.classList.remove('text-charcoal');
+            });
+        });
+
+        // Lettergrootte wisselen
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const scale = btn.getAttribute('data-size');
+                document.documentElement.style.setProperty('--font-scale', scale);
+
+                document.querySelectorAll('.size-btn').forEach(b => {
+                    b.classList.remove('bg-white', 'text-venetian', 'shadow-sm', 'active');
+                    b.classList.add('text-charcoal');
+                });
+                btn.classList.add('bg-white', 'text-venetian', 'shadow-sm', 'active');
+                btn.classList.remove('text-charcoal');
+            });
+        });
+
+        // Mobiele inhoudsopgave toggle
+        mobileTocToggle.addEventListener('click', () => {
+            mobileTocDrawer.classList.toggle('hidden');
+        });
+
+        // Zoekfunctionaliteit
+        function resetSearch() {
+            searchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            renderMovements('');
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            if (val.length > 0) {
+                clearSearchBtn.classList.remove('hidden');
+            } else {
+                clearSearchBtn.classList.add('hidden');
+            }
+            renderMovements(val);
+        });
+
+        clearSearchBtn.addEventListener('click', resetSearch);
+        resetSearchBtn.addEventListener('click', resetSearch);
+
+        // Actieve sectie markeren in inhoudsopgave tijdens scrollen (ScrollSpy)
+        let observer = null;
+        function setupScrollSpy() {
+            if (observer) observer.disconnect();
+
+            const articles = document.querySelectorAll('.movement-card');
+            if (articles.length === 0) return;
+
+            observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        document.querySelectorAll('.toc-link').forEach(link => {
+                            if (link.getAttribute('data-target') === id) {
+                                link.classList.add('bg-venetian/10', 'text-venetian', 'font-semibold');
+                                link.classList.remove('text-charcoal');
+                            } else {
+                                link.classList.remove('bg-venetian/10', 'text-venetian', 'font-semibold');
+                                link.classList.add('text-charcoal');
+                            }
+                        });
+                    }
+                });
+            }, {
+                rootMargin: '-20% 0px -65% 0px',
+                threshold: 0
+            });
+
+            articles.forEach(article => observer.observe(article));
+        }
+
+        // Terug naar boven knop
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Initialisatie bij laden van de pagina
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTOC();
+            renderMovements();
+        });
+    </script>
+</body>
+</html>
