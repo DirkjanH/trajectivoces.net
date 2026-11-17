@@ -231,13 +231,7 @@ require_once('modules/module_kaartverkoop.php');
                     <input class="w3-btn w3-green"
                         <?php if (isset($allesuitverkocht) and $allesuitverkocht === true) echo 'DISABLED '; ?>name="submit"
                         type="submit" value="<?php echo $txt['verzenden']; ?>">
-                    <p>We hopen u natuurlijk bij een van onze concerten te mogen verwelkomen. Mocht u onverhoopt verhinderd zijn, dan kunnen aangekochte kaarten helaas niet worden gerestitueerd.</p>
-                    <p>P.S. het kaartverkoopsysteem is vernieuwd. Mocht je een
-                        probleem tegenkomen, stuur dan SVP even een mailtje aan
-                        <a
-                            href="mailto:organisatie@trajectivoces.net">organisatie@trajectivoces.net</a>
-                        of een appje aan 0619 224 758.
-                    </p>
+                    <p class="w3-red w3-small">P.S. We hopen u natuurlijk bij een van onze concerten te mogen verwelkomen. Mocht u onverhoopt verhinderd zijn, dan kunnen aangekochte kaarten helaas niet worden gerestitueerd.</p>
                 </div>
         </FORM>
     </div>
