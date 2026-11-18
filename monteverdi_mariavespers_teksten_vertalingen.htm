@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="nl" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claudio Monteverdi – Vespro della Beata Vergine (1610) | Teksten & Vertalingen</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cormorant Garamond, Lora & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    
-    <script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Claudio Monteverdi – Vespro della Beata Vergine (1610) | Teksten & Vertalingen</title>
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Google Fonts: Cormorant Garamond, Lora & Inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+        <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -34,9 +33,8 @@
                 }
             }
         }
-    </script>
-
-    <style>
+        </script>
+        <style>
         /* Custom typografie en weergavemodi */
         :root {
             --font-scale: 1;
@@ -149,165 +147,220 @@
                 background: transparent !important;
             }
         }
-    </style>
-</head>
-<body class="min-h-screen flex flex-col selection:bg-ochre/30 selection:text-venetian">
-
-    <!-- Decoratieve bovenrand -->
-    <div class="h-1.5 w-full bg-gradient-to-r from-venetian via-ochre to-venetian no-print"></div>
-
-    <!-- Hero Header -->
-    <header class="hero-header bg-parchmentDark/60 border-b border-ochre/30 pt-10 pb-8 px-4 sm:px-8">
-        <div class="max-w-6xl mx-auto text-center">
-            <p class="font-sans uppercase tracking-[0.22em] text-xs sm:text-sm font-semibold text-ochre mb-2">
-                Venetië, 1610 &bull; SV 206
-            </p>
-            <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-venetian tracking-tight leading-tight">
-                Vespro della Beata Vergine
-            </h1>
-            <p class="font-display italic text-xl sm:text-2xl text-charcoalMuted mt-2">
-                Claudio Monteverdi (1567–1643) &mdash; Volledige Latijnse teksten &amp; Nederlandse vertalingen
-            </p>
-            <div class="flex items-center justify-center gap-3 mt-5 text-ochre">
-                <span class="h-px w-12 bg-ochre/50"></span>
-                <span class="text-sm">&#10022;</span>
-                <span class="h-px w-12 bg-ochre/50"></span>
+        </style>
+    </head>
+    <body class="min-h-screen flex flex-col selection:bg-ochre/30 selection:text-venetian">
+        <!-- Decoratieve bovenrand -->
+        <div class="h-1.5 w-full bg-gradient-to-r from-venetian via-ochre to-venetian no-print"></div>
+        <!-- Hero Header -->
+        <header class="hero-header bg-parchmentDark/60 border-b border-ochre/30 pt-10 pb-8 px-4 sm:px-8">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="font-sans uppercase tracking-[0.22em] text-xs sm:text-sm font-semibold text-ochre mb-2">
+                    Venetië, 1610 &bull; SV 206
+                </p>
+                <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-venetian tracking-tight leading-tight">
+                    Vespro della Beata Vergine
+                </h1>
+                <p class="font-display italic text-xl sm:text-2xl text-charcoalMuted mt-2">
+                    Claudio Monteverdi (1567–1643) &mdash; Volledige Latijnse teksten &amp; Nederlandse vertalingen
+                </p>
+                <div class="flex items-center justify-center gap-3 mt-5 text-ochre">
+                    <span class="h-px w-12 bg-ochre/50"></span>
+                    <span class="text-sm">&#10022;</span>
+                    <span class="h-px w-12 bg-ochre/50"></span>
+                </div>
             </div>
-        </div>
-    </header>
-
-    <!-- Interactieve Bedieningsbalk (Sticky op mobiel/tablet of bovenaan content) -->
-    <div class="no-print sticky top-0 z-30 bg-parchment/95 backdrop-blur-md border-b border-ochre/30 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-                
-                <!-- 1. Weergavemodus + Mobiele Inhoudsopgave Knop -->
-                <div class="flex flex-wrap items-center gap-2">
-                    <div class="inline-flex rounded-lg bg-parchmentDark p-1 border border-ochre/30" role="group" aria-label="Taalweergave">
-                        <button type="button" data-mode="bilingual" class="mode-btn active px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md transition-all bg-venetian text-white shadow-sm">
-                            Tweetalig
-                        </button>
-                        <button type="button" data-mode="latin" class="mode-btn px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md transition-all text-charcoal hover:text-venetian">
-                            Alleen Latijn
-                        </button>
-                        <button type="button" data-mode="dutch" class="mode-btn px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md transition-all text-charcoal hover:text-venetian">
-                            Alleen Nederlands
+        </header>
+        <!-- Interactieve Bedieningsbalk (Sticky op mobiel/tablet of bovenaan content) -->
+        <div class="no-print sticky top-0 z-30 bg-parchment/95 backdrop-blur-md border-b border-ochre/30 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+                    <!-- 1. Weergavemodus + Mobiele Inhoudsopgave Knop -->
+                    <div class="flex flex-wrap items-center gap-2">
+                        <div class="inline-flex rounded-lg bg-parchmentDark p-1 border border-ochre/30" role="group" aria-label="Taalweergave">
+                            <button type="button" data-mode="bilingual" class="mode-btn active px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md transition-all bg-venetian text-white shadow-sm">
+                                Tweetalig
+                            </button>
+                            <button type="button" data-mode="latin" class="mode-btn px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md transition-all text-charcoal hover:text-venetian">
+                                Alleen Latijn
+                            </button>
+                            <button type="button" data-mode="dutch" class="mode-btn px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md transition-all text-charcoal hover:text-venetian">
+                                Alleen Nederlands
+                            </button>
+                        </div>
+                        <!-- Mobiele Inhoudsopgave Toggle -->
+                        <button type="button" id="mobile-toc-toggle" class="lg:hidden inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-lg border border-ochre/40 bg-white text-charcoal hover:border-venetian">
+                            <svg
+                                class="w-4 h-4 text-venetian"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h10"
+                                />
+                            </svg>
+                            <span>Delen (1–13)</span>
                         </button>
                     </div>
-
-                    <!-- Mobiele Inhoudsopgave Toggle -->
-                    <button type="button" id="mobile-toc-toggle" class="lg:hidden inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-lg border border-ochre/40 bg-white text-charcoal hover:border-venetian">
-                        <svg class="w-4 h-4 text-venetian" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h10"/>
-                        </svg>
-                        <span>Delen (1–13)</span>
-                    </button>
-                </div>
-
-                <!-- 2. Zoekbalk, Lettergrootte & Print -->
-                <div class="flex flex-wrap items-center gap-2 sm:gap-3">
-                    <!-- Zoekveld -->
-                    <div class="relative flex-1 sm:flex-initial min-w-[200px] sm:w-64">
-                        <input 
-                            type="text" 
-                            id="search-input" 
-                            placeholder="Zoek in Latijn, NL of deel..." 
-                            class="w-full pl-9 pr-8 py-1.5 text-sm font-sans bg-white border border-ochre/40 rounded-lg text-charcoal placeholder:text-charcoalMuted/70 focus:outline-none focus:border-venetian focus:ring-1 focus:ring-venetian"
+                    <!-- 2. Zoekbalk, Lettergrootte & Print -->
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                        <!-- Zoekveld -->
+                        <div class="relative flex-1 sm:flex-initial min-w-[200px] sm:w-64">
+                            <input
+                                type="text"
+                                id="search-input"
+                                placeholder="Zoek in Latijn, NL of deel..."
+                                class="w-full pl-9 pr-8 py-1.5 text-sm font-sans bg-white border border-ochre/40 rounded-lg text-charcoal placeholder:text-charcoalMuted/70 focus:outline-none focus:border-venetian focus:ring-1 focus:ring-venetian"
+                            >
+                            <svg
+                                class="w-4 h-4 text-charcoalMuted absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                />
+                            </svg>
+                            <button
+                                type="button"
+                                id="clear-search"
+                                class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-charcoalMuted hover:text-venetian text-xs font-sans font-bold"
+                                title="Wis zoekopdracht"
+                            >
+                                &#10005;
+                            </button>
+                        </div>
+                        <!-- Lettergrootte regelaar -->
+                        <div class="inline-flex items-center rounded-lg bg-parchmentDark p-1 border border-ochre/30" role="group" aria-label="Lettergrootte">
+                            <span class="px-2 text-[11px] font-sans uppercase tracking-wider text-charcoalMuted hidden sm:inline">Tekst:</span>
+                            <button
+                                type="button"
+                                data-size="0.9"
+                                class="size-btn px-2.5 py-1 text-xs font-sans font-medium rounded-md text-charcoal hover:text-venetian"
+                                title="Kleine tekst"
+                            >
+                                A-
+                            </button>
+                            <button
+                                type="button"
+                                data-size="1"
+                                class="size-btn active px-2.5 py-1 text-xs font-sans font-medium rounded-md bg-white text-venetian shadow-sm"
+                                title="Normale tekst"
+                            >
+                                A
+                            </button>
+                            <button
+                                type="button"
+                                data-size="1.18"
+                                class="size-btn px-2.5 py-1 text-xs font-sans font-medium rounded-md text-charcoal hover:text-venetian"
+                                title="Grote tekst"
+                            >
+                                A+
+                            </button>
+                        </div>
+                        <!-- Afdrukken / PDF -->
+                        <button
+                            type="button"
+                            onclick="window.print()"
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-lg bg-white border border-ochre/40 text-charcoal hover:border-venetian hover:text-venetian transition-colors shadow-2xs"
+                            title="Druk af of bewaar als PDF-programmaboekje"
                         >
-                        <svg class="w-4 h-4 text-charcoalMuted absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                        <button type="button" id="clear-search" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-charcoalMuted hover:text-venetian text-xs font-sans font-bold" title="Wis zoekopdracht">
-                            &#10005;
+                            <svg
+                                class="w-4 h-4 text-venetian"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                                />
+                            </svg>
+                            <span class="hidden sm:inline">Afdrukken / PDF</span>
                         </button>
                     </div>
-
-                    <!-- Lettergrootte regelaar -->
-                    <div class="inline-flex items-center rounded-lg bg-parchmentDark p-1 border border-ochre/30" role="group" aria-label="Lettergrootte">
-                        <span class="px-2 text-[11px] font-sans uppercase tracking-wider text-charcoalMuted hidden sm:inline">Tekst:</span>
-                        <button type="button" data-size="0.9" class="size-btn px-2.5 py-1 text-xs font-sans font-medium rounded-md text-charcoal hover:text-venetian" title="Kleine tekst">
-                            A-
-                        </button>
-                        <button type="button" data-size="1" class="size-btn active px-2.5 py-1 text-xs font-sans font-medium rounded-md bg-white text-venetian shadow-sm" title="Normale tekst">
-                            A
-                        </button>
-                        <button type="button" data-size="1.18" class="size-btn px-2.5 py-1 text-xs font-sans font-medium rounded-md text-charcoal hover:text-venetian" title="Grote tekst">
-                            A+
-                        </button>
-                    </div>
-
-                    <!-- Afdrukken / PDF -->
-                    <button type="button" onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-lg bg-white border border-ochre/40 text-charcoal hover:border-venetian hover:text-venetian transition-colors shadow-2xs" title="Druk af of bewaar als PDF-programmaboekje">
-                        <svg class="w-4 h-4 text-venetian" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
-                        </svg>
-                        <span class="hidden sm:inline">Afdrukken / PDF</span>
-                    </button>
                 </div>
+                <!-- Uitklapbare Inhoudsopgave voor Mobiel / Tablet -->
+                <nav id="mobile-toc-drawer" class="hidden lg:hidden mt-3 pt-3 border-t border-ochre/20 max-h-64 overflow-y-auto toc-scroll">
+                    <ul id="mobile-toc-list" class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-sm font-sans"></ul>
+                </nav>
             </div>
-
-            <!-- Uitklapbare Inhoudsopgave voor Mobiel / Tablet -->
-            <nav id="mobile-toc-drawer" class="hidden lg:hidden mt-3 pt-3 border-t border-ochre/20 max-h-64 overflow-y-auto toc-scroll">
-                <ul id="mobile-toc-list" class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-sm font-sans"></ul>
-            </nav>
         </div>
-    </div>
-
-    <!-- Hoofdlayout: Sticky Zijbalk (Desktop) + Tekstkolom -->
-    <div class="print-container flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="flex flex-col lg:flex-row gap-8 xl:gap-12 items-start">
-            
-            <!-- Sticky Zijbalk Inhoudsopgave (Alleen Desktop) -->
-            <aside class="no-print hidden lg:block w-72 xl:w-80 shrink-0 sticky top-20">
-                <div class="bg-white/80 rounded-xl border border-ochre/30 p-5 shadow-2xs">
-                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-ochre/25">
-                        <h2 class="font-display text-xl font-bold text-venetian tracking-wide">
-                            Inhoudsopgave
-                        </h2>
-                        <span class="text-xs font-sans text-charcoalMuted">13 delen</span>
+        <!-- Hoofdlayout: Sticky Zijbalk (Desktop) + Tekstkolom -->
+        <div class="print-container flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col lg:flex-row gap-8 xl:gap-12 items-start">
+                <!-- Sticky Zijbalk Inhoudsopgave (Alleen Desktop) -->
+                <aside class="no-print hidden lg:block w-72 xl:w-80 shrink-0 sticky top-20">
+                    <div class="bg-white/80 rounded-xl border border-ochre/30 p-5 shadow-2xs">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-ochre/25">
+                            <h2 class="font-display text-xl font-bold text-venetian tracking-wide">
+                                Inhoudsopgave
+                            </h2>
+                            <span class="text-xs font-sans text-charcoalMuted">13 delen</span>
+                        </div>
+                        <nav aria-label="Delen van de Mariavespers" class="max-h-[calc(100vh-12rem)] overflow-y-auto toc-scroll pr-1">
+                            <ul id="desktop-toc-list" class="space-y-1 text-sm font-sans"></ul>
+                        </nav>
                     </div>
-                    <nav aria-label="Delen van de Mariavespers" class="max-h-[calc(100vh-12rem)] overflow-y-auto toc-scroll pr-1">
-                        <ul id="desktop-toc-list" class="space-y-1 text-sm font-sans"></ul>
-                    </nav>
-                </div>
-            </aside>
-
-            <!-- Hoofdinhoud: De 13 delen -->
-            <main class="flex-1 min-w-0 w-full">
-                <!-- Zoekstatus melding -->
-                <div id="search-status" class="hidden no-print mb-6 px-4 py-3 rounded-xl bg-parchmentDark border border-ochre/40 flex items-center justify-between text-sm font-sans">
-                    <span id="search-status-text" class="text-charcoal"></span>
-                    <button type="button" id="reset-search-btn" class="text-venetian font-medium underline hover:no-underline ml-4">
-                        Toon alle 13 delen
-                    </button>
-                </div>
-
-                <!-- Container voor alle delen -->
-                <div id="movements-container" class="space-y-10"></div>
-
-                <!-- Voettekst / Colofon -->
-                <footer class="mt-14 pt-8 pb-6 border-t border-ochre/30 text-center text-sm text-charcoalMuted font-sans">
-                    <p class="font-display italic text-lg text-venetian mb-1">
-                        Ad maiorem Dei gloriam &amp; Beatae Mariae Virginis
-                    </p>
-                    <p>
-                        Claudio Monteverdi &bull; <em>Sanctissimae Virgini Missa senis vocibus ad ecclesiarum choros ac Vespere pluribus decantandae</em> (Venetië, 1610).
-                    </p>
-                </footer>
-            </main>
-
+                </aside>
+                <!-- Hoofdinhoud: De 13 delen -->
+                <main class="flex-1 min-w-0 w-full">
+                    <!-- Zoekstatus melding -->
+                    <div id="search-status" class="hidden no-print mb-6 px-4 py-3 rounded-xl bg-parchmentDark border border-ochre/40 flex items-center justify-between text-sm font-sans">
+                        <span id="search-status-text" class="text-charcoal"></span>
+                        <button type="button" id="reset-search-btn" class="text-venetian font-medium underline hover:no-underline ml-4">
+                            Toon alle 13 delen
+                        </button>
+                    </div>
+                    <!-- Container voor alle delen -->
+                    <div id="movements-container" class="space-y-10"></div>
+                    <!-- Voettekst / Colofon -->
+                    <footer class="mt-14 pt-8 pb-6 border-t border-ochre/30 text-center text-sm text-charcoalMuted font-sans">
+                        <p class="font-display italic text-lg text-venetian mb-1">
+                            Ad maiorem Dei gloriam &amp; Beatae Mariae Virginis
+                        </p>
+                        <p>
+                            Claudio Monteverdi &bull;
+                            <em>Sanctissimae Virgini Missa senis vocibus ad ecclesiarum choros ac Vespere pluribus decantandae</em>
+                            (Venetië, 1610).
+                        </p>
+                    </footer>
+                </main>
+            </div>
         </div>
-    </div>
-
-    <!-- Knop terug naar boven -->
-    <button type="button" id="back-to-top" aria-label="Terug naar boven" class="no-print hidden fixed bottom-6 right-6 z-20 p-3 rounded-full bg-venetian text-white shadow-lg hover:bg-venetianLight transition-all">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
-        </svg>
-    </button>
-
-    <!-- Gegevens & Interactieve Logica -->
-    <script>
+        <!-- Knop terug naar boven -->
+        <button
+            type="button"
+            id="back-to-top"
+            aria-label="Terug naar boven"
+            class="no-print hidden fixed bottom-6 right-6 z-20 p-3 rounded-full bg-venetian text-white shadow-lg hover:bg-venetianLight transition-all"
+        >
+            <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 15l7-7 7 7"
+                />
+            </svg>
+        </button>
+        <!-- Gegevens & Interactieve Logica -->
+        <script>
         /**
          * Volledige dataset van alle 13 delen van Monteverdi's Vespro della Beata Vergine (1610)
          * Inclusief alle verzen en Gloria Patri / Sicut erat doxologieën.
@@ -739,7 +792,7 @@
                 title: "Magnificat",
                 subtitle: "Lofzang van Maria (Lucas 1:46–55) — Versie a 6 vocibus",
                 scoring: "Zesstemmig koor (SSATTB), solisten & basso continuo",
-                notes: "Het liturgische en muzikale kroonjuweel van de vespers. Monteverdi nam in de druk van 1610 twee versies op: een voor zes stemmen die wij vandaag uitvoeren en tevens een rijk geïnstrumenteerde versie voor zeven stemmen. Elk van de twaalf verzen van Maria's lofzang wordt een eigen klankschilderij, waarbij het gregoriaanse Magnificat-thema als een rode draad door alle delen heen geweven blijft.",
+                notes: "Het liturgische en muzikale kroonjuweel van de vespers. Monteverdi nam in de druk van 1610 twee versies op: de versie voor zes stemmen en basso continuo die wij vandaag uitvoeren en daarnaast tevens een rijk geïnstrumenteerde versie voor zeven stemmen. Elk van de twaalf verzen van Maria's lofzang wordt een eigen klankschilderij, waarbij het gregoriaanse Magnificat-thema als een rode draad door alle delen heen geweven blijft.",
                 verses: [
                     {
                         label: "Vers 1 — Magnificat",
@@ -1077,6 +1130,6 @@
             renderTOC();
             renderMovements();
         });
-    </script>
-</body>
+        </script>
+    </body>
 </html>
