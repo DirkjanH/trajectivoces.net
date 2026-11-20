@@ -171,8 +171,6 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "verzenden") {
           "metadata" => ["order_id" => $res, "random_id" => $random_id]
         ]);
 
-        $payment = $payment->update();
-
         d($payment);
         $status = quote($payment->status);
         $Mollie_ID = quote($payment->id);
