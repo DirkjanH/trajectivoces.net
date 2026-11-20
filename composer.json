@@ -7,7 +7,7 @@
         "phpmailer/phpmailer": "~7",
         "pelago/emogrifier": "~8",
         "kint-php/kint":"~6",
-        "mollie/mollie-api-php": "~3",
+        "mollie/mollie-api-php": "~3.16",
         "chillerlan/php-qrcode": "~4",
           "php81_bc/strftime":"~0.7"
     }
