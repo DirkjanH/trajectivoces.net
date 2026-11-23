@@ -93,8 +93,14 @@ if (isset($_POST['toggle']) && $_POST['toggle'] !== '') {
 	<SCRIPT TYPE="text/javascript">
 		<!--
 		function toggleCheckbox(id) {
+			var checkbox = document.getElementById("aanw_" + id);
+			var actie = checkbox.checked ? "aanvinken" : "uitvinken";
+			if (!confirm("Weet je zeker dat je reservering " + id + " wilt " + actie + " als verschenen?")) {
+				checkbox.checked = !checkbox.checked;
+				return;
+			}
 			document.formulier.toggle.value = id;
-			document.formulier.verschenen.value = document.getElementById("aanw_" + id).checked ? "1" : "0";
+			document.formulier.verschenen.value = checkbox.checked ? "1" : "0";
 			document.formulier.submit();
 		}
 
