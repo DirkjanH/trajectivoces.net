@@ -46,6 +46,19 @@ $_SESSION['sort'] = 'reserveringnr';
 if (empty($_SESSION['sort']) or $_SESSION['sort'] == 'reserveringnr') $_SESSION['sort'] = 'reserveringnr';
 if (isset($_POST['sort']) and $_POST['sort'] == 'naam') $_SESSION['sort'] = 'achternaam';
 if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publiciteit, aanbrenger';
+
+if (isset($_POST['toggle']) && $_POST['toggle'] !== '') {
+	$reserveringnr = filter_var($_POST['toggle'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+	$verschenen = $_POST['verschenen'] ?? null;
+	if ($reserveringnr === false || !in_array($verschenen, ['0', '1'], true)) {
+		throw new InvalidArgumentException('Ongeldige aanwezigheidswijziging.');
+	}
+
+	$wijzig_aanwezigheid = $db->prepare("UPDATE {$tabel_reserveringen} SET `verschenen` = :verschenen WHERE `reserveringnr` = :reserveringnr");
+	$wijzig_aanwezigheid->bindValue(':verschenen', $verschenen === '1' ? 1 : null, $verschenen === '1' ? PDO::PARAM_INT : PDO::PARAM_NULL);
+	$wijzig_aanwezigheid->bindValue(':reserveringnr', $reserveringnr, PDO::PARAM_INT);
+	$wijzig_aanwezigheid->execute();
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -80,14 +93,9 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 	<SCRIPT TYPE="text/javascript">
 		<!--
 		function toggleCheckbox(id) {
-			var Checkbox = document.getElementById("aanw_" + id);
 			document.formulier.toggle.value = id;
+			document.formulier.verschenen.value = document.getElementById("aanw_" + id).checked ? "1" : "0";
 			document.formulier.submit();
-			if (Checkbox.checked == true) {
-				Checkbox.checked = true;
-			} else {
-				Checkbox.checked = false;
-			}
 		}
 
 		function selecteer(waarde) {
@@ -136,21 +144,6 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 						$reserveringen = select_query($query_reserveringen);
 						d($query_reserveringen, $reserveringen);
 						// end Recordset
-
-						// Pas aanwezigheid aan:
-						if (isset($_POST['toggle']) and $_POST['toggle'] > 0) {
-							d($_POST['toggle']);
-							$aanwezigheid = select_query("SELECT verschenen FROM {$tabel_reserveringen} WHERE reserveringnr = {$_POST['toggle']}", 0);
-
-							d($aanwezigheid);
-
-							if ($aanwezigheid == 1)
-								$verschijnquery = "UPDATE {$tabel_reserveringen} SET `verschenen` = NULL WHERE `reserveringnr` = {$_POST['toggle']}";
-							else $verschijnquery = "UPDATE {$tabel_reserveringen} SET `verschenen` = 1 WHERE `reserveringnr` = {$_POST['toggle']}";
-							d($verschijnquery);
-							exec_query($verschijnquery);
-							unset($_POST['toggle']);
-						}
 
 						$vol = $aantal['aantal_vol'];
 						$bedrag_vol = $aantal['aantal_vol'] * $pl['prijs_vol'];
@@ -256,6 +249,7 @@ if (isset($_POST['sort']) and $_POST['sort'] == 'via') $_SESSION['sort'] = 'publ
 				?>
 				<p>laatste verversing: <?php echo strftime("%c"); ?> </p>
 				<input name="toggle" id="toggle" type="hidden" value="">
+				<input name="verschenen" id="verschenen" type="hidden" value="">
 				<input name="bestelnummer" type="hidden" id="bestelnummer">
 				<input name="bestelling_bewerken" type="hidden" id="bestelling_bewerken">
 				<input name="aantal_vol_bewerken" type="hidden" id="aantal_vol_bewerken">
