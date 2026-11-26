@@ -4,8 +4,8 @@ define('__ROOT__', dirname(dirname(__FILE__)));
 // echo __ROOT__;
 
 require_once(__ROOT__ . '/provider.php');
-require_once(__ROOT__ . '/instellingen.php');
-require_once(__ROOT__ . '/teksten.php');
+require_once(__ROOT__ . '/info/instellingen.php');
+require_once(__ROOT__ . '/info/teksten.php');
 require_once(__ROOT__ . '/mollie.php');
 
 $protocol = isset($_SERVER['HTTPS']) && strcasecmp('off', $_SERVER['HTTPS']) !== 0 ? "https" : "http";
