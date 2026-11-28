@@ -17,9 +17,7 @@ $toon_navigatie = isset( $_POST[ 'zoek' ] ) || isset( $_POST[ 'zoeknaam' ] );
 
 d( $_REQUEST, $_SESSION );
 
-$zoekterm = quote( '%' . $_SESSION[ 'zoeknaam' ] . '%' );
-$concerten = select_query( "SELECT * FROM {$tabel_concerten} WHERE datum LIKE {$zoekterm} OR concerttitel LIKE {$zoekterm} OR plaats LIKE {$zoekterm} ORDER BY datum ASC" );
-d($concerten);
+$savedConcertId = null;
 
 if ( ( isset( $_POST[ "Toevoegen" ] ) ) && ( $_POST[ "Toevoegen" ] == "Toevoegen" ) ) {
 	$insertSQL = sprintf( "INSERT INTO {$tabel_concerten} (concerttitel, details, opmerking_intern, datum, tijd, plaats, prijs_vol,
@@ -42,6 +40,7 @@ if ( ( isset( $_POST[ "Toevoegen" ] ) ) && ( $_POST[ "Toevoegen" ] == "Toevoegen
 	d( $insertSQL );
 
 	exec_query( $insertSQL );
+	$savedConcertId = (int) lastID();
 	// echo ('concert is toegevoegd');
 }
 
@@ -67,6 +66,7 @@ if ( ( isset( $_POST[ "Wijzigen" ] ) ) && ( $_POST[ "Wijzigen" ] == "Wijzigen" )
 	d( $updateSQL );
 
 	exec_query( $updateSQL );
+	$savedConcertId = filter_var( $_POST[ 'concertId' ], FILTER_VALIDATE_INT );
 	// echo ('concert is gewijzigd');
 }
 
@@ -80,13 +80,21 @@ if ( ( isset( $_POST[ "Wissen" ] ) ) && ( $_POST[ "Wissen" ] == "Wissen" )and( i
 
 // begin Recordset
 $concertId = "-1";
-if ( isset( $_GET[ 'concertId' ] ) ) {
+if ( $savedConcertId !== null && $savedConcertId !== false ) {
+	$concertId = $savedConcertId;
+	$concert = select_query( "SELECT * FROM {$tabel_concerten} WHERE concertId = {$concertId}", 1 );
+} elseif ( isset( $_GET[ 'concertId' ] ) ) {
 	if ( !isset( $_POST[ "leegmaken" ] ) )$concertId = $_GET[ 'concertId' ];
 	$concert = select_query( "SELECT * FROM {$tabel_concerten} WHERE concertId = {$concertId}", 1 );
 }
 
 d( $concert );
 // end Recordset
+
+// Vernieuw de zoeklijst na ieder opslaan, wijzigen of wissen.
+$zoekterm = quote( '%' . $_SESSION[ 'zoeknaam' ] . '%' );
+$concerten = select_query( "SELECT * FROM {$tabel_concerten} WHERE datum LIKE {$zoekterm} OR concerttitel LIKE {$zoekterm} OR plaats LIKE {$zoekterm} ORDER BY datum ASC" );
+d( $concerten );
 
 ?>
 <!DOCTYPE HTML>

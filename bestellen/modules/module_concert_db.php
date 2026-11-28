@@ -1,161 +1,374 @@
-<?php 
-// stel php in dat deze fouten weergeeft
-//ini_set('display_errors',1 );
+<?php
+require_once dirname(__DIR__) . '/modules/bestelfuncties.php';
 
-error_reporting(E_ALL);
-
-require_once $_SERVER["DOCUMENT_ROOT"].'/vendor/autoload.php';
-require_once('../bestelsysteem/bestelsysteem/bestelfuncties.php'); 
-
-if ((isset($_POST["Toevoegen"])) && ($_POST["Toevoegen"] == "Toevoegen")) {
-  $insertSQL = sprintf("INSERT INTO {$tabel_concerten} (concerttitel, details, opmerking_intern, datum, tijd, plaats, prijs_vol,
-  prijs_red, prijs_kind, txt_red, txt_kind, online, aantal_plaatsen, uitverkocht) VALUES (%s, %s, %s, %s, %s, %s, %F, %F, %F, %s, %s, %s, %s, %s)",
-                       GetSQLValueString($_POST['concerttitel'], "text"),
-                       GetSQLValueString($_POST['details'], "text"),
-                       GetSQLValueString($_POST['opmerking_intern'], "text"),
-                       GetSQLValueString($_POST['datum'], "date"),
-                       GetSQLValueString($_POST['tijd'], "date"),
-                       GetSQLValueString($_POST['plaats'], "text"),
-                       round($_POST['prijs_vol'], 2),
-                       round($_POST['prijs_red'], 2),
-                       round($_POST['prijs_kind'], 2),
-                       GetSQLValueString($_POST['txt_red'], "text"),
-                       GetSQLValueString($_POST['txt_kind'], "text"),
-                       GetSQLValueString($_POST['online'], "int"),
-                       GetSQLValueString($_POST['aantal_plaatsen'], "int"),
-                       GetSQLValueString($_POST['uitverkocht'], "int"));
-
-d($insertSQL);
-  $Result1 = mysqli_query($KAARTEN_DB, $insertSQL) or die(mysqli_error($KAARTEN_DB));
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
 }
 
-if ((isset($_POST["Wijzigen"])) && ($_POST["Wijzigen"] == "Wijzigen")) {
-  $updateSQL = sprintf("UPDATE {$tabel_concerten} SET concerttitel=%s, details=%s, opmerking_intern=%s, datum=%s, tijd=%s, plaats=%s, 
-  prijs_vol=%F, prijs_red=%F, prijs_kind=%F, txt_red=%s, txt_kind=%s, online=%s, aantal_plaatsen=%s, uitverkocht=%s WHERE concertId=%s",
-                       GetSQLValueString($_POST['concerttitel'], "text"),
-                       GetSQLValueString($_POST['details'], "text"),
-                       GetSQLValueString($_POST['opmerking_intern'], "text"),
-                       GetSQLValueString($_POST['datum'], "date"),
-                       GetSQLValueString($_POST['tijd'], "date"),
-                       GetSQLValueString($_POST['plaats'], "text"),
-                       round($_POST['prijs_vol'], 2),
-                       round($_POST['prijs_red'], 2),
-                       round($_POST['prijs_kind'], 2),
-                       GetSQLValueString($_POST['txt_red'], "text"),
-                       GetSQLValueString($_POST['txt_kind'], "text"),
-                       GetSQLValueString($_POST['online'], "int"),
-                       GetSQLValueString($_POST['aantal_plaatsen'], "int"),
-                       GetSQLValueString($_POST['uitverkocht'], "int"),
-					   GetSQLValueString($_POST['concertId'], "int"));
-
-d($updateSQL);
-
-$Result1 = mysqli_query($KAARTEN_DB, $updateSQL) or die(mysqli_error($KAARTEN_DB));
+if (empty($_SESSION['concert_admin_csrf'])) {
+    $_SESSION['concert_admin_csrf'] = bin2hex(random_bytes(32));
 }
 
-if ((isset($_POST["Wissen"])) && ($_POST["Wissen"] == "Wissen") and (isset($_POST['concertId'])) and ($_POST['concertId'] != "")) {
-  $deleteSQL = sprintf("DELETE FROM {$tabel_concerten} WHERE concertId=%s",
-                       GetSQLValueString($_POST['concertId'], "int"));
-
-  $Result1 = mysqli_query($KAARTEN_DB, $deleteSQL) or die(mysqli_error($KAARTEN_DB));
+if (!empty($_SESSION['concert_admin_notice'])) {
+    $notice = (string) $_SESSION['concert_admin_notice'];
+    unset($_SESSION['concert_admin_notice']);
+} else {
+    $notice = '';
 }
 
-// begin Recordset
-$concertId = "-1";
+function e($value): string
+{
+    return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+
+function validDate(string $value): bool
+{
+    $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);
+    return $date && $date->format('Y-m-d') === $value;
+}
+
+function validTime(string $value): bool
+{
+    $time = DateTimeImmutable::createFromFormat('!H:i', $value);
+    return $time && $time->format('H:i') === $value;
+}
+
+function decimalValue($value): ?float
+{
+    $value = trim((string) $value);
+    $value = str_replace(',', '.', $value);
+    if (!preg_match('/^(?:0|[1-9]\d*)(?:\.\d{1,2})?$/', $value)) {
+        return null;
+    }
+    $number = (float) $value;
+    return $number >= 0 && $number <= 10000 ? $number : null;
+}
+
+$errors = [];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['csrf']) || !hash_equals($_SESSION['concert_admin_csrf'], (string) $_POST['csrf'])) {
+        $errors[] = 'De sessie is verlopen. Probeer het formulier opnieuw.';
+    } else {
+        $action = (string) ($_POST['action'] ?? '');
+
+        if ($action === 'Wissen') {
+            $concertId = filter_input(INPUT_POST, 'concertId', FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+            if ($concertId === false || $concertId === null) {
+                $errors[] = 'Geef een geldige concertId op.';
+            } else {
+                try {
+                    $statement = $db->prepare("DELETE FROM {$tabel_concerten} WHERE concertId = :concertId");
+                    $statement->execute(['concertId' => $concertId]);
+                    $_SESSION['concert_admin_notice'] = 'Concert is gewist.';
+                    header('Location: ' . ($_SERVER['PHP_SELF'] ?? ''));
+                    exit;
+                } catch (PDOException $exception) {
+                    error_log('Concert delete failed: ' . $exception->getMessage());
+                    $errors[] = 'Het concert kon niet worden gewist.';
+                }
+            }
+        } elseif ($action === 'Toevoegen' || $action === 'Wijzigen') {
+            $concertId = $action === 'Wijzigen'
+                ? filter_input(INPUT_POST, 'concertId', FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]])
+                : null;
+
+            $textFields = [
+                'concerttitel' => [255, 'Concerttitel'],
+                'details' => [65535, 'Publieke details'],
+                'opmerking_intern' => [65535, 'Interne opmerking'],
+                'plaats' => [255, 'Plaats'],
+                'txt_red' => [255, 'Tekst kortingsprijs'],
+                'txt_kind' => [255, 'Tekst kinderprijs'],
+            ];
+            $values = [];
+            foreach ($textFields as $field => [$maxLength, $label]) {
+                $value = trim((string) ($_POST[$field] ?? ''));
+                if (function_exists('mb_strlen')) {
+                    $length = mb_strlen($value, 'UTF-8');
+                } else {
+                    $length = strlen($value);
+                }
+                if ($length > $maxLength) {
+                    $errors[] = $label . ' is te lang.';
+                }
+                $values[$field] = $value;
+            }
+
+            $datum = trim((string) ($_POST['datum'] ?? ''));
+            $tijd = trim((string) ($_POST['tijd'] ?? ''));
+            if (!validDate($datum)) {
+                $errors[] = 'Geef een geldige datum op in het formaat jjjj-mm-dd.';
+            }
+            if ($tijd !== '' && !validTime($tijd)) {
+                $errors[] = 'Geef een geldige tijd op in het formaat uu:mm.';
+            }
+
+            $prices = [];
+            foreach (['prijs_vol', 'prijs_red', 'prijs_kind'] as $field) {
+                $price = decimalValue($_POST[$field] ?? '');
+                if ($price === null) {
+                    $errors[] = 'Gebruik voor prijzen een geldige waarde met maximaal twee decimalen.';
+                    break;
+                }
+                $prices[$field] = $price;
+            }
+
+            $aantalPlaatsen = filter_input(INPUT_POST, 'aantal_plaatsen', FILTER_VALIDATE_INT, ['options' => ['min_range' => 0]]);
+            if ($aantalPlaatsen === false || $aantalPlaatsen === null) {
+                $errors[] = 'Aantal plaatsen moet een positief geheel getal zijn.';
+            }
+
+            if ($action === 'Wijzigen' && ($concertId === false || $concertId === null)) {
+                $errors[] = 'Geef een geldige concertId op.';
+            }
+
+            if (!$errors) {
+                $data = [
+                    'concerttitel' => $values['concerttitel'],
+                    'details' => $values['details'],
+                    'opmerking_intern' => $values['opmerking_intern'],
+                    'datum' => $datum,
+                    'tijd' => $tijd,
+                    'plaats' => $values['plaats'],
+                    'prijs_vol' => $prices['prijs_vol'],
+                    'prijs_red' => $prices['prijs_red'],
+                    'prijs_kind' => $prices['prijs_kind'],
+                    'txt_red' => $values['txt_red'],
+                    'txt_kind' => $values['txt_kind'],
+                    'online' => isset($_POST['online']) ? 1 : 0,
+                    'aantal_plaatsen' => $aantalPlaatsen,
+                    'uitverkocht' => isset($_POST['uitverkocht']) ? 1 : 0,
+                ];
+
+                try {
+                    if ($action === 'Toevoegen') {
+                        $statement = $db->prepare(
+                            "INSERT INTO {$tabel_concerten}
+                            (concerttitel, details, opmerking_intern, datum, tijd, plaats, prijs_vol,
+                             prijs_red, prijs_kind, txt_red, txt_kind, online, aantal_plaatsen, uitverkocht)
+                            VALUES (:concerttitel, :details, :opmerking_intern, :datum, :tijd, :plaats, :prijs_vol,
+                             :prijs_red, :prijs_kind, :txt_red, :txt_kind, :online, :aantal_plaatsen, :uitverkocht)"
+                        );
+                        $statement->execute($data);
+                        $concertId = (int) $db->lastInsertId();
+                    } else {
+                        $data['concertId'] = $concertId;
+                        $statement = $db->prepare(
+                            "UPDATE {$tabel_concerten} SET
+                            concerttitel = :concerttitel, details = :details, opmerking_intern = :opmerking_intern,
+                            datum = :datum, tijd = :tijd, plaats = :plaats, prijs_vol = :prijs_vol,
+                            prijs_red = :prijs_red, prijs_kind = :prijs_kind, txt_red = :txt_red,
+                            txt_kind = :txt_kind, online = :online, aantal_plaatsen = :aantal_plaatsen,
+                            uitverkocht = :uitverkocht
+                            WHERE concertId = :concertId"
+                        );
+                        $statement->execute($data);
+                    }
+
+                    $_SESSION['concert_admin_notice'] = $action === 'Toevoegen'
+                        ? 'Concert is toegevoegd.'
+                        : 'Concert is gewijzigd.';
+                    $self = $_SERVER['PHP_SELF'] ?? '';
+                    header('Location: ' . $self . '?concertId=' . (int) $concertId);
+                    exit;
+                } catch (PDOException $exception) {
+                    error_log('Concert save failed: ' . $exception->getMessage());
+                    $errors[] = 'Het concert kon niet worden opgeslagen.';
+                }
+            }
+        } else {
+            $errors[] = 'Ongeldige actie.';
+        }
+    }
+}
+
+$concertId = null;
 if (isset($_GET['concertId'])) {
-  	if (!isset($_POST["leegmaken"])) $concertId = $_GET['concertId'];
-	$query_concert = sprintf("SELECT * FROM {$tabel_concerten} WHERE concertId = %s", $concertId);
-  	$concert_tabel = mysqli_query($KAARTEN_DB, $query_concert) or die(mysqli_error($KAARTEN_DB));
-	$concert = mysqli_fetch_assoc($concert_tabel);
+    $concertId = filter_var($_GET['concertId'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+    if ($concertId === false) {
+        $concertId = null;
+    }
 }
-// end Recordset
 
+$concert = [
+    'concertId' => '', 'concerttitel' => '', 'details' => '', 'opmerking_intern' => '',
+    'datum' => '', 'tijd' => '', 'plaats' => '', 'prijs_vol' => '',
+    'prijs_red' => '', 'prijs_kind' => '', 'txt_red' => '', 'txt_kind' => '',
+    'online' => 0, 'aantal_plaatsen' => '', 'uitverkocht' => 0,
+];
+
+if ($concertId !== null) {
+    $statement = $db->prepare("SELECT * FROM {$tabel_concerten} WHERE concertId = :concertId");
+    $statement->execute(['concertId' => $concertId]);
+    $found = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($found) {
+        $concert = array_merge($concert, $found);
+    }
+}
 ?>
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="nl">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
-<title>Update tabel concerten</title>
-<link href="<?php echo $css; ?>" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-.style1 {color: #FF0000}
--->
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Concertonderhoud</title>
+    <link href="<?= e($css ?? '') ?>" rel="stylesheet" type="text/css">
+    <style>
+        .concert-admin {
+            box-sizing: border-box;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        .concert-admin * { box-sizing: border-box; }
+        .concert-admin h1 { margin: 0 0 16px; }
+        .concert-card {
+            background: #fff;
+            border: 1px solid #d7d7d7;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+            padding: 20px;
+        }
+        .concert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .concert-field { min-width: 0; }
+        .concert-field.full { grid-column: 1 / -1; }
+        .concert-field label,
+        .concert-field legend {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+        .concert-field input,
+        .concert-field textarea {
+            width: 100%;
+            min-height: 42px;
+            padding: 9px 10px;
+        }
+        .concert-field textarea { min-height: 110px; resize: vertical; }
+        .concert-checks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            align-items: center;
+        }
+        .concert-checks label { display: inline-flex; align-items: center; gap: 7px; margin: 0; }
+        .concert-checks input { width: auto; min-height: auto; }
+        .concert-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .concert-actions input,
+        .concert-actions button {
+            min-height: 42px;
+            padding: 9px 14px;
+        }
+        .concert-danger { margin-left: auto; }
+        .concert-message {
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+        .concert-message.error { background: #fee2e2; border: 1px solid #dc2626; color: #991b1b; }
+        .concert-message.success { background: #dcfce7; border: 1px solid #16a34a; color: #166534; }
+        .concert-help { color: #666; font-size: 0.88rem; }
+        @media (max-width: 600px) {
+            .concert-admin { padding: 8px; }
+            .concert-card { padding: 12px; border-radius: 6px; }
+            .concert-grid { grid-template-columns: 1fr; gap: 12px; }
+            .concert-field.full { grid-column: auto; }
+            .concert-actions { display: grid; grid-template-columns: 1fr 1fr; }
+            .concert-actions input,
+            .concert-actions button { width: 100%; }
+            .concert-danger { margin-left: 0; }
+        }
+    </style>
 </head>
 <body>
-<div id="main">
-  <form action="<?php echo $editFormAction; ?>" method="get" name="zoek" target="_self" id="zoek">
-    <table width="80%" align="center">
-      <tr>
-        <td width="50%"><div align="right">concertId =
-            <input name="concertId" type="text" size="5" />
-          </div></td>
-        <td width="50%"><input type="submit" name="Submit" value="Zoek"></td>
-      </tr>
-    </table>
-  </form>
-</div>
-  <form name="concert" method="POST" id="concert" action="<?php echo $editFormAction; ?>">
+<main class="concert-admin">
+    <h1>Concertonderhoud</h1>
 
-    <table width="100%" align="left">
-      <tr valign="baseline">
-        <td width="10%" align="right" nowrap>concertId:</td>
-        <td colspan="2"><input type="text" name="concertId" value="<?php echo $concert['concertId']; ?>" size="32" /></td>
-        <td width="100" align="right" nowrap>Prijs vol:<br />
-          <span class="style1">NB: gebruik '.'</span></td>
-        <td width="70%"><input type="text" name="prijs_vol" value="<?php echo $concert['prijs_vol']; ?>" size="40" /> 
-          <br /></td>
-      </tr>
-      <tr valign="baseline">
-        <td width="10%" align="right" nowrap>Concerttitel:</td>
-        <td><input type="text" name="concerttitel" value="<?php echo stripslashes($concert['concerttitel']); ?>" size="32" /></td>
-        <td width="3%" align="right" nowrap="nowrap">Online:
-          <input type="checkbox" name="online" value="1" <?php if ($concert['online'] == 1) 
-		 echo 'checked'; ?> /></td>
-        <td width="100" align="right" nowrap>Prijs red.:</td>
-        <td width="70%"><input type="text" name="prijs_red" value="<?php echo $concert['prijs_red']; ?>" size="10" />
-        ; korting voor 
-        <input type="text" name="txt_red" value="<?php echo $concert['txt_red']; ?>" size="40" /></td>
-      </tr>
-      <tr valign="baseline">
-        <td width="10%" align="right" nowrap>Datum (yyyy-mm-dd):</td>
-        <td width="300" colspan="2"><input type="text" name="datum" value="<?php echo $concert['datum']; ?>" size="40" /></td>
-        <td align="right" nowrap="nowrap">Prijs kind:</td>
-        <td width="70%"><input name="prijs_kind" type="text" id="prijs_kind" value="<?php echo $concert['prijs_kind']; ?>" size="10" />
-; korting voor
-  <input type="text" name="txt_kind" value="<?php echo $concert['txt_kind']; ?>" size="40" /></td>
-      </tr>
-      <tr valign="baseline">
-        <td width="10%" align="right" nowrap>Tijd (hh:mm):</td>
-        <td width="300" colspan="2"><input type="text" name="tijd" value="<?php echo $concert['tijd']; ?>" size="40" /></td>
-        <td width="100" align="right" nowrap>Aantal plaatsen: </td>
-        <td width="70%"><input name="aantal_plaatsen" type="text" id="aantal_plaatsen" value="<?php 
-		 echo $concert['aantal_plaatsen']; ?>" size="10" /></td>
-      </tr>
-      <tr valign="baseline">
-        <td width="10%" align="right" nowrap>Plaats:</td>
-        <td width="300" colspan="2"><input type="text" name="plaats" value="<?php echo stripslashes($concert['plaats']); ?>" size="40" /></td>
-        <td width="100" align="right" nowrap>Uitverkocht:</td>
-        <td width="70%"><input name="uitverkocht" type="checkbox" id="uitverkocht" value="1" <?php 
-		 if ($concert['uitverkocht'] == 1) echo 'checked'; ?>></td>
-      </tr>
-      <tr valign="baseline">
-        <td width="10%" align="right" valign="top" nowrap>Publieke details:</td>
-        <td colspan="2"><textarea name="details" cols="40" rows="3"><?php echo stripslashes($concert['details']); ?></textarea>        </td>
-        <td width="100" align="right" valign="top">Interne opmerking: </td>
-        <td width="70%" align="left" valign="top"><textarea name="opmerking_intern" cols="40" rows="3" id="opmerking_intern"><?php echo stripslashes($concert['opmerking_intern']); ?></textarea></td>
-      </tr>
-      <tr valign="baseline">
-        <td width="10%" align="right" nowrap>&nbsp;</td>
-        <td colspan="2"><input name="Toevoegen" type="submit" id="Toevoegen" value="Toevoegen" />
-          <input name="Wijzigen" type="submit" id="Wijzigen" value="Wijzigen" />
-          <input name="Wissen" type="submit" id="Wissen" value="Wissen" /></td>
-        <td width="100" align="right"><input name="leegmaken" type="submit" id="leegmaken" value="Leegmaken" /></td>
-        <td width="70%">&nbsp;</td>
-      </tr>
-    </table>
-  </form>
+    <?php if ($errors): ?>
+        <div class="concert-message error" role="alert">
+            <?= e(implode(' ', $errors)) ?>
+        </div>
+    <?php endif; ?>
+    <?php if ($notice): ?>
+        <div class="concert-message success" role="status">
+            <?= e($notice) ?>
+        </div>
+    <?php endif; ?>
+
+    <form method="post" action="<?= e($_SERVER['PHP_SELF'] ?? '') ?>" class="concert-card" id="concert">
+        <input type="hidden" name="csrf" value="<?= e($_SESSION['concert_admin_csrf']) ?>">
+        <div class="concert-grid">
+            <div class="concert-field">
+                <label for="concertId">concertId</label>
+                <input type="number" name="concertId" id="concertId" value="<?= e($concert['concertId']) ?>" min="1" inputmode="numeric">
+            </div>
+            <div class="concert-field">
+                <label for="concerttitel">Concerttitel</label>
+                <input type="text" name="concerttitel" id="concerttitel" value="<?= e($concert['concerttitel']) ?>" maxlength="255" required>
+            </div>
+            <div class="concert-field">
+                <label for="datum">Datum <span class="concert-help">(jjjj-mm-dd)</span></label>
+                <input type="date" name="datum" id="datum" value="<?= e($concert['datum']) ?>" required>
+            </div>
+            <div class="concert-field">
+                <label for="tijd">Tijd <span class="concert-help">(uu:mm)</span></label>
+                <input type="time" name="tijd" id="tijd" value="<?= e($concert['tijd']) ?>">
+            </div>
+            <div class="concert-field">
+                <label for="plaats">Plaats</label>
+                <input type="text" name="plaats" id="plaats" value="<?= e($concert['plaats']) ?>" maxlength="255">
+            </div>
+            <div class="concert-field">
+                <label for="aantal_plaatsen">Aantal plaatsen</label>
+                <input type="number" name="aantal_plaatsen" id="aantal_plaatsen" value="<?= e($concert['aantal_plaatsen']) ?>" min="0" inputmode="numeric">
+            </div>
+            <div class="concert-field">
+                <label for="prijs_vol">Prijs vol</label>
+                <input type="text" name="prijs_vol" id="prijs_vol" value="<?= e($concert['prijs_vol']) ?>" inputmode="decimal" pattern="[0-9]+([.,][0-9]{1,2})?" placeholder="Bijv. 12.50">
+            </div>
+            <div class="concert-field">
+                <label for="prijs_red">Prijs red.</label>
+                <input type="text" name="prijs_red" id="prijs_red" value="<?= e($concert['prijs_red']) ?>" inputmode="decimal" pattern="[0-9]+([.,][0-9]{1,2})?" placeholder="Bijv. 10.00">
+                <label for="txt_red" class="concert-help">Korting voor</label>
+                <input type="text" name="txt_red" id="txt_red" value="<?= e($concert['txt_red']) ?>" maxlength="255">
+            </div>
+            <div class="concert-field">
+                <label for="prijs_kind">Prijs kind</label>
+                <input type="text" name="prijs_kind" id="prijs_kind" value="<?= e($concert['prijs_kind']) ?>" inputmode="decimal" pattern="[0-9]+([.,][0-9]{1,2})?" placeholder="Bijv. 5.00">
+                <label for="txt_kind" class="concert-help">Korting voor</label>
+                <input type="text" name="txt_kind" id="txt_kind" value="<?= e($concert['txt_kind']) ?>" maxlength="255">
+            </div>
+            <div class="concert-field">
+                <fieldset class="concert-checks">
+                    <legend>Status</legend>
+                    <label><input type="checkbox" name="online" value="1" <?= (int) $concert['online'] === 1 ? 'checked' : '' ?>> Online</label>
+                    <label><input type="checkbox" name="uitverkocht" value="1" <?= (int) $concert['uitverkocht'] === 1 ? 'checked' : '' ?>> Uitverkocht</label>
+                </fieldset>
+            </div>
+            <div class="concert-field full">
+                <label for="details">Publieke details</label>
+                <textarea name="details" id="details"><?= e($concert['details']) ?></textarea>
+            </div>
+            <div class="concert-field full">
+                <label for="opmerking_intern">Interne opmerking</label>
+                <textarea name="opmerking_intern" id="opmerking_intern"><?= e($concert['opmerking_intern']) ?></textarea>
+            </div>
+        </div>
+        <div class="concert-actions">
+            <input type="submit" name="action" value="Toevoegen">
+            <input type="submit" name="action" value="Wijzigen">
+            <input class="concert-danger" type="submit" name="action" value="Wissen" onclick="return confirm('Weet u zeker dat u dit concert wilt wissen?');">
+        </div>
+    </form>
+</main>
 </body>
 </html>
