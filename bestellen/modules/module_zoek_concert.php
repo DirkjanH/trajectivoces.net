@@ -60,23 +60,18 @@ if (isset($_SERVER['QUERY_STRING'])) {
         <input name="zoeknaam" type="text" id="zoeknaam"
           value="<?php echo $_POST['zoeknaam']; ?>" size="10">
         <input name="zoek" type="submit" id="zoek" value="zoek">
-      </div>
-      <?php if (isset($zoek_tabel)) { ?>
-        <div id="navcontainer">
-          <p><?php echo mysqli_num_rows($zoek_tabel); ?> resultaten. Klik een item aan:</p>
-          <ul id="navlist">
-            <?php while ($zoek = mysqli_fetch_assoc($zoek_tabel)) {
-              $datum = strftime("%a %e %B %Y", strtotime($zoek['datum']));
-              $z = $zoek['concerttitel']; ?>
-              <li id="active">
-                <a href="javascript:ToonId(<?php echo $zoek['concertId']; ?>)">
+      </div> <?php if (isset($zoek_tabel)) { ?> <div id="navcontainer">
+          <p class="klein"><?php echo mysqli_num_rows($zoek_tabel); ?>
+            resultaten. Klik een item aan:</p>
+          <ul id="navlist"> <?php while ($zoek = mysqli_fetch_assoc($zoek_tabel)) {
+                              $datum = strftime("%a %e %B %Y", strtotime($zoek['datum']));
+                              $z = $zoek['concerttitel']; ?> <li id="active">
+                <a
+                  href="javascript:ToonId(<?php echo $zoek['concertId']; ?>)">
                   <?php echo "$z<br><span class='klein'>($datum)</span>"; ?>
                 </a>
-              </li>
-            <?php } ?>
-          </ul>
-        </div>
-      <?php } ?>
+              </li> <?php } ?> </ul>
+        </div> <?php } ?>
     </form>
   </div>
 </body>
