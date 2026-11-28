@@ -225,7 +225,7 @@ $zoekterm = '%' . $_SESSION['zoeknaam'] . '%';
 $statement = $db->prepare(
     "SELECT * FROM {$tabel_concerten}
      WHERE datum LIKE :term OR concerttitel LIKE :term OR plaats LIKE :term
-     ORDER BY datum ASC"
+     ORDER BY datum DESC"
 );
 $statement->execute(['term' => $zoekterm]);
 $concerten = $statement->fetchAll(PDO::FETCH_ASSOC);
