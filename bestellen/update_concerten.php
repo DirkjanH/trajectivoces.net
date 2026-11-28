@@ -265,6 +265,10 @@ $toon_navigatie = ($_SESSION['zoeknaam'] !== '') || isset($_GET['concertId'])
         .concert-help { color: #666; font-size: .88rem; }
         #navcontainer { width: auto; }
         #navcontainer a { width: auto; max-width: 220px; }
+        @media (min-width: 993px) {
+            #nav { width: 250px; }
+            #main { margin-left: 250px; }
+        }
         @media (max-width: 992px) {
             #main { margin-left: 0 !important; }
             #openNav { position: sticky; top: 0; z-index: 2; background: #fff; }
