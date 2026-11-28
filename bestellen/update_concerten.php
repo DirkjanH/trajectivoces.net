@@ -229,7 +229,8 @@ $statement = $db->prepare(
 );
 $statement->execute(['term' => $zoekterm]);
 $concerten = $statement->fetchAll(PDO::FETCH_ASSOC);
-$toon_navigatie = ($_SESSION['zoeknaam'] !== '') || isset($_GET['concertId']);
+$toon_navigatie = ($_SESSION['zoeknaam'] !== '') || isset($_GET['concertId'])
+    || in_array($_POST['action'] ?? '', ['zoeken', 'wissenzoek'], true);
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -266,6 +267,8 @@ $toon_navigatie = ($_SESSION['zoeknaam'] !== '') || isset($_GET['concertId']);
         #navcontainer a { width: auto; max-width: 220px; }
         @media (max-width: 992px) {
             #main { margin-left: 0 !important; }
+            #openNav { position: sticky; top: 0; z-index: 2; background: #fff; }
+            #nav { top: 0; padding-top: 60px; }
         }
         @media (max-width: 600px) {
             .concert-admin { padding: 8px; }
@@ -275,25 +278,21 @@ $toon_navigatie = ($_SESSION['zoeknaam'] !== '') || isset($_GET['concertId']);
             .concert-actions { display: grid; grid-template-columns: 1fr 1fr; }
             .concert-actions input { width: 100%; }
             .concert-danger { margin-left: 0; }
-            #openNav { position: sticky; top: 0; z-index: 20; }
             #navcontainer { margin-left: 12px; }
         }
     </style>
     <script>
-        function w3_open() {
-            document.getElementById("main").style.marginLeft = "260px";
-            document.getElementById("nav").style.display = "block";
-            document.getElementById("openNav").style.display = "none";
-        }
-        function w3_close() {
-            document.getElementById("main").style.marginLeft = "0";
-            document.getElementById("nav").style.display = "none";
-            document.getElementById("openNav").style.display = "inline-block";
+        function toggleNav() {
+            const button = document.getElementById("openNav");
+            const nav = document.getElementById("nav");
+            const open = button.getAttribute("aria-expanded") !== "true";
+            nav.style.display = open ? "block" : "none";
+            button.setAttribute("aria-expanded", String(open));
         }
     </script>
 </head>
 <body>
-    <button id="openNav" class="w3-button w3-xlarge w3-hide-large" type="button" onclick="w3_open()">&#9776; Concerten</button>
+    <button id="openNav" class="w3-button w3-xlarge w3-hide-large" type="button" aria-controls="nav" aria-expanded="<?= $toon_navigatie ? 'true' : 'false' ?>" onclick="toggleNav()">&#9776; Concerten</button>
     <aside id="nav" class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"<?= $toon_navigatie ? ' style="display:block"' : '' ?>>
         <form id="vinden" method="post" action="<?= e($_SERVER['PHP_SELF']) ?>">
             <input type="hidden" name="csrf" value="<?= e($_SESSION['concert_admin_csrf']) ?>">
