@@ -244,6 +244,9 @@ $toon_navigatie = ($_SESSION['zoeknaam'] !== '') || isset($_GET['concertId'])
         <link rel="icon" type="image/png" href="<?= e($favicon) ?>">
     <?php endif; ?>
     <style>
+        @media screen {
+            body { background-color: lightblue; }
+        }
         .concert-admin { box-sizing: border-box; max-width: 960px; margin: 0 auto; padding: 16px; }
         .concert-admin * { box-sizing: border-box; }
         .concert-card { background: #fff; border: 1px solid #d7d7d7; border-radius: 10px; box-shadow: 0 2px 8px rgb(0 0 0 / 8%); padding: 20px; }
