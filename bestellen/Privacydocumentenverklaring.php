@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<link href="css/w3.css" rel="stylesheet" type="text/css">
+	<link href="css/achtergrond.css" rel="stylesheet" type="text/css">
 	<link rel="icon" type="image/png" href="<?php echo $favicon; ?>">
 	<style type="text/css">
 		@import url('https://themes.googleusercontent.com/fonts/css?kit=fpjTOVmNbO4Lz34iLyptLUXza5VhXqVC6o75Eld_V98');

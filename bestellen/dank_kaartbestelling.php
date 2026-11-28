@@ -109,7 +109,7 @@ MESSAGE;
     <title>Dank voor je kaartbestelling</title>
 </head>
 
-<body class="w3-gray">
+<body>
     <div class="w3-content w3-white w3-panel w3-padding-bottom"> <?php
                                                                     echo $message;
                                                                     ?> </div>

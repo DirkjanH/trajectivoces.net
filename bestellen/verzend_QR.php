@@ -150,7 +150,7 @@ foreach ($reserveringen as $reservering) {
 	<link rel="icon" type="image/png" href=<?php echo $favicon; ?>>
     <title>Toezending QR codes</title>
 </head>
-<body class="w3-gray">
+<body>
 <div class="w3-content w3-white">
 	<?php echo($message);?>
 </div>

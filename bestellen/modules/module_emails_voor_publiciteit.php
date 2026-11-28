@@ -25,11 +25,6 @@ $aantal = count($reserveringen);
 	<meta charset="utf-8">
 	<link href="<?php echo $css; ?>" rel="stylesheet" type="text/css">
 	<link rel="icon" type="image/png" href=<?php echo $favicon; ?>>
-	<style>
-		@media screen {
-			body { background-color: lightblue; }
-		}
-	</style>
 </head>
 
 <body>

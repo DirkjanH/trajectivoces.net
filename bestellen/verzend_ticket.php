@@ -288,7 +288,7 @@ if (!is_null($bestaat_boeking) and $bestaat_boeking == true) {
 	<title>Bestelling kaarten</title>
 </head>
 
-<body class="w3-gray">
+<body>
 	<div class="w3-content"> <?php echo ($page_message ?? $message); ?> </div>
 </body>
 
