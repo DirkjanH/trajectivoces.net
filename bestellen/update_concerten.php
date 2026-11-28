@@ -206,10 +206,21 @@ if (isset($_GET['concertId'])) {
 }
 
 $concert = [
-    'concertId' => '', 'concerttitel' => '', 'details' => '', 'opmerking_intern' => '',
-    'datum' => '', 'tijd' => '', 'plaats' => '', 'prijs_vol' => '',
-    'prijs_red' => '', 'prijs_kind' => '', 'txt_red' => '', 'txt_kind' => '',
-    'online' => 0, 'aantal_plaatsen' => '', 'uitverkocht' => 0,
+    'concertId' => '',
+    'concerttitel' => '',
+    'details' => '',
+    'opmerking_intern' => '',
+    'datum' => '',
+    'tijd' => '',
+    'plaats' => '',
+    'prijs_vol' => '',
+    'prijs_red' => '',
+    'prijs_kind' => '',
+    'txt_red' => '',
+    'txt_kind' => '',
+    'online' => 0,
+    'aantal_plaatsen' => '',
+    'uitverkocht' => 0,
 ];
 
 if ($concertId !== null) {
@@ -234,6 +245,7 @@ $toon_navigatie = ($_SESSION['zoeknaam'] !== '') || isset($_GET['concertId'])
 ?>
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -241,48 +253,193 @@ $toon_navigatie = ($_SESSION['zoeknaam'] !== '') || isset($_GET['concertId'])
     <link href="<?= e($css ?? '') ?>" rel="stylesheet">
     <link href="<?= e($bestellijst_css ?? '') ?>" rel="stylesheet">
     <?php if (!empty($favicon)): ?>
-        <link rel="icon" type="image/png" href="<?= e($favicon) ?>">
-    <?php endif; ?>
+        <link rel="icon" type="image/png" href="<?= e($favicon) ?>"> <?php endif; ?>
     <style>
-        .concert-admin { box-sizing: border-box; max-width: 960px; margin: 0 auto; padding: 16px; }
-        .concert-admin * { box-sizing: border-box; }
-        .concert-card { background: #fff; border: 1px solid #d7d7d7; border-radius: 10px; box-shadow: 0 2px 8px rgb(0 0 0 / 8%); padding: 20px; }
-        .concert-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-        .concert-field { min-width: 0; }
-        .concert-field.full { grid-column: 1 / -1; }
-        .concert-field label, .concert-field legend { display: block; margin-bottom: 6px; font-weight: 700; }
-        .concert-field input, .concert-field textarea { width: 100%; min-height: 42px; padding: 9px 10px; }
-        .concert-field textarea { min-height: 110px; resize: vertical; }
-        .concert-checks { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; border: 0; margin: 0; padding: 0; }
-        .concert-checks label { display: inline-flex; align-items: center; gap: 7px; margin: 0; }
-        .concert-checks input { width: auto; min-height: auto; }
-        .concert-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-        .concert-actions input { min-height: 42px; padding: 9px 14px; }
-        .concert-danger { margin-left: auto; }
-        .concert-message { padding: 10px 12px; border-radius: 6px; margin-bottom: 16px; }
-        .concert-message.error { background: #fee2e2; border: 1px solid #dc2626; color: #991b1b; }
-        .concert-message.success { background: #dcfce7; border: 1px solid #16a34a; color: #166534; }
-        .concert-help { color: #666; font-size: .88rem; }
-        #navcontainer { width: auto; }
-        #navcontainer a { width: auto; max-width: 220px; }
+        .concert-admin {
+            box-sizing: border-box;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .concert-admin * {
+            box-sizing: border-box;
+        }
+
+        .concert-card {
+            background: #fff;
+            border: 1px solid #d7d7d7;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+            padding: 20px;
+        }
+
+        .concert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .concert-field {
+            min-width: 0;
+        }
+
+        .concert-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .concert-field label,
+        .concert-field legend {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .concert-field input,
+        .concert-field textarea {
+            width: 100%;
+            min-height: 42px;
+            padding: 9px 10px;
+        }
+
+        .concert-field textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .concert-checks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            align-items: center;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .concert-checks label {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin: 0;
+        }
+
+        .concert-checks input {
+            width: auto;
+            min-height: auto;
+        }
+
+        .concert-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .concert-actions input {
+            min-height: 42px;
+            padding: 9px 14px;
+        }
+
+        .concert-danger {
+            margin-left: auto;
+        }
+
+        .concert-message {
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+
+        .concert-message.error {
+            background: #fee2e2;
+            border: 1px solid #dc2626;
+            color: #991b1b;
+        }
+
+        .concert-message.success {
+            background: #dcfce7;
+            border: 1px solid #16a34a;
+            color: #166534;
+        }
+
+        .concert-help {
+            color: #666;
+            font-size: .88rem;
+        }
+
+        #navcontainer {
+            width: auto;
+        }
+
+        #navcontainer a {
+            width: auto;
+            max-width: 220px;
+        }
+
         @media (min-width: 993px) {
-            #nav { width: 250px; }
-            #main { margin-left: 250px; }
+            #nav {
+                width: 250px;
+            }
+
+            #main {
+                margin-left: 250px;
+            }
         }
+
         @media (max-width: 992px) {
-            #main { margin-left: 0 !important; }
-            #openNav { position: sticky; top: 0; z-index: 2; background: #fff; }
-            #nav { top: 0; padding-top: 60px; }
+            #main {
+                margin-left: 0 !important;
+            }
+
+            #openNav {
+                position: sticky;
+                top: 0;
+                z-index: 2;
+                background: #fff;
+            }
+
+            #nav {
+                top: 0;
+                padding-top: 60px;
+            }
         }
+
         @media (max-width: 600px) {
-            .concert-admin { padding: 8px; }
-            .concert-card { padding: 12px; border-radius: 6px; }
-            .concert-grid { grid-template-columns: 1fr; gap: 12px; }
-            .concert-field.full { grid-column: auto; }
-            .concert-actions { display: grid; grid-template-columns: 1fr 1fr; }
-            .concert-actions input { width: 100%; }
-            .concert-danger { margin-left: 0; }
-            #navcontainer { margin-left: 12px; }
+            .concert-admin {
+                padding: 8px;
+            }
+
+            .concert-card {
+                padding: 12px;
+                border-radius: 6px;
+            }
+
+            .concert-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .concert-field.full {
+                grid-column: auto;
+            }
+
+            .concert-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .concert-actions input {
+                width: 100%;
+            }
+
+            .concert-danger {
+                margin-left: 0;
+            }
+
+            #navcontainer {
+                margin-left: 12px;
+            }
         }
     </style>
     <script>
@@ -295,111 +452,158 @@ $toon_navigatie = ($_SESSION['zoeknaam'] !== '') || isset($_GET['concertId'])
         }
     </script>
 </head>
+
 <body>
-    <button id="openNav" class="w3-button w3-xlarge w3-hide-large" type="button" aria-controls="nav" aria-expanded="<?= $toon_navigatie ? 'true' : 'false' ?>" onclick="toggleNav()">&#9776; Concerten</button>
-    <aside id="nav" class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"<?= $toon_navigatie ? ' style="display:block"' : '' ?>>
+    <button id="openNav" class="w3-button w3-xlarge w3-hide-large" type="button"
+        aria-controls="nav"
+        aria-expanded="<?= $toon_navigatie ? 'true' : 'false' ?>"
+        onclick="toggleNav()">&#9776; Concerten</button>
+    <aside id="nav"
+        class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"
+        <?= $toon_navigatie ? ' style="display:block"' : '' ?>>
         <form id="vinden" method="post" action="<?= e($_SERVER['PHP_SELF']) ?>">
-            <input type="hidden" name="csrf" value="<?= e($_SESSION['concert_admin_csrf']) ?>">
+            <input type="hidden" name="csrf"
+                value="<?= e($_SESSION['concert_admin_csrf']) ?>">
             <div class="w3-panel">
                 <label for="zoeknaam">Zoekterm:</label>
-                <input name="zoeknaam" type="text" id="zoeknaam" value="<?= e($_SESSION['zoeknaam']) ?>" maxlength="100">
-                <button name="action" type="submit" value="zoeken" class="w3-button w3-light-grey">Zoek</button>
-                <button name="action" type="submit" value="wissenzoek" class="w3-button w3-light-grey">Wis</button>
-            </div>
-            <?php if ($concerten): ?>
-                <p><?= count($concerten) ?> resultaten. Klik een item aan:</p>
-                <div id="navcontainer">
-                    <ul id="navlist">
-                        <?php foreach ($concerten as $item): ?>
-                            <?php
-                            $datum = date('d-m-Y', strtotime((string) $item['datum']));
-                            $href = $_SERVER['PHP_SELF'] . '?concertId=' . (int) $item['concertId'];
-                            ?>
-                            <li><a href="<?= e($href) ?>"><?= e($item['concerttitel']) ?><br><span class="klein">(<?= e($datum) ?>)</span></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
+                <input name="zoeknaam" type="text" id="zoeknaam"
+                    value="<?= e($_SESSION['zoeknaam']) ?>" maxlength="100">
+                <button name="action" type="submit" value="zoeken"
+                    class="w3-button w3-light-grey">Zoek</button>
+                <button name="action" type="submit" value="wissenzoek"
+                    class="w3-button w3-light-grey">Wis</button>
+            </div> <?php if ($concerten): ?> <div id="navcontainer">
+                    <p class="klein"><?= count($concerten) ?> resultaten. Klik een
+                        item aan:</p>
+                    <ul id="navlist"> <?php foreach ($concerten as $item): ?> <?php
+                                                                                $datum = date('d-m-Y', strtotime((string) $item['datum']));
+                                                                                $href = $_SERVER['PHP_SELF'] . '?concertId=' . (int) $item['concertId'];
+                                                                                ?> <li><a
+                                    href="<?= e($href) ?>"><?= e($item['concerttitel']) ?><br><span
+                                        class="klein">(<?= e($datum) ?>)</span></a></li>
+                        <?php endforeach; ?> </ul>
+                </div> <?php endif; ?>
         </form>
     </aside>
-
     <main id="main" class="w3-main w3-container w3-padding">
         <div class="concert-admin">
-            <h1>Concertonderhoud</h1>
-            <?php if ($errors): ?>
-                <div class="concert-message error" role="alert"><?= e(implode(' ', $errors)) ?></div>
-            <?php endif; ?>
-            <?php if ($notice): ?>
-                <div class="concert-message success" role="status"><?= e($notice) ?></div>
-            <?php endif; ?>
-
-            <form method="post" action="<?= e($_SERVER['PHP_SELF']) ?>" id="concert" class="concert-card">
-                <input type="hidden" name="csrf" value="<?= e($_SESSION['concert_admin_csrf']) ?>">
+            <h1>Concertonderhoud</h1> <?php if ($errors): ?> <div
+                    class="concert-message error" role="alert">
+                    <?= e(implode(' ', $errors)) ?></div> <?php endif; ?>
+            <?php if ($notice): ?> <div class="concert-message success"
+                    role="status"><?= e($notice) ?></div> <?php endif; ?> <form
+                method="post" action="<?= e($_SERVER['PHP_SELF']) ?>"
+                id="concert" class="concert-card">
+                <input type="hidden" name="csrf"
+                    value="<?= e($_SESSION['concert_admin_csrf']) ?>">
                 <div class="concert-grid">
                     <div class="concert-field">
                         <label for="concertId">concertId</label>
-                        <input type="number" name="concertId" id="concertId" value="<?= e($concert['concertId']) ?>" min="1" inputmode="numeric">
+                        <input type="number" name="concertId" id="concertId"
+                            value="<?= e($concert['concertId']) ?>" min="1"
+                            inputmode="numeric">
                     </div>
                     <div class="concert-field">
                         <label for="concerttitel">Concerttitel</label>
-                        <input type="text" name="concerttitel" id="concerttitel" value="<?= e($concert['concerttitel']) ?>" maxlength="255" required>
+                        <input type="text" name="concerttitel" id="concerttitel"
+                            value="<?= e($concert['concerttitel']) ?>"
+                            maxlength="255" required>
                     </div>
                     <div class="concert-field">
-                        <label for="datum">Datum <span class="concert-help">(jjjj-mm-dd)</span></label>
-                        <input type="date" name="datum" id="datum" value="<?= e($concert['datum']) ?>" required>
+                        <label for="datum">Datum <span
+                                class="concert-help">(jjjj-mm-dd)</span></label>
+                        <input type="date" name="datum" id="datum"
+                            value="<?= e($concert['datum']) ?>" required>
                     </div>
                     <div class="concert-field">
-                        <label for="tijd">Tijd <span class="concert-help">(uu:mm)</span></label>
-                        <input type="time" name="tijd" id="tijd" value="<?= e($concert['tijd']) ?>">
+                        <label for="tijd">Tijd <span
+                                class="concert-help">(uu:mm)</span></label>
+                        <input type="time" name="tijd" id="tijd"
+                            value="<?= e($concert['tijd']) ?>">
                     </div>
                     <div class="concert-field">
                         <label for="plaats">Plaats</label>
-                        <input type="text" name="plaats" id="plaats" value="<?= e($concert['plaats']) ?>" maxlength="255">
+                        <input type="text" name="plaats" id="plaats"
+                            value="<?= e($concert['plaats']) ?>"
+                            maxlength="255">
                     </div>
                     <div class="concert-field">
                         <label for="aantal_plaatsen">Aantal plaatsen</label>
-                        <input type="number" name="aantal_plaatsen" id="aantal_plaatsen" value="<?= e($concert['aantal_plaatsen']) ?>" min="0" inputmode="numeric">
+                        <input type="number" name="aantal_plaatsen"
+                            id="aantal_plaatsen"
+                            value="<?= e($concert['aantal_plaatsen']) ?>"
+                            min="0" inputmode="numeric">
                     </div>
                     <div class="concert-field">
                         <label for="prijs_vol">Prijs vol</label>
-                        <input type="text" name="prijs_vol" id="prijs_vol" value="<?= e($concert['prijs_vol']) ?>" inputmode="decimal" pattern="[0-9]+([.,][0-9]{1,2})?" placeholder="Bijv. 12.50">
+                        <input type="text" name="prijs_vol" id="prijs_vol"
+                            value="<?= e($concert['prijs_vol']) ?>"
+                            inputmode="decimal"
+                            pattern="[0-9]+([.,][0-9]{1,2})?"
+                            placeholder="Bijv. 12.50">
                     </div>
                     <div class="concert-field">
                         <label for="prijs_red">Prijs red.</label>
-                        <input type="text" name="prijs_red" id="prijs_red" value="<?= e($concert['prijs_red']) ?>" inputmode="decimal" pattern="[0-9]+([.,][0-9]{1,2})?" placeholder="Bijv. 10.00">
-                        <label for="txt_red" class="concert-help">Korting voor</label>
-                        <input type="text" name="txt_red" id="txt_red" value="<?= e($concert['txt_red']) ?>" maxlength="255">
+                        <input type="text" name="prijs_red" id="prijs_red"
+                            value="<?= e($concert['prijs_red']) ?>"
+                            inputmode="decimal"
+                            pattern="[0-9]+([.,][0-9]{1,2})?"
+                            placeholder="Bijv. 10.00">
+                        <label for="txt_red" class="concert-help">Korting
+                            voor</label>
+                        <input type="text" name="txt_red" id="txt_red"
+                            value="<?= e($concert['txt_red']) ?>"
+                            maxlength="255">
                     </div>
                     <div class="concert-field">
                         <label for="prijs_kind">Prijs kind</label>
-                        <input type="text" name="prijs_kind" id="prijs_kind" value="<?= e($concert['prijs_kind']) ?>" inputmode="decimal" pattern="[0-9]+([.,][0-9]{1,2})?" placeholder="Bijv. 5.00">
-                        <label for="txt_kind" class="concert-help">Korting voor</label>
-                        <input type="text" name="txt_kind" id="txt_kind" value="<?= e($concert['txt_kind']) ?>" maxlength="255">
+                        <input type="text" name="prijs_kind" id="prijs_kind"
+                            value="<?= e($concert['prijs_kind']) ?>"
+                            inputmode="decimal"
+                            pattern="[0-9]+([.,][0-9]{1,2})?"
+                            placeholder="Bijv. 5.00">
+                        <label for="txt_kind" class="concert-help">Korting
+                            voor</label>
+                        <input type="text" name="txt_kind" id="txt_kind"
+                            value="<?= e($concert['txt_kind']) ?>"
+                            maxlength="255">
                     </div>
                     <div class="concert-field">
                         <fieldset class="concert-checks">
                             <legend>Status</legend>
-                            <label><input type="checkbox" name="online" value="1" <?= (int) $concert['online'] === 1 ? 'checked' : '' ?>> Online</label>
-                            <label><input type="checkbox" name="uitverkocht" value="1" <?= (int) $concert['uitverkocht'] === 1 ? 'checked' : '' ?>> Uitverkocht</label>
+                            <label><input type="checkbox" name="online"
+                                    value="1"
+                                    <?= (int) $concert['online'] === 1 ? 'checked' : '' ?>>
+                                Online</label>
+                            <label><input type="checkbox" name="uitverkocht"
+                                    value="1"
+                                    <?= (int) $concert['uitverkocht'] === 1 ? 'checked' : '' ?>>
+                                Uitverkocht</label>
                         </fieldset>
                     </div>
                     <div class="concert-field full">
                         <label for="details">Publieke details</label>
-                        <textarea name="details" id="details"><?= e($concert['details']) ?></textarea>
+                        <textarea name="details"
+                            id="details"><?= e($concert['details']) ?></textarea>
                     </div>
                     <div class="concert-field full">
                         <label for="opmerking_intern">Interne opmerking</label>
-                        <textarea name="opmerking_intern" id="opmerking_intern"><?= e($concert['opmerking_intern']) ?></textarea>
+                        <textarea name="opmerking_intern"
+                            id="opmerking_intern"><?= e($concert['opmerking_intern']) ?></textarea>
                     </div>
                 </div>
                 <div class="concert-actions">
                     <input type="submit" name="action" value="Toevoegen">
                     <input type="submit" name="action" value="Wijzigen">
-                    <input type="submit" name="action" value="Wissen" class="concert-danger" onclick="return confirm('Weet u zeker dat u dit concert wilt wissen?');">
-                    <input type="submit" name="action" value="leegmaken" formnovalidate>
+                    <input type="submit" name="action" value="Wissen"
+                        class="concert-danger"
+                        onclick="return confirm('Weet u zeker dat u dit concert wilt wissen?');">
+                    <input type="submit" name="action" value="leegmaken"
+                        formnovalidate>
                 </div>
             </form>
         </div>
     </main>
 </body>
+
 </html>
